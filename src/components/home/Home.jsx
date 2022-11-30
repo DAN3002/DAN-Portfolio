@@ -22,26 +22,26 @@ function HomeSection() {
 					</span>
 					<ul className='social-icons light list-inline mb-0 mt-4'>
 						<li className='list-inline-item'>
-							<a href='https://github.com/DAN3002' target='_blank'>
+							<a href='https://github.com/DAN3002' target='_blank' rel="noreferrer">
 								<i className='fab fa-github' />
 							</a>
 						</li>
 						<li className='list-inline-item'>
 							<a
 								href='https://www.facebook.com/dan3002/'
-								target='_blank'>
+								target='_blank' rel="noreferrer">
 								<i className='fab fa-facebook' />
 							</a>
 						</li>
 						<li className='list-inline-item'>
 							<a
 								href='https://www.linkedin.com/in/dan3002/'
-								target='_blank'>
+								target='_blank' rel="noreferrer">
 								<i className='fab fa-linkedin' />
 							</a>
 						</li>
 						<li className='list-inline-item'>
-							<a href='mailto:dinhanh300229@gmail.com' target='_blank'>
+							<a href='mailto:dinhanh300229@gmail.com' target='_blank' rel="noreferrer">
 								<i className='fab fa-google' />
 							</a>
 						</li>

@@ -17,6 +17,7 @@
         "react"
     ],
     "rules": {
+        "react/no-unescaped-entities": "off",
         "react/react-in-jsx-scope": "off",
         "react/jsx-indent" : ["error", "tab"],
         "react/jsx-indent-props" : ["error", "tab"],

@@ -16,7 +16,6 @@ function HomeSection() {
 					<h1 className="mb-2 mt-0">Nguyễn Đình Anh</h1>
 					<span>
 						I'm a
-						{' '}
 						<span className="text-rotating">
 							Software Engineering Student, Back-End developer
 						</span>

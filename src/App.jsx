@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import PreLoader from './components/PreLoader';
+import PreLoader from './components/utils/PreLoader';
 import MobileHeader from './components/header/MobileHeader';
 import DesktopHeader from './components/header/DesktopHeader';
 

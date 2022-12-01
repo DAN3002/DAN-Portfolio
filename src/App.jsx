@@ -18,12 +18,12 @@ function App() {
 	}, []);
 
 	return (
-		<React.Fragment>
+		<>
 			<PreLoader />
 			<MobileHeader />
 			<DesktopHeader />
 			<Main />
-		</React.Fragment>
+		</>
 	);
 }
 

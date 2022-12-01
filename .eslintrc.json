@@ -17,7 +17,9 @@
         "react"
     ],
     "rules": {
+        "react/react-in-jsx-scope": "off",
         "react/jsx-indent" : ["error", "tab"],
+        "react/jsx-indent-props" : ["error", "tab"],
         "indent": ["error", "tab"],
         "no-tabs": 0
     }

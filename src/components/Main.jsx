@@ -1,4 +1,4 @@
-import HomeSection from "./home/Home";
+import HomeSection from './home/Home';
 
 function Main() {
 	return (

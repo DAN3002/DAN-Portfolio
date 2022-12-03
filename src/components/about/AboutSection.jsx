@@ -1,0 +1,146 @@
+function AboutSection() {
+	return (
+		<div>
+			<div className="row">
+				<div className="col-md-3">
+					<div className="text-center text-md-left">
+						{/* avatar image */}
+						<img src="images/dan3002/profile.png" alt="Profile" />
+					</div>
+					<div className="spacer d-md-none d-lg-none" data-height={30} />
+				</div>
+				<div className="col-md-9 triangle-left-md triangle-top-sm">
+					<div className="rounded bg-dark shadow-light padding-30">
+						<div className="row">
+							<div className="col-md-6">
+								{/* about text */}
+								<p>
+									I'm Nguyễn Đình Anh, a Software Developer with over 1
+									year of experience in back-end development with
+									NodeJS and its frameworks like ExpressJS or MeteorJS.
+									I also have some projects about front-end with
+									ReactJS and develop a mobile app with React Native.
+								</p>
+								<p>
+									I am always open to new opportunities and challenges.
+									If you would like to reach me, feel free to drop me a
+									message using the Contact form.
+								</p>
+								<div className="mt-3">
+									<a
+										href="/CV_NguyenDinhAnh.pdf"
+										className="btn btn-default"
+										target="_blank"
+									>
+										Download CV
+									</a>
+								</div>
+								<div
+									className="spacer d-md-none d-lg-none"
+									data-height={30}
+								/>
+							</div>
+							<div className="col-md-6">
+								<ul className="info-list">
+									<li>
+										<i className="fas fa-angle-right" />
+										<b>Website:</b>
+										<a
+											href="https://dan3002-cv.web.app/"
+											target="_blank"
+											rel="noreferrer"
+										>
+											dan3002-cv.web.app
+										</a>
+									</li>
+									<li>
+										<i className="fas fa-angle-right" />
+										<b>Email:</b>
+										<a
+											href="mailto:dinhanh300229@gmail.com"
+											target="_blank"
+											rel="noreferrer"
+										>
+											dinhanh300229@gmail.com
+										</a>
+									</li>
+									<li>
+										<i className="fas fa-angle-right" />
+										<b>Phone:</b>
+										<span>(+84) 914085246</span>
+									</li>
+									<li>
+										<i className="fas fa-angle-right" />
+										<b>Languages:</b>
+										<span>Vietnamese, English</span>
+									</li>
+									<li>
+										<i className="fas fa-angle-right" />
+										<b>Location:</b>
+										<span>Ha Noi, Viet Nam</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{/* row end */}
+			<div className="spacer" data-height={70} />
+			<div className="row">
+				<div className="col-md-3 col-sm-6">
+					<div className="fact-item">
+						<span className="icon icon-badge" />
+						<div className="details">
+							<h3 className="mb-0 mt-0 number">
+								<em className="count">2.5</em>
+							</h3>
+							<p className="mb-0">Years’ Experience</p>
+						</div>
+					</div>
+				</div>
+				<div className="col-md-3 col-sm-6">
+					{/* fact item */}
+					<div className="fact-item">
+						<span className="icon icon-fire" />
+						<div className="details">
+							<h3 className="mb-0 mt-0 number">
+								<em className="count">25</em>
+							</h3>
+							<p className="mb-0">Github Repositories</p>
+						</div>
+					</div>
+					<div className="spacer d-md-none d-lg-none" data-height={30} />
+				</div>
+				<div className="col-md-3 col-sm-6">
+					{/* fact item */}
+					<div className="fact-item">
+						<span className="icon icon-chart" />
+						<div className="details">
+							<h3 className="mb-0 mt-0 number">
+								<em className="count">458</em>
+							</h3>
+							<p className="mb-0">Github Commits</p>
+						</div>
+					</div>
+					<div className="spacer d-md-none d-lg-none" data-height={30} />
+				</div>
+				<div className="col-md-3 col-sm-6">
+					{/* fact item */}
+					<div className="fact-item">
+						<span className="icon icon-star" />
+						<div className="details">
+							<h3 className="mb-0 mt-0 number">
+								<em className="count">19</em>
+							</h3>
+							<p className="mb-0">Github Star</p>
+						</div>
+					</div>
+					<div className="spacer d-md-none d-lg-none" data-height={30} />
+				</div>
+			</div>
+		</div>
+	);
+}
+
+export default AboutSection;

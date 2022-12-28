@@ -1,7 +1,12 @@
+import React from 'react';
+
+import PreLoader from './components/PreLoader';
+
 function App() {
 	return (
-		<div className="App">
-		</div>
+		<React.Fragment>
+			<PreLoader />
+		</React.Fragment>
 	);
 }
 

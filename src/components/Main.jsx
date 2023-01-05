@@ -1,5 +1,5 @@
 import Section from './Section';
-import HomeSection from './home/Home';
+import HomeSection from './home/HomeSection';
 import AboutSection from './about/AboutSection';
 
 function Main() {
@@ -7,6 +7,7 @@ function Main() {
 		<main className="content">
 			<HomeSection />
 			<Section
+				id="about"
 				title="About Me"
 			>
 				<AboutSection />

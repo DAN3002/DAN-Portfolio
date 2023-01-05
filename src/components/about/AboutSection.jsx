@@ -1,11 +1,12 @@
 function AboutSection() {
+	const { PUBLIC_URL } = process.env;
+
 	return (
 		<div>
 			<div className="row">
 				<div className="col-md-3">
 					<div className="text-center text-md-left">
-						{/* avatar image */}
-						<img src="images/dan3002/profile.png" alt="Profile" />
+						<img src={`${PUBLIC_URL}/images/dan3002/profile.png`} alt="Profile" />
 					</div>
 					<div className="spacer d-md-none d-lg-none" data-height={30} />
 				</div>
@@ -13,7 +14,6 @@ function AboutSection() {
 					<div className="rounded bg-dark shadow-light padding-30">
 						<div className="row">
 							<div className="col-md-6">
-								{/* about text */}
 								<p>
 									I'm Nguyễn Đình Anh, a Software Developer with over 1
 									year of experience in back-end development with
@@ -85,7 +85,6 @@ function AboutSection() {
 					</div>
 				</div>
 			</div>
-			{/* row end */}
 			<div className="spacer" data-height={70} />
 			<div className="row">
 				<div className="col-md-3 col-sm-6">
@@ -100,7 +99,6 @@ function AboutSection() {
 					</div>
 				</div>
 				<div className="col-md-3 col-sm-6">
-					{/* fact item */}
 					<div className="fact-item">
 						<span className="icon icon-fire" />
 						<div className="details">
@@ -113,7 +111,6 @@ function AboutSection() {
 					<div className="spacer d-md-none d-lg-none" data-height={30} />
 				</div>
 				<div className="col-md-3 col-sm-6">
-					{/* fact item */}
 					<div className="fact-item">
 						<span className="icon icon-chart" />
 						<div className="details">
@@ -126,7 +123,6 @@ function AboutSection() {
 					<div className="spacer d-md-none d-lg-none" data-height={30} />
 				</div>
 				<div className="col-md-3 col-sm-6">
-					{/* fact item */}
 					<div className="fact-item">
 						<span className="icon icon-star" />
 						<div className="details">

@@ -1,6 +1,7 @@
 import Section from './Section';
 import HomeSection from './home/HomeSection';
 import AboutSection from './about/AboutSection';
+import ExperienceSection from './experience/ExperienceSection';
 
 function Main() {
 	return (
@@ -11,6 +12,12 @@ function Main() {
 				title="About Me"
 			>
 				<AboutSection />
+			</Section>
+			<Section
+				id="experience"
+				title="Experience"
+			>
+				<ExperienceSection />
 			</Section>
 		</main>
 	);

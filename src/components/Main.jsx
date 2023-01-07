@@ -2,6 +2,7 @@ import Section from './Section';
 import HomeSection from './home/HomeSection';
 import AboutSection from './about/AboutSection';
 import ExperienceSection from './experience/ExperienceSection';
+import WorkSection from './work/WorkSection';
 
 function Main() {
 	return (
@@ -18,6 +19,13 @@ function Main() {
 				title="Experience"
 			>
 				<ExperienceSection />
+			</Section>
+
+			<Section
+				id="work"
+				title="Work"
+			>
+				<WorkSection />
 			</Section>
 		</main>
 	);

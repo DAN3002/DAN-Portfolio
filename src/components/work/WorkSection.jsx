@@ -1,4 +1,5 @@
 import DesktopPortfolioFilter from './DesktopPortfolioFilter';
+import MobilePortfolioFilter from './MobilePortfolioFilter';
 
 function WorkSection() {
 	const { PUBLIC_URL } = process.env;
@@ -6,17 +7,8 @@ function WorkSection() {
 	return (
 		<div>
 			<DesktopPortfolioFilter />
+			<MobilePortfolioFilter />
 
-			{/* portfolio filter (mobile) */}
-			<div className="pf-filter-wrapper">
-				<select className="portfolio-filter-mobile">
-					<option value="*">Everything</option>
-					<option value=".creative">Creative</option>
-					<option value=".art">Art</option>
-					<option value=".design">Design</option>
-					<option value=".branding">Branding</option>
-				</select>
-			</div>
 			{/* portolio wrapper */}
 			<div className="row portfolio-wrapper">
 				{/* portfolio item */}

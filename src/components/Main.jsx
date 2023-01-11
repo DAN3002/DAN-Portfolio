@@ -3,6 +3,7 @@ import HomeSection from './home/HomeSection';
 import AboutSection from './about/AboutSection';
 import ExperienceSection from './experience/ExperienceSection';
 import WorkSection from './work/WorkSection';
+import CertificationSection from './certification/CertificationSection';
 
 function Main() {
 	return (
@@ -26,6 +27,13 @@ function Main() {
 				title="Work"
 			>
 				<WorkSection />
+			</Section>
+
+			<Section
+				id="certification"
+				title="Certification"
+			>
+				<CertificationSection />
 			</Section>
 		</main>
 	);

@@ -1,4 +1,6 @@
 function CertificationSection() {
+	const { PUBLIC_URL } = process.env;
+
 	return (
 		<div className="row blog-wrapper">
 			<div className="col-md-4">
@@ -7,7 +9,7 @@ function CertificationSection() {
 						<div className="thumb">
 							<span className="category">AWS Certificate</span>
 							<img
-								src="images/achieves/cert/AWS Certified Cloud Practitioner_banner.png"
+								src={`${PUBLIC_URL}/images/achieves/cert/AWS Certified Cloud Practitioner_banner.png`}
 								alt="blog-title"
 							/>
 						</div>
@@ -26,7 +28,7 @@ function CertificationSection() {
 						className="white-popup zoom-anim-dialog mfp-hide"
 					>
 						<img
-							src="images/achieves/cert/AWS Certified Cloud Practitioner.png"
+							src={`${PUBLIC_URL}/images/achieves/cert/AWS Certified Cloud Practitioner.png`}
 							alt="Title"
 						/>
 					</div>
@@ -38,7 +40,7 @@ function CertificationSection() {
 						<div className="thumb">
 							<span className="category">AWS Certificate</span>
 							<img
-								src="images/achieves/cert/AWS Certified Solutions Architect – Associate_banner.png"
+								src={`${PUBLIC_URL}/images/achieves/cert/AWS Certified Solutions Architect - Associate_banner.png`}
 								alt="blog-title"
 							/>
 						</div>
@@ -57,7 +59,7 @@ function CertificationSection() {
 						className="white-popup zoom-anim-dialog mfp-hide"
 					>
 						<img
-							src="images/achieves/cert/AWS Certified Solutions Architect – Associate.png"
+							src={`${PUBLIC_URL}/images/achieves/cert/AWS Certified Solutions Architect - Associate.png`}
 							alt="Title"
 						/>
 					</div>

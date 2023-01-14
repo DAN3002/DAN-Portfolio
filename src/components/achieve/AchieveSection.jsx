@@ -1,4 +1,6 @@
 function AchieveSection() {
+	const { PUBLIC_URL } = process.env;
+
 	return (
 		<div className="row blog-wrapper">
 			<div className="col-md-4">
@@ -7,7 +9,7 @@ function AchieveSection() {
 						<div className="thumb">
 							<span className="category">Hackathon</span>
 							<img
-								src="images/achieves/hackathon-2019.jpg"
+								src={`${PUBLIC_URL}/images/achieves/hackathon-2019.jpg`}
 								alt="blog-title"
 							/>
 						</div>
@@ -24,7 +26,7 @@ function AchieveSection() {
 						className="white-popup zoom-anim-dialog mfp-hide"
 					>
 						<img
-							src="images/achieves/hackathon-2019-banner.jpg"
+							src={`${PUBLIC_URL}/images/achieves/hackathon-2019-banner.jpg`}
 							alt="Title"
 						/>
 						<p>
@@ -49,7 +51,7 @@ function AchieveSection() {
 						<div className="thumb">
 							<span className="category">Hackathon</span>
 							<img
-								src="images/achieves/hackathon-2021.png"
+								src={`${PUBLIC_URL}/images/achieves/hackathon-2021.png`}
 								alt="blog-title"
 							/>
 						</div>
@@ -66,7 +68,7 @@ function AchieveSection() {
 						className="white-popup zoom-anim-dialog mfp-hide"
 					>
 						<img
-							src="images/achieves/hackathon-2021-banner.jpg"
+							src={`${PUBLIC_URL}/images/achieves/hackathon-2021-banner.jpg`}
 							alt="Title"
 						/>
 						<p />

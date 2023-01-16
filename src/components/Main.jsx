@@ -5,6 +5,7 @@ import ExperienceSection from './experience/ExperienceSection';
 import WorkSection from './work/WorkSection';
 import CertificationSection from './certification/CertificationSection';
 import AchieveSection from './achieve/AchieveSection';
+import ContactSection from './contact/ContactSection';
 
 function Main() {
 	return (
@@ -42,6 +43,12 @@ function Main() {
 				title="Achievement"
 			>
 				<AchieveSection />
+			</Section>
+			<Section
+				id="contact"
+				title="Get In Touch"
+			>
+				<ContactSection />
 			</Section>
 		</main>
 	);

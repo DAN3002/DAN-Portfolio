@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import PreLoader from './components/utils/PreLoader';
 import MobileHeader from './components/header/MobileHeader';
 import DesktopHeader from './components/header/DesktopHeader';
+import GoToTop from './components/utils/GoToTop';
 
 import Main from './components/Main';
 
@@ -23,6 +24,7 @@ function App() {
 			<MobileHeader />
 			<DesktopHeader />
 			<Main />
+			<GoToTop />
 		</>
 	);
 }

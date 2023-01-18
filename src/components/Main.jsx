@@ -50,6 +50,8 @@ function Main() {
 			>
 				<ContactSection />
 			</Section>
+
+			<div className="spacer" data-height={96} />
 		</main>
 	);
 }

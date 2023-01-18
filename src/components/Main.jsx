@@ -26,21 +26,21 @@ function Main() {
 
 			<Section
 				id="works"
-				title="Work"
+				title="Works"
 			>
 				<WorkSection />
 			</Section>
 
 			<Section
 				id="certifications"
-				title="Certification"
+				title="Certifications"
 			>
 				<CertificationSection />
 			</Section>
 
 			<Section
 				id="achieves"
-				title="Achievement"
+				title="Achievements"
 			>
 				<AchieveSection />
 			</Section>

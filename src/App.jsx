@@ -4,6 +4,7 @@ import PreLoader from './components/utils/PreLoader';
 import MobileHeader from './components/header/MobileHeader';
 import DesktopHeader from './components/header/DesktopHeader';
 import GoToTop from './components/utils/GoToTop';
+import { DataContextProvider } from './context/DataContext';
 
 import Main from './components/Main';
 
@@ -19,13 +20,13 @@ function App() {
 	}, []);
 
 	return (
-		<>
+		<DataContextProvider>
 			<PreLoader />
 			<MobileHeader />
 			<DesktopHeader />
 			<Main />
 			<GoToTop />
-		</>
+		</DataContextProvider>
 	);
 }
 

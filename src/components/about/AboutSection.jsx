@@ -28,9 +28,10 @@ function AboutSection() {
 								</p>
 								<div className="mt-3">
 									<a
-										href="/CV_NguyenDinhAnh.pdf"
+										href={`${PUBLIC_URL}/CV_NguyenDinhAnh.pdf`}
 										className="btn btn-default"
 										target="_blank"
+										rel="noreferrer"
 									>
 										Download CV
 									</a>

@@ -26,7 +26,7 @@
 			"react-app/jest"
 		]
 	},
-	"homepage": "https://dan3002.github.io/DAN-Portfolio/",
+	"homepage": "https://dan3002.github.io/",
 	"browserslist": {
 		"production": [
 			">0.2%",

@@ -1,9 +1,16 @@
+// import React, { useContext } from 'react';
+
 import ScollDown from './ScollDown';
 import Parallax from './Parallax';
+
+// import { DataContext } from '../../context/DataContext';
+
+import data from '../../data/data.json';
 
 function HomeSection() {
 	const { PUBLIC_URL } = process.env;
 
+	const { home = {} } = data;
 	return (
 		<section id="home" className="home d-flex align-items-center">
 			<div className="container">
@@ -15,9 +22,9 @@ function HomeSection() {
 					/>
 					<h1 className="mb-2 mt-0">Nguyễn Đình Anh</h1>
 					<span>
-						I'm a
+						<span>I'm a </span>
 						<span className="text-rotating">
-							Software Engineering Student, Back-End developer
+							{(home.roles || []).join(', ')}
 						</span>
 					</span>
 					<ul className="social-icons light list-inline mb-0 mt-4">

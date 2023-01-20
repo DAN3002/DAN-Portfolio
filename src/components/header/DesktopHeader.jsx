@@ -1,3 +1,5 @@
+import data from '../../data/data';
+
 function DesktopHeader() {
 	return (
 		<header className="desktop-header-1 d-flex align-items-start flex-column">
@@ -58,13 +60,19 @@ function DesktopHeader() {
 			<div className="footer">
 				{/* copyright text */}
 				<span className="copyright">
-					© 2021
+					©
+					{' '}
+					{new Date().getFullYear()}
 					{' '}
 					<b>Nguyễn Đình Anh</b>
 					.
 				</span>
 				<br />
-				<span className="copyright">Last Updated: Feb 2022</span>
+				<span className="copyright">
+					Last Updated:
+					{' '}
+					{ data.lastUpdated }
+				</span>
 			</div>
 		</header>
 	);

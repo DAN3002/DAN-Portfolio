@@ -1,11 +1,11 @@
 import ScollDown from './ScollDown';
 import Parallax from './Parallax';
-import data from '../../data/data.json';
+import data from '../../data/data';
 
 function HomeSection() {
 	const { PUBLIC_URL } = process.env;
 
-	const { home = {} } = data;
+	const { home = {}, contactEmail } = data;
 	return (
 		<section id="home" className="home d-flex align-items-center">
 			<div className="container">
@@ -47,7 +47,7 @@ function HomeSection() {
 							</a>
 						</li>
 						<li className="list-inline-item">
-							<a href="mailto:dinhanh300229@gmail.com" target="_blank" rel="noreferrer">
+							<a href={`mailto:${contactEmail}`} target="_blank" rel="noreferrer">
 								<i className="fab fa-google" />
 							</a>
 						</li>

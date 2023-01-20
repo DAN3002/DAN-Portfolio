@@ -1,10 +1,5 @@
-// import React, { useContext } from 'react';
-
 import ScollDown from './ScollDown';
 import Parallax from './Parallax';
-
-// import { DataContext } from '../../context/DataContext';
-
 import data from '../../data/data.json';
 
 function HomeSection() {

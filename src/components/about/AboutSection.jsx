@@ -2,9 +2,15 @@ import data from '../../data/data';
 
 function AboutSection() {
 	const { PUBLIC_URL } = process.env;
-	const { about, contactEmail } = data;
+	const { about, contactEmail, startDate } = data;
 
 	const currentDomain = window.location.hostname;
+	let yearsOfExperience = new Date().getFullYear() - startDate - 0.5;
+
+	// if curent month is > 6th month, then add 0.5 to yearsOfExperience
+	if (new Date().getMonth() > 6) {
+		yearsOfExperience += 0.5;
+	}
 
 	return (
 		<div>
@@ -100,7 +106,7 @@ function AboutSection() {
 						<span className="icon icon-badge" />
 						<div className="details">
 							<h3 className="mb-0 mt-0 number">
-								<em className="count">2.5</em>
+								<em className="count">{yearsOfExperience}</em>
 							</h3>
 							<p className="mb-0">Years’ Experience</p>
 						</div>

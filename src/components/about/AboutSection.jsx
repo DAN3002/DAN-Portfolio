@@ -1,5 +1,8 @@
+import data from '../../data/data';
+
 function AboutSection() {
 	const { PUBLIC_URL } = process.env;
+	const { about } = data;
 
 	return (
 		<div>
@@ -15,17 +18,11 @@ function AboutSection() {
 						<div className="row">
 							<div className="col-md-6">
 								<p>
-									I'm Nguyễn Đình Anh, a Software Developer with over 1
-									year of experience in back-end development with
-									NodeJS and its frameworks like ExpressJS or MeteorJS.
-									I also have some projects about front-end with
-									ReactJS and develop a mobile app with React Native.
+									I'm
+									{' '}
+									<b>Nguyen Dinh Anh,</b>
 								</p>
-								<p>
-									I am always open to new opportunities and challenges.
-									If you would like to reach me, feel free to drop me a
-									message using the Contact form.
-								</p>
+								{about.paragraphs.map((item) => <p>{item}</p>)}
 								<div className="mt-3">
 									<a
 										href={`${PUBLIC_URL}/CV_NguyenDinhAnh.pdf`}

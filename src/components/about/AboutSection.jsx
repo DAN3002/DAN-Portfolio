@@ -2,27 +2,82 @@ import data from '../../data/data';
 
 function AboutSection() {
 	const { PUBLIC_URL } = process.env;
-	const { about } = data;
+	const { about, contactEmail } = data;
+
+	const currentDomain = window.location.hostname;
 
 	return (
 		<div>
 			<div className="row">
 				<div className="col-md-3">
 					<div className="text-center text-md-left">
-						<img src={`${PUBLIC_URL}/images/dan3002/profile.png`} alt="Profile" />
+						<img
+							src={`${PUBLIC_URL}/images/dan3002/profile.png`}
+							alt="Profile"
+						/>
 					</div>
 					<div className="spacer d-md-none d-lg-none" data-height={30} />
 				</div>
 				<div className="col-md-9 triangle-left-md triangle-top-sm">
 					<div className="rounded bg-dark shadow-light padding-30">
 						<div className="row">
-							<div className="col-md-6">
+							<div className="col-md-12">
 								<p>
 									I'm
 									{' '}
-									<b>Nguyen Dinh Anh,</b>
+									<b>Nguyễn Đình Anh,</b>
 								</p>
-								{about.paragraphs.map((item) => <p>{item}</p>)}
+								{about.paragraphs.map((item) => (
+									<p>{item}</p>
+								))}
+								<div
+									className="spacer d-md-none d-lg-none"
+									data-height={30}
+								/>
+							</div>
+							<div className="col-md-12">
+								<hr className="breakline" />
+
+								<ul className="info-list row">
+									<li className="col-md-6">
+										<i className="fas fa-angle-right" />
+										<b>Website: </b>
+										<a
+											href={`https://${currentDomain}`}
+											target="_blank"
+											rel="noreferrer"
+										>
+											{currentDomain}
+										</a>
+									</li>
+									<li className="col-md-6">
+										<i className="fas fa-angle-right" />
+										<b>Email: </b>
+										<a
+											href={`mailto:${contactEmail}`}
+											target="_blank"
+											rel="noreferrer"
+										>
+											{contactEmail}
+										</a>
+									</li>
+									<li className="col-md-6">
+										<i className="fas fa-angle-right" />
+										<b>Phone: </b>
+										<span>(+84) 914085246</span>
+									</li>
+									<li className="col-md-6">
+										<i className="fas fa-angle-right" />
+										<b>Languages: </b>
+										<span>Vietnamese, English</span>
+									</li>
+									{/* <li>
+										<i className="fas fa-angle-right" />
+										<b>Location:</b>
+										<span>Ha Noi, Viet Nam</span>
+									</li> */}
+								</ul>
+
 								<div className="mt-3">
 									<a
 										href={`${PUBLIC_URL}/CV_NguyenDinhAnh.pdf`}
@@ -33,51 +88,6 @@ function AboutSection() {
 										Download CV
 									</a>
 								</div>
-								<div
-									className="spacer d-md-none d-lg-none"
-									data-height={30}
-								/>
-							</div>
-							<div className="col-md-6">
-								<ul className="info-list">
-									<li>
-										<i className="fas fa-angle-right" />
-										<b>Website:</b>
-										<a
-											href="https://dan3002-cv.web.app/"
-											target="_blank"
-											rel="noreferrer"
-										>
-											dan3002-cv.web.app
-										</a>
-									</li>
-									<li>
-										<i className="fas fa-angle-right" />
-										<b>Email:</b>
-										<a
-											href="mailto:dinhanh300229@gmail.com"
-											target="_blank"
-											rel="noreferrer"
-										>
-											dinhanh300229@gmail.com
-										</a>
-									</li>
-									<li>
-										<i className="fas fa-angle-right" />
-										<b>Phone:</b>
-										<span>(+84) 914085246</span>
-									</li>
-									<li>
-										<i className="fas fa-angle-right" />
-										<b>Languages:</b>
-										<span>Vietnamese, English</span>
-									</li>
-									<li>
-										<i className="fas fa-angle-right" />
-										<b>Location:</b>
-										<span>Ha Noi, Viet Nam</span>
-									</li>
-								</ul>
 							</div>
 						</div>
 					</div>

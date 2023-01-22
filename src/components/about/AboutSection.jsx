@@ -14,17 +14,19 @@ function AboutSection() {
 
 	const currentDomain = window.location.hostname;
 
-	getGithubData().then((res) => {
-		setGithubData(res);
-		setIsLoading(false);
+	useEffect(() => {
+		getGithubData().then((res) => {
+			setGithubData(res);
+			setIsLoading(false);
 
-		let years = new Date().getFullYear() - startDate - 0.5;
-		if (new Date().getMonth() > 6) {
-			years += 0.5;
-		}
+			let years = new Date().getFullYear() - startDate - 0.5;
+			if (new Date().getMonth() > 6) {
+				years += 0.5;
+			}
 
-		setYearsOfExperience(years);
-	});
+			setYearsOfExperience(years);
+		});
+	}, []);
 
 	useEffect(() => {
 		if (!isLoading) {

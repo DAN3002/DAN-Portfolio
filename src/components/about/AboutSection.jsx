@@ -1,13 +1,26 @@
+import { useState, useEffect } from 'react';
+
 import data from '../../data/data';
 import { getGithubData } from '../../data/github';
 
 function AboutSection() {
+	const [githubData, setGithubData] = useState({});
+	const [isLoading, setIsLoading] = useState(true);
+
 	const { PUBLIC_URL } = process.env;
 	const { about, contactEmail, startDate } = data;
 
 	const currentDomain = window.location.hostname;
 	let yearsOfExperience = new Date().getFullYear() - startDate - 0.5;
-	getGithubData();
+
+	getGithubData().then((res) => {
+		setGithubData(res);
+		setIsLoading(false);
+	});
+
+	useEffect(() => {
+		console.log('Done');
+	}, [isLoading]);
 
 	// if curent month is > 6th month, then add 0.5 to yearsOfExperience
 	if (new Date().getMonth() > 6) {
@@ -119,7 +132,7 @@ function AboutSection() {
 						<span className="icon icon-fire" />
 						<div className="details">
 							<h3 className="mb-0 mt-0 number">
-								<em className="count">25</em>
+								<em className="count">{githubData.numberOfRepos}</em>
 							</h3>
 							<p className="mb-0">Github Repositories</p>
 						</div>

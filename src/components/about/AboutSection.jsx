@@ -6,26 +6,32 @@ import { getGithubData } from '../../data/github';
 function AboutSection() {
 	const [githubData, setGithubData] = useState({});
 	const [isLoading, setIsLoading] = useState(true);
+	const [yearsOfExperience, setYearsOfExperience] = useState(0);
 
 	const { PUBLIC_URL } = process.env;
 	const { about, contactEmail, startDate } = data;
 
 	const currentDomain = window.location.hostname;
-	let yearsOfExperience = new Date().getFullYear() - startDate - 0.5;
 
 	getGithubData().then((res) => {
 		setGithubData(res);
 		setIsLoading(false);
+
+		let years = new Date().getFullYear() - startDate - 0.5;
+		if (new Date().getMonth() > 6) {
+			years += 0.5;
+		}
+
+		setYearsOfExperience(years);
 	});
 
 	useEffect(() => {
-		console.log('Done');
+		// eslint-disable-next-line no-undef
+		$('.count').counterUp({
+			delay: 10,
+			time: 2000,
+		});
 	}, [isLoading]);
-
-	// if curent month is > 6th month, then add 0.5 to yearsOfExperience
-	if (new Date().getMonth() > 6) {
-		yearsOfExperience += 0.5;
-	}
 
 	return (
 		<div>

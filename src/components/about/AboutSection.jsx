@@ -1,4 +1,5 @@
 import data from '../../data/data';
+import { getGithubData } from '../../data/github';
 
 function AboutSection() {
 	const { PUBLIC_URL } = process.env;
@@ -6,6 +7,7 @@ function AboutSection() {
 
 	const currentDomain = window.location.hostname;
 	let yearsOfExperience = new Date().getFullYear() - startDate - 0.5;
+	getGithubData();
 
 	// if curent month is > 6th month, then add 0.5 to yearsOfExperience
 	if (new Date().getMonth() > 6) {

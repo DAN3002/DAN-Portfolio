@@ -22,8 +22,12 @@ const getAllRepos = async (arr = [], page = 1) => {
 const getGithubData = async () => {
 	const repos = await getAllRepos();
 
+	const totalStars = repos.reduce((acc, curr) => acc + curr.stargazers_count, 0);
+	console.log(repos.map((el) => el.stargazers_count));
+
 	return {
 		numberOfRepos: repos.length,
+		totalStars,
 	};
 };
 

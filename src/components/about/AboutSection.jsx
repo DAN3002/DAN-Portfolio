@@ -164,7 +164,7 @@ function AboutSection() {
 						<span className="icon icon-star" />
 						<div className="details">
 							<h3 className="mb-0 mt-0 number">
-								<em className="count">19</em>
+								<em className="count">{githubData.totalStars}</em>
 							</h3>
 							<p className="mb-0">Github Star</p>
 						</div>

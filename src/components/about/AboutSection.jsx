@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useState, useEffect } from 'react';
 
 import data from '../../data/data';
@@ -26,11 +27,12 @@ function AboutSection() {
 	});
 
 	useEffect(() => {
-		// eslint-disable-next-line no-undef
-		$('.count').counterUp({
-			delay: 10,
-			time: 2000,
-		});
+		if (!isLoading) {
+			$('.count').counterUp({
+				delay: 10,
+				time: 2000,
+			});
+		}
 	}, [isLoading]);
 
 	return (

@@ -1,6 +1,17 @@
-import data from '../../data/data';
+import { useEffect, useState } from 'react';
+
+import { getLatestCommitDate } from '../../data/github';
 
 function DesktopHeader() {
+	const [lastUpdated, setLastUpdated] = useState('');
+
+	useEffect(() => {
+		getLatestCommitDate().then((date) => {
+			// Format: Month Year
+			setLastUpdated(`${date.toLocaleString('en-us', { month: 'long' })} ${date.getFullYear()}`);
+		});
+	}, []);
+
 	return (
 		<header className="desktop-header-1 d-flex align-items-start flex-column">
 			{/* logo image */}
@@ -71,7 +82,7 @@ function DesktopHeader() {
 				<span className="copyright">
 					Last Updated:
 					{' '}
-					{ data.lastUpdated }
+					{ lastUpdated }
 				</span>
 			</div>
 		</header>

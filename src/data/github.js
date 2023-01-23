@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const MAX_PER_PAGE = 100;
 const USERNAME = 'DAN3002';
+const CURRENT_REPO = 'DAN3002/DAN-Portfolio';
 const CACHE_TIMEOUT = 1; // days
 
 const headers = {
@@ -59,11 +60,12 @@ const getGithubData = async () => {
 	return output;
 };
 
-const getLatestCommit = async () => {
-
+const getLatestCommitDate = async () => {
+	const { data } = await axios.get(`https://api.github.com/repos/${CURRENT_REPO}/commits`, { headers });
+	return new Date(data[0].commit.author.date);
 };
 
 export {
 	getGithubData,
-	getLatestCommit,
+	getLatestCommitDate,
 };

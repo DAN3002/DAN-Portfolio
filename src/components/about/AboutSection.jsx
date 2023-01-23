@@ -154,7 +154,7 @@ function AboutSection() {
 						<span className="icon icon-chart" />
 						<div className="details">
 							<h3 className="mb-0 mt-0 number">
-								<em className="count">458</em>
+								<em className="count">{githubData.totalCommits}</em>
 							</h3>
 							<p className="mb-0">Github Commits</p>
 						</div>

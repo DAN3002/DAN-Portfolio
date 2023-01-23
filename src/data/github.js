@@ -5,6 +5,8 @@ import axios from 'axios';
 
 const MAX_PER_PAGE = 100;
 const USERNAME = 'DAN3002';
+const CACHE_TIMEOUT = 1; // days
+
 const headers = {
 	Authorization: `token ${process.env.REACT_APP_GITHUB_SECRET}`,
 };
@@ -30,16 +32,31 @@ const getAllRepos = async (arr = [], page = 1) => {
 };
 
 const getGithubData = async () => {
+	// Check if the data is cached
+	const cachedData = localStorage.getItem('githubData');
+	if (cachedData) {
+		const { data, timestamp } = JSON.parse(cachedData);
+		if (timestamp > Date.now()) {
+			return data;
+		}
+	}
+
 	const repos = await getAllRepos();
 
 	const totalStars = repos.reduce((acc, curr) => acc + curr.stargazers_count, 0);
 	const totalCommits = await countTotalCommits();
 
-	return {
+	const output = {
 		numberOfRepos: repos.length,
 		totalStars,
 		totalCommits,
 	};
+
+	// Cache the data for 2 days
+	const cacheTime = CACHE_TIMEOUT * 24 * 60 * 60 * 1000;
+	localStorage.setItem('githubData', JSON.stringify({ data: output, timestamp: Date.now() + cacheTime }));
+
+	return output;
 };
 
 const getLatestCommit = async () => {

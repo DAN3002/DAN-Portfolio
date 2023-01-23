@@ -36,7 +36,7 @@ function DesktopHeader() {
 						</a>
 					</li>
 					<li>
-						<a href="#resume">
+						<a href="#experience">
 							<i className="icon-graduation" />
 							Resume
 						</a>

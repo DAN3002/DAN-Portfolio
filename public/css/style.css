@@ -2829,3 +2829,7 @@ ul.info-list > li > i {
   text-transform: none;
   word-wrap: break-word;
 }
+
+.subtitle {
+  color: rgb(243, 91, 91);
+}

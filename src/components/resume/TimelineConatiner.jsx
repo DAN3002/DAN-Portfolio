@@ -12,6 +12,12 @@ function TimelineConatiner({ title, timelineData, icon }) {
 						<div className="content">
 							<span className="time">{item.timeline}</span>
 							<h3 className="title">{item.title}</h3>
+							{item.subtitle && (
+								<>
+									<span className="subtitle">{item.subtitle}</span>
+									<div className="spacer" data-height={5} />
+								</>
+							)}
 							<ul>
 								{item.text.map((text) => (
 									<li>{text}</li>

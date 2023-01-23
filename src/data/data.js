@@ -29,23 +29,23 @@ export default {
 	experience: [{
 		title: 'FUNiX xSeries',
 		timeline: 'Aug 2021 - Present',
+		subtitle: 'Program Development Officer and Backend Developer',
 		text: [
-			'Program Development Officer and Backend Developer',
 			'Develop and maintain a web system to connect students with mentors using MeteorJS and MongoDB.',
 			'Develop xSeries’s Program about Data Engineering, Machine Learning, ...',
 		],
 	}, {
 		title: 'FPT Software',
 		timeline: 'Aug 2020 - Aug 2021',
+		subtitle: 'Backend Developer',
 		text: [
-			'Backend Developer',
 			'Develop and maintain a web system to connect students with mentors using MeteorJS and MongoDB.',
 		],
 	}, {
 		title: 'FUNiX\'s IT department',
 		timeline: 'Aug 2019 - Aug 2020',
+		subtitle: 'Backend Developer',
 		text: [
-			'Backend Developer',
 			'Develop learning tool and management software using Javascript, NodeJS and Firebase.',
 			'Build and deploy Chrome Extension to translate subtitles on the MOOC website (Udemy, Coursera) and translate the content of the page into Vietnamese.',
 			'Support to operate some systems: LMS, CRM',
@@ -54,14 +54,15 @@ export default {
 	activities: [{
 		title: 'AWS Academy',
 		timeline: 'Sep 2022',
+		subtitle: 'AWS Authorized Instructor',
 		text: [
-			'AWS Authorized Instructor',
 			'Got selected to become a lecturer at AWS Academy Cloud Training Bootcamp in Vietnam by FUNiX and AWS Academy.',
 			'Responsible for teaching an AWS Cloud Foundation course with nearly 800 students attending',
 		],
 	}, {
 		title: 'JS Club - Japanese Software Engineers',
 		timeline: 'May 2022 - Present',
+		subtitle: 'Member',
 		text: [
 			'Taught Java Object-Oriented Programming to a class of 15 students for 10 weeks. Then, all students passed Java OOP at University with a grade of 80% or higher.',
 			'Actively participated in deploying contest environments for Competitive Programming competitions.',
@@ -69,6 +70,7 @@ export default {
 	}, {
 		title: 'Developh Vietnam',
 		timeline: 'July 2021 - Dec 2021',
+		subtitle: 'Mentor',
 		text: [
 			'Mentor of the DIY Camp program - an online coding camp for high school and college students, focusing on self-study and communication between learners and mentors.',
 			'Develop and maintain the official website for Developh Vietnam - a social enterprise that aims to make technology education accessible to children in Vietnam by conducting coding classes and has reached over 6,000 followers on Facebook.',
@@ -76,8 +78,8 @@ export default {
 	}, {
 		title: 'Codelearn',
 		timeline: 'Aug 2020 - Aug 2021',
+		subtitle: 'Problem Setter and Blog Writer',
 		text: [
-			'Problem Setter and Blog Writer',
 			'Create and review competitive programming challenges for weekly/monthly contests.',
 			'Top on the leaderboard.',
 		],

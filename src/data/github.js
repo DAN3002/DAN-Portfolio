@@ -61,8 +61,24 @@ const getGithubData = async () => {
 };
 
 const getLatestCommitDate = async () => {
+	// Check if the data is cached
+	const cachedData = localStorage.getItem('latestCommitDate');
+	if (cachedData) {
+		const { date, timestamp } = JSON.parse(cachedData);
+		if (timestamp > Date.now()) {
+			return new Date(date);
+		}
+	}
+
 	const { data } = await axios.get(`https://api.github.com/repos/${CURRENT_REPO}/commits`, { headers });
-	return new Date(data[0].commit.author.date);
+
+	const date = new Date(data[0].commit.author.date);
+	localStorage.setItem('latestCommitDate', JSON.stringify({
+		date,
+		timestamp: Date.now() + 15 * 24 * 60 * 60 * 1000,
+	}));
+
+	return date;
 };
 
 export {

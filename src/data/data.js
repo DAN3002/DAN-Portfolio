@@ -108,4 +108,22 @@ export default {
 			'<b>Technologies:</b>: Vanilla Javascript, Firebase',
 		],
 	}],
+	certifications: [{
+		name: 'AWS Certified Cloud Practitioner',
+		category: 'AWS Certificate',
+		thumb: '/images/achieves/cert/AWS Certified Cloud Practitioner_banner.png',
+		image: '/images/achieves/cert/AWS Certified Cloud Practitioner.png',
+		url: 'https://www.credly.com/badges/1f3d4dc4-c239-4003-a9c6-f0ee578bc31d',
+		start: 'October 05, 2021',
+		end: 'November 19, 2024',
+
+	}, {
+		name: 'AWS Certified Solutions Architect - Associate',
+		category: 'AWS Certificate',
+		thumb: '/images/achieves/cert/AWS Certified Solutions Architect - Associate_banner.png',
+		image: '/images/achieves/cert/AWS Certified Solutions Architect - Associate.png',
+		url: 'https://www.credly.com/badges/8c2432fa-b400-4ecf-ab18-783351e6128b',
+		start: 'November 19, 2021',
+		end: 'November 19, 2024',
+	}],
 };

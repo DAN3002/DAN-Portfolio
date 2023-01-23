@@ -11,4 +11,44 @@ export default {
 			'I am always open to new opportunities and challenges. If you would like to reach me, feel free to drop me a message in the email below.',
 		],
 	},
+	education: [{
+		title: 'FPT University',
+		timeline: 'Jan 2022 - Now',
+		text: [
+			'Major: Software Engineering.',
+			'100% scholarship for four years.',
+		],
+	}, {
+		title: 'FUNiX University',
+		timeline: 'Aug 2018 - Dec 2021',
+		text: [
+			'Major: Software Engineering.',
+			'Have a 20% scholarship each semester and become an active student.',
+		],
+	}],
+	experience: [{
+		title: 'FUNiX xSeries',
+		timeline: 'Aug 2021 - Present',
+		text: [
+			'Program Development Officer and Backend Developer',
+			'Develop and maintain a web system to connect students with mentors using MeteorJS and MongoDB.',
+			'Develop xSeries’s Program about Data Engineering, Machine Learning, ...',
+		],
+	}, {
+		title: 'FPT Software',
+		timeline: 'Aug 2020 - Aug 2021',
+		text: [
+			'Backend Developer',
+			'Develop and maintain a web system to connect students with mentors using MeteorJS and MongoDB.',
+		],
+	}, {
+		title: 'FUNiX\'s IT department',
+		timeline: 'Aug 2019 - Aug 2020',
+		text: [
+			'Backend Developer',
+			'Develop learning tool and management software using Javascript, NodeJS and Firebase.',
+			'Build and deploy Chrome Extension to translate subtitles on the MOOC website (Udemy, Coursera) and translate the content of the page into Vietnamese.',
+			'Support to operate some systems: LMS, CRM',
+		],
+	}],
 };

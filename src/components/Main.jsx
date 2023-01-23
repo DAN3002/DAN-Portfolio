@@ -1,7 +1,7 @@
 import Section from './Section';
 import HomeSection from './home/HomeSection';
 import AboutSection from './about/AboutSection';
-import ExperienceSection from './experience/ExperienceSection';
+import ResumeSection from './resume/ResumeSection';
 import WorkSection from './work/WorkSection';
 import CertificationSection from './certification/CertificationSection';
 import AchieveSection from './achieve/AchieveSection';
@@ -19,9 +19,9 @@ function Main() {
 			</Section>
 			<Section
 				id="experience"
-				title="Experience"
+				title="Resume"
 			>
-				<ExperienceSection />
+				<ResumeSection />
 			</Section>
 
 			<Section

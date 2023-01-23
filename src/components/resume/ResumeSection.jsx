@@ -18,7 +18,7 @@ function ResumeSection() {
 				<TimelineConatiner
 					title="Activities"
 					timelineData={activities}
-					icon="edu"
+					icon="activity"
 				/>
 			</div>
 			<div className="col-md-6">
@@ -31,7 +31,7 @@ function ResumeSection() {
 				<TimelineConatiner
 					title="Projects"
 					timelineData={projects}
-					icon="edu"
+					icon="project"
 				/>
 			</div>
 		</div>

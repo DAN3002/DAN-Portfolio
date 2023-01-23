@@ -14,15 +14,15 @@ export default {
 	education: [{
 		title: 'FPT University',
 		timeline: 'Jan 2022 - Now',
+		subtitle: 'Major: Software Engineering.',
 		text: [
-			'Major: Software Engineering.',
 			'100% scholarship for four years.',
 		],
 	}, {
 		title: 'FUNiX University',
 		timeline: 'Aug 2018 - Dec 2021',
+		subtitle: 'Major: Software Engineering.',
 		text: [
-			'Major: Software Engineering.',
 			'Have a 20% scholarship each semester and become an active student.',
 		],
 	}],
@@ -56,8 +56,8 @@ export default {
 		timeline: 'Sep 2022',
 		subtitle: 'AWS Authorized Instructor',
 		text: [
-			'Got selected to become a lecturer at AWS Academy Cloud Training Bootcamp in Vietnam by FUNiX and AWS Academy.',
-			'Responsible for teaching an AWS Cloud Foundation course with nearly 800 students attending',
+			'Got selected to become a lecturer at AWS Academy Cloud Training Bootcamp in Vietnam by FUNiX and <a href="https://aws.amazon.com/training/awsacademy/">AWS Academy</a>.',
+			'Responsible for teaching an <b>AWS Cloud Foundatio</b> and <b>AWS Solutions Architect - Associate</b> course with nearly 800 students attending',
 		],
 	}, {
 		title: 'JS Club - Japanese Software Engineers',
@@ -72,8 +72,8 @@ export default {
 		timeline: 'July 2021 - Dec 2021',
 		subtitle: 'Mentor',
 		text: [
-			'Mentor of the DIY Camp program - an online coding camp for high school and college students, focusing on self-study and communication between learners and mentors.',
-			'Develop and maintain the official website for Developh Vietnam - a social enterprise that aims to make technology education accessible to children in Vietnam by conducting coding classes and has reached over 6,000 followers on Facebook.',
+			'Mentor of the <a href="https://www.facebook.com/develophvn/photos/pcb.334074128129033/334072064795906/">DIY Camp</a> program - an online coding camp for high school and college students, focusing on self-study and communication between learners and mentors.',
+			'Develop and maintain the official website for <a href="https://www.facebook.com/develophvn">Developh Vietnam</a> - a social enterprise that aims to make technology education accessible to children in Vietnam by conducting coding classes and has reached over 6,000 followers on Facebook.',
 		],
 	}, {
 		title: 'Codelearn',

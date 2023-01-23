@@ -1,4 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
+import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
 
 function TimelineConatiner({ title, timelineData, icon }) {
@@ -20,7 +21,7 @@ function TimelineConatiner({ title, timelineData, icon }) {
 							)}
 							<ul>
 								{item.text.map((text) => (
-									<li>{text}</li>
+									<li>{parse(text)}</li>
 								))}
 							</ul>
 						</div>

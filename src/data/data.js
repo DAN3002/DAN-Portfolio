@@ -1,6 +1,5 @@
 export default {
 	contactEmail: 'dan3002.work@gmail.com',
-	lastUpdated: 'January 2023',
 	startDate: 2019,
 	home: {
 		roles: ['Software Engineer', 'Cloud Engineer'],

@@ -32,7 +32,7 @@ function AboutSection() {
 		if (!isLoading) {
 			$('.count').counterUp({
 				delay: 10,
-				time: 2000,
+				time: 1500,
 			});
 		}
 	}, [isLoading]);

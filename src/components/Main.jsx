@@ -2,7 +2,7 @@ import Section from './Section';
 import HomeSection from './home/HomeSection';
 import AboutSection from './about/AboutSection';
 import ResumeSection from './resume/ResumeSection';
-import WorkSection from './work/WorkSection';
+// import WorkSection from './work/WorkSection';
 import CertificationSection from './certification/CertificationSection';
 import AchieveSection from './achieve/AchieveSection';
 import ContactSection from './contact/ContactSection';
@@ -24,12 +24,12 @@ function Main() {
 				<ResumeSection />
 			</Section>
 
-			<Section
+			{/* <Section
 				id="works"
 				title="Works"
 			>
 				<WorkSection />
-			</Section>
+			</Section> */}
 
 			<Section
 				id="certifications"

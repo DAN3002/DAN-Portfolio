@@ -11,7 +11,7 @@ function TimelineConatiner({ title, timelineData, icon }) {
 				{timelineData.map((item) => (
 					<div className="timeline-container wow fadeInUp">
 						<div className="content">
-							<span className="time">{item.timeline}</span>
+							{item.timeline && (<span className="time">{item.timeline}</span>)}
 							<h3 className="title">{item.title}</h3>
 							{item.subtitle && (
 								<>

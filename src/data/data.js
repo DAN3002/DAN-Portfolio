@@ -84,4 +84,28 @@ export default {
 			'Top on the leaderboard.',
 		],
 	}],
+	projects: [{
+		title: 'Doctor’s Cyclop',
+		timeline: 'Apr 2021',
+		subtitle: 'Fullstack Developer',
+		text: [
+			'Developed a deep learning model that classifies the presence and correct placement of tubes on chest x-rays.',
+			'Top 3 FPT Edu Hackathon 2021 - beat over 100 teams from different Universities.',
+			'Source code: https://github.com/thaiminhpv/Doctor-Cyclop-Hackathon-2021',
+		],
+	}, {
+		title: 'HF40 Webapp',
+		subtitle: 'Fullstack Developer',
+		text: [
+			'HF40 is a web app to connect FUNiX\'s students with mentors base on Rocketchat opensource. You can chat, share a file or send a voice to another user.',
+			'<b>Technologies:</b>: MeteorJS, MongoDB, GCP',
+		],
+	}, {
+		title: 'FUNiX Passport',
+		subtitle: 'Fullstack Developer',
+		text: [
+			'This utility helps FUNiX students for learning online, ex: Vietnamese translation for course materials, highlight video\'s subtitles.',
+			'<b>Technologies:</b>: Vanilla Javascript, Firebase',
+		],
+	}],
 };

@@ -51,4 +51,35 @@ export default {
 			'Support to operate some systems: LMS, CRM',
 		],
 	}],
+	activities: [{
+		title: 'AWS Academy',
+		timeline: 'Sep 2022',
+		text: [
+			'AWS Authorized Instructor',
+			'Got selected to become a lecturer at AWS Academy Cloud Training Bootcamp in Vietnam by FUNiX and AWS Academy.',
+			'Responsible for teaching an AWS Cloud Foundation course with nearly 800 students attending',
+		],
+	}, {
+		title: 'JS Club - Japanese Software Engineers',
+		timeline: 'May 2022 - Present',
+		text: [
+			'Taught Java Object-Oriented Programming to a class of 15 students for 10 weeks. Then, all students passed Java OOP at University with a grade of 80% or higher.',
+			'Actively participated in deploying contest environments for Competitive Programming competitions.',
+		],
+	}, {
+		title: 'Developh Vietnam',
+		timeline: 'July 2021 - Dec 2021',
+		text: [
+			'Mentor of the DIY Camp program - an online coding camp for high school and college students, focusing on self-study and communication between learners and mentors.',
+			'Develop and maintain the official website for Developh Vietnam - a social enterprise that aims to make technology education accessible to children in Vietnam by conducting coding classes and has reached over 6,000 followers on Facebook.',
+		],
+	}, {
+		title: 'Codelearn',
+		timeline: 'Aug 2020 - Aug 2021',
+		text: [
+			'Problem Setter and Blog Writer',
+			'Create and review competitive programming challenges for weekly/monthly contests.',
+			'Top on the leaderboard.',
+		],
+	}],
 };

@@ -2,7 +2,7 @@ import TimelineConatiner from './TimelineConatiner';
 import data from '../../data/data';
 
 function ResumeSection() {
-	const { education, experience } = data;
+	const { education, experience, activities } = data;
 
 	return (
 		<div className="row">
@@ -12,10 +12,16 @@ function ResumeSection() {
 					timelineData={education}
 					icon="edu"
 				/>
+
+				<TimelineConatiner
+					title="Activities"
+					timelineData={activities}
+					icon="edu"
+				/>
 			</div>
 			<div className="col-md-6">
 				<TimelineConatiner
-					title="Experience"
+					title="Experiences"
 					timelineData={experience}
 					icon="exp"
 				/>

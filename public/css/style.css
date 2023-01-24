@@ -2897,3 +2897,7 @@ textarea::-webkit-scrollbar-thumb
 									   color-stop(0.72, rgb(73,125,189)),
 									   color-stop(0.86, rgb(28,58,148)));
 } */
+
+#experience li:not(:last-child) { 
+  margin-bottom: 3px;  
+}

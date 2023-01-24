@@ -14,7 +14,7 @@ export default {
 	others: [
 		'<b>Languages</b>: English | Vietnamese: native.',
 		'<b>Programming languages</b>: Python, JavaScript, Bash, Java, SQL.',
-		'<b>Frameworks & libraries</b>: MERN Stack, Flask, Django.',
+		'<b>Frameworks & Libraries</b>: MERN Stack, Flask, Django.',
 		'<b>Other tools</b>: Unix/Linux, Git/Github, Docker, AWS, Firebase, Vercel.',
 	],
 	education: [{

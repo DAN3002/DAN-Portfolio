@@ -19,6 +19,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"postbuild": "cp ./CNAME ./build/CNAME",
 		"predeploy": "npm run lint && npm run build",
 		"deploy": "gh-pages -d build",
 		"lint": "npx eslint ."

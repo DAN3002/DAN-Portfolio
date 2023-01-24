@@ -1813,7 +1813,7 @@ body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark 
 body.dark .triangle-top:before {
   border-bottom-color: #302f4e;
 }
-body.dark .timeline.exp .timeline-container::after, body.dark .timeline.edu .timeline-container::after, body.dark .timeline.activity .timeline-container::after, body.dark .timeline.project .timeline-container::after {
+body.dark .timeline.exp .timeline-container::after, body.dark .timeline.edu .timeline-container::after, body.dark .timeline.activity .timeline-container::after, body.dark .timeline.project .timeline-container::after, body.dark .timeline.other .timeline-container::after {
   background: #302f4e;
 }
 body.dark .portfolio-filter li {
@@ -2189,6 +2189,18 @@ body.dark .blog-page-section .blog-single {
 
 .timeline.project .timeline-container::after {
   content: "\e06a";
+  background: #FFF;
+  font-family: "simple-line-icons";
+  font-size: 24px;
+  color: #FF4C60;
+  position: absolute;
+  left: -7px;
+  top: 0;
+  z-index: 1;
+}
+
+.timeline.other .timeline-container::after {
+  content: "\e08b";
   background: #FFF;
   font-family: "simple-line-icons";
   font-size: 24px;

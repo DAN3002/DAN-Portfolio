@@ -11,6 +11,12 @@ export default {
 			'I am always open to new opportunities and challenges. If you would like to reach me, feel free to drop me a message in the email below.',
 		],
 	},
+	others: [
+		'<b>Languages</b>: English | Vietnamese: native.',
+		'<b>Programming languages</b>: Python, JavaScript, Bash, Java, SQL.',
+		'<b>Frameworks & libraries</b>: MERN Stack, Flask, Django.',
+		'<b>Other tools</b>: Unix/Linux, Git/Github, Docker, AWS, Firebase, Vercel.',
+	],
 	education: [{
 		title: 'FPT University',
 		timeline: 'Jan 2022 - Now',

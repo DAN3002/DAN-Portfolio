@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import ReactGA from 'react-ga';
 
 import PreLoader from './components/utils/PreLoader';
 import MobileHeader from './components/header/MobileHeader';
@@ -6,6 +7,9 @@ import DesktopHeader from './components/header/DesktopHeader';
 import GoToTop from './components/utils/GoToTop';
 
 import Main from './components/Main';
+
+const TRACKING_ID = 'UA-131541054-7';
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
 	const { PUBLIC_URL } = process.env;

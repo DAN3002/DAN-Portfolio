@@ -1,90 +1,67 @@
+import parse from 'html-react-parser';
+
+import data from '../../data/data';
+
 function AchieveSection() {
 	const { PUBLIC_URL } = process.env;
 
+	const { achievements } = data;
+
 	return (
 		<div className="row blog-wrapper">
-			<div className="col-md-4">
-				<div className="blog-item rounded bg-dark shadow-light wow fadeIn">
-					<a href="#small-dialog-hackathon-2019" className="work-content">
-						<div className="thumb">
-							<span className="category">Hackathon</span>
+			{achievements.map((item, index) => (
+				<div className="col-md-4">
+					<div className="blog-item rounded bg-dark shadow-light wow fadeIn">
+						<a
+							href={`#small-dialog-achieve-${index}`}
+							className="work-content"
+						>
+							<div className="thumb">
+								<span className="category">{item.category}</span>
+								<img
+									src={`${PUBLIC_URL}${item.thumb}`}
+									alt="blog-title"
+								/>
+							</div>
+							<div className="details">
+								<h4 className="my-0 title">{item.name}</h4>
+								<ul className="list-inline meta mb-0 mt-2">
+									<li className="list-inline-item">
+										{item.date}
+									</li>
+									<li className="list-inline-item">{item.prize}</li>
+								</ul>
+							</div>
+						</a>
+						<div
+							id={`small-dialog-achieve-${index}`}
+							className="white-popup zoom-anim-dialog mfp-hide"
+						>
 							<img
-								src={`${PUBLIC_URL}/images/achieves/hackathon-2019.jpg`}
-								alt="blog-title"
+								src={`${PUBLIC_URL}${item.image}`}
+								alt="Title"
 							/>
-						</div>
-						<div className="details">
-							<h4 className="my-0 title">FPT Edu Hackathon 2019</h4>
-							<ul className="list-inline meta mb-0 mt-2">
-								<li className="list-inline-item">12 January, 2020</li>
-								<li className="list-inline-item">Third Prize</li>
-							</ul>
-						</div>
-					</a>
-					<div
-						id="small-dialog-hackathon-2019"
-						className="white-popup zoom-anim-dialog mfp-hide"
-					>
-						<img
-							src={`${PUBLIC_URL}/images/achieves/hackathon-2019-banner.jpg`}
-							alt="Title"
-						/>
-						<p>
-							Our team has achieved third prize with equipment to check
-							the safety of the water.
-						</p>
-						<div style={{ marginLeft: 10 }}>
-							<ul>
-								<li>
-									<a href="https://vnexpress.net/hoc-sinh-thpt-gianh-giai-fpt-edu-hackathon-2019-4042313.html">
-										Học sinh THPT giành giải 'FPT Edu Hackathon' 2019
-									</a>
-								</li>
-							</ul>
+							<div className="spacer" data-height={5} />
+							{item.text.map((text) => (
+								<p>{parse(text)}</p>
+							))}
+
+							<div className="spacer" data-height={10} />
+							<div style={{ marginLeft: 10 }}>
+								<ul>
+									{item.link.map((el) => (
+										<li>
+											<a href={el.url}>
+												{el.text}
+											</a>
+										</li>
+									))}
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className="col-md-4">
-				<div className="blog-item rounded bg-dark shadow-light wow fadeIn">
-					<a href="#small-dialog-hackathon-2021" className="work-content">
-						<div className="thumb">
-							<span className="category">Hackathon</span>
-							<img
-								src={`${PUBLIC_URL}/images/achieves/hackathon-2021.png`}
-								alt="blog-title"
-							/>
-						</div>
-						<div className="details">
-							<h4 className="my-0 title">FPT Edu Hackathon 2021</h4>
-							<ul className="list-inline meta mb-0 mt-2">
-								<li className="list-inline-item">18 April, 2021</li>
-								<li className="list-inline-item">Third Prize</li>
-							</ul>
-						</div>
-					</a>
-					<div
-						id="small-dialog-hackathon-2021"
-						className="white-popup zoom-anim-dialog mfp-hide"
-					>
-						<img
-							src={`${PUBLIC_URL}/images/achieves/hackathon-2021-banner.jpg`}
-							alt="Title"
-						/>
-						<p />
-						<div style={{ marginLeft: 10 }}>
-							<ul>
-								<li>
-									<a href="https://vnexpress.net/4-hoc-sinh-lop-12-lam-san-pham-ai-ho-tro-dieu-tri-covid-19-4269038.html?fbclid=IwAR16uIHcQHmSkyvecoIT_z8IwSujveLDKXw7wImasg-5WxNR1Iym9cMJMh0">
-										4 học sinh lớp 12 làm sản phẩm AI hỗ trợ điều trị
-										Covid-19
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+			))}
 		</div>
 	);
 }

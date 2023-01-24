@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 
 import PreLoader from './components/utils/PreLoader';
 import MobileHeader from './components/header/MobileHeader';
@@ -8,7 +8,7 @@ import GoToTop from './components/utils/GoToTop';
 
 import Main from './components/Main';
 
-const TRACKING_ID = 'UA-131541054-7';
+const TRACKING_ID = 'G-44EFKEN67K';
 ReactGA.initialize(TRACKING_ID);
 
 function App() {

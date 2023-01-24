@@ -107,6 +107,7 @@ function ContactSection() {
 									required="required"
 									data-error="Message is required."
 									defaultValue=""
+									style={{ resize: 'none' }}
 								/>
 								<div className="help-block with-errors" />
 							</div>

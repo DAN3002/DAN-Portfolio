@@ -1,4 +1,38 @@
+/* eslint-disable no-undef */
+import React, { useRef } from 'react';
+
+import emailjs from '@emailjs/browser';
+
+import data from '../../data/data';
+
+const EMAILJS_SERVICE_ID = 'service_qbnmecr';
+const EMAILJS_TEMPLATE_ID = 'template_r3v7cmp';
+
 function ContactSection() {
+	const form = useRef();
+	const { contactEmail } = data;
+
+	const sendEmail = (e) => {
+		e.preventDefault();
+
+		emailjs
+			.sendForm(
+				EMAILJS_SERVICE_ID,
+				EMAILJS_TEMPLATE_ID,
+				form.current,
+				process.env.REACT_APP_EMAILJS_KEY,
+			)
+			.then(() => {
+				// clear form
+				form.current.reset();
+				Swal.fire({
+					icon: 'success',
+					title: 'Thank you!',
+					text: 'I will contact you as soon as possible.',
+				});
+			});
+	};
+
 	return (
 		<div className="row">
 			<div className="spacer" data-height={60} style={{ height: 60 }} />
@@ -9,29 +43,26 @@ function ContactSection() {
 					<p className="wow fadeInUp">
 						Don't like forms? Send me an
 						{' '}
-						<a href="mailto:dinhanh300229@gmail.com">email</a>
+						<a href={`mailto:${contactEmail}`}>email</a>
 						. 👋
 					</p>
 				</div>
 			</div>
 			<div className="col-md-8">
-				{/* Contact Form */}
 				<form
 					id="contact-form"
 					className="contact-form mt-6"
-					method="post"
-					action="/email/contact/"
+					onSubmit={sendEmail}
+					ref={form}
 				>
 					<div className="messages" />
 					<div className="row">
 						<div className="column col-md-6">
-							{/* Name input */}
 							<div className="form-group">
 								<input
 									type="text"
 									className="form-control"
-									name="name"
-									id="InputName"
+									name="from_name"
 									placeholder="Your name"
 									required="required"
 									data-error="Name is required."
@@ -40,13 +71,11 @@ function ContactSection() {
 							</div>
 						</div>
 						<div className="column col-md-6">
-							{/* Email input */}
 							<div className="form-group">
 								<input
 									type="email"
 									className="form-control"
-									id="InputEmail"
-									name="email"
+									name="to_email"
 									placeholder="Email address"
 									required="required"
 									data-error="Email is required."
@@ -54,8 +83,7 @@ function ContactSection() {
 								<div className="help-block with-errors" />
 							</div>
 						</div>
-						<div className="column col-md-12">
-							{/* Email input */}
+						{/* <div className="column col-md-12">
 							<div className="form-group">
 								<input
 									type="text"
@@ -68,13 +96,11 @@ function ContactSection() {
 								/>
 								<div className="help-block with-errors" />
 							</div>
-						</div>
+						</div> */}
 						<div className="column col-md-12">
-							{/* Message textarea */}
 							<div className="form-group">
 								<textarea
 									name="message"
-									id="InputMessage"
 									className="form-control"
 									rows={5}
 									placeholder="Message"
@@ -95,9 +121,7 @@ function ContactSection() {
 					>
 						Send Message
 					</button>
-					{/* Send Button */}
 				</form>
-				{/* Contact Form end */}
 			</div>
 		</div>
 	);

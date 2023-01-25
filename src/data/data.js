@@ -19,42 +19,50 @@ export default {
 	],
 	education: [{
 		title: 'FPT University',
-		timeline: 'Jan 2022 - Now',
+		timeline: 'Jan 2022 - Present (Expected Jun 2023)',
 		subtitle: 'Major: Software Engineering.',
 		text: [
-			'100% scholarship for four years.',
+			'Awarded a full scholarship covering the entirety of the study period.',
+			'I am able to complete my undergraduate degree in a year and a half due to an exemption of 50% of required subjects in the entire study program.',
 		],
 	}, {
 		title: 'FUNiX University',
 		timeline: 'Aug 2018 - Dec 2021',
 		subtitle: 'Major: Software Engineering.',
 		text: [
-			'Have a 20% scholarship each semester and become an active student.',
+			'Started studying at the age of 16.',
+			'Received a 20% scholarship each semester and actively participated in various university activities.',
+			'Had the opportunity to have personal meetings with the university\'s principal (<a href="https://vi.wikipedia.org/wiki/Nguy%E1%BB%85n_Th%C3%A0nh_Nam_(doanh_nh%C3%A2n)">Mr. Nguyen Thanh Nam</a> - Founder of FUNiX, former General Director of FPT).',
+			'Cumulative GPA: 8.4/10',
 		],
 	}],
 	experience: [{
 		title: 'FUNiX xSeries',
 		timeline: 'Aug 2021 - Present',
-		subtitle: 'Program Development Officer and Backend Developer',
+		subtitle: 'Program Development Officer and Full-Stack Developer',
 		text: [
-			'Develop and maintain a web system to connect students with mentors using MeteorJS and MongoDB.',
-			'Develop xSeries’s Program about Data Engineering, Machine Learning, ...',
+			'Contributed to the development of internal applications, including the Mentoring System and Learning Management System (LMS).',
+			'Assisted in the implementation and operation of projects by monitoring and resolving bugs. Managed cloud-based resources for the entire team, ensuring efficient and secure access to the necessary tools and resources.',
+			'Assumed responsibility for designing and developing xSeries specialized courses, including <b>Full Stack with MERN Stack, Data Engineering, Cloud Computing, and DevOps, ...</b>',
+			'In addition, I collaborated with other instructors to create comprehensive curriculum for each course and provided hands-on training to students through practical projects and exercises. The courses I developed have received positive feedback from students and helped them achieve better results in their field.',
 		],
 	}, {
 		title: 'FPT Software',
 		timeline: 'Aug 2020 - Aug 2021',
 		subtitle: 'Backend Developer',
 		text: [
-			'Develop and maintain a web system to connect students with mentors using MeteorJS and MongoDB.',
+			'Balanced my role as a part-time employee while still attending high school, gaining valuable work experience while completing my education.',
+			'Contributed to the development of internal applications, including the Mentoring System and Learning Management System (LMS).',
+			'Assisted in the implementation and operation of projects by monitoring and resolving bugs.',
 		],
 	}, {
 		title: 'FUNiX\'s IT department',
 		timeline: 'Aug 2019 - Aug 2020',
 		subtitle: 'Backend Developer',
 		text: [
-			'Develop learning tool and management software using Javascript, NodeJS and Firebase.',
-			'Build and deploy Chrome Extension to translate subtitles on the MOOC website (Udemy, Coursera) and translate the content of the page into Vietnamese.',
-			'Support to operate some systems: LMS, CRM',
+			'Started working immediately after my first year of university, at the age of 17, gaining valuable experience and skills while pursuing my education.',
+			'Developed a learning tool and management software using Javascript, NodeJS, and Firebase, providing an interactive and user-friendly platform for students and instructors.',
+			'Developed and deployed a Chrome Extension that translates subtitles on MOOC websites (such as Udemy and Coursera) and the content of the page into Vietnamese, providing a more accessible and user-friendly learning experience for students.',
 		],
 	}],
 	activities: [{
@@ -62,23 +70,23 @@ export default {
 		timeline: 'Sep 2022',
 		subtitle: 'AWS Authorized Instructor',
 		text: [
-			'Got selected to become a lecturer at AWS Academy Cloud Training Bootcamp in Vietnam by FUNiX and <a href="https://aws.amazon.com/training/awsacademy/">AWS Academy</a>.',
-			'Responsible for teaching an <b>AWS Cloud Foundatio</b> and <b>AWS Solutions Architect - Associate</b> course with nearly 800 students attending',
+			'Selected as a lecturer for the AWS Academy Cloud Training Bootcamp in Vietnam, organized by FUNiX and <a href="https://aws.amazon.com/training/awsacademy/">AWS Academy</a>, where I shared my knowledge and experience in the field of cloud computing with students.',
+			'Responsible for teaching an <b>AWS Cloud Foundatio</b> and <b>AWS Solutions Architect - Associate</b> course with nearly 800 students attending.',
 		],
 	}, {
 		title: 'JS Club - Japanese Software Engineers',
 		timeline: 'May 2022 - Present',
 		subtitle: 'Member',
 		text: [
-			'Taught Java Object-Oriented Programming to a class of 15 students for 10 weeks. Then, all students passed Java OOP at University with a grade of 80% or higher.',
+			'Instructed a class of 15 students in Java Object-Oriented Programming for a period of 10 weeks, resulting in all students passing the course at university level with a grade of 80% or higher.',
 			'Actively participated in deploying contest environments for Competitive Programming competitions.',
 		],
 	}, {
 		title: 'Developh Vietnam',
 		timeline: 'July 2021 - Dec 2021',
-		subtitle: 'Mentor',
+		subtitle: 'Techcontent Mentor',
 		text: [
-			'Mentor of the <a href="https://www.facebook.com/develophvn/photos/pcb.334074128129033/334072064795906/">DIY Camp</a> program - an online coding camp for high school and college students, focusing on self-study and communication between learners and mentors.',
+			'Mentor of the <a href="https://www.facebook.com/develophvn/photos/pcb.334074128129033/334072064795906/">DIY Camp</a> program - an online coding camp for high school and college students, emphasizing on self-study and communication between learners and mentors.',
 			'Develop and maintain the official website for <a href="https://www.facebook.com/develophvn">Developh Vietnam</a> - a social enterprise that aims to make technology education accessible to children in Vietnam by conducting coding classes and has reached over 6,000 followers on Facebook.',
 		],
 	}, {
@@ -86,8 +94,8 @@ export default {
 		timeline: 'Aug 2020 - Aug 2021',
 		subtitle: 'Problem Setter and Blog Writer',
 		text: [
-			'Create and review competitive programming challenges for weekly/monthly contests.',
-			'Top on the leaderboard.',
+			'Developed and reviewed competitive programming challenges for weekly and monthly contests, ensuring high-quality and engaging problems for participants.',
+			'Achieved a top ranking on the leaderboard.',
 		],
 	}],
 	projects: [{
@@ -95,16 +103,17 @@ export default {
 		timeline: 'Apr 2021',
 		subtitle: 'Fullstack Developer',
 		text: [
-			'Developed a deep learning model that classifies the presence and correct placement of tubes on chest x-rays.',
+			'Created a website that implements the machine learning model for classifying the presence and correct placement of tubes on chest x-rays, allowing for easy access and practical application of the model by medical professionals.',
 			'Top 3 FPT Edu Hackathon 2021 - beat over 100 teams from different Universities.',
-			'Source code: https://github.com/thaiminhpv/Doctor-Cyclop-Hackathon-2021',
+			'<b>Technologies: </b>MeteorJS, MongoDB, AWS Cloud',
+			'<a href="https://github.com/DAN3002/Doctors-Cyclop-Webapp">Source code</a>',
 		],
 	}, {
 		title: 'HF40 Webapp',
 		subtitle: 'Fullstack Developer',
 		text: [
 			'HF40 is a web app to connect FUNiX\'s students with mentors base on Rocketchat opensource. You can chat, share a file or send a voice to another user.',
-			'<b>Technologies:</b>: MeteorJS, MongoDB, GCP',
+			'<b>Technologies: </b>MeteorJS, MongoDB, GCP',
 		],
 	}, {
 		title: 'FUNiX Passport',
@@ -139,7 +148,9 @@ export default {
 		image: '/images/achieves/hackathon-2021-banner.jpg',
 		date: '18 April, 2021',
 		prize: 'Third Prize',
-		text: [],
+		text: [
+			'As the youngest team to participate. Won third prize in a competition with 104 teams from various universities, for building a web application that utilizes AI to assist doctors in diagnosing Covid-19.',
+		],
 		link: [
 			{
 				text: '4 học sinh lớp 12 làm sản phẩm AI hỗ trợ điều trị Covid-19',
@@ -154,7 +165,7 @@ export default {
 		date: '12 January, 2020',
 		prize: 'Third Prize',
 		text: [
-			'Our team has achieved third prize with equipment to check the safety of the water.',
+			'As the youngest team to participate. Won third prize out of 35 teams coming from different Universities. Our team achieved third prize in a competition for developing equipment to check the safety of water.',
 		],
 		link: [
 			{

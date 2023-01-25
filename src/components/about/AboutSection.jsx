@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 
 import data from '../../data/data';
 import { getGithubData } from '../../data/github';
-import useAnalyticsEventTracker from '../../hooks/useAnalyticsEventTracker';
+// import useAnalyticsEventTracker from '../../hooks/useAnalyticsEventTracker';
 
 function AboutSection() {
 	const [githubData, setGithubData] = useState({});
 	const [isLoading, setIsLoading] = useState(true);
 	const [yearsOfExperience, setYearsOfExperience] = useState(0);
-	const gaEventTracker = useAnalyticsEventTracker();
+	// const gaEventTracker = useAnalyticsEventTracker();
 
 	const { PUBLIC_URL } = process.env;
 	const { about, contactEmail, startDate } = data;
@@ -117,7 +117,14 @@ function AboutSection() {
 										className="btn btn-default"
 										target="_blank"
 										rel="noreferrer"
-										onClick={() => { gaEventTracker('Download Cv'); }}
+										onClick={() => {
+											gtag('event', 'rum-page-scroll', {
+												event_label:
+													'Click Download CV',
+												event_category: 'About Section',
+												non_interaction: true,
+											});
+										}}
 									>
 										Download CV
 									</a>

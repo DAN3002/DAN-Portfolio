@@ -51,7 +51,22 @@
 			type="text/css"
 			media="all"
 		/>
-		<title>AnhND</title>
+
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-44EFKEN67K"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+
+			gtag('config', 'G-44EFKEN67K');
+		</script>
+		<title>Nguyễn Đình Anh</title>
 	</head>
 	<body class="dark">
 		<noscript>You need to enable JavaScript to run this app.</noscript>
@@ -74,20 +89,5 @@
 		<script src="%PUBLIC_URL%/js/jquery.magnific-popup.min.js"></script>
 		<script src="%PUBLIC_URL%/js/sweetalert2.all.min.js"></script>
 		<!-- <script src="%PUBLIC_URL%/js/custom.js"></script> -->
-
-		<!-- Google tag (gtag.js) -->
-		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=G-44EFKEN67K"
-		></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag('js', new Date());
-
-			gtag('config', 'G-44EFKEN67K');
-		</script>
 	</body>
 </html>

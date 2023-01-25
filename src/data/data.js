@@ -39,7 +39,7 @@ export default {
 	experience: [{
 		title: 'FUNiX xSeries',
 		timeline: 'Aug 2021 - Present',
-		subtitle: 'Program Development Officer and Full-Stack Developer',
+		subtitle: 'Program Development Officer & Full-Stack Developer',
 		text: [
 			'Contributed to the development of internal applications, including the Mentoring System and Learning Management System (LMS).',
 			'Assisted in the implementation and operation of projects by monitoring and resolving bugs. Managed cloud-based resources for the entire team, ensuring efficient and secure access to the necessary tools and resources.',
@@ -71,7 +71,7 @@ export default {
 		subtitle: 'AWS Authorized Instructor',
 		text: [
 			'Selected as a lecturer for the AWS Academy Cloud Training Bootcamp in Vietnam, organized by FUNiX and <a href="https://aws.amazon.com/training/awsacademy/">AWS Academy</a>, where I shared my knowledge and experience in the field of cloud computing with students.',
-			'Responsible for teaching an <b>AWS Cloud Foundatio</b> and <b>AWS Solutions Architect - Associate</b> course with nearly 800 students attending.',
+			'Assumed responsibility for instructing an <b>AWS Cloud Foundatio</b> and <b>AWS Solutions Architect - Associate</b> course, with a class size of nearly 800 students.',
 		],
 	}, {
 		title: 'JS Club - Japanese Software Engineers',

@@ -139,6 +139,7 @@ function AboutSection() {
 							<p className="mb-0">Years’ Experience</p>
 						</div>
 					</div>
+					<div className="spacer d-md-none d-lg-none" data-height={30} />
 				</div>
 				<div className="col-md-3 col-sm-6">
 					<div className="fact-item">

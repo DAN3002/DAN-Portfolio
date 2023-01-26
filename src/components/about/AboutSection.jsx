@@ -113,7 +113,7 @@ function AboutSection() {
 
 								<div className="mt-3">
 									<a
-										href={`${PUBLIC_URL}/CV_NguyenDinhAnh.pdf`}
+										href={`${PUBLIC_URL}/CV_Nguyễn Đình Anh.pdf`}
 										className="btn btn-default"
 										target="_blank"
 										rel="noreferrer"

@@ -20,7 +20,7 @@ function AchieveSection() {
 								<span className="category">{item.category}</span>
 								<img
 									src={`${PUBLIC_URL}${item.thumb}`}
-									alt="blog-title"
+									alt={item.name}
 								/>
 							</div>
 							<div className="details">
@@ -39,7 +39,7 @@ function AchieveSection() {
 						>
 							<img
 								src={`${PUBLIC_URL}${item.image}`}
-								alt="Title"
+								alt={item.name}
 							/>
 							<div className="spacer" data-height={5} />
 							{item.text.map((text) => (

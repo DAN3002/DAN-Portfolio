@@ -130,7 +130,7 @@ function WorkSection() {
 						id="small-dialog-passport"
 						className="white-popup zoom-anim-dialog mfp-hide"
 					>
-						<img src={`${PUBLIC_URL}/images/works/passport-full.png`} alt="Title" />
+						<img src={`${PUBLIC_URL}/images/works/passport-full.png`} alt="FUNiX Passport" />
 						<h2>FUNiX Passport</h2>
 						<p>
 							This utility helps FUNiX students for learning online, ex:

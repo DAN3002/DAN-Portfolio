@@ -46,7 +46,7 @@ function AboutSection() {
 					<div className="text-center text-md-left">
 						<img
 							src={`${PUBLIC_URL}/images/dan3002/profile.png`}
-							alt="Profile"
+							alt="Nguyễn Đình Anh Profile"
 						/>
 					</div>
 					<div className="spacer d-md-none d-lg-none" data-height={30} />

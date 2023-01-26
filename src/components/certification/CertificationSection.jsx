@@ -14,7 +14,7 @@ function CertificationSection() {
 								<span className="category">{cert.category}</span>
 								<img
 									src={`${PUBLIC_URL}${cert.thumb}`}
-									alt="blog-title"
+									alt={cert.name}
 								/>
 							</div>
 							<div className="details">
@@ -33,7 +33,7 @@ function CertificationSection() {
 						>
 							<img
 								src={`${PUBLIC_URL}${cert.image}`}
-								alt="Title"
+								alt={cert.name}
 							/>
 							<br />
 							<br />

@@ -12,7 +12,7 @@ function HomeSection() {
 				<div className="intro">
 					<img
 						src={`${PUBLIC_URL}/images/dan3002/avatar.png`}
-						alt="Avatar"
+						alt="Nguyễn Đình Anh Avatar"
 						className="mb-4"
 					/>
 					<h1 className="mb-2 mt-0">Nguyễn Đình Anh</h1>

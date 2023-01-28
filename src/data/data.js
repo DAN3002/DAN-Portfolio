@@ -67,11 +67,19 @@ export default {
 	}],
 	activities: [{
 		title: 'AWS Academy',
-		timeline: 'Sep 2022',
+		timeline: 'Sep 2022 - Present',
 		subtitle: 'AWS Authorized Instructor',
 		text: [
 			'Selected as a lecturer for the AWS Academy Cloud Training Bootcamp in Vietnam, organized by FUNiX and <a href="https://aws.amazon.com/training/awsacademy/">AWS Academy</a>, where I shared my knowledge and experience in the field of cloud computing with students.',
 			'Assumed responsibility for instructing an <b>AWS Cloud Foundatio</b> and <b>AWS Solutions Architect - Associate</b> course, with a class size of nearly 800 students.',
+		],
+	}, {
+		title: 'FUNiX',
+		timeline: 'Oct 2021 - Present',
+		subtitle: 'Mentor for the FUNiX program',
+		text: [
+			'Assisted in providing answers to students\' inquiries regarding FUNiX subjects, with a focus on information technology and soft skills, ensuring that their academic and technical queries are resolved.',
+			'Participated in the evaluation process, administering exams to assess students\' competence and readiness to complete the course, ensuring that they possess the required knowledge and skills',
 		],
 	}, {
 		title: 'JS Club - Japanese Software Engineers',
@@ -158,7 +166,7 @@ export default {
 			},
 		],
 	}, {
-		name: 'FPTE. Edu Hackathon 2019',
+		name: 'FPT Edu Hackathon 2019',
 		category: 'Hackathon',
 		thumb: '/images/achieves/hackathon-2019.jpg',
 		image: '/images/achieves/hackathon-2019-banner.jpg',

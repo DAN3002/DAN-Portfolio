@@ -53,7 +53,7 @@ const getGithubData = async () => {
 		totalCommits,
 	};
 
-	// Cache the data for 2 days
+	// Cache the data for CACHE_TIMEOUT days
 	const cacheTime = CACHE_TIMEOUT * 24 * 60 * 60 * 1000;
 	localStorage.setItem('githubData', JSON.stringify({ data: output, timestamp: Date.now() + cacheTime }));
 
@@ -73,9 +73,11 @@ const getLatestCommitDate = async () => {
 	const { data } = await axios.get(`https://api.github.com/repos/${CURRENT_REPO}/commits`, { headers });
 
 	const date = new Date(data[0].commit.author.date);
+
+	const cachedTimeout = new Date(date.getFullYear(), date.getMonth(), 0);
 	localStorage.setItem('latestCommitDate', JSON.stringify({
 		date,
-		timestamp: Date.now() + 15 * 24 * 60 * 60 * 1000,
+		timestamp: cachedTimeout,
 	}));
 
 	return date;

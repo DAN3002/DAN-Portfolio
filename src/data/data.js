@@ -76,7 +76,7 @@ export default {
 	}, {
 		title: 'FUNiX',
 		timeline: 'Oct 2021 - Present',
-		subtitle: 'Mentor for the FUNiX program',
+		subtitle: 'Mentor for the FUNiX\'s program',
 		text: [
 			'Assisted in providing answers to students\' inquiries regarding FUNiX subjects, with a focus on information technology and soft skills, ensuring that their academic and technical queries are resolved.',
 			'Participated in the evaluation process, administering exams to assess students\' competence and readiness to complete the course, ensuring that they possess the required knowledge and skills',

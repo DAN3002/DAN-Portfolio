@@ -17,7 +17,7 @@ function HomeSection() {
 					/>
 					<h1 className="mb-2 mt-0">Nguyễn Đình Anh</h1>
 					<span>
-						<span>I'm a </span>
+						<span>I'm </span>
 						<span className="text-rotating">
 							{(home.roles || []).join(', ')}
 						</span>

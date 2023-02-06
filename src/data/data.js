@@ -2,7 +2,7 @@ export default {
 	contactEmail: 'dan3002.work@gmail.com',
 	startDate: 2019,
 	home: {
-		roles: ['Software Engineer', 'Cloud Engineer', 'AWS Authorized Instructor'],
+		roles: ['a Software Engineer', 'a Cloud Engineer', 'an AWS Authorized Instructor'],
 	},
 	about: {
 		paragraphs: [

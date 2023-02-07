@@ -1,5 +1,10 @@
 # Online Resume using React and Github API
 
+<!-- Add image banner and center align -->
+<p align="center">
+  <img src="./readme-images/banner.png" alt="Online Resume using React and Github API">
+</p>
+
 This is a single-page React application that displays my personal resume information and projects from Github. The application is built with React, CSS, and HTML and data is fetched from the Github API.
 
 ## Features

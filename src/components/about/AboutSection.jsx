@@ -113,20 +113,20 @@ function AboutSection() {
 
 								<div className="mt-3">
 									<a
-										href={`${PUBLIC_URL}/CV_Nguyễn Đình Anh.pdf`}
+										href={`${PUBLIC_URL}/Resume_Nguyễn Đình Anh.pdf`}
 										className="btn btn-default"
 										target="_blank"
 										rel="noreferrer"
 										onClick={() => {
 											gtag('event', 'rum-page-scroll', {
 												event_label:
-													'Click Download CV',
+													'Click Download Resume',
 												event_category: 'About Section',
 												non_interaction: true,
 											});
 										}}
 									>
-										Download CV
+										Download Resume
 									</a>
 								</div>
 							</div>

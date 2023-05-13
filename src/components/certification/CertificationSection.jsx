@@ -15,6 +15,10 @@ function CertificationSection() {
 								<img
 									src={`${PUBLIC_URL}${cert.thumb}`}
 									alt={cert.name}
+									style={{
+										width: '330px',
+										height: '173px',
+									}}
 								/>
 							</div>
 							<div className="details">

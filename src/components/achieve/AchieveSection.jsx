@@ -21,6 +21,10 @@ function AchieveSection() {
 								<img
 									src={`${PUBLIC_URL}${item.thumb}`}
 									alt={item.name}
+									style={{
+										width: '330px',
+										height: '268px',
+									}}
 								/>
 							</div>
 							<div className="details">

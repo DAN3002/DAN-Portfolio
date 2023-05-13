@@ -112,7 +112,7 @@ export default {
 		subtitle: 'Fullstack Developer',
 		text: [
 			'<b>FinAInce Assistant</b> is a financial chatbot designed to provide various functionalities to help users manage their finances more effectively. With the power of ChatGPT, our chatbot predicts user behavior, automates basic tasks, and offers real-time financial insights.',
-			'Winner of FUNiX ChatGPT Hackathon',
+			'Champion of FUNiX ChatGPT Hackathon',
 			'<b>Technologies: </b>ReactJS, Flask, GPC Cloud, Firebase, ChatGPT Prompt, ...',
 			// '<a href="https://github.com/DAN3002/Doctors-Cyclop-Webapp">Source code</a>',
 		],
@@ -165,7 +165,7 @@ export default {
 		thumb: '/images/achieves/funix-chatgpt-hackathon.png',
 		image: '/images/achieves/funix-chatgpt-hackathon-banner.jpg',
 		date: '07 May, 2023',
-		prize: 'Winner',
+		prize: 'Champion',
 		text: [
 			'Our team has won the first victory with the product "FinAInce Assistant - ChatGPT can take actions". This is a new Fintech product, built in nearly a month and using ChatGPT along with some special techniques to optimize operations for users related to finance. The success of the team is evidence of the great potential of ChatGPT in performing many tasks other than Q&A. With ChatGPT, the team has saved time and focused on product development effectively.',
 		],

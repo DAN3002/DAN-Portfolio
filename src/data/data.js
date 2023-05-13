@@ -107,6 +107,16 @@ export default {
 		],
 	}],
 	projects: [{
+		title: 'FinAInce Assistant',
+		timeline: 'Apr 2023 - May 2023',
+		subtitle: 'Fullstack Developer',
+		text: [
+			'<b>FinAInce Assistant</b> is a financial chatbot designed to provide various functionalities to help users manage their finances more effectively. With the power of ChatGPT, our chatbot predicts user behavior, automates basic tasks, and offers real-time financial insights.',
+			'Winner of FUNiX ChatGPT Hackathon',
+			'<b>Technologies: </b>ReactJS, Flask, GPC Cloud, Firebase, ChatGPT Prompt, ...',
+			// '<a href="https://github.com/DAN3002/Doctors-Cyclop-Webapp">Source code</a>',
+		],
+	}, {
 		title: 'Doctor’s Cyclop',
 		timeline: 'Apr 2021',
 		subtitle: 'Fullstack Developer',
@@ -159,15 +169,14 @@ export default {
 		text: [
 			'Our team has won the first victory with the product "FinAInce Assistant - ChatGPT can take actions". This is a new Fintech product, built in nearly a month and using ChatGPT along with some special techniques to optimize operations for users related to finance. The success of the team is evidence of the great potential of ChatGPT in performing many tasks other than Q&A. With ChatGPT, the team has saved time and focused on product development effectively.',
 		],
-		link: [
-			{
-				text: 'Dự án trợ lý ảo ngân hàng giành quán quân ChatGPT Hackathon',
-				url: 'https://vnexpress.net/du-an-tro-ly-ao-ngan-hang-gianh-quan-quan-chatgpt-hackathon-4603011.html',
-			},
-			{
-				text: 'Sinh viên FUNiX chia sẻ về dự án vô địch ChatGPT Hackathon',
-				url: 'https://vnexpress.net/sinh-vien-funix-chia-se-ve-du-an-vo-dich-chatgpt-hackathon-4604055.html',
-			},
+		link: [{
+			text: 'Dự án trợ lý ảo ngân hàng giành quán quân ChatGPT Hackathon',
+			url: 'https://vnexpress.net/du-an-tro-ly-ao-ngan-hang-gianh-quan-quan-chatgpt-hackathon-4603011.html',
+		},
+		{
+			text: 'Sinh viên FUNiX chia sẻ về dự án vô địch ChatGPT Hackathon',
+			url: 'https://vnexpress.net/sinh-vien-funix-chia-se-ve-du-an-vo-dich-chatgpt-hackathon-4604055.html',
+		},
 		],
 	}, {
 		name: 'FPT Edu Hackathon 2021',
@@ -179,12 +188,10 @@ export default {
 		text: [
 			'As the youngest team to participate. Won third prize in a competition with 104 teams from various universities, for building a web application that utilizes AI to assist doctors in diagnosing Covid-19.',
 		],
-		link: [
-			{
-				text: '4 học sinh lớp 12 làm sản phẩm AI hỗ trợ điều trị Covid-19',
-				url: 'https://vnexpress.net/4-hoc-sinh-lop-12-lam-san-pham-ai-ho-tro-dieu-tri-covid-19-4269038.html?fbclid=IwAR16uIHcQHmSkyvecoIT_z8IwSujveLDKXw7wImasg-5WxNR1Iym9cMJMh0',
-			},
-		],
+		link: [{
+			text: '4 học sinh lớp 12 làm sản phẩm AI hỗ trợ điều trị Covid-19',
+			url: 'https://vnexpress.net/4-hoc-sinh-lop-12-lam-san-pham-ai-ho-tro-dieu-tri-covid-19-4269038.html?fbclid=IwAR16uIHcQHmSkyvecoIT_z8IwSujveLDKXw7wImasg-5WxNR1Iym9cMJMh0',
+		}],
 	}, {
 		name: 'FPT Edu Hackathon 2019',
 		category: 'Hackathon',
@@ -195,11 +202,9 @@ export default {
 		text: [
 			'As the youngest team to participate. Won third prize out of 35 teams coming from different Universities. Our team achieved third prize in a competition for developing equipment to check the safety of water.',
 		],
-		link: [
-			{
-				text: 'Học sinh THPT giành giải \'FPT Edu Hackathon\' 2019',
-				url: 'https://vnexpress.net/hoc-sinh-thpt-gianh-giai-fpt-edu-hackathon-2019-4042313.html',
-			},
-		],
+		link: [{
+			text: 'Học sinh THPT giành giải \'FPT Edu Hackathon\' 2019',
+			url: 'https://vnexpress.net/hoc-sinh-thpt-gianh-giai-fpt-edu-hackathon-2019-4042313.html',
+		}],
 	}],
 };

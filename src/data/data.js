@@ -150,6 +150,26 @@ export default {
 
 	}],
 	achievements: [{
+		name: 'FUNiX ChatGPT Hackathon',
+		category: 'Hackathon',
+		thumb: '/images/achieves/funix-chatgpt-hackathon.png',
+		image: '/images/achieves/funix-chatgpt-hackathon-banner.jpg',
+		date: '07 May, 2023',
+		prize: 'Winner',
+		text: [
+			'Our team has won the first victory with the product "FinAInce Assistant - ChatGPT can take actions". This is a new Fintech product, built in nearly a month and using ChatGPT along with some special techniques to optimize operations for users related to finance. The success of the team is evidence of the great potential of ChatGPT in performing many tasks other than Q&A. With ChatGPT, the team has saved time and focused on product development effectively.',
+		],
+		link: [
+			{
+				text: 'Dự án trợ lý ảo ngân hàng giành quán quân ChatGPT Hackathon',
+				url: 'https://vnexpress.net/du-an-tro-ly-ao-ngan-hang-gianh-quan-quan-chatgpt-hackathon-4603011.html',
+			},
+			{
+				text: 'Sinh viên FUNiX chia sẻ về dự án vô địch ChatGPT Hackathon',
+				url: 'https://vnexpress.net/sinh-vien-funix-chia-se-ve-du-an-vo-dich-chatgpt-hackathon-4604055.html',
+			},
+		],
+	}, {
 		name: 'FPT Edu Hackathon 2021',
 		category: 'Hackathon',
 		thumb: '/images/achieves/hackathon-2021.png',

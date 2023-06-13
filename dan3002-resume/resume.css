@@ -7,16 +7,20 @@
 	width: 800px;
 	margin: 0 auto;
 
-	line-height: 17px;
+	line-height: 15px;
+	margin-top: 5px;
 	/* border: 0.5px solid #ccc; */
 }
 
 header {
 	text-align: center;
+
+	font-size: 14px;
 }
 
 header h2 {
 	margin-bottom: 10px;
+	font-size: 25px;
 }
 
 header hr {
@@ -25,7 +29,9 @@ header hr {
 }
 
 main {
-	font-size: 15px;
+	font-size: 14px;
+
+	margin-top: -15px;
 }
 
 main .section-header {
@@ -62,12 +68,12 @@ main .section-header {
 
 .section-row .right {
 	text-align: right;
-	width: 25%;
+	width: 20%;
 	margin: 0px;
 }
 
 .section-row .left {
-	width: 75%;
+	width: 80%;
 	margin: 0px;
 }
 

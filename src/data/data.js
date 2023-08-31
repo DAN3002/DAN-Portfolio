@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export default {
 	contactEmail: 'dan3002.work@gmail.com',
 	startDate: 2019,
@@ -6,20 +7,20 @@ export default {
 	},
 	about: {
 		paragraphs: [
-			'I am currently a final year student at FPT University. I had the opportunity to start college at the age of 16, and started working a year later (17 years old). My interests are in cloud computing as well as software development.',
-			'Along with that, I also have experience in teaching, I was recognized as an AWS Authorized Instructor and was the main instructor in 2 Bootcamps in Vietnam. In addition, I am also in the process of publishing AWS Cloud courses on the Udemy Vietnam platform.',
+			'I had the opportunity to start college at the age of 16, and started working a year later (17 years old). My interests are in cloud computing as well as software development.',
+			'Along with that, I also have experience in teaching, I was recognized as an AWS Authorized Instructor and was the main instructor in 2 Bootcamps in Vietnam.',
 			'I am always open to new opportunities and challenges. If you would like to reach me, feel free to drop me a message in the email below.',
 		],
 	},
 	others: [
 		'<b>Languages</b>: English | Vietnamese: native.',
 		'<b>Programming languages</b>: Python, JavaScript, Bash, Java, SQL.',
-		'<b>Frameworks & Libraries</b>: MERN Stack, Flask, Django.',
-		'<b>Other tools</b>: Unix/Linux, Git/Github, Docker, AWS, Firebase, Vercel.',
+		'<b>Frameworks & Libraries</b>: MERN Stack, MeteorJS, NextJS, Flask, Django, ...',
+		'<b>Other</b>: Linux, Git, Docker, AWS, Firebase, k8s, ...',
 	],
 	education: [{
 		title: 'FPT University',
-		timeline: 'Jan 2022 - Present (Expected Jun 2023)',
+		timeline: 'Jan 2022 - Aug 2023',
 		subtitle: 'Major: Software Engineering.',
 		text: [
 			'Awarded a full scholarship covering the entirety of the study period.',
@@ -32,7 +33,7 @@ export default {
 		text: [
 			'Started studying at the age of 16.',
 			'Received a 20% scholarship each semester and actively participated in various university activities.',
-			'Had the opportunity to have personal meetings with the university\'s principal (<a href="https://vi.wikipedia.org/wiki/Nguy%E1%BB%85n_Th%C3%A0nh_Nam_(doanh_nh%C3%A2n)">Mr. Nguyen Thanh Nam</a> - Founder of FUNiX, former General Director of FPT).',
+			// 'Had the opportunity to have personal meetings with the university\'s principal (<a href="https://vi.wikipedia.org/wiki/Nguy%E1%BB%85n_Th%C3%A0nh_Nam_(doanh_nh%C3%A2n)">Mr. Nguyen Thanh Nam</a> - Founder of FUNiX, former General Director of FPT).',
 			'Cumulative GPA: 8.4/10',
 		],
 	}],
@@ -42,9 +43,9 @@ export default {
 		subtitle: 'Program Development Officer & Full-Stack Developer',
 		text: [
 			'Contributed to the development of internal applications, including the Mentoring System and Learning Management System (LMS).',
-			'Assisted in the implementation and operation of projects by monitoring and resolving bugs. Managed cloud-based resources for the entire team, ensuring efficient and secure access to the necessary tools and resources.',
+			'Managed cloud-based resources for the entire team, ensuring efficient and secure access to the necessary tools and resources.',
 			'Assumed responsibility for designing and developing xSeries specialized courses, including <b>Full Stack with MERN Stack, Data Engineering, Cloud Computing, and DevOps, ...</b>',
-			'In addition, I collaborated with other instructors to create comprehensive curriculum for each course and provided hands-on training to students through practical projects and exercises. The courses I developed have received positive feedback from students and helped them achieve better results in their field.',
+			// 'In addition, I collaborated with other instructors to create comprehensive curriculum for each course and provided hands-on training to students through practical projects and exercises. The courses I developed have received positive feedback from students and helped them achieve better results in their field.',
 		],
 	}, {
 		title: 'FPT Software',
@@ -53,7 +54,7 @@ export default {
 		text: [
 			'Balanced my role as a part-time employee while still attending high school, gaining valuable work experience while completing my education.',
 			'Contributed to the development of internal applications, including the Mentoring System and Learning Management System (LMS).',
-			'Assisted in the implementation and operation of projects by monitoring and resolving bugs.',
+			// 'Assisted in the implementation and operation of projects by monitoring and resolving bugs.',
 		],
 	}, {
 		title: 'FUNiX\'s IT department',
@@ -94,7 +95,7 @@ export default {
 		timeline: 'July 2021 - Dec 2021',
 		subtitle: 'Techcontent Mentor',
 		text: [
-			'Mentor of the <a href="https://www.facebook.com/develophvn/photos/pcb.334074128129033/334072064795906/">DIY Camp</a> program - an online coding camp for high school and college students, emphasizing on self-study and communication between learners and mentors.',
+			'Mentor of the <a href="https://www.facebook.com/develophvn/photos/pcb.334074128129033/334072064795906/">DIY Camp</a> program, where I provided guidance and support to students in developing their own projects.',
 			'Develop and maintain the official website for <a href="https://www.facebook.com/develophvn">Developh Vietnam</a> - a social enterprise that aims to make technology education accessible to children in Vietnam by conducting coding classes and has reached over 6,000 followers on Facebook.',
 		],
 	}, {

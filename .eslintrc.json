@@ -25,5 +25,8 @@
         "indent": ["error", "tab"],
         "no-tabs": 0,
         "import/no-extraneous-dependencies": "off"
+    },
+    "globals": {
+        "$": "readonly"
     }
 }

@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import parse from 'html-react-parser';
 
 import data from '../../data/data';
+import Carousel from '../utils/Carousel';
 
 function AchieveSection() {
 	const { PUBLIC_URL } = process.env;
@@ -9,7 +11,7 @@ function AchieveSection() {
 
 	return (
 		<div className="row blog-wrapper">
-			{achievements.map((item, index) => (
+			{/* {achievements.map((item, index) => (
 				<div className="col-md-4">
 					<div className="blog-item rounded bg-dark shadow-light wow fadeIn">
 						<a
@@ -65,7 +67,8 @@ function AchieveSection() {
 						</div>
 					</div>
 				</div>
-			))}
+			))} */}
+			<Carousel />
 		</div>
 	);
 }

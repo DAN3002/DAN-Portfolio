@@ -1253,8 +1253,12 @@ select.portfolio-filter-mobile {
 /*                      TESTIMONIALS                              
 /*=================================================================*/
 .testimonials-wrapper {
-  max-width: 700px;
+  max-width: 1010px;
   margin: auto;
+}
+
+.slick-slider .slick-slide {
+  margin-right: 30px
 }
 
 .testimonial-item {

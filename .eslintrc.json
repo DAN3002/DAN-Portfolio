@@ -24,7 +24,8 @@
         "react/jsx-indent-props" : ["error", "tab"],
         "indent": ["error", "tab"],
         "no-tabs": 0,
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        "react/prop-types": "off"
     },
     "globals": {
         "$": "readonly"

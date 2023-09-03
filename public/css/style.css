@@ -1250,32 +1250,15 @@ select.portfolio-filter-mobile {
 }
 
 /*=================================================================*/
-/*                      TESTIMONIALS                              
+/*                      CAROUSEL                              
 /*=================================================================*/
-.testimonials-wrapper {
+.carousel-wrapper {
   max-width: 1010px;
   margin: auto;
 }
 
 .slick-slider .slick-slide {
   margin-right: 30px
-}
-
-.testimonial-item {
-  padding: 0 20px 20px;
-}
-.testimonial-item .thumb {
-  border-radius: 50%;
-  overflow: hidden;
-  height: 90px;
-  width: 90px;
-}
-.testimonial-item .subtitle {
-  color: #8B88B1;
-  font-size: 14px;
-}
-.testimonial-item p {
-  font-size: 16px;
 }
 
 /*=================================================================*/

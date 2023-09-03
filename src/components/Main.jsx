@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import Section from './Section';
 import HomeSection from './home/HomeSection';
 import AboutSection from './about/AboutSection';
@@ -8,6 +10,19 @@ import AchieveSection from './achieve/AchieveSection';
 import ContactSection from './contact/ContactSection';
 
 function Main() {
+	useEffect(() => {
+		$('.carousel-wrapper').slick({
+			dots: true,
+			arrows: false,
+			speed: 200,
+			slidesToShow: 3,
+			slidesToScroll: 3,
+			infinite: true,
+			autoplay: true,
+			autoplaySpeed: 3000,
+		});
+	}, []);
+
 	return (
 		<main className="content">
 			<HomeSection />

@@ -1257,13 +1257,6 @@ select.portfolio-filter-mobile {
   margin: auto;
 }
 
-.slick-slider .slick-slide {
-  margin-right: 30px
-}
-
-/*=================================================================*/
-/*                      BLOG                              
-/*=================================================================*/
 .blog-item {
   overflow: hidden;
   -webkit-transform: translateY(0);
@@ -1340,6 +1333,13 @@ select.portfolio-filter-mobile {
   display: none;
 }
 
+.slick-slider .slick-slide {
+  margin-right: 30px
+}
+
+/*=================================================================*/
+/*                      BLOG                              
+/*=================================================================*/
 .blog-page-section {
   background-color: #f9f9ff;
   padding-bottom: 70px;

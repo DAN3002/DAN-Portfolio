@@ -1333,8 +1333,12 @@ select.portfolio-filter-mobile {
   display: none;
 }
 
-.slick-slider .slick-slide {
+.carousel-wrapper .slick-slide {
   margin-right: 30px
+}
+
+.carousel-wrapper .slick-list {
+  margin-right: -30px;
 }
 
 /*=================================================================*/

@@ -22,6 +22,27 @@ function Main() {
 			// autoplaySpeed: 3000,
 			swipeToSlide: false,
 			swipe: false,
+			responsive: [
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 2,
+						swipeToSlide: true,
+						swipe: true,
+					},
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						arrows: false,
+						swipeToSlide: true,
+						swipe: true,
+					},
+				},
+			],
 		});
 	}, []);
 

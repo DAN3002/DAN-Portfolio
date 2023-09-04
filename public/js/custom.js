@@ -33,9 +33,9 @@ $(window).on('load', function() {
     ];
     var fallbackValue = "200ms";
   
-    $(".custem-carousel-item.wow").each(function(index) {
-      $(this).attr("data-wow-delay", typeof dynamicDelay[index] === 'undefined' ? fallbackValue : dynamicDelay[index] + "ms");
-    });
+    // $(".custem-carousel-item.wow").each(function(index) {
+    //   $(this).attr("data-wow-delay", typeof dynamicDelay[index] === 'undefined' ? fallbackValue : dynamicDelay[index] + "ms");
+    // });
 
     /*=========================================================================
      Isotope

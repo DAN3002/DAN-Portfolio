@@ -2892,3 +2892,16 @@ textarea::-webkit-scrollbar-thumb
 #experience li:not(:last-child) { 
   margin-bottom: 3px;  
 }
+
+/* media query for tablet */
+@media screen and (max-width: 1024px) {
+  .carousel-wrapper {
+    max-width: 700px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .carousel-wrapper {
+    max-width: 300px;
+  }
+}

@@ -159,6 +159,15 @@ export default {
 		start: 'October 05, 2021',
 		end: 'November 19, 2024',
 
+	}, {
+		name: 'AWS Academy Certified Educator',
+		category: 'AWS Certificate',
+		thumb: '/images/achieves/cert/AWS Academy Certified Educator.png',
+		image: '/images/achieves/cert/AWS Academy Certified Educator.png',
+		url: 'https://www.credly.com/badges/7b48e869-5319-4d9f-ae19-9ca358c1842e',
+		start: 'October 05, 2021',
+		end: 'April 14, 2024',
+
 	}],
 	achievements: [{
 		name: 'FPT Edu ResFes 2023',

@@ -1250,34 +1250,14 @@ select.portfolio-filter-mobile {
 }
 
 /*=================================================================*/
-/*                      TESTIMONIALS                              
+/*                      CAROUSEL                              
 /*=================================================================*/
-.testimonials-wrapper {
-  max-width: 700px;
+.carousel-wrapper {
+  max-width: 1010px;
   margin: auto;
 }
 
-.testimonial-item {
-  padding: 0 20px 20px;
-}
-.testimonial-item .thumb {
-  border-radius: 50%;
-  overflow: hidden;
-  height: 90px;
-  width: 90px;
-}
-.testimonial-item .subtitle {
-  color: #8B88B1;
-  font-size: 14px;
-}
-.testimonial-item p {
-  font-size: 16px;
-}
-
-/*=================================================================*/
-/*                      BLOG                              
-/*=================================================================*/
-.blog-item {
+.custem-carousel-item {
   overflow: hidden;
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
@@ -1286,16 +1266,16 @@ select.portfolio-filter-mobile {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.blog-item:hover {
+.custem-carousel-item:hover {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(-10px);
 }
-.blog-item .thumb {
+.custem-carousel-item .thumb {
   position: relative;
   overflow: hidden;
 }
-.blog-item .thumb img {
+.custem-carousel-item .thumb img {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -1303,12 +1283,12 @@ select.portfolio-filter-mobile {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.blog-item .thumb:hover img {
+.custem-carousel-item .thumb:hover img {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
-.blog-item .category {
+.custem-carousel-item .category {
   background: #FF4C60;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -1320,26 +1300,26 @@ select.portfolio-filter-mobile {
   top: 0;
   z-index: 1;
 }
-.blog-item .details {
+.custem-carousel-item .details {
   padding: 20px;
 }
-.blog-item .details h4.title {
+.custem-carousel-item .details h4.title {
   font-size: 20px;
 }
-.blog-item .details h4.title a {
+.custem-carousel-item .details h4.title a {
   color: #353353;
 }
-.blog-item .details h4.title a:hover {
+.custem-carousel-item .details h4.title a:hover {
   color: #FF4C60;
 }
-.blog-item .meta {
+.custem-carousel-item .meta {
   font-size: 14px;
   color: #8B88B1;
 }
-.blog-item .meta li:not(:last-child) {
+.custem-carousel-item .meta li:not(:last-child) {
   margin-right: 0.6rem;
 }
-.blog-item .meta li:after {
+.custem-carousel-item .meta li:after {
   content: "";
   background: #8B88B1;
   border-radius: 50%;
@@ -1349,10 +1329,21 @@ select.portfolio-filter-mobile {
   vertical-align: middle;
   width: 3px;
 }
-.blog-item .meta li:last-child::after {
+.custem-carousel-item .meta li:last-child::after {
   display: none;
 }
 
+.carousel-wrapper .slick-slide {
+  margin-right: 30px
+}
+
+.carousel-wrapper .slick-list {
+  margin-right: -30px;
+}
+
+/*=================================================================*/
+/*                      BLOG                              
+/*=================================================================*/
 .blog-page-section {
   background-color: #f9f9ff;
   padding-bottom: 70px;
@@ -1825,10 +1816,10 @@ body.dark a:hover {
 body.dark .portfolio-filter li.current {
   color: #FF4C60;
 }
-body.dark .blog-item .details h4.title a {
+body.dark .custem-carousel-item .details h4.title a {
   color: #FFF;
 }
-body.dark .blog-item .details h4.title a:hover {
+body.dark .custem-carousel-item .details h4.title a:hover {
   color: #FF4C60;
 }
 body.dark .contact-info {
@@ -2691,7 +2682,7 @@ body {
     display: none;
   }
 
-  .portfolio-item, .blog-item {
+  .portfolio-item, .custem-carousel-item {
     max-width: 360px;
     margin: auto;
   }
@@ -2699,7 +2690,7 @@ body {
   .blog-wrapper {
     margin: -20px 0;
   }
-  .blog-wrapper .blog-item {
+  .blog-wrapper .custem-carousel-item {
     margin-top: 15px;
     margin-bottom: 15px;
   }
@@ -2900,4 +2891,17 @@ textarea::-webkit-scrollbar-thumb
 
 #experience li:not(:last-child) { 
   margin-bottom: 3px;  
+}
+
+/* media query for tablet */
+@media screen and (max-width: 1024px) {
+  .carousel-wrapper {
+    max-width: 700px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .carousel-wrapper {
+    max-width: 300px;
+  }
 }

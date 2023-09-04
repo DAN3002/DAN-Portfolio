@@ -159,8 +159,31 @@ export default {
 		start: 'October 05, 2021',
 		end: 'November 19, 2024',
 
+	}, {
+		name: 'AWS Academy Certified Educator',
+		category: 'AWS Certificate',
+		thumb: '/images/achieves/cert/AWS Academy Certified Educator.png',
+		image: '/images/achieves/cert/AWS Academy Certified Educator.png',
+		url: 'https://www.credly.com/badges/7b48e869-5319-4d9f-ae19-9ca358c1842e',
+		start: 'October 05, 2021',
+		end: 'April 14, 2024',
+
 	}],
 	achievements: [{
+		name: 'FPT Edu ResFes 2023',
+		category: 'Research Festival',
+		thumb: '/images/achieves/resfes-2023.jpg',
+		image: '/images/achieves/resfes-2023-banner.jpg',
+		date: '20 August, 2023',
+		prize: 'Third Prize',
+		text: [
+			'- Discovered and developed an ecosystem to apply an AI model call Relahash. Achieving unparalleled accuracy and minimal latency in image retrieval for the fashion e-commerce landscape.',
+			'- Designed and implemented a declarative crawling system that allows users to specify their requirements and let the system do the heavy lifting.',
+			'- Built a rich dataset of 7.5M+ images from 8K+ shops across 30 websites.',
+			'- Built a robust ecosystem on Kubernetes to seamlessly combine our dynamic crawler and AI model pipeline.',
+		],
+		link: [],
+	}, {
 		name: 'FUNiX ChatGPT Hackathon',
 		category: 'Hackathon',
 		thumb: '/images/achieves/funix-chatgpt-hackathon.png',

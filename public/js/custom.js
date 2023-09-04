@@ -33,7 +33,7 @@ $(window).on('load', function() {
     ];
     var fallbackValue = "200ms";
   
-    $(".blog-item.wow").each(function(index) {
+    $(".custem-carousel-item.wow").each(function(index) {
       $(this).attr("data-wow-delay", typeof dynamicDelay[index] === 'undefined' ? fallbackValue : dynamicDelay[index] + "ms");
     });
 

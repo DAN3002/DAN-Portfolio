@@ -8,7 +8,7 @@ function CertificationSection() {
 		<div className="row blog-wrapper">
 			{certifications.map((cert, i) => (
 				<div className="col-md-4">
-					<div className="blog-item rounded bg-dark shadow-light wow fadeIn">
+					<div className="custem-carousel-item rounded bg-dark shadow-light wow fadeIn">
 						<a href={`#small-dialog-cert-${i}`} className="work-content">
 							<div className="thumb">
 								<span className="category">{cert.category}</span>

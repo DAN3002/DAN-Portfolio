@@ -9,7 +9,7 @@ function AchieveSection() {
 	const { achievements } = data;
 
 	const items = achievements.map((item, index) => (
-		<div className="blog-item rounded bg-dark wow fadeIn">
+		<div className="custem-carousel-item rounded bg-dark wow fadeIn">
 			<a
 				href={`#small-dialog-achieve-${index}`}
 				className="work-content"

@@ -25,6 +25,7 @@ export default {
 		text: [
 			'Awarded a full scholarship covering the entirety of the study period.',
 			'I am able to complete my undergraduate degree in a year and a half due to an exemption of 50% of required subjects in the entire study program.',
+			'GPA: 8.0/10',
 		],
 	}, {
 		title: 'FUNiX University',
@@ -34,7 +35,7 @@ export default {
 			'Started studying at the age of 16.',
 			'Received a 20% scholarship each semester and actively participated in various university activities.',
 			// 'Had the opportunity to have personal meetings with the university\'s principal (<a href="https://vi.wikipedia.org/wiki/Nguy%E1%BB%85n_Th%C3%A0nh_Nam_(doanh_nh%C3%A2n)">Mr. Nguyen Thanh Nam</a> - Founder of FUNiX, former General Director of FPT).',
-			'Cumulative GPA: 8.4/10',
+			'GPA: 8.4/10',
 		],
 	}],
 	experience: [{

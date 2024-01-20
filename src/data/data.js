@@ -25,7 +25,7 @@ export default {
 		text: [
 			'Awarded a full scholarship covering the entirety of the study period.',
 			'I am able to complete my undergraduate degree in a year and a half due to an exemption of 50% of required subjects in the entire study program.',
-			'GPA: 8.0/10',
+			// 'GPA: 8.0/10',
 		],
 	}, {
 		title: 'FUNiX University',
@@ -33,14 +33,26 @@ export default {
 		subtitle: 'Major: Software Engineering.',
 		text: [
 			'Started studying at the age of 16.',
-			'Received a 20% scholarship each semester and actively participated in various university activities.',
+			'Received a scholarship each semester and actively participated in various university activities.',
 			// 'Had the opportunity to have personal meetings with the university\'s principal (<a href="https://vi.wikipedia.org/wiki/Nguy%E1%BB%85n_Th%C3%A0nh_Nam_(doanh_nh%C3%A2n)">Mr. Nguyen Thanh Nam</a> - Founder of FUNiX, former General Director of FPT).',
-			'GPA: 8.4/10',
+			// 'GPA: 8.4/10',
 		],
 	}],
 	experience: [{
+		title: 'FUNiX',
+		timeline: 'Oct 2023 - Present',
+		subtitle: 'Head of Product R&D',
+		text: [
+			`Led the establishment of a development team and oversaw the implementation of the company's
+			new products. Developed and executed technical strategies that aligned with the company's
+			vision and objectives.`,
+			`Ensured that projects were executed in line with the agreed-upon objectives, timelines, and
+			standards. Provided mentorship, guidance, and support to team members, resulting in improved
+			productivity.`,
+		],
+	}, {
 		title: 'FUNiX xSeries',
-		timeline: 'Aug 2021 - Present',
+		timeline: 'Aug 2021 - Oct 2023',
 		subtitle: 'Program Development Officer & Full-Stack Developer',
 		text: [
 			'Contributed to the development of internal applications, including the Mentoring System and Learning Management System (LMS).',
@@ -64,7 +76,7 @@ export default {
 		text: [
 			'Started working immediately after my first year of university, at the age of 17, gaining valuable experience and skills while pursuing my education.',
 			'Developed a learning tool and management software using Javascript, NodeJS, and Firebase, providing an interactive and user-friendly platform for students and instructors.',
-			'Developed and deployed a Chrome Extension that translates subtitles on MOOC websites (such as Udemy and Coursera) and the content of the page into Vietnamese, providing a more accessible and user-friendly learning experience for students.',
+			// 'Developed and deployed a Chrome Extension that translates subtitles on MOOC websites (such as Udemy and Coursera) and the content of the page into Vietnamese, providing a more accessible and user-friendly learning experience for students.',
 		],
 	}],
 	activities: [{

@@ -36,7 +36,7 @@ main {
 
 main .section-header {
 	font-weight: bold;
-	padding-bottom: 7.5px;
+	padding-bottom: 3px;
 	margin-bottom: 5px;
 	border-bottom: 1px solid #000;
 	width: 100%;
@@ -84,4 +84,8 @@ main .section-header {
 a {
 	color: #000;
 	text-decoration: none;
+}
+
+li {
+	text-align: justify;
 }

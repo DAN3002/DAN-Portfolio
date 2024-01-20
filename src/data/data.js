@@ -123,17 +123,17 @@ export default {
 	projects: [{
 		title: 'FinAInce Assistant',
 		timeline: 'Apr 2023 - May 2023',
-		subtitle: 'Fullstack Developer',
+		subtitle: 'Fullstack Developer & Cloud Engineer',
 		text: [
 			'<b>FinAInce Assistant</b> is a financial chatbot designed to provide various functionalities to help users manage their finances more effectively. With the power of ChatGPT, our chatbot predicts user behavior, automates basic tasks, and offers real-time financial insights.',
 			'Champion of FUNiX ChatGPT Hackathon',
 			'<b>Technologies: </b>ReactJS, Flask, GPC Cloud, Firebase, ChatGPT Prompt, ...',
-			// '<a href="https://github.com/DAN3002/Doctors-Cyclop-Webapp">Source code</a>',
+			'<a href="https://github.com/DAN3002/FinAInce-Assistant-Webapp">Source code</a>',
 		],
 	}, {
 		title: 'Doctor’s Cyclop',
 		timeline: 'Apr 2021',
-		subtitle: 'Fullstack Developer',
+		subtitle: 'Fullstack Developer & Cloud Engineer',
 		text: [
 			'Created a website that implements the machine learning model for classifying the presence and correct placement of tubes on chest x-rays, allowing for easy access and practical application of the model by medical professionals.',
 			'Top 3 FPT Edu Hackathon 2021 - beat over 100 teams from different Universities.',
@@ -141,17 +141,30 @@ export default {
 			'<a href="https://github.com/DAN3002/Doctors-Cyclop-Webapp">Source code</a>',
 		],
 	}, {
-		title: 'HF40 Webapp',
+		title: 'FUNiX Learning Management System (LMS)',
+		subtitle: 'Technical Leader',
+		text: [
+			`A web application that provides a platform for students and instructors to manage their courses,
+			allowing them to access educational materials and interact with each other. Build from OpenEdx
+			open-source project.`,
+			'<b>Technologies: </b>ReactJS, Django, MySQL, AWS Cloud',
+		],
+	}, {
+		title: 'FUNiX Mentoring System (HF40)',
 		subtitle: 'Fullstack Developer',
 		text: [
-			'HF40 is a web app to connect FUNiX\'s students with mentors base on Rocketchat opensource. You can chat, share a file or send a voice to another user.',
+			`Developed and maintained a web application that help FUNiX's students to find mentors,
+			allowing them to connect and communicate with each other. Build from Rocket.Chat open-source
+			project.`,
 			'<b>Technologies: </b>MeteorJS, MongoDB, GCP',
 		],
 	}, {
 		title: 'FUNiX Passport',
 		subtitle: 'Fullstack Developer',
 		text: [
-			'This utility helps FUNiX students for learning online, ex: Vietnamese translation for course materials, highlight video\'s subtitles.',
+			`Chrome Extension that translates subtitles on MOOC websites (such as Udemy and Coursera)
+			and the content of the page into Vietnamese, providing a more accessible and user-friendly
+			learning experience for students`,
 			'<b>Technologies:</b>: Vanilla Javascript, Firebase',
 		],
 	}],

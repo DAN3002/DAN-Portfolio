@@ -14,8 +14,8 @@ export default {
 	},
 	others: [
 		'<b>Languages</b>: English | Vietnamese: native.',
-		'<b>Programming languages</b>: Python, JavaScript, Bash, Java, SQL.',
-		'<b>Frameworks & Libraries</b>: MERN Stack, MeteorJS, NextJS, Flask, Django, ...',
+		'<b>Programming languages</b>: Go, Python, JavaScript, Bash, Java, SQL.',
+		'<b>Frameworks & Libraries</b>: MERN Stack, VueJS, NextJS, Flask, Django, ...',
 		'<b>Other</b>: Linux, Git, Docker, AWS, Firebase, k8s, ...',
 	],
 	education: [{
@@ -39,20 +39,16 @@ export default {
 		],
 	}],
 	experience: [{
-		title: 'FUNiX',
-		timeline: 'Oct 2023 - Present',
-		subtitle: 'Head of Product R&D',
+		title: 'OpenCommerce Group',
+		timeline: 'Mar 2024 - Present',
+		subtitle: 'Full-Stack Developer',
 		text: [
-			`Led the establishment of a development team and oversaw the implementation of the company's
-			new products. Developed and executed technical strategies that aligned with the company's
-			vision and objectives.`,
-			`Ensured that projects were executed in line with the agreed-upon objectives, timelines, and
-			standards. Provided mentorship, guidance, and support to team members, resulting in improved
-			productivity.`,
+			'Participate in the development of the Dropshipping e-commerce system.',
+			'Enhance and develop payment and related systems using Golang and VueJS. Integrate with payment services such as Stripe, PayPal, and others.',
 		],
 	}, {
-		title: 'FUNiX xSeries',
-		timeline: 'Aug 2021 - Oct 2023',
+		title: 'FUNiX',
+		timeline: 'Aug 2021 - Feb 2024',
 		subtitle: 'Program Development Officer & Full-Stack Developer',
 		text: [
 			'Contributed to the development of internal applications, including the Mentoring System and Learning Management System (LMS).',
@@ -93,7 +89,7 @@ export default {
 		subtitle: 'Mentor for the FUNiX\'s program',
 		text: [
 			'Assisted in providing answers to students\' inquiries regarding FUNiX subjects, with a focus on information technology and soft skills, ensuring that their academic and technical queries are resolved.',
-			'Participated in the evaluation process, administering exams to assess students\' competence and readiness to complete the course, ensuring that they possess the required knowledge and skills',
+			'Participated in the evaluation process by administering exams to determine student competence and readiness, ensuring they met course requirements.',
 		],
 	}, {
 		title: 'JS Club - Japanese Software Engineers',
@@ -139,33 +135,6 @@ export default {
 			'Top 3 FPT Edu Hackathon 2021 - beat over 100 teams from different Universities.',
 			'<b>Technologies: </b>MeteorJS, MongoDB, AWS Cloud',
 			'<a href="https://github.com/DAN3002/Doctors-Cyclop-Webapp">Source code</a>',
-		],
-	}, {
-		title: 'FUNiX Learning Management System (LMS)',
-		subtitle: 'Technical Leader',
-		text: [
-			`A web application that provides a platform for students and instructors to manage their courses,
-			allowing them to access educational materials and interact with each other. Build from OpenEdx
-			open-source project.`,
-			'<b>Technologies: </b>ReactJS, Django, MySQL, AWS Cloud',
-		],
-	}, {
-		title: 'FUNiX Mentoring System (HF40)',
-		subtitle: 'Fullstack Developer',
-		text: [
-			`Developed and maintained a web application that help FUNiX's students to find mentors,
-			allowing them to connect and communicate with each other. Build from Rocket.Chat open-source
-			project.`,
-			'<b>Technologies: </b>MeteorJS, MongoDB, GCP',
-		],
-	}, {
-		title: 'FUNiX Passport',
-		subtitle: 'Fullstack Developer',
-		text: [
-			`Chrome Extension that translates subtitles on MOOC websites (such as Udemy and Coursera)
-			and the content of the page into Vietnamese, providing a more accessible and user-friendly
-			learning experience for students`,
-			'<b>Technologies:</b>: Vanilla Javascript, Firebase',
 		],
 	}],
 	certifications: [{

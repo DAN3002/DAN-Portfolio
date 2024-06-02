@@ -16,15 +16,16 @@ export default {
 		'<b>Languages</b>: English | Vietnamese: native.',
 		'<b>Programming languages</b>: Go, Python, JavaScript, Bash, Java, SQL.',
 		'<b>Frameworks & Libraries</b>: MERN Stack, VueJS, NextJS, Flask, Django, ...',
-		'<b>Other</b>: Linux, Git, Docker, AWS, Firebase, k8s, ...',
+		'<b>Other</b>: Langchain, Linux, Git, Docker, AWS, k8s, ...',
 	],
 	education: [{
 		title: 'FPT University',
 		timeline: 'Jan 2022 - Aug 2023',
 		subtitle: 'Major: Software Engineering.',
 		text: [
+			'Graduated at the <b>age of 20</b>, two years ahead of schedule.',
 			'Awarded a full scholarship covering the entirety of the study period.',
-			'I am able to complete my undergraduate degree in a year and a half due to an exemption of 50% of required subjects in the entire study program.',
+			// 'I am able to complete my undergraduate degree in a year and a half due to an exemption of 50% of required subjects in the entire study program.',
 			// 'GPA: 8.0/10',
 		],
 	}, {
@@ -94,10 +95,11 @@ export default {
 	}, {
 		title: 'JS Club - Japanese Software Engineers',
 		timeline: 'May 2022 - Present',
-		subtitle: 'Member',
+		subtitle: 'Member - Academic Department',
 		text: [
-			'Instructed a class of 15 students in Java Object-Oriented Programming for a period of 10 weeks, resulting in all students passing the course at university level with a grade of 80% or higher.',
-			'Actively participated in deploying contest environments for Competitive Programming competitions.',
+			// 'Instructed a class of 15 students in Java Object-Oriented Programming for a period of 10 weeks, resulting in all students passing the course at university level with a grade of 80% or higher.',
+			// 'Actively participated in deploying contest environments for Competitive Programming competitions.',
+			'My university club where we share knowledge and skills at programming and software development. We organize training classes that help with improving coding skills, academic events, tech sharing sessions and more.',
 		],
 	}, {
 		title: 'Developh Vietnam',
@@ -105,7 +107,7 @@ export default {
 		subtitle: 'Techcontent Mentor',
 		text: [
 			'Mentor of the <a href="https://www.facebook.com/develophvn/photos/pcb.334074128129033/334072064795906/">DIY Camp</a> program, where I provided guidance and support to students in developing their own projects.',
-			'Develop and maintain the official website for <a href="https://www.facebook.com/develophvn">Developh Vietnam</a> - a social enterprise that aims to make technology education accessible to children in Vietnam by conducting coding classes and has reached over 6,000 followers on Facebook.',
+			// 'Develop and maintain the official website for <a href="https://www.facebook.com/develophvn">Developh Vietnam</a> - a social enterprise that aims to make technology education accessible to children in Vietnam by conducting coding classes and has reached over 6,000 followers on Facebook.',
 		],
 	}, {
 		title: 'Codelearn',
@@ -117,6 +119,16 @@ export default {
 		],
 	}],
 	projects: [{
+		title: 'Architecture Design Generator',
+		timeline: 'Jun 2024',
+		subtitle: 'Fullstack Developer',
+		text: [
+			'An application designed to provide various functionalities to help users create and manage architecture design diagrams more effectively. With the power of ChatGPT 4, our application can provide users the ability to create architecture design from scratch with a more interactive and user-friendly experience.',
+			'Champion of VPBank Hackathon 2024',
+			'<b>Technologies: </b>ReactJS, Langchain, Go, AWS, ...',
+			'<a href="https://github.com/bhdl-ai/vpbank-hackathon-fe">Source code</a>',
+		],
+	}, {
 		title: 'FinAInce Assistant',
 		timeline: 'Apr 2023 - May 2023',
 		subtitle: 'Fullstack Developer & Cloud Engineer',
@@ -165,6 +177,18 @@ export default {
 
 	}],
 	achievements: [{
+		name: 'VPBank Hackathon 2024',
+		category: 'Hackathon',
+		thumb: '/images/achieves/vpbank-hackathon-2024.png',
+		image: '/images/achieves/vpbank-hackathon-2024-banner.jpg',
+		date: 'Jun 2024',
+		prize: 'Champion',
+		text: [
+			'An application designed to provide various functionalities to help users create and manage architecture design diagrams more effectively. With the power of ChatGPT 4, our application can provide users the ability to create architecture design from scratch with a more interactive and user-friendly experience.',
+			'Beat over 150 teams from different Companies and Universities.',
+		],
+		link: [],
+	}, {
 		name: 'FPT Edu ResFes 2023',
 		category: 'Research Festival',
 		thumb: '/images/achieves/resfes-2023.jpg',

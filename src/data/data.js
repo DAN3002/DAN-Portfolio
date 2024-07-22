@@ -3,7 +3,7 @@ export default {
 	contactEmail: 'dan3002.work@gmail.com',
 	startDate: 2019,
 	home: {
-		roles: ['a Software Engineer', 'a Cloud Engineer', 'an AWS Authorized Instructor'],
+		roles: ['a Software Engineer', 'a DevOps Engineer', 'an AWS Authorized Instructor'],
 	},
 	about: {
 		paragraphs: [
@@ -40,8 +40,15 @@ export default {
 		],
 	}],
 	experience: [{
+		title: 'VPBank',
+		timeline: 'Aug 2024 - Present',
+		subtitle: 'Full Stack & DevOps',
+		text: [
+			'Design, develop, and maintain ESB systems, ensuring seamless integration and communication across our banking applications.',
+		],
+	}, {
 		title: 'OpenCommerce Group',
-		timeline: 'Mar 2024 - Present',
+		timeline: 'Mar 2024 - July 2024',
 		subtitle: 'Full-Stack Developer',
 		text: [
 			'Participate in the development of the Dropshipping e-commerce system.',

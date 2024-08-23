@@ -42,9 +42,12 @@ export default {
 	experience: [{
 		title: 'VPBank',
 		timeline: 'Aug 2024 - Present',
-		subtitle: 'Full Stack & DevOps',
+		subtitle: 'DevOps Engineer',
 		text: [
-			'Design, develop, and maintain ESB systems, ensuring seamless integration and communication across our banking applications.',
+			'Aligning ESB architecture with microservices and cloud environments, focusing on stability, performance, and scalability.',
+			'Utilizing GitOps framework to automate monitoring, enabling proactive management and real-time issue resolution.',
+			'Re-architecting existing APIs and services to integrate with modern microservices and message-oriented middleware (IBM MQ).',
+			'Designing and implementing CI/CD pipelines to streamline deployment and testing, ensuring smooth integration and delivery of new features.',
 		],
 	}, {
 		title: 'OpenCommerce Group',

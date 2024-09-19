@@ -1804,7 +1804,7 @@ body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark 
 body.dark .triangle-top:before {
   border-bottom-color: #302f4e;
 }
-body.dark .timeline.exp .timeline-container::after, body.dark .timeline.edu .timeline-container::after, body.dark .timeline.activity .timeline-container::after, body.dark .timeline.project .timeline-container::after, body.dark .timeline.other .timeline-container::after {
+body.dark .timeline.exp .timeline-container::after, body.dark .timeline.edu .timeline-container::after, body.dark .timeline.activity .timeline-container::after, body.dark .timeline.project .timeline-container::after, body.dark .timeline.other .timeline-container::after, body.dark .timeline.star .timeline-container::after {
   background: #302f4e;
 }
 body.dark .portfolio-filter li {
@@ -2192,6 +2192,18 @@ body.dark .blog-page-section .blog-single {
 
 .timeline.other .timeline-container::after {
   content: "\e08b";
+  background: #FFF;
+  font-family: "simple-line-icons";
+  font-size: 24px;
+  color: #FF4C60;
+  position: absolute;
+  left: -7px;
+  top: 0;
+  z-index: 1;
+}
+
+.timeline.star .timeline-container::after {
+  content: "\e09b";
   background: #FFF;
   font-family: "simple-line-icons";
   font-size: 24px;
@@ -2904,4 +2916,12 @@ textarea::-webkit-scrollbar-thumb
   .carousel-wrapper {
     max-width: 300px;
   }
+}
+
+.cert-mooc-item {
+  color: white;
+}
+
+.cert-mooc-item:hover {
+  color: #FF4C60 !important;
 }

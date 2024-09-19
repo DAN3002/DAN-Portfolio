@@ -2,6 +2,7 @@ import parse from 'html-react-parser';
 
 import TimelineConatiner from './TimelineConatiner';
 import data from '../../data/data';
+import MoocCertificate from './MoocCertificate';
 
 function ResumeSection() {
 	const {
@@ -43,6 +44,7 @@ function ResumeSection() {
 						<span className="line" />
 					</div>
 				</div>
+				<MoocCertificate />
 			</div>
 			<div className="col-md-6">
 				<TimelineConatiner

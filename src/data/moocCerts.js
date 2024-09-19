@@ -1,5 +1,10 @@
 export default [
 	{
+		name: 'AWS Certified SysOps Administrator Associate SOA-C02',
+		cert_id: 'UC-9b39463d-3789-4ef7-921a-093fc6977a00',
+		skills: ['Cloud Computing', 'Amazon Web Services (AWS)', 'DevOps'],
+	},
+	{
 		name: 'Apache Airflow: The Hands-On Guide',
 		cert_id: 'UC-0dff06f7-9613-4158-b106-e2719b821b32',
 		skills: ['Data Engineering', 'Apache Airflow'],

@@ -15,12 +15,13 @@ function MoocCertificate() {
 						<span className="time" />
 						<ul>
 							{moocCerts.map((item) => (
-								<li>
+								<li key={item.cert_id}>
 									<a
 										className="cert-mooc-item"
 										href={`https://www.udemy.com/certificate/${item.cert_id}/`}
 										target="_blank"
 										rel="noreferrer"
+										title={`Skills: ${item.skills.join(', ')}`}
 									>
 										{item.name}
 									</a>

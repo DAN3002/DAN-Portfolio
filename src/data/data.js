@@ -143,10 +143,10 @@ export default {
 		timeline: 'Apr 2023 - Aug 2023',
 		subtitle: 'Data Engineer',
 		text: [
-			' A specialized tool for crawling products on Shopee by shop, keyword, and other criteria, with a continuous update mechanism to keep data current.',
+			'A specialized tool for crawling products on Shopee by shop, keyword, and other criteria, with a continuous update mechanism to keep data current.',
 			'Collects comprehensive information, including product details, images, and comments, enabling dataset creation for search functionality, data analysis (DA), and AI model training.',
 			'Achieved a dataset of 1 million fashion products, and 8 million images from over 8,000 shops on Shopee, supporting scalable data-driven insights and AI applications.',
-			'<b>Technologies: </b>Selenium, ReactJS, NodeJS, ...',
+			'<b>Technologies: </b>Selenium, Python, ...',
 		],
 	}, {
 		title: 'E-comerce Template Base Crawler',
@@ -156,7 +156,7 @@ export default {
 			'Building a crawler system that gathers e-commerce product data from various sources, brands, and shops. It uses XPath templates to extract product details such as name, price, and images, with continuous update mechanisms.',
 			'Provides an end-to-end experience: includes a tool for creating templates, a web app for managing crawled data and crawl history, and a dynamic core crawler system.',
 			'Users only need to create a template for a sample product link on the website, and the system will automatically crawl all related products based on the generated template.',
-			'<b>Technologies: </b>Selenium, ReactJS, NodeJS, ...',
+			'<b>Technologies: </b>Selenium, ReactJS, NodeJS, Python, ...',
 		],
 	}, {
 		title: 'FinAInce Assistant',

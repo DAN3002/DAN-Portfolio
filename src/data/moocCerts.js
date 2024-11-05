@@ -5,6 +5,11 @@ export default [
 		skills: ['Cloud Computing', 'Amazon Web Services (AWS)', 'DevOps'],
 	},
 	{
+		name: 'Jenkins: Jobs, Pipelines, CI/CD and DevOps for Beginners',
+		cert_id: 'UC-bbe7eaba-dda8-46f1-8db5-1e8d29a9b4ba',
+		skills: ['CI/CD', 'Jenkins', 'DevOps'],
+	},
+	{
 		name: 'Apache Airflow: The Hands-On Guide',
 		cert_id: 'UC-0dff06f7-9613-4158-b106-e2719b821b32',
 		skills: ['Data Engineering', 'Apache Airflow'],

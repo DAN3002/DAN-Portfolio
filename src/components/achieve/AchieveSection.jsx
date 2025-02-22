@@ -1,28 +1,24 @@
 import parse from 'html-react-parser';
-
 import data from '../../data/data';
 import Carousel from '../utils/Carousel';
+import LazyImage from '../utils/LazyImage';
 
 function AchieveSection() {
-	const { PUBLIC_URL } = process.env;
-
 	const { achievements } = data;
 
 	const items = achievements.map((item, index) => (
-		<div className="custem-carousel-item rounded bg-dark wow fadeIn">
+		<div key={index} className="custem-carousel-item rounded bg-dark wow fadeIn">
 			<a
 				href={`#small-dialog-achieve-${index}`}
 				className="work-content"
 			>
 				<div className="thumb">
 					<span className="category">{item.category}</span>
-					<img
-						src={`${PUBLIC_URL}${item.thumb}`}
+					<LazyImage
+						src={item.thumb}
 						alt={item.name}
-						style={{
-							width: '330px',
-							height: '268px',
-						}}
+						width={330}
+						height={268}
 					/>
 				</div>
 				<div className="details">
@@ -42,23 +38,24 @@ function AchieveSection() {
 		<div className="row blog-wrapper">
 			{achievements.map((item, index) => (
 				<div
+					key={index}
 					id={`small-dialog-achieve-${index}`}
 					className="white-popup zoom-anim-dialog mfp-hide"
 				>
-					<img
-						src={`${PUBLIC_URL}${item.image}`}
+					<LazyImage
+						src={item.image}
 						alt={item.name}
 					/>
 					<div className="spacer" data-height={5} />
-					{item.text.map((text) => (
-						<p>{parse(text)}</p>
+					{item.text.map((text, i) => (
+						<p key={i}>{parse(text)}</p>
 					))}
 
 					<div className="spacer" data-height={10} />
 					<div style={{ marginLeft: 10 }}>
 						<ul>
-							{item.link.map((el) => (
-								<li>
+							{item.link.map((el, i) => (
+								<li key={i}>
 									<a href={el.url}>
 										{el.text}
 									</a>
@@ -68,9 +65,7 @@ function AchieveSection() {
 					</div>
 				</div>
 			))}
-			<Carousel
-				items={items}
-			/>
+			<Carousel items={items} />
 		</div>
 	);
 }

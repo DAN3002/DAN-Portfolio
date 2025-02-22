@@ -25,7 +25,8 @@
         "indent": ["error", "tab"],
         "no-tabs": 0,
         "import/no-extraneous-dependencies": "off",
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "react/no-array-index-key": "off"
     },
     "globals": {
         "$": "readonly"

@@ -1,22 +1,20 @@
 import data from '../../data/data';
 import Carousel from '../utils/Carousel';
+import LazyImage from '../utils/LazyImage';
 
 function CertificationSection() {
-	const { PUBLIC_URL } = process.env;
 	const { certifications } = data;
 
 	const items = certifications.map((cert, i) => (
-		<div className="custem-carousel-item rounded bg-dark wow fadeIn">
+		<div key={i} className="custem-carousel-item rounded bg-dark wow fadeIn">
 			<a href={`#small-dialog-cert-${i}`} className="work-content">
 				<div className="thumb">
 					<span className="category">{cert.category}</span>
-					<img
-						src={`${PUBLIC_URL}${cert.thumb}`}
+					<LazyImage
+						src={cert.thumb}
 						alt={cert.name}
-						style={{
-							width: '330px',
-							height: '173px',
-						}}
+						width={330}
+						height={173}
 					/>
 				</div>
 				<div className="details">
@@ -36,11 +34,12 @@ function CertificationSection() {
 		<div className="row blog-wrapper">
 			{certifications.map((cert, i) => (
 				<div
+					key={i}
 					id={`small-dialog-cert-${i}`}
 					className="white-popup zoom-anim-dialog mfp-hide"
 				>
-					<img
-						src={`${PUBLIC_URL}${cert.image}`}
+					<LazyImage
+						src={cert.image}
 						alt={cert.name}
 					/>
 					<br />
@@ -56,9 +55,7 @@ function CertificationSection() {
 				</div>
 			))}
 
-			<Carousel
-				items={items}
-			/>
+			<Carousel items={items} />
 		</div>
 	);
 }

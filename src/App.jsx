@@ -8,6 +8,9 @@ import GoToTop from './components/utils/GoToTop';
 
 import Main from './components/Main';
 
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import './styles/components/lazy-image.css';
+
 // const TRACKING_ID = 'G-44EFKEN67K';
 // ReactGA.initialize(TRACKING_ID);
 

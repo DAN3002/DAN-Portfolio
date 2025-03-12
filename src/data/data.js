@@ -143,6 +143,27 @@ export default {
 			tags: ['Node.js', 'Express'],
 			shortDescription: 'A short description of project two.',
 		},
+		{
+			id: '1',
+			thumbnail: '/path/to/image1.jpg',
+			title: 'Project One',
+			tags: ['React', 'JavaScript'],
+			shortDescription: 'A short description of project one.',
+		},
+		{
+			id: '2',
+			thumbnail: '/path/to/image2.jpg',
+			title: 'Project Two',
+			tags: ['Node.js', 'Express'],
+			shortDescription: 'A short description of project two.',
+		},
+		{
+			id: '1',
+			thumbnail: '/path/to/image1.jpg',
+			title: 'Project One',
+			tags: ['React', 'JavaScript'],
+			shortDescription: 'A short description of project one.',
+		},
 		// more projects...
 	],
 	certifications: [{

@@ -128,57 +128,23 @@ export default {
 			'Achieved a top ranking on the leaderboard.',
 		],
 	}],
-	projects: [{
-		title: 'Architecture Design Generator',
-		timeline: 'Jun 2024',
-		subtitle: 'Fullstack Developer',
-		text: [
-			'An application designed to provide various functionalities to help users create and manage architecture design diagrams more effectively. With the power of ChatGPT 4, our application can provide users the ability to create architecture design from scratch with a more interactive and user-friendly experience.',
-			'Champion of VPBank Hackathon 2024',
-			'<b>Technologies: </b>ReactJS, Langchain, Go, AWS, ...',
-			'<a href="https://github.com/bhdl-ai/vpbank-hackathon-fe">Source code</a>',
-		],
-	}, {
-		title: 'Shopee Product Crawler',
-		timeline: 'Apr 2023 - Aug 2023',
-		subtitle: 'Data Engineer',
-		text: [
-			'A specialized tool for crawling products on Shopee by shop, keyword, and other criteria, with a continuous update mechanism to keep data current.',
-			'Collects comprehensive information, including product details, images, and comments, enabling dataset creation for search functionality, data analysis (DA), and AI model training.',
-			'Achieved a dataset of 1 million fashion products, and 8 million images from over 8,000 shops on Shopee, supporting scalable data-driven insights and AI applications.',
-			'<b>Technologies: </b>Selenium, Python, ...',
-		],
-	}, {
-		title: 'E-comerce Template Base Crawler',
-		timeline: 'Apr 2023 - Aug 2023',
-		subtitle: 'Fullstack Developer & Data Engineer',
-		text: [
-			'Building a crawler system that gathers e-commerce product data from various sources, brands, and shops. It uses XPath templates to extract product details such as name, price, and images, with continuous update mechanisms.',
-			'Provides an end-to-end experience: includes a tool for creating templates, a web app for managing crawled data and crawl history, and a dynamic core crawler system.',
-			'Users only need to create a template for a sample product link on the website, and the system will automatically crawl all related products based on the generated template.',
-			'<b>Technologies: </b>Selenium, ReactJS, NodeJS, Python, ...',
-		],
-	}, {
-		title: 'FinAInce Assistant',
-		timeline: 'Apr 2023 - May 2023',
-		subtitle: 'Fullstack Developer & Cloud Engineer',
-		text: [
-			'<b>FinAInce Assistant</b> is a financial chatbot designed to provide various functionalities to help users manage their finances more effectively. With the power of ChatGPT, our chatbot predicts user behavior, automates basic tasks, and offers real-time financial insights.',
-			'Champion of FUNiX ChatGPT Hackathon',
-			'<b>Technologies: </b>ReactJS, Flask, GPC Cloud, Firebase, ChatGPT Prompt, ...',
-			'<a href="https://github.com/DAN3002/FinAInce-Assistant-Webapp">Source code</a>',
-		],
-	}, {
-		title: 'Doctor’s Cyclop',
-		timeline: 'Apr 2021',
-		subtitle: 'Fullstack Developer & Cloud Engineer',
-		text: [
-			'Created a website that implements the machine learning model for classifying the presence and correct placement of tubes on chest x-rays, allowing for easy access and practical application of the model by medical professionals.',
-			'Top 3 FPT Edu Hackathon 2021 - beat over 100 teams from different Universities.',
-			'<b>Technologies: </b>MeteorJS, MongoDB, AWS Cloud',
-			'<a href="https://github.com/DAN3002/Doctors-Cyclop-Webapp">Source code</a>',
-		],
-	}],
+	projects: [
+		{
+			id: '1',
+			thumbnail: '/path/to/image1.jpg',
+			title: 'Project One',
+			tags: ['React', 'JavaScript'],
+			shortDescription: 'A short description of project one.',
+		},
+		{
+			id: '2',
+			thumbnail: '/path/to/image2.jpg',
+			title: 'Project Two',
+			tags: ['Node.js', 'Express'],
+			shortDescription: 'A short description of project two.',
+		},
+		// more projects...
+	],
 	certifications: [{
 		name: 'AWS Certified Solutions Architect - Associate',
 		category: 'AWS Certificate',

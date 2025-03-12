@@ -2925,3 +2925,66 @@ textarea::-webkit-scrollbar-thumb
 .cert-mooc-item:hover {
   color: #FF4C60 !important;
 }
+
+.project-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.project-item {
+    background: #302f4e; /* Dark background */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: calc(50% - 10px);
+    color: #FFF; /* White text color */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+.project-item:hover {
+    transform: translateY(-5px); /* Slightly lift the item */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase shadow for depth */
+    background: #3a3a5e; /* Slightly lighter background on hover */
+    cursor: pointer;
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: auto;
+}
+
+.project-content {
+    padding: 15px;
+    color: #FFF; /* Ensure text is white */
+}
+
+.project-tags {
+    display: block;
+    margin-bottom: 10px;
+    color: #FFD15C; /* Accent color for tags */
+}
+
+.filter-buttons {
+    margin-bottom: 20px;
+}
+
+.filter-buttons .btn {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #454360; /* Dark button background */
+    color: #FFF; /* White text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for smooth effect */
+}
+
+.filter-buttons .btn:hover {
+    background-color: #5a5a7a; /* Slightly lighter background on hover */
+    color: #FFD15C; /* Change text color on hover */
+}
+
+.filter-buttons .btn.active {
+    background-color: #FF4C60; /* Active button color */
+    color: #FFF;
+}

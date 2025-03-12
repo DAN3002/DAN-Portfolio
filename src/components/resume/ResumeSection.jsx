@@ -6,7 +6,7 @@ import MoocCertificate from './MoocCertificate';
 
 function ResumeSection() {
 	const {
-		education, experience, activities, projects, others,
+		education, experience, activities, others,
 	} = data;
 
 	return (
@@ -51,12 +51,6 @@ function ResumeSection() {
 					title="Experiences"
 					timelineData={experience}
 					icon="exp"
-				/>
-
-				<TimelineConatiner
-					title="Projects"
-					timelineData={projects}
-					icon="project"
 				/>
 			</div>
 		</div>

@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import data from '../data/data';
+
 import Section from './Section';
 import HomeSection from './home/HomeSection';
 import AboutSection from './about/AboutSection';
@@ -8,6 +10,7 @@ import ResumeSection from './resume/ResumeSection';
 import CertificationSection from './certification/CertificationSection';
 import AchieveSection from './achieve/AchieveSection';
 import ContactSection from './contact/ContactSection';
+import ProjectList from './resume/ProjectList';
 
 function Main() {
 	useEffect(() => {
@@ -46,6 +49,8 @@ function Main() {
 		});
 	}, []);
 
+	const { projects } = data;
+
 	return (
 		<main className="content">
 			<HomeSection />
@@ -68,7 +73,12 @@ function Main() {
 			>
 				<WorkSection />
 			</Section> */}
-
+			<Section
+				id="projects"
+				title="Projects"
+			>
+				<ProjectList projects={projects} />
+			</Section>
 			<Section
 				id="certifications"
 				title="Certifications"

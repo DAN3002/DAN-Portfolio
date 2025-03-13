@@ -130,7 +130,6 @@ export default {
 	}],
 	projects: [
 		{
-			thumbnail: '/path/to/image1.jpg',
 			title: 'Architecture Design Generator',
 			tags: ['Fullstack', 'GenAI'],
 			role: 'Fullstack Developer',
@@ -143,7 +142,6 @@ export default {
 			source: 'https://github.com/example/architecture-design-generator',
 		},
 		{
-			thumbnail: '/path/to/image2.jpg',
 			title: 'Shopee Product Crawler',
 			tags: ['Crawler', 'Data Engineering'],
 			role: 'Data Engineer',
@@ -155,7 +153,6 @@ export default {
 			techs: ['Selenium', 'Python'],
 		},
 		{
-			thumbnail: '/path/to/image3.jpg',
 			title: 'E-commerce Template Base Crawler',
 			tags: ['Crawler', 'Data Engineering'],
 			role: 'Fullstack Developer & Data Engineer',
@@ -167,7 +164,6 @@ export default {
 			techs: ['Selenium', 'ReactJS', 'NodeJS', 'Python'],
 		},
 		{
-			thumbnail: '/path/to/image4.jpg',
 			title: 'FinAInce Assistant',
 			tags: ['GenAI', 'Fullstack'],
 			role: 'Fullstack Developer & Cloud Engineer',

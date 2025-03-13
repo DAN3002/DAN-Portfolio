@@ -2417,65 +2417,6 @@ body.dark .blog-page-section .blog-single {
   opacity: 0;
 }
 
-/* Styles for dialog window */
-.white-popup {
-  background: white;
-  border-radius: 25px;
-  padding: 30px;
-  text-align: left;
-  max-width: 650px;
-  margin: 40px auto;
-  position: relative;
-}
-
-/**
- * Fade-zoom animation for first dialog
- */
-/* start state */
-.my-mfp-zoom-in .zoom-anim-dialog {
-  opacity: 0;
-  -webkit-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  -webkit-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  transform: scale(0.8);
-}
-
-/* animate in */
-.my-mfp-zoom-in.mfp-ready .zoom-anim-dialog {
-  opacity: 1;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-/* animate out */
-.my-mfp-zoom-in.mfp-removing .zoom-anim-dialog {
-  -webkit-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  transform: scale(0.8);
-  opacity: 0;
-}
-
-/* Dark overlay, start state */
-.my-mfp-zoom-in.mfp-bg {
-  opacity: 0;
-  -webkit-transition: opacity 0.3s ease-out;
-  -o-transition: opacity 0.3s ease-out;
-  transition: opacity 0.3s ease-out;
-}
-
-/* animate in */
-.my-mfp-zoom-in.mfp-ready.mfp-bg {
-  opacity: 0.8;
-}
-
-/* animate out */
-.my-mfp-zoom-in.mfp-removing.mfp-bg {
-  opacity: 0;
-}
-
 .mfp-close {
   font-size: 40px;
   opacity: 1;
@@ -2956,7 +2897,11 @@ textarea::-webkit-scrollbar-thumb
 
 .project-content {
     padding: 15px;
+    padding-top: 0px;
     color: #FFF; /* Ensure text is white */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .project-tags {
@@ -3042,4 +2987,50 @@ textarea::-webkit-scrollbar-thumb
         opacity: 0;
         transform: translateX(-20px);
     }
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tech-stack {
+    margin-top: 15px;
+}
+
+.tech-stack-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #FFD15C;
+}
+
+.tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tech-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tech-badge:hover {
+    background-color: rgba(255, 209, 92, 0.2);
+    border-color: #FFD15C;
+}
+
+/* Add appropriate spacing */
+.project-content p {
+    margin-bottom: 8px;
 }

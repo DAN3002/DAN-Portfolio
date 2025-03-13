@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import parse from 'html-react-parser';
 
 function ProjectList({ projects }) {
 	const [selectedTag, setSelectedTag] = useState('All');
 	const [currentPage, setCurrentPage] = useState(1);
 	const [animationClass, setAnimationClass] = useState('');
-	const itemsPerPage = 6;
+	const itemsPerPage = 4;
 
 	const tags = ['All', ...new Set(projects.flatMap((project) => project.tags))];
 
@@ -47,12 +46,25 @@ function ProjectList({ projects }) {
 				))}
 			</div>
 			<div className={`project-list ${animationClass}`}>
-				{currentProjects.map((project) => (
-					<div key={project.id} className="project-item">
+				{currentProjects.map((project, index) => (
+					<div key={index} className="project-item">
 						<div className="project-content">
 							<h4>{project.title}</h4>
-							<span className="project-tags">{project.tags.join(', ')}</span>
-							<p>{parse(project.shortDescription)}</p>
+							<p className="line-clamp-3">{project.description}</p>
+
+							{/* Tech stack section */}
+							{project.techs && project.techs.length > 0 && (
+								<div className="tech-stack">
+									<div className="tech-stack-label">Tech Stack:</div>
+									<div className="tech-badges">
+										{project.techs.map((tech, techIndex) => (
+											<span key={techIndex} className="tech-badge">
+												{tech}
+											</span>
+										))}
+									</div>
+								</div>
+							)}
 						</div>
 					</div>
 				))}
@@ -91,11 +103,13 @@ function ProjectList({ projects }) {
 
 ProjectList.propTypes = {
 	projects: PropTypes.arrayOf(PropTypes.shape({
-		id: PropTypes.string.isRequired,
 		thumbnail: PropTypes.string.isRequired,
 		title: PropTypes.string.isRequired,
 		tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-		shortDescription: PropTypes.string.isRequired,
+		role: PropTypes.string.isRequired,
+		description: PropTypes.string.isRequired,
+		contents: PropTypes.arrayOf(PropTypes.string).isRequired,
+		techs: PropTypes.arrayOf(PropTypes.string), // Add this to the prop types
 	})).isRequired,
 };
 

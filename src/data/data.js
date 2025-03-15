@@ -131,7 +131,7 @@ export default {
 	projects: [
 		{
 			title: 'Architecture Design Generator',
-			tags: ['Fullstack', 'GenAI'],
+			tags: ['Fullstack', 'AI'],
 			role: 'Fullstack Developer',
 			description: 'An application designed to provide various functionalities to help users create and manage architecture design diagrams more effectively.',
 			contents: [
@@ -139,11 +139,35 @@ export default {
 				'Champion of VPBank Hackathon 2024',
 			],
 			techs: ['ReactJS', 'Langchain', 'Go', 'AWS'],
-			source: 'https://github.com/example/architecture-design-generator',
+		},
+		{
+			title: 'IMDb-Crawler',
+			tags: ['Crawler'],
+			role: 'Data Engineer',
+			description: 'A powerful Python-based web crawler that collects comprehensive movie information from IMDb using both GraphQL API and web scraping techniques. This tool can gather detailed movie data including basic information, reviews, and ratings for any type of movies based on customizable filters.',
+			contents: [
+				'Advanced movie filtering capabilities similar to IMDb\'s search engine, allowing users to search for movies based on various criteria such as genre, rating, and release year.',
+				'Collects detailed movie information',
+				'Comprehensive user review collection',
+			],
+			techs: ['Python', 'GraphQL', 'Selenium'],
+			source: 'https://github.com/DAN3002/IMDb-Crawler',
+		},
+		{
+			title: 'Tiktok Video Crawler',
+			tags: ['Crawler'],
+			role: 'Data Engineer',
+			description: 'This is a simple Tiktok crawler that can be used to download videos from Tiktok.',
+			contents: [
+				'It uses the Tiktok API to get the video URL and then downloads the video using the requests library.',
+				'It can download video from multiple hashtags or download by sound.',
+			],
+			techs: ['Python'],
+			source: 'https://github.com/DAN3002/Tiktok-Crawler',
 		},
 		{
 			title: 'Shopee Product Crawler',
-			tags: ['Crawler', 'Data Engineering'],
+			tags: ['Crawler'],
 			role: 'Data Engineer',
 			description: 'A specialized tool for crawling products on Shopee by shop, keyword, and other criteria, with a continuous update mechanism to keep data current.',
 			contents: [
@@ -154,7 +178,7 @@ export default {
 		},
 		{
 			title: 'E-commerce Template Base Crawler',
-			tags: ['Crawler', 'Data Engineering'],
+			tags: ['Crawler'],
 			role: 'Fullstack Developer & Data Engineer',
 			description: 'Building a crawler system that gathers e-commerce product data from various sources, brands, and shops. It uses XPath templates to extract product details such as name, price, and images, with continuous update mechanisms.',
 			contents: [
@@ -165,7 +189,7 @@ export default {
 		},
 		{
 			title: 'FinAInce Assistant',
-			tags: ['GenAI', 'Fullstack'],
+			tags: ['AI', 'Fullstack'],
 			role: 'Fullstack Developer & Cloud Engineer',
 			description: 'FinAInce Assistant is a financial chatbot designed to provide various functionalities to help users manage their finances more effectively.',
 			contents: [
@@ -176,16 +200,74 @@ export default {
 			source: 'https://github.com/example/finaince-assistant',
 		},
 		{
-			thumbnail: '/path/to/image5.jpg',
+			title: 'FUNiX Learning Management System (LMS)',
+			tags: ['Fullstack', 'Tech Lead'],
+			role: 'Fullstack Developer & Team Leader',
+			description: 'A web application that provides a platform for students and instructors to manage their courses, allowing them to access educational materials and interact with each other. Built from the OpenEdx open-source project.',
+			contents: [
+				'Built a comprehensive learning management system (LMS) for FUNiX, an online learning platform.',
+				'Incorporated features such as course management, material access, and student-instructor interaction.',
+				'Utilized the OpenEdx open-source project to accelerate development.',
+			],
+			techs: ['ReactJS', 'Django', 'MySQL', 'AWS Cloud'],
+		},
+		{
+			title: 'FUNiX Mentoring System (HF40)',
+			tags: ['Fullstack'],
+			role: 'Fullstack Developer',
+			description: 'Developed and maintained a web application that helps FUNiX students find mentors, allowing them to connect and communicate with each other. Built from the Rocket.Chat open-source project.',
+			contents: [
+				'Built and maintained a mentoring system that enables FUNiX students to connect with mentors.',
+				'Developed key features for user interaction and communication within the system.',
+				'Utilized the Rocket.Chat open-source project to power the chat and communication functionalities.',
+			],
+			techs: ['MeteorJS', 'MongoDB', 'GCP Cloud'],
+		},
+		{
+			title: 'DAN3002 Portfolio',
+			tags: ['Fullstack'],
+			role: 'Fullstack Developer',
+			description: 'This is a single-page React application that displays my personal resume information and projects from Github. The application is built with React, CSS, and HTML and data is fetched from the Github API.',
+			contents: [
+
+			],
+			techs: ['ReactJS', 'Github API', 'Cloudfalre'],
+			source: 'https://github.com/DAN3002/DAN-Portfolio',
+		},
+		{
 			title: 'Doctor\'s Cyclop',
-			tags: ['Machine Learning', 'Fullstack'],
+			tags: ['Fullstack', 'AI'],
 			role: 'Fullstack Developer & Cloud Engineer',
 			description: 'Created a website that implements the machine learning model for classifying the presence and correct placement of tubes on chest x-rays, allowing for easy access and practical application of the model by medical professionals.',
 			contents: [
 				'Top 3 FPT Edu Hackathon 2021 - beat over 100 teams from different Universities.',
 			],
 			techs: ['MeteorJS', 'MongoDB', 'AWS Cloud'],
-			source: 'https://github.com/example/doctors-cyclop',
+			source: 'https://github.com/DAN3002/Doctors-Cyclop-Webapp',
+		},
+		{
+			title: 'FUNiX Passport',
+			tags: ['Fullstack'],
+			role: 'Fullstack Developer',
+			description: 'Chrome Extension that translates subtitles on MOOC websites (such as Udemy and Coursera) and the content of the page into Vietnamese, providing a more accessible and user-friendly learning experience for students.',
+			contents: [
+				'Developed a Chrome Extension that translates subtitles and page content into Vietnamese for a better learning experience.',
+				'Enhanced accessibility for Vietnamese students using MOOC platforms like Udemy and Coursera.',
+				'Focused on improving the user interface and user experience for students learning through online courses.',
+			],
+			techs: ['JavaScript', 'Firebase', 'Chrome Extension'],
+		},
+		{
+			title: 'Water Testing Instant',
+			tags: ['Fullstack'],
+			role: 'Backend Developer & Cloud Engineer',
+			description: 'Constructed a portable hand-sized device capable of measuring the turbidity and purity of water, complete with a native Android App and cloud service, providing an easy and efficient way to check water quality on the go.',
+			contents: [
+				'Built a portable device to measure water turbidity and purity with an Android App and cloud integration.',
+				'Participated in FPT Edu Hackathon 2019 and secured a top 3 position, surpassing 30 teams from various universities.',
+				'Developed the backend using ExpressJS and managed cloud services with Firebase to handle real-time data.',
+			],
+			techs: ['ExpressJS', 'Firebase'],
 		},
 	],
 	certifications: [{

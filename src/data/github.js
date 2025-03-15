@@ -34,13 +34,13 @@ const getAllRepos = async (arr = [], page = 1) => {
 
 const getGithubData = async () => {
 	// Check if the data is cached
-	const cachedData = localStorage.getItem('githubData');
-	if (cachedData) {
-		const { data, timestamp } = JSON.parse(cachedData);
-		if (timestamp > Date.now()) {
-			return data;
-		}
-	}
+	// const cachedData = localStorage.getItem('githubData');
+	// if (cachedData) {
+	// 	const { data, timestamp } = JSON.parse(cachedData);
+	// 	if (timestamp > Date.now()) {
+	// 		return data;
+	// 	}
+	// }
 
 	const repos = await getAllRepos();
 

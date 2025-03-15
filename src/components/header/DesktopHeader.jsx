@@ -41,12 +41,12 @@ function DesktopHeader() {
 							Resume
 						</a>
 					</li>
-					{/* <li>
-						<a href="#works">
-							<i className="icon-layers" />
-							Works
+					<li>
+						<a href="#projects">
+							<i className="icon-folder" />
+							Projects
 						</a>
-					</li> */}
+					</li>
 					<li>
 						<a href="#certifications">
 							<i className="icon-check" />

@@ -30,6 +30,15 @@ function ProjectList({ projects }) {
 		}, 300);
 	};
 
+	// Helper function to determine the icon based on project tags
+	const getProjectIcon = (projectTags) => {
+		if (projectTags.includes('AI')) return 'fas fa-robot text-warning';
+		if (projectTags.includes('Fullstack')) return 'fas fa-layer-group text-warning';
+		if (projectTags.includes('Crawler')) return 'fas fa-spider text-warning';
+		if (projectTags.includes('Backend')) return 'fas fa-server text-warning';
+		if (projectTags.includes('Frontend')) return 'fas fa-desktop text-warning';
+		return 'fas fa-code text-warning'; // Default icon
+	};
 	return (
 		<div>
 			<div className="filter-buttons">
@@ -55,7 +64,10 @@ function ProjectList({ projects }) {
 					return (
 						<div key={index} className="project-item">
 							<a href={`#small-dialog-project-${projectIndex}`} className="project-content">
-								<h4>{project.title}</h4>
+								<h4>
+									<i className={`${getProjectIcon(project.tags)} mr-2`} aria-hidden="true" />
+									{project.title}
+								</h4>
 								<p className="line-clamp-3">{project.description}</p>
 
 								{/* Tech stack section */}
@@ -90,7 +102,10 @@ function ProjectList({ projects }) {
 							alt={project.title}
 						/>
 					)}
-					<h2>{project.title}</h2>
+					<h2>
+						<i className={`${getProjectIcon(project.tags)} mr-2`} aria-hidden="true" />
+						{project.title}
+					</h2>
 					<div className="project-meta">
 						<span className="project-role">{project.role}</span>
 					</div>

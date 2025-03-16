@@ -1,0 +1,464 @@
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.project-item {
+    background: #302f4e;
+    /* Dark background */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    color: #FFF;
+    /* White text color */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Add transition for smooth effect */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    /* Slightly lift the item */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Increase shadow for depth */
+    background: #3a3a5e;
+    /* Slightly lighter background on hover */
+    cursor: pointer;
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: auto;
+}
+
+.project-content {
+    padding: 15px;
+    padding-top: 0px;
+    color: #FFF;
+    /* Ensure text is white */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Project item header/title styling */
+.project-content h4 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Project item body styling */
+.project-content p {
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.project-tags {
+    display: block;
+    margin-bottom: 10px;
+    color: #FFD15C;
+    /* Accent color for tags */
+}
+
+/* Tech stack footer styling */
+.tech-stack {
+    margin-top: auto;
+    padding-top: 5px;
+    /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
+}
+
+.tech-stack-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #FFD15C;
+}
+
+.tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tech-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tech-badge:hover {
+    background-color: rgba(255, 209, 92, 0.2);
+    border-color: #FFD15C;
+}
+
+/* Filter buttons */
+.filter-buttons {
+    margin-bottom: 20px;
+}
+
+.filter-buttons .btn {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #454360;
+    /* Dark button background */
+    color: #FFF;
+    /* White text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Add transition for smooth effect */
+}
+
+.filter-buttons .btn:hover {
+    background-color: #5a5a7a;
+    /* Slightly lighter background on hover */
+    color: #FFD15C;
+    /* Change text color on hover */
+}
+
+.filter-buttons .btn.active {
+    background-color: #FF4C60;
+    /* Active button color */
+    color: #FFF;
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Update pagination button styling to make them smaller */
+.pagination .btn {
+    margin: 0 4px;
+    min-width: 32px;
+    height: 32px;
+    border: none;
+    background-color: #454360;
+    color: #FFF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 0;
+}
+
+.pagination .btn:hover {
+    background-color: #5a5a7a;
+    color: #FFD15C;
+    transform: translateY(-2px);
+}
+
+.pagination .btn.active {
+    background-color: #FF4C60;
+    color: #FFF;
+    box-shadow: 0 3px 8px rgba(255, 76, 96, 0.3);
+}
+
+/* Adjust pagination navigation buttons */
+.pagination-nav {
+    font-size: 12px;
+}
+
+.project-list.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.project-list.fade-out {
+    animation: fadeOut 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tech-stack {
+    margin-top: 15px;
+}
+
+.tech-stack-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #FFD15C;
+}
+
+.tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tech-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tech-badge:hover {
+    background-color: rgba(255, 209, 92, 0.2);
+    border-color: #FFD15C;
+}
+
+/* Add appropriate spacing */
+.project-content p {
+    margin-bottom: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Project popup styling */
+.white-popup {
+    padding: 25px;
+    background: #302f4e;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+}
+
+.white-popup h2 {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.project-role-badge {
+    font-size: 13px;
+    color: #FFD15C;
+    font-weight: 500;
+    display: inline-block;
+    padding: 2px 10px;
+    margin-left: 5px;
+    border-radius: 20px;
+    background-color: rgba(255, 209, 92, 0.1);
+    border: 1px solid rgba(255, 209, 92, 0.3);
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+}
+
+.project-content-section {
+    margin: 15px 0 20px;
+}
+
+.project-description {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.project-features {
+    margin: 0 0 0 10px;
+    padding-left: 15px;
+}
+
+.project-features li {
+    margin-bottom: 8px;
+    position: relative;
+    line-height: 1.6;
+    color: #e3e3e3;
+}
+
+/* Tech stack styling in popup */
+.popup-tech-stack {
+    background-color: rgba(69, 67, 96, 0.4);
+    border: 1px solid rgba(255, 209, 92, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup-tech-stack-label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #FFD15C;
+    display: flex;
+    align-items: center;
+}
+
+.popup-tech-stack-label:before {
+    content: "\e038";  /* Code icon from simple-line-icons */
+    font-family: "simple-line-icons";
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.popup-tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.popup-tech-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.popup-tech-badge:hover {
+    background-color: rgba(255, 209, 92, 0.2);
+    border-color: #FFD15C;
+    transform: translateY(-2px);
+}
+
+.project-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.project-links a.btn {
+    padding: 8px 20px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+}
+
+.project-links a.btn:before {
+    content: "\e60c";  /* Link icon from simple-line-icons */
+    font-family: "simple-line-icons";
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.project-links a.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 76, 96, 0.3);
+}
+
+.white-popup.no-thumbnail h2 {
+  margin-top: 0;
+}
+
+/* Or alternatively, if you prefer to use the mt-0 class */
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+/* Add these styles to the end of your project-list.css file */
+
+/* Mobile pagination styles */
+.mobile-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-indicator {
+    margin: 0 15px;
+    color: #FFD15C;
+    font-weight: 500;
+}
+
+.pagination-nav {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 20px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .pagination .btn:not(.pagination-nav) {
+        display: none;
+    }
+    
+    .pagination {
+        margin-top: 30px;
+    }
+    
+    .project-item {
+        margin-bottom: 20px;
+    }
+    
+    /* Make sure popup looks good on mobile */
+    .white-popup {
+        padding: 20px 15px;
+        max-width: 90%;
+    }
+    
+    .popup-tech-badges {
+        gap: 6px;
+    }
+    
+    .popup-tech-badge {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+    
+    /* Small screens get simpler pagination */
+    .pagination-indicator {
+        font-size: 16px;
+    }
+    
+    .pagination-nav {
+        min-width: 36px;
+        height: 36px;
+        border-radius: 18px;
+        font-size: 13px;
+    }
+}

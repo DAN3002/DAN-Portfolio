@@ -377,3 +377,12 @@
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(255, 76, 96, 0.3);
 }
+
+.white-popup.no-thumbnail h2 {
+  margin-top: 0;
+}
+
+/* Or alternatively, if you prefer to use the mt-0 class */
+.mt-0 {
+  margin-top: 0 !important;
+}

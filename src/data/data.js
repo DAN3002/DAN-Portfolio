@@ -139,6 +139,7 @@ export default {
 				'Champion of VPBank Hackathon 2024',
 			],
 			techs: ['ReactJS', 'Langchain', 'Go', 'AWS'],
+			thumbnail: '/images/projects/architecture-design-generator.png',
 		},
 		{
 			title: 'IMDb-Crawler',

@@ -106,38 +106,36 @@ function ProjectList({ projects }) {
 					<h2>
 						<i className={`${getProjectIcon(project.tags)} mr-2`} aria-hidden="true" />
 						{project.title}
+						<span className="project-role-badge">{project.role}</span>
 					</h2>
-					<div className="project-meta">
-						<span className="project-role">{project.role}</span>
-					</div>
 
 					<div className="spacer" data-height={5} />
-					<p>{project.description}</p>
+					<div className="project-content-section">
+						<p className="project-description">{project.description}</p>
 
-					{/* Project details content */}
-					{project.contents && project.contents.length > 0 && (
-						<>
-							<div className="spacer" data-height={5} />
-							<h4>Key Features:</h4>
+						{/* Project details content */}
+						{project.contents && project.contents.length > 0 && (
 							<ul className="project-features">
 								{project.contents.map((content, i) => (
 									<li key={i}>{parse(content)}</li>
 								))}
 							</ul>
-						</>
-					)}
+						)}
+					</div>
 
 					{/* Tech stack */}
 					{project.techs && project.techs.length > 0 && (
 						<>
-							<div className="spacer" data-height={10} />
-							<h4>Technologies Used:</h4>
-							<div className="popup-tech-badges">
-								{project.techs.map((tech, techIndex) => (
-									<span key={techIndex} className="popup-tech-badge">
-										{tech}
-									</span>
-								))}
+							<div className="spacer" data-height={15} />
+							<div className="popup-tech-stack">
+								<div className="popup-tech-stack-label">Technologies Used:</div>
+								<div className="popup-tech-badges">
+									{project.techs.map((tech, techIndex) => (
+										<span key={techIndex} className="popup-tech-badge">
+											{tech}
+										</span>
+									))}
+								</div>
 							</div>
 						</>
 					)}

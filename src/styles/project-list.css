@@ -246,3 +246,93 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Project popup styling */
+.white-popup {
+    padding: 25px;
+    background: #302f4e;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+}
+
+.white-popup h2 {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.project-role-badge {
+    font-size: 14px;
+    color: #FFD15C;
+    font-weight: normal;
+    display: inline-block;
+    padding: 3px 10px;
+    margin-left: 8px;
+    border-radius: 20px;
+    background-color: rgba(255, 209, 92, 0.1);
+    border: 1px solid rgba(255, 209, 92, 0.3);
+    vertical-align: middle;
+}
+
+.project-content-section {
+    margin-bottom: 20px;
+}
+
+.project-description {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.project-features {
+    margin: 0;
+    padding-left: 25px;
+}
+
+.project-features li {
+    margin-bottom: 8px;
+    position: relative;
+    line-height: 1.6;
+}
+
+/* Tech stack styling in popup */
+.popup-tech-stack {
+    background-color: rgba(48, 47, 78, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.popup-tech-stack-label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #FFD15C;
+}
+
+.popup-tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.popup-tech-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.popup-tech-badge:hover {
+    background-color: rgba(255, 209, 92, 0.2);
+    border-color: #FFD15C;
+    transform: translateY(-2px);
+}

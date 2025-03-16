@@ -266,45 +266,48 @@
 }
 
 .project-role-badge {
-    font-size: 14px;
+    font-size: 13px;
     color: #FFD15C;
-    font-weight: normal;
+    font-weight: 500;
     display: inline-block;
-    padding: 3px 10px;
-    margin-left: 8px;
+    padding: 2px 10px;
+    margin-left: 5px;
     border-radius: 20px;
     background-color: rgba(255, 209, 92, 0.1);
     border: 1px solid rgba(255, 209, 92, 0.3);
     vertical-align: middle;
+    letter-spacing: 0.5px;
 }
 
 .project-content-section {
-    margin-bottom: 20px;
+    margin: 15px 0 20px;
 }
 
 .project-description {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     line-height: 1.6;
 }
 
 .project-features {
-    margin: 0;
-    padding-left: 25px;
+    margin: 0 0 0 10px;
+    padding-left: 15px;
 }
 
 .project-features li {
     margin-bottom: 8px;
     position: relative;
     line-height: 1.6;
+    color: #e3e3e3;
 }
 
 /* Tech stack styling in popup */
 .popup-tech-stack {
-    background-color: rgba(48, 47, 78, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(69, 67, 96, 0.4);
+    border: 1px solid rgba(255, 209, 92, 0.2);
     border-radius: 8px;
     padding: 15px;
-    margin-top: 10px;
+    margin-top: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .popup-tech-stack-label {
@@ -312,6 +315,15 @@
     font-weight: 500;
     margin-bottom: 12px;
     color: #FFD15C;
+    display: flex;
+    align-items: center;
+}
+
+.popup-tech-stack-label:before {
+    content: "\e038";  /* Code icon from simple-line-icons */
+    font-family: "simple-line-icons";
+    margin-right: 8px;
+    font-size: 18px;
 }
 
 .popup-tech-badges {
@@ -335,4 +347,33 @@
     background-color: rgba(255, 209, 92, 0.2);
     border-color: #FFD15C;
     transform: translateY(-2px);
+}
+
+.project-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.project-links a.btn {
+    padding: 8px 20px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+}
+
+.project-links a.btn:before {
+    content: "\e60c";  /* Link icon from simple-line-icons */
+    font-family: "simple-line-icons";
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.project-links a.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 76, 96, 0.3);
 }

@@ -126,7 +126,7 @@ function ProjectList({ projects }) {
 					{/* Tech stack */}
 					{project.techs && project.techs.length > 0 && (
 						<>
-							<div className="spacer" data-height={15} />
+							{/* <div className="spacer" data-height={15} /> */}
 							<div className="popup-tech-stack">
 								<div className="popup-tech-stack-label">Technologies Used:</div>
 								<div className="popup-tech-badges">
@@ -143,7 +143,7 @@ function ProjectList({ projects }) {
 					{/* Links section */}
 					{project.source && (
 						<>
-							<div className="spacer" data-height={10} />
+							<div className="spacer" data-height={5} />
 							<div className="project-links">
 								<a
 									href={project.source}

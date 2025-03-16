@@ -386,3 +386,61 @@
 .mt-0 {
   margin-top: 0 !important;
 }
+
+/* Add these styles to the end of your project-list.css file */
+
+/* Mobile pagination styles */
+.mobile-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-indicator {
+    margin: 0 15px;
+    color: #FFD15C;
+    font-weight: 500;
+}
+
+.pagination-nav {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 20px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .pagination .btn:not(.pagination-nav) {
+        display: none;
+    }
+    
+    .pagination {
+        margin-top: 30px;
+    }
+    
+    .project-item {
+        margin-bottom: 20px;
+    }
+    
+    /* Make sure popup looks good on mobile */
+    .white-popup {
+        padding: 20px 15px;
+        max-width: 90%;
+    }
+    
+    .popup-tech-badges {
+        gap: 6px;
+    }
+    
+    .popup-tech-badge {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+    
+    /* Small screens get simpler pagination */
+    .pagination-indicator {
+        font-size: 16px;
+    }
+}

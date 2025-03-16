@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
 import LazyImage from '../utils/LazyImage';
@@ -8,11 +8,30 @@ function ProjectList({ projects }) {
 	const [selectedTag, setSelectedTag] = useState('All');
 	const [currentPage, setCurrentPage] = useState(1);
 	const [animationClass, setAnimationClass] = useState('');
-	const itemsPerPage = 4;
+	const [isMobile, setIsMobile] = useState(false);
+
+	// Check if mobile on component mount and window resize
+	useEffect(() => {
+		const checkIfMobile = () => {
+			setIsMobile(window.innerWidth <= 768);
+		};
+
+		// Initial check
+		checkIfMobile();
+
+		// Add resize listener
+		window.addEventListener('resize', checkIfMobile);
+
+		// Cleanup
+		return () => window.removeEventListener('resize', checkIfMobile);
+	}, []);
+
+	// Adjust items per page based on screen size
+	const itemsPerPage = isMobile ? 2 : 4;
 
 	const tags = ['All', ...new Set(projects.flatMap((project) => project.tags))];
 
-	const filteredProjects = selectedTag === 'All'
+	const filteredProjects = isMobile || selectedTag === 'All'
 		? projects
 		: projects.filter((project) => project.tags.includes(selectedTag));
 
@@ -44,21 +63,24 @@ function ProjectList({ projects }) {
 		<div
 			className="fadeIn wow animated"
 		>
-			<div className="filter-buttons">
-				{tags.map((tag) => (
-					<button
-						key={tag}
-						className={`btn ${selectedTag === tag ? 'active' : ''}`}
-						onClick={() => {
-							setSelectedTag(tag);
-							setCurrentPage(1); // Reset to first page on tag change
-						}}
-						type="button"
-					>
-						{tag}
-					</button>
-				))}
-			</div>
+			{/* Only show filter buttons on desktop */}
+			{!isMobile && (
+				<div className="filter-buttons">
+					{tags.map((tag) => (
+						<button
+							key={tag}
+							className={`btn ${selectedTag === tag ? 'active' : ''}`}
+							onClick={() => {
+								setSelectedTag(tag);
+								setCurrentPage(1); // Reset to first page on tag change
+							}}
+							type="button"
+						>
+							{tag}
+						</button>
+					))}
+				</div>
+			)}
 			<div className={`project-list ${animationClass}`}>
 				{currentProjects.map((project, index) => {
 					// Calculate the actual index in the filtered projects array
@@ -161,32 +183,47 @@ function ProjectList({ projects }) {
 				</div>
 			))}
 
-			<div className="pagination">
+			<div className="pagination mobile-pagination">
 				<button
-					className="btn"
+					className="btn pagination-nav"
 					onClick={() => handlePageChange(currentPage - 1)}
 					type="button"
 					disabled={currentPage === 1}
+					aria-label="Previous page"
 				>
-					Prev
+					<i className="fas fa-chevron-left" />
 				</button>
-				{Array.from({ length: totalPages }, (_, index) => (
-					<button
-						key={index + 1}
-						className={`btn ${currentPage === index + 1 ? 'active' : ''}`}
-						onClick={() => handlePageChange(index + 1)}
-						type="button"
-					>
-						{index + 1}
-					</button>
-				))}
+
+				{!isMobile ? (
+				// Desktop pagination - show all page numbers
+					Array.from({ length: totalPages }, (_, index) => (
+						<button
+							key={index + 1}
+							className={`btn ${currentPage === index + 1 ? 'active' : ''}`}
+							onClick={() => handlePageChange(index + 1)}
+							type="button"
+						>
+							{index + 1}
+						</button>
+					))
+				) : (
+				// Mobile pagination - just show current page indicator
+					<span className="pagination-indicator">
+						{currentPage}
+						{' '}
+						/
+						{totalPages}
+					</span>
+				)}
+
 				<button
-					className="btn"
+					className="btn pagination-nav"
 					onClick={() => handlePageChange(currentPage + 1)}
 					type="button"
 					disabled={currentPage === totalPages}
+					aria-label="Next page"
 				>
-					Next
+					<i className="fas fa-chevron-right" />
 				</button>
 			</div>
 		</div>
@@ -195,7 +232,7 @@ function ProjectList({ projects }) {
 
 ProjectList.propTypes = {
 	projects: PropTypes.arrayOf(PropTypes.shape({
-		thumbnail: PropTypes.string.isRequired,
+		thumbnail: PropTypes.string,
 		title: PropTypes.string.isRequired,
 		tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 		role: PropTypes.string.isRequired,

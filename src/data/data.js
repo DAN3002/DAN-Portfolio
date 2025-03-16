@@ -132,14 +132,27 @@ export default {
 		{
 			title: 'Architecture Design Generator',
 			tags: ['Fullstack', 'AI'],
-			role: 'Fullstack Developer',
+			role: 'Fullstack & DevOps Engineer',
 			description: 'An application designed to provide various functionalities to help users create and manage architecture design diagrams more effectively.',
 			contents: [
 				'With the power of ChatGPT 4, our application can provide users the ability to create architecture design from scratch with a more interactive and user-friendly experience.',
-				'Champion of VPBank Hackathon 2024',
+				'Champion of <b>VPBank Hackathon 2024</b>.',
 			],
 			techs: ['ReactJS', 'Langchain', 'Go', 'AWS'],
 			thumbnail: '/images/projects/architecture-design-generator.png',
+		},
+		{
+			title: 'JS Recruitment',
+			tags: ['Fullstack', 'Tech Lead'],
+			role: 'Fullstack & DevOps Engineer',
+			description: 'JS Recruitment is a web application designed to streamline the recruitment process for the JS Club. This application simplifies candidate registration, survey management, interview coordination, and data handling for club administrators.',
+			contents: [
+				'Host customizable surveys for candidates to fill out during registration.',
+				'Organize recruitment events with multiple shifts for better candidate scheduling.',
+				'End to end recruitment process management',
+			],
+			techs: ['ReactJS', 'Supabase', 'Cloudflare'],
+			thumbnail: '/images/projects/js-recruitment.png',
 		},
 		{
 			title: 'IMDb-Crawler',
@@ -175,23 +188,36 @@ export default {
 				'Collects comprehensive information, including product details, images, and comments, enabling dataset creation for search functionality, data analysis (DA), and AI model training.',
 				'Achieved a dataset of 1 million fashion products, and 8 million images from over 8,000 shops on Shopee, supporting scalable data-driven insights and AI applications.',
 			],
-			techs: ['Selenium', 'Python'],
+			techs: ['Python', 'Selenium'],
 		},
 		{
 			title: 'E-commerce Template Base Crawler',
-			tags: ['Crawler'],
+			tags: ['Crawler', 'Fullstack'],
 			role: 'Fullstack Developer & Data Engineer',
 			description: 'Building a crawler system that gathers e-commerce product data from various sources, brands, and shops. It uses XPath templates to extract product details such as name, price, and images, with continuous update mechanisms.',
 			contents: [
-				'Provides an end-to-end experience: includes a tool for creating templates, a web app for managing crawled data and crawl history, and a dynamic core crawler system.',
+				'<b>Provides an end-to-end experience</b>: includes a tool for creating templates, a web app for managing crawled data and crawl history, and a dynamic core crawler system.',
 				'Users only need to create a template for a sample product link on the website, and the system will automatically crawl all related products based on the generated template.',
 			],
 			techs: ['Selenium', 'ReactJS', 'NodeJS', 'Python'],
 		},
 		{
+			title: 'JS Codefest 2024',
+			tags: ['Fullstack', 'Tech Lead'],
+			role: 'Fullstack & DevOps Engineer',
+			description: 'CODEFEST 2024 is a coding competition where participants relive their mischievous and vibrant childhood summers through programming. Competitors must program bots using specific commands to battle opponents, collect items, and overcome challenges, crafting unique strategies to win.',
+			contents: [
+				'Led the project as a Tech Leader, ensuring seamless execution across all project milestones.',
+				'Designed and implemented deployment strategies and system architecture to enable a successful product launch.',
+				'Provided technical direction, code reviews, and mentorship to ensure high-quality development practices.',
+			],
+			techs: ['NodeJS', 'SocketIO', 'AWS', 'Docker'],
+			thumbnail: '/images/projects/js-codefest-2024.png',
+		},
+		{
 			title: 'FinAInce Assistant',
 			tags: ['AI', 'Fullstack'],
-			role: 'Fullstack Developer & Cloud Engineer',
+			role: 'Fullstack Developer & Devops Engineer',
 			description: 'FinAInce Assistant is a financial chatbot designed to provide various functionalities to help users manage their finances more effectively.',
 			contents: [
 				'With the power of ChatGPT, our chatbot predicts user behavior, automates basic tasks, and offers real-time financial insights.',
@@ -199,6 +225,7 @@ export default {
 			],
 			techs: ['ReactJS', 'Flask', 'GPC Cloud', 'Firebase', 'ChatGPT'],
 			source: 'https://github.com/example/finaince-assistant',
+			thumbnail: '/images/projects/finaince-assistant.png',
 		},
 		{
 			title: 'FUNiX Learning Management System (LMS)',
@@ -211,11 +238,12 @@ export default {
 				'Utilized the OpenEdx open-source project to accelerate development.',
 			],
 			techs: ['ReactJS', 'Django', 'MySQL', 'AWS Cloud'],
+			thumbnail: '/images/projects/funix-lms.png',
 		},
 		{
 			title: 'FUNiX Mentoring System (HF40)',
-			tags: ['Fullstack'],
-			role: 'Fullstack Developer',
+			tags: ['Fullstack', 'Tech Lead'],
+			role: 'Fullstack Developer & Team Leader',
 			description: 'Developed and maintained a web application that helps FUNiX students find mentors, allowing them to connect and communicate with each other. Built from the Rocket.Chat open-source project.',
 			contents: [
 				'Built and maintained a mentoring system that enables FUNiX students to connect with mentors.',
@@ -223,6 +251,7 @@ export default {
 				'Utilized the Rocket.Chat open-source project to power the chat and communication functionalities.',
 			],
 			techs: ['MeteorJS', 'MongoDB', 'GCP Cloud'],
+			thumbnail: '/images/projects/funix-mentoring.png',
 		},
 		{
 			title: 'DAN3002 Portfolio',
@@ -234,21 +263,23 @@ export default {
 			],
 			techs: ['ReactJS', 'Github API', 'Cloudfalre'],
 			source: 'https://github.com/DAN3002/DAN-Portfolio',
+			thumbnail: '/images/projects/dan-portfolio.png',
 		},
 		{
 			title: 'Doctor\'s Cyclop',
 			tags: ['Fullstack', 'AI'],
-			role: 'Fullstack Developer & Cloud Engineer',
+			role: 'Fullstack Developer & Devops Engineer',
 			description: 'Created a website that implements the machine learning model for classifying the presence and correct placement of tubes on chest x-rays, allowing for easy access and practical application of the model by medical professionals.',
 			contents: [
 				'Top 3 FPT Edu Hackathon 2021 - beat over 100 teams from different Universities.',
 			],
 			techs: ['MeteorJS', 'MongoDB', 'AWS Cloud'],
 			source: 'https://github.com/DAN3002/Doctors-Cyclop-Webapp',
+			thumbnail: '/images/projects/doctors-cyclop.png',
 		},
 		{
 			title: 'FUNiX Passport',
-			tags: ['Fullstack'],
+			tags: ['Fullstack', 'Tech Lead'],
 			role: 'Fullstack Developer',
 			description: 'Chrome Extension that translates subtitles on MOOC websites (such as Udemy and Coursera) and the content of the page into Vietnamese, providing a more accessible and user-friendly learning experience for students.',
 			contents: [

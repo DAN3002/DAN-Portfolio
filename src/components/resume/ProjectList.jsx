@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
 import LazyImage from '../utils/LazyImage';
+import '../../styles/project-list.css';
 
 function ProjectList({ projects }) {
 	const [selectedTag, setSelectedTag] = useState('All');

@@ -41,7 +41,9 @@ function ProjectList({ projects }) {
 		return 'fas fa-code text-warning'; // Default icon
 	};
 	return (
-		<div>
+		<div
+			className="fadeIn wow animated"
+		>
 			<div className="filter-buttons">
 				{tags.map((tag) => (
 					<button
@@ -95,7 +97,7 @@ function ProjectList({ projects }) {
 				<div
 					key={index}
 					id={`small-dialog-project-${index}`}
-					className={`white-popup zoom-anim-dialog mfp-hide ${!project.thumbnail ? 'no-thumbnail' : ''}`}
+					className="white-popup zoom-anim-dialog mfp-hide"
 				>
 					{project.thumbnail && (
 						<LazyImage
@@ -103,7 +105,7 @@ function ProjectList({ projects }) {
 							alt={project.title}
 						/>
 					)}
-					<h2 className={!project.thumbnail ? 'mt-0' : ''}>
+					<h2>
 						<i className={`${getProjectIcon(project.tags)} mr-2`} aria-hidden="true" />
 						{project.title}
 						<span className="project-role-badge">{project.role}</span>
@@ -126,9 +128,9 @@ function ProjectList({ projects }) {
 					{/* Tech stack */}
 					{project.techs && project.techs.length > 0 && (
 						<>
-							{/* <div className="spacer" data-height={15} /> */}
+							<div className="spacer" data-height={15} />
 							<div className="popup-tech-stack">
-								<div className="popup-tech-stack-label">Technologies Used:</div>
+								<div className="popup-tech-stack-label .icon-link">Technologies Used:</div>
 								<div className="popup-tech-badges">
 									{project.techs.map((tech, techIndex) => (
 										<span key={techIndex} className="popup-tech-badge">
@@ -143,7 +145,7 @@ function ProjectList({ projects }) {
 					{/* Links section */}
 					{project.source && (
 						<>
-							<div className="spacer" data-height={5} />
+							<div className="spacer" data-height={10} />
 							<div className="project-links">
 								<a
 									href={project.source}

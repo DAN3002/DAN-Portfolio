@@ -137,29 +137,40 @@
     text-align: center;
 }
 
+/* Update pagination button styling to make them smaller */
 .pagination .btn {
-    margin: 0 5px;
-    padding: 5px 10px;
+    margin: 0 4px;
+    min-width: 32px;
+    height: 32px;
     border: none;
     background-color: #454360;
-    /* Dark button background */
     color: #FFF;
-    /* White text color */
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 0;
 }
 
 .pagination .btn:hover {
     background-color: #5a5a7a;
-    /* Slightly lighter background on hover */
     color: #FFD15C;
-    /* Change text color on hover */
+    transform: translateY(-2px);
 }
 
 .pagination .btn.active {
     background-color: #FF4C60;
-    /* Active button color */
     color: #FFF;
+    box-shadow: 0 3px 8px rgba(255, 76, 96, 0.3);
+}
+
+/* Adjust pagination navigation buttons */
+.pagination-nav {
+    font-size: 12px;
 }
 
 .project-list.fade-in {
@@ -442,5 +453,12 @@
     /* Small screens get simpler pagination */
     .pagination-indicator {
         font-size: 16px;
+    }
+    
+    .pagination-nav {
+        min-width: 36px;
+        height: 36px;
+        border-radius: 18px;
+        font-size: 13px;
     }
 }

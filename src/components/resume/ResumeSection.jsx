@@ -44,7 +44,6 @@ function ResumeSection() {
 						<span className="line" />
 					</div>
 				</div>
-				<MoocCertificate />
 			</div>
 			<div className="col-md-6">
 				<TimelineConatiner
@@ -52,6 +51,7 @@ function ResumeSection() {
 					timelineData={experience}
 					icon="exp"
 				/>
+				<MoocCertificate />
 			</div>
 		</div>
 	);

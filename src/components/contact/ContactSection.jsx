@@ -51,18 +51,14 @@ function ContactSection() {
 			});
 
 			if (!response.ok) {
+				if (response.status === 403) {
+					throw new Error('Capcha verification failed. Please complete the security check again.');
+				}
 				throw new Error('Email sending failed');
 			}
 
-			// Reset form and Turnstile token on success
+			// Reset form on success
 			form.current.reset();
-			setTurnstileToken(null);
-
-			// Reset Turnstile widget if ref is available
-			if (turnstileRef.current) {
-				turnstileRef.current.reset();
-			}
-			turnstile.reset();
 
 			Swal.close();
 			Swal.fire({
@@ -75,9 +71,15 @@ function ContactSection() {
 			Swal.fire({
 				icon: 'error',
 				title: 'Something went wrong',
-				text: 'Failed to send your message. Please try again.',
+				text: error.message || 'Failed to send your message. Please try again.',
 			});
 		} finally {
+			// Always reset Turnstile regardless of success or failure
+			setTurnstileToken(null);
+			if (turnstileRef.current) {
+				turnstileRef.current.reset();
+			}
+			turnstile.reset();
 			setIsSubmitting(false);
 		}
 	};

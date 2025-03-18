@@ -1,16 +1,13 @@
 /* eslint-disable no-undef */
 import React, { useRef, useState } from 'react';
-// import emailjs from '@emailjs/browser';
-import Turnstile from 'react-turnstile';
+import Turnstile, { useTurnstile } from 'react-turnstile';
 import data from '../../data/data';
 
-// const EMAILJS_SERVICE_ID = 'service_qbnmecr';
-// const EMAILJS_TEMPLATE_ID = 'template_r3v7cmp';
-// Replace with your actual site key from Cloudflare Turnstile dashboard
 const TURNSTILE_SITE_KEY = process.env.REACT_APP_TURNSTILE_SITE_KEY;
 
 function ContactSection() {
 	const form = useRef();
+	const turnstile = useTurnstile();
 	const turnstileRef = useRef(null); // Add ref for Turnstile
 	const { contactEmail } = data;
 	const [turnstileToken, setTurnstileToken] = useState(null);
@@ -33,8 +30,7 @@ function ContactSection() {
 
 		// Show loading modal
 		Swal.fire({
-			title: 'Sending message...',
-			text: 'Please wait',
+			// title: 'Sending message...',
 			allowOutsideClick: false,
 			didOpen: () => {
 				Swal.showLoading();
@@ -66,6 +62,7 @@ function ContactSection() {
 			if (turnstileRef.current) {
 				turnstileRef.current.reset();
 			}
+			turnstile.reset();
 
 			Swal.close();
 			Swal.fire({

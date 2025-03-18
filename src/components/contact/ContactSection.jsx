@@ -4,6 +4,7 @@ import Turnstile, { useTurnstile } from 'react-turnstile';
 import data from '../../data/data';
 
 const TURNSTILE_SITE_KEY = process.env.REACT_APP_TURNSTILE_SITE_KEY;
+const EMAIL_API_ENDPOINT = process.env.REACT_APP_EMAIL_API_ENDPOINT;
 
 function ContactSection() {
 	const form = useRef();
@@ -44,7 +45,7 @@ function ContactSection() {
 
 		try {
 			// Replace with your actual Cloudflare Worker URL
-			const response = await fetch('https://email.dan3002.tech/send-email', {
+			const response = await fetch(EMAIL_API_ENDPOINT, {
 				method: 'POST',
 				// No Content-Type header needed - browser will set it automatically with boundary
 				body: formData, // Send as FormData directly

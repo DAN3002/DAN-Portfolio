@@ -1,24 +1,25 @@
 /* eslint-disable no-undef */
 import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 import Turnstile from 'react-turnstile';
 import data from '../../data/data';
 
-const EMAILJS_SERVICE_ID = 'service_qbnmecr';
-const EMAILJS_TEMPLATE_ID = 'template_r3v7cmp';
+// const EMAILJS_SERVICE_ID = 'service_qbnmecr';
+// const EMAILJS_TEMPLATE_ID = 'template_r3v7cmp';
 // Replace with your actual site key from Cloudflare Turnstile dashboard
 const TURNSTILE_SITE_KEY = process.env.REACT_APP_TURNSTILE_SITE_KEY;
 
 function ContactSection() {
 	const form = useRef();
+	const turnstileRef = useRef(null); // Add ref for Turnstile
 	const { contactEmail } = data;
 	const [turnstileToken, setTurnstileToken] = useState(null);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
-	const sendEmail = (e) => {
+	const sendEmail = async (e) => {
 		e.preventDefault();
 
-		// Verify Turnstile token exists before sending email
+		// Ensure the Turnstile verification is complete before submitting
 		if (!turnstileToken) {
 			Swal.fire({
 				icon: 'error',
@@ -30,39 +31,58 @@ function ContactSection() {
 
 		setIsSubmitting(true);
 
-		// Add the token to the form data for server verification
+		// Show loading modal
+		Swal.fire({
+			title: 'Sending message...',
+			text: 'Please wait',
+			allowOutsideClick: false,
+			didOpen: () => {
+				Swal.showLoading();
+			},
+		});
+
+		// Create FormData from form
 		const formData = new FormData(form.current);
+		// Add turnstile token to FormData
 		formData.append('cf-turnstile-response', turnstileToken);
 
-		emailjs
-			.sendForm(
-				EMAILJS_SERVICE_ID,
-				EMAILJS_TEMPLATE_ID,
-				form.current,
-				process.env.REACT_APP_EMAILJS_KEY,
-			)
-			.then(() => {
-				// clear form
-				form.current.reset();
-				// Reset turnstile token
-				setTurnstileToken(null);
-				Swal.fire({
-					icon: 'success',
-					title: 'Thank you!',
-					text: 'I will contact you as soon as possible.',
-				});
-			})
-			.catch((error) => {
-				console.error('Email sending failed:', error);
-				Swal.fire({
-					icon: 'error',
-					title: 'Something went wrong',
-					text: 'Failed to send your message. Please try again.',
-				});
-			})
-			.finally(() => {
-				setIsSubmitting(false);
+		try {
+			// Replace with your actual Cloudflare Worker URL
+			const response = await fetch('https://email.dan3002.tech/send-email', {
+				method: 'POST',
+				// No Content-Type header needed - browser will set it automatically with boundary
+				body: formData, // Send as FormData directly
 			});
+
+			if (!response.ok) {
+				throw new Error('Email sending failed');
+			}
+
+			// Reset form and Turnstile token on success
+			form.current.reset();
+			setTurnstileToken(null);
+
+			// Reset Turnstile widget if ref is available
+			if (turnstileRef.current) {
+				turnstileRef.current.reset();
+			}
+
+			Swal.close();
+			Swal.fire({
+				icon: 'success',
+				title: 'Thank you!',
+				text: 'I will contact you as soon as possible.',
+			});
+		} catch (error) {
+			Swal.close();
+			Swal.fire({
+				icon: 'error',
+				title: 'Something went wrong',
+				text: 'Failed to send your message. Please try again.',
+			});
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
@@ -135,6 +155,7 @@ function ContactSection() {
 						<div className="column col-md-12">
 							<div className="form-group turnstile-container">
 								<Turnstile
+									ref={turnstileRef}
 									sitekey={TURNSTILE_SITE_KEY}
 									onVerify={(token) => setTurnstileToken(token)}
 									onExpire={() => setTurnstileToken(null)}

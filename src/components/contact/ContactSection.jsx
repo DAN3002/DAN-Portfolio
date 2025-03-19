@@ -46,9 +46,15 @@ function ContactSection() {
 		// Process the message to preserve newlines
 		const message = formData.get('message');
 		if (message) {
-			// Replace newlines with HTML breaks for email clients
-			// or use encodeURIComponent to preserve them for processing on the server
-			formData.set('message', message.replace(/\n/g, '<br />'));
+			// First sanitize the input to prevent HTML/JS injection
+			const sanitizedMessage = message
+				.replace(/>/g, '&gt;')
+				.replace(/&/g, '&amp;')
+				.replace(/"/g, '&quot;')
+				.replace(/'/g, '&#039;');
+
+			// Then replace newlines with HTML breaks for email clients
+			formData.set('message', sanitizedMessage.replace(/\n/g, '<br />'));
 		}
 
 		// Add turnstile token to FormData

@@ -7,6 +7,17 @@ function createResponse(body, status, corsHeaders) {
 	return response;
 }
 
+// Function to sanitize user input to prevent XSS attacks
+function sanitizeInput(input) {
+	if (!input || typeof input !== 'string') return '';
+	return input
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/&(?!(lt|gt|quot|amp|#039);)/g, '&amp;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#039;');
+}
+
 // Function to verify Turnstile token
 async function verifyTurnstileToken(token, secretKey, request) {
 	const verifyUrl = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
@@ -104,11 +115,18 @@ export default {
 			const data = await readRequestBody(request);
 			const turnstileToken = data["cf-turnstile-response"]
 
+			// Sanitize all user inputs to prevent XSS attacks
 			const formData = {
-				from_name: data.from_name,
-				to_email: data.to_email,
-				message: data.message,
+				from_name: sanitizeInput(data.from_name),
+				to_email: sanitizeInput(data.to_email),
+				message: sanitizeInput(data.message),
 			};
+			
+			// Process newlines in the message after sanitizing
+			if (formData.message) {
+				// Convert newlines to <br> tags for HTML emails
+				formData.message = formData.message.replace(/\n/g, '<br>');
+			}
 
 			// Verify Turnstile token
 			const isValid = await verifyTurnstileToken(turnstileToken, env.TURNSTILE_SECRET_KEY, request);

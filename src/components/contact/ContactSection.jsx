@@ -33,6 +33,8 @@ function ContactSection() {
 		Swal.fire({
 			// title: 'Sending message...',
 			allowOutsideClick: false,
+			allowEscapeKey: false,
+			allowEnterKey: false,
 			didOpen: () => {
 				Swal.showLoading();
 			},
@@ -40,6 +42,15 @@ function ContactSection() {
 
 		// Create FormData from form
 		const formData = new FormData(form.current);
+
+		// Process the message to preserve newlines
+		const message = formData.get('message');
+		if (message) {
+			// Replace newlines with HTML breaks for email clients
+			// or use encodeURIComponent to preserve them for processing on the server
+			formData.set('message', message.replace(/\n/g, '<br />'));
+		}
+
 		// Add turnstile token to FormData
 		formData.append('cf-turnstile-response', turnstileToken);
 

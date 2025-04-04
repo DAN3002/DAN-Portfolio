@@ -131,7 +131,7 @@ export default {
 	projects: [
 		{
 			title: 'Architecture Design Generator',
-			tags: ['Fullstack', 'AI'],
+			tags: ['Fullstack', 'AI', 'Tech Lead'],
 			role: 'Fullstack & DevOps Engineer',
 			description: 'An application designed to provide various functionalities to help users create and manage architecture design diagrams more effectively.',
 			contents: [
@@ -216,7 +216,7 @@ export default {
 		},
 		{
 			title: 'FinAInce Assistant',
-			tags: ['AI', 'Fullstack'],
+			tags: ['AI', 'Fullstack', 'Tech Lead'],
 			role: 'Fullstack Developer & Devops Engineer',
 			description: 'FinAInce Assistant is a financial chatbot designed to provide various functionalities to help users manage their finances more effectively.',
 			contents: [
@@ -267,7 +267,7 @@ export default {
 		},
 		{
 			title: 'Doctor\'s Cyclop',
-			tags: ['Fullstack', 'AI'],
+			tags: ['Fullstack', 'AI', 'Tech Lead'],
 			role: 'Fullstack Developer & Devops Engineer',
 			description: 'Created a website that implements the machine learning model for classifying the presence and correct placement of tubes on chest x-rays, allowing for easy access and practical application of the model by medical professionals.',
 			contents: [
@@ -291,7 +291,7 @@ export default {
 		},
 		{
 			title: 'Water Testing Instant',
-			tags: ['Fullstack'],
+			tags: ['Fullstack', 'Tech Lead'],
 			role: 'Backend Developer & Cloud Engineer',
 			description: 'Constructed a portable hand-sized device capable of measuring the turbidity and purity of water, complete with a native Android App and cloud service, providing an easy and efficient way to check water quality on the go.',
 			contents: [

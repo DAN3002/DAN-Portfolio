@@ -22,7 +22,30 @@ function App() {
 		script.src = `${PUBLIC_URL}/js/custom.js`;
 		script.async = true;
 		document.body.appendChild(script);
-	}, []);
+		
+		// Handle section query parameter for scrolling
+		const handleSectionScroll = () => {
+			const urlParams = new URLSearchParams(window.location.search);
+			const sectionParam = urlParams.get('section');
+			
+			if (sectionParam) {
+				// Wait for DOM to be fully loaded and preloader to finish
+				setTimeout(() => {
+					const sectionElement = document.getElementById(sectionParam);
+					if (sectionElement) {
+						// Use the same animation as in custom.js
+						$('html, body').animate({
+							scrollTop: $(sectionElement).offset().top
+						}, 800, 'easeInOutQuad');
+					}
+				}, 1000); // Give time for preloader to finish
+			}
+		};
+		
+		// Run after the custom.js script has loaded
+		window.addEventListener('load', handleSectionScroll);
+		return () => window.removeEventListener('load', handleSectionScroll);
+	}, [PUBLIC_URL]);
 
 	return (
 		<>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { getLatestCommitDate } from '../../data/github';
+import data from '../../data/data';
 
 function DesktopHeader() {
 	const [lastUpdated, setLastUpdated] = useState('');
@@ -45,6 +46,12 @@ function DesktopHeader() {
 						<a href="#projects">
 							<i className="icon-folder" />
 							Projects
+						</a>
+					</li>
+					<li>
+						<a href={data.externalLinks.blog} target="_blank" rel="noopener noreferrer">
+							<i className="icon-globe" />
+							Blog
 						</a>
 					</li>
 					<li>

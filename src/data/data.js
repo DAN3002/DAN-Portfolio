@@ -403,4 +403,7 @@ export default {
 			url: 'https://vnexpress.net/hoc-sinh-thpt-gianh-giai-fpt-edu-hackathon-2019-4042313.html',
 		}],
 	}],
+	externalLinks: {
+		blog: 'https://blog.dan3002.tech',
+	},
 };

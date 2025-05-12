@@ -1,5 +1,3 @@
-import data from '../../data/data';
-
 function MobileHeader() {
 	return (
 		<header className="mobile-header-1">
@@ -16,10 +14,6 @@ function MobileHeader() {
 						<h2>D.A.N_3002</h2>
 					</a>
 				</div>
-				{/* blog button */}
-				<a href={data.externalLinks.blog} target="_blank" rel="noopener noreferrer" className="btn btn-primary ml-3">
-					Blog
-				</a>
 			</div>
 		</header>
 	);

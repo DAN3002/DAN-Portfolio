@@ -405,5 +405,6 @@ export default {
 	}],
 	externalLinks: {
 		blog: 'https://blog.dan3002.tech',
+		blogRssFeed: 'https://blog.dan3002.tech/feed.xml',
 	},
 };

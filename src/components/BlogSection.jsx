@@ -29,7 +29,7 @@ function BlogSection() {
 				});
 				setPosts(latestPosts);
 			} catch (error) {
-				console.error('Error fetching RSS feed:', error);
+				// console.error('Error fetching RSS feed:', error);
 			} finally {
 				setLoading(false);
 			}

@@ -44,6 +44,7 @@ export default {
 		timeline: 'Aug 2024 - Present',
 		subtitle: 'DevOps Engineer',
 		text: [
+			'Youngest Senior Specialist at @VPBank. (21 years old)',
 			'Aligning ESB architecture with microservices and cloud environments, focusing on stability, performance, and scalability.',
 			'Utilizing GitOps framework to automate monitoring, enabling proactive management and real-time issue resolution.',
 			'Re-architecting existing APIs and services to integrate with modern microservices and message-oriented middleware (IBM MQ).',

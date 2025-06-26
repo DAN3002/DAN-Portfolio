@@ -61,7 +61,7 @@ export default {
 	}, {
 		title: 'FUNiX',
 		timeline: 'Aug 2021 - Feb 2024',
-		subtitle: 'Program Development Officer & Full-Stack Developer',
+		subtitle: 'Full-Stack Developer & Program Development Officer',
 		text: [
 			'Contributed to the development of internal applications, including the Mentoring System and Learning Management System (LMS).',
 			'Managed cloud-based resources for the entire team, ensuring efficient and secure access to the necessary tools and resources.',

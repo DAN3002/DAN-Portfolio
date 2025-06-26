@@ -363,7 +363,7 @@ export default {
 		category: 'Hackathon',
 		thumb: '/images/achieves/vpbank-hackathon-2024.png',
 		image: '/images/achieves/vpbank-hackathon-2024-banner.jpg',
-		date: 'Jun 2024',
+		date: 'June 2024',
 		prize: 'Champion',
 		text: [
 			'An application designed to provide various functionalities to help users create and manage architecture design diagrams more effectively. With the power of ChatGPT 4, our application can provide users the ability to create architecture design from scratch with a more interactive and user-friendly experience.',
@@ -376,7 +376,7 @@ export default {
 		category: 'Hackathon',
 		thumb: '/images/achieves/funix-chatgpt-hackathon.png',
 		image: '/images/achieves/funix-chatgpt-hackathon-banner.jpg',
-		date: '07 May, 2023',
+		date: 'May 2023',
 		prize: 'Champion',
 		text: [
 			'Our team has won the first victory with the product "FinAInce Assistant - ChatGPT can take actions". This is a new Fintech product, built in nearly a month and using ChatGPT along with some special techniques to optimize operations for users related to finance. The success of the team is evidence of the great potential of ChatGPT in performing many tasks other than Q&A. With ChatGPT, the team has saved time and focused on product development effectively.',
@@ -396,7 +396,7 @@ export default {
 		category: 'Hackathon',
 		thumb: '/images/achieves/hack-cx-together-2025.jpg',
 		image: '/images/achieves/hack-cx-together-2025-banner.jpg',
-		date: '21 June, 2025',
+		date: 'June 2025',
 		prize: 'Runner Up',
 		text: [
 			'A real-time AI-driven likelihood engine designed to personalize product recommendations based on customer behavior and multi-channel data. It automates data collection, feature selection, model training, and deployment to maximize conversion rates, reduce compliance risks, and optimize customer engagement across all banking segments.',
@@ -408,7 +408,7 @@ export default {
 		category: 'Research Festival',
 		thumb: '/images/achieves/resfes-2023.jpg',
 		image: '/images/achieves/resfes-2023-banner.jpg',
-		date: '20 August, 2023',
+		date: 'August 2023',
 		prize: 'Third Prize',
 		text: [
 			'- Discovered and developed an ecosystem to apply an AI model call Relahash. Achieving unparalleled accuracy and minimal latency in image retrieval for the fashion e-commerce landscape.',
@@ -422,7 +422,7 @@ export default {
 		category: 'Hackathon',
 		thumb: '/images/achieves/hackathon-2021.png',
 		image: '/images/achieves/hackathon-2021-banner.jpg',
-		date: '18 April, 2021',
+		date: 'April 2021',
 		prize: 'Third Prize',
 		text: [
 			'As the youngest team to participate. Won third prize in a competition with 104 teams from various universities, for building a web application that utilizes AI to assist doctors in diagnosing Covid-19.',
@@ -436,7 +436,7 @@ export default {
 		category: 'Hackathon',
 		thumb: '/images/achieves/hackathon-2019.jpg',
 		image: '/images/achieves/hackathon-2019-banner.jpg',
-		date: '12 January, 2020',
+		date: 'January 2020',
 		prize: 'Third Prize',
 		text: [
 			'As the youngest team to participate. Won third prize out of 35 teams coming from different Universities. Our team achieved third prize in a competition for developing equipment to check the safety of water.',

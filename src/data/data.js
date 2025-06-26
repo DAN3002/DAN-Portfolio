@@ -171,6 +171,23 @@ export default {
 			thumbnail: '/images/projects/architecture-design-generator.png',
 		},
 		{
+			title: 'Autonomous Insight & Action Pipeline for Hospital Data',
+			tags: ['Fullstack', 'AI'],
+			role: 'Fullstack & DevOps Engineer',
+			description: 'An AI-powered system that analyzes hospital data to detect issues, extract insights, and suggest actions — just like a virtual data analyst.',
+			contents: [
+				'This pipeline helps hospitals analyze both patient data and staff feedback. It detects unusual trends, visualizes patterns, and summarizes open-text responses. Hospital staff can ask questions in natural language, and the system will auto-generate answers, charts, or queries to support decision-making.',
+				'Runner up of <b>NRC x FPT Hackathon 2024</b>.',
+				// 'Detects anomalies and trends in hospital operations',
+				// 'Summarizes open-ended staff or patient feedback',
+				// 'Answers staff questions with AI-generated queries and charts',
+				// 'Simplifies data analysis for non-technical users',
+				// 'Scalable, reproducible, and easy to integrate',
+			],
+			techs: ['ReactJS', 'Langchain', 'Go', 'PostgreSQL', 'MongoDB', 'LLM'],
+			thumbnail: '/images/projects/nrc-hackathon.png',
+		},
+		{
 			title: 'JS Recruitment',
 			tags: ['Fullstack', 'Tech Lead'],
 			role: 'Fullstack & DevOps Engineer',

@@ -421,6 +421,19 @@ export default {
 		link: [],
 	},
 	{
+		name: 'NRC x FPT Hackathon 2024',
+		category: 'Hackathon',
+		thumb: '/images/achieves/nrc-hackathon.jpg',
+		image: '/images/achieves/nrc-hackathon.jpg',
+		date: 'Nov 2024',
+		prize: 'Runner Up',
+		text: [
+			'An AI-powered system that analyzes hospital data to detect issues, extract insights, and suggest actions — just like a virtual data analyst.',
+			'This pipeline helps hospitals analyze both patient data and staff feedback. It detects unusual trends, visualizes patterns, and summarizes open-text responses. Hospital staff can ask questions in natural language, and the system will auto-generate answers, charts, or queries to support decision-making.',
+		],
+		link: [],
+	},
+	{
 		name: 'FPT Edu ResFes 2023',
 		category: 'Research Festival',
 		thumb: '/images/achieves/resfes-2023.jpg',

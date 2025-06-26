@@ -370,21 +370,8 @@ export default {
 			'Beat over 150 teams from different Companies and Universities.',
 		],
 		link: [],
-	}, {
-		name: 'FPT Edu ResFes 2023',
-		category: 'Research Festival',
-		thumb: '/images/achieves/resfes-2023.jpg',
-		image: '/images/achieves/resfes-2023-banner.jpg',
-		date: '20 August, 2023',
-		prize: 'Third Prize',
-		text: [
-			'- Discovered and developed an ecosystem to apply an AI model call Relahash. Achieving unparalleled accuracy and minimal latency in image retrieval for the fashion e-commerce landscape.',
-			'- Designed and implemented a declarative crawling system that allows users to specify their requirements and let the system do the heavy lifting.',
-			'- Built a rich dataset of 7.5M+ images from 8K+ shops across 30 websites.',
-			'- Built a robust ecosystem on Kubernetes to seamlessly combine our dynamic crawler and AI model pipeline.',
-		],
-		link: [],
-	}, {
+	},
+	{
 		name: 'FUNiX ChatGPT Hackathon',
 		category: 'Hackathon',
 		thumb: '/images/achieves/funix-chatgpt-hackathon.png',
@@ -403,6 +390,33 @@ export default {
 			url: 'https://vnexpress.net/sinh-vien-funix-chia-se-ve-du-an-vo-dich-chatgpt-hackathon-4604055.html',
 		},
 		],
+	},
+	{
+		name: 'Hack CX Together 2025',
+		category: 'Hackathon',
+		thumb: '/images/achieves/hack-cx-together-2025.jpg',
+		image: '/images/achieves/hack-cx-together-2025-banner.jpg',
+		date: '21 June, 2025',
+		prize: 'Runner Up',
+		text: [
+			'A real-time AI-driven likelihood engine designed to personalize product recommendations based on customer behavior and multi-channel data. It automates data collection, feature selection, model training, and deployment to maximize conversion rates, reduce compliance risks, and optimize customer engagement across all banking segments.',
+		],
+		link: [],
+	},
+	{
+		name: 'FPT Edu ResFes 2023',
+		category: 'Research Festival',
+		thumb: '/images/achieves/resfes-2023.jpg',
+		image: '/images/achieves/resfes-2023-banner.jpg',
+		date: '20 August, 2023',
+		prize: 'Third Prize',
+		text: [
+			'- Discovered and developed an ecosystem to apply an AI model call Relahash. Achieving unparalleled accuracy and minimal latency in image retrieval for the fashion e-commerce landscape.',
+			'- Designed and implemented a declarative crawling system that allows users to specify their requirements and let the system do the heavy lifting.',
+			'- Built a rich dataset of 7.5M+ images from 8K+ shops across 30 websites.',
+			'- Built a robust ecosystem on Kubernetes to seamlessly combine our dynamic crawler and AI model pipeline.',
+		],
+		link: [],
 	}, {
 		name: 'FPT Edu Hackathon 2021',
 		category: 'Hackathon',

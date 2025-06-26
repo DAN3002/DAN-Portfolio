@@ -134,9 +134,9 @@ export default {
 			title: 'Real-Time Likelihood Engine for Personalized Financial Product Recommendations',
 			tags: ['Fullstack', 'AI', 'Tech Lead'],
 			role: 'Fullstack & DevOps Engineer',
-			description: 'An AI-powered engine that predicts the likelihood of customer interest in financial products, delivering the right offer at the right time via the right channel.',
+			description: 'A real-time AI-driven likelihood engine designed to personalize product recommendations based on customer behavior and multi-channel data. It automates data collection, feature selection, model training, and deployment to maximize conversion rates, reduce compliance risks, and optimize customer engagement across all banking segments.',
 			contents: [
-				'A real-time AI-driven likelihood engine designed to personalize product recommendations based on customer behavior and multi-channel data. It automates data collection, feature selection, model training, and deployment to maximize conversion rates, reduce compliance risks, and optimize customer engagement across all banking segments.',
+				'Runner up of <b>Hack CX Together 2025</b>.',
 				'Real-time customer propensity prediction',
 				'Personalized product recommendations',
 				'Automated model training & feature selection',

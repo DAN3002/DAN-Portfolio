@@ -2,7 +2,13 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function LazyImage({
-	src, alt, className, width, height, style,
+	src,
+	alt,
+	className,
+	width,
+	height,
+	style,
+	afterLoad,
 }) {
 	const { PUBLIC_URL } = process.env;
 
@@ -21,6 +27,7 @@ function LazyImage({
 			className={className}
 			placeholderSrc={`${PUBLIC_URL}/images/placeholder.jpg`}
 			wrapperClassName="lazy-load-image-wrapper"
+			afterLoad={afterLoad}
 		/>
 	);
 }

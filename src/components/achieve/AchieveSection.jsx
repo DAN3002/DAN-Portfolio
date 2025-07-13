@@ -11,6 +11,7 @@ function AchieveSection() {
 			<a
 				href={`#small-dialog-achieve-${index}`}
 				className="work-content"
+				onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`open-achieve-${item.name}`); } }}
 			>
 				<div className="thumb">
 					<span className="category">{item.category}</span>
@@ -56,7 +57,7 @@ function AchieveSection() {
 						<ul>
 							{item.link.map((el, i) => (
 								<li key={i}>
-									<a href={el.url}>
+									<a href={el.url} onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`view-achieve-link-${item.name}`); } }}>
 										{el.text}
 									</a>
 								</li>

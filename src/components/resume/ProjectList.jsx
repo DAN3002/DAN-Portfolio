@@ -71,6 +71,9 @@ function ProjectList({ projects }) {
 							key={tag}
 							className={`btn ${selectedTag === tag ? 'active' : ''}`}
 							onClick={() => {
+								if (typeof window.umami !== 'undefined') {
+									window.umami.track(`filter-tag-${tag}`);
+								}
 								setSelectedTag(tag);
 								setCurrentPage(1); // Reset to first page on tag change
 							}}
@@ -88,7 +91,15 @@ function ProjectList({ projects }) {
 
 					return (
 						<div key={index} className="project-item">
-							<a href={`#small-dialog-project-${projectIndex}`} className="project-content">
+							<a
+								href={`#small-dialog-project-${projectIndex}`}
+								className="project-content"
+								onClick={() => {
+									if (typeof window.umami !== 'undefined') {
+										window.umami.track(`open-project-${project.title}`);
+									}
+								}}
+							>
 								<h4>
 									<i className={`${getProjectIcon(project.tags)} mr-2`} aria-hidden="true" />
 									{project.title}
@@ -177,6 +188,11 @@ function ProjectList({ projects }) {
 										target="_blank"
 										rel="noopener noreferrer"
 										className="btn btn-default"
+										onClick={() => {
+											if (typeof window.umami !== 'undefined') {
+												window.umami.track(`view-source-${project.title}`);
+											}
+										}}
 									>
 										View Source
 									</a>

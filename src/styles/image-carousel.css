@@ -7,11 +7,12 @@
 }
 
 .carousel-image-wrapper {
-	flex: 1;
+	/* Fixed viewport for every slide */
+	width: 766px; /* adjust to whatever size you need */
+	height: 382px; /* keeps a 16 : 9 rectangle */
+	max-width: 100%; /* still shrink on very narrow screens */
 	text-align: center;
 	position: relative;
-	/* Maintain space so layout doesn’t collapse while images are absolutely positioned */
-	aspect-ratio: 16 / 9; /* fallback ratio; adjust if your screenshots are different */
 }
 
 .carousel-image-wrapper .lazy-load-image-wrapper,

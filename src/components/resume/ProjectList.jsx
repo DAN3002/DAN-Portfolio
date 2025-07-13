@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
-import LazyImage from '../utils/LazyImage';
+import ImageCarousel from '../utils/ImageCarousel';
 import '../../styles/project-list.css';
 
 function ProjectList({ projects }) {
@@ -115,73 +115,77 @@ function ProjectList({ projects }) {
 			</div>
 
 			{/* Project Popup Modals - Including all projects, not just current page */}
-			{filteredProjects.map((project, index) => (
-				<div
-					key={index}
-					id={`small-dialog-project-${index}`}
-					className="white-popup zoom-anim-dialog mfp-hide"
-				>
-					{project.thumbnail && (
-						<LazyImage
-							src={project.thumbnail}
-							alt={project.title}
-						/>
-					)}
-					<h2>
-						<i className={`${getProjectIcon(project.tags)} mr-2`} aria-hidden="true" />
-						{project.title}
-						<span className="project-role-badge">{project.role}</span>
-					</h2>
+			{filteredProjects.map((project, index) => {
+				let imagesToShow = [];
+				if (project.images && project.images.length > 0) {
+					imagesToShow = project.images;
+				} else if (project.thumbnail) {
+					imagesToShow = [project.thumbnail];
+				}
 
-					<div className="spacer" data-height={5} />
-					<div className="project-content-section">
-						<p className="project-description">{project.description}</p>
+				return (
+					<div
+						key={index}
+						id={`small-dialog-project-${index}`}
+						className="white-popup zoom-anim-dialog mfp-hide"
+					>
+						<ImageCarousel images={imagesToShow} />
+						<h2>
+							<i className={`${getProjectIcon(project.tags)} mr-2`} aria-hidden="true" />
+							{project.title}
+							<span className="project-role-badge">{project.role}</span>
+						</h2>
 
-						{/* Project details content */}
-						{project.contents && project.contents.length > 0 && (
-							<ul className="project-features">
-								{project.contents.map((content, i) => (
-									<li key={i}>{parse(content)}</li>
-								))}
-							</ul>
+						<div className="spacer" data-height={5} />
+						<div className="project-content-section">
+							<p className="project-description">{project.description}</p>
+
+							{/* Project details content */}
+							{project.contents && project.contents.length > 0 && (
+								<ul className="project-features">
+									{project.contents.map((content, i) => (
+										<li key={i}>{parse(content)}</li>
+									))}
+								</ul>
+							)}
+						</div>
+
+						{/* Tech stack */}
+						{project.techs && project.techs.length > 0 && (
+							<>
+								<div className="spacer" data-height={15} />
+								<div className="popup-tech-stack">
+									<div className="popup-tech-stack-label .icon-link">Technologies Used:</div>
+									<div className="popup-tech-badges">
+										{project.techs.map((tech, techIndex) => (
+											<span key={techIndex} className="popup-tech-badge">
+												{tech}
+											</span>
+										))}
+									</div>
+								</div>
+							</>
+						)}
+
+						{/* Links section */}
+						{project.source && (
+							<>
+								<div className="spacer" data-height={10} />
+								<div className="project-links">
+									<a
+										href={project.source}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="btn btn-default"
+									>
+										View Source
+									</a>
+								</div>
+							</>
 						)}
 					</div>
-
-					{/* Tech stack */}
-					{project.techs && project.techs.length > 0 && (
-						<>
-							<div className="spacer" data-height={15} />
-							<div className="popup-tech-stack">
-								<div className="popup-tech-stack-label .icon-link">Technologies Used:</div>
-								<div className="popup-tech-badges">
-									{project.techs.map((tech, techIndex) => (
-										<span key={techIndex} className="popup-tech-badge">
-											{tech}
-										</span>
-									))}
-								</div>
-							</div>
-						</>
-					)}
-
-					{/* Links section */}
-					{project.source && (
-						<>
-							<div className="spacer" data-height={10} />
-							<div className="project-links">
-								<a
-									href={project.source}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="btn btn-default"
-								>
-									View Source
-								</a>
-							</div>
-						</>
-					)}
-				</div>
-			))}
+				);
+			})}
 
 			<div className="pagination mobile-pagination">
 				<button
@@ -240,6 +244,7 @@ ProjectList.propTypes = {
 		contents: PropTypes.arrayOf(PropTypes.string).isRequired,
 		techs: PropTypes.arrayOf(PropTypes.string), // Added tech stack
 		source: PropTypes.string, // Optional source code URL
+		images: PropTypes.arrayOf(PropTypes.string), // Optional list of images
 	})).isRequired,
 };
 

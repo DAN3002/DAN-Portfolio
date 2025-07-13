@@ -169,6 +169,7 @@ export default {
 			],
 			techs: ['ReactJS', 'Langchain', 'Go', 'AWS'],
 			thumbnail: '/images/projects/architecture-design-generator.png',
+			images: ['/images/projects/architecture-design-generator.png'],
 		},
 		{
 			title: 'Autonomous Insight & Action Pipeline for Hospital Data',
@@ -186,6 +187,7 @@ export default {
 			],
 			techs: ['ReactJS', 'Langchain', 'Go', 'PostgreSQL', 'MongoDB', 'LLM'],
 			thumbnail: '/images/projects/nrc-hackathon.png',
+			images: ['/images/projects/nrc-hackathon.png'],
 		},
 		{
 			title: 'JS Recruitment',
@@ -199,6 +201,7 @@ export default {
 			],
 			techs: ['ReactJS', 'Supabase', 'Cloudflare'],
 			thumbnail: '/images/projects/js-recruitment.png',
+			images: ['/images/projects/js-recruitment.png'],
 		},
 		{
 			title: 'IMDb-Crawler',
@@ -259,6 +262,7 @@ export default {
 			],
 			techs: ['NodeJS', 'SocketIO', 'AWS', 'Docker'],
 			thumbnail: '/images/projects/js-codefest-2024.png',
+			images: ['/images/projects/js-codefest-2024.png'],
 		},
 		{
 			title: 'FinAInce Assistant',
@@ -272,6 +276,7 @@ export default {
 			techs: ['ReactJS', 'Flask', 'GPC Cloud', 'Firebase', 'ChatGPT'],
 			source: 'https://github.com/example/finaince-assistant',
 			thumbnail: '/images/projects/finaince-assistant.png',
+			images: ['/images/projects/finaince-assistant.png'],
 		},
 		{
 			title: 'FUNiX Learning Management System (LMS)',
@@ -285,6 +290,7 @@ export default {
 			],
 			techs: ['ReactJS', 'Django', 'MySQL', 'AWS Cloud'],
 			thumbnail: '/images/projects/funix-lms.png',
+			images: ['/images/projects/funix-lms.png'],
 		},
 		{
 			title: 'FUNiX Mentoring System (HF40)',
@@ -298,6 +304,7 @@ export default {
 			],
 			techs: ['MeteorJS', 'MongoDB', 'GCP Cloud'],
 			thumbnail: '/images/projects/funix-mentoring.png',
+			images: ['/images/projects/funix-mentoring.png'],
 		},
 		{
 			title: 'DAN3002 Portfolio',
@@ -310,6 +317,7 @@ export default {
 			techs: ['ReactJS', 'Github API', 'Cloudfalre'],
 			source: 'https://github.com/DAN3002/DAN-Portfolio',
 			thumbnail: '/images/projects/dan-portfolio.png',
+			images: ['/images/projects/dan-portfolio.png'],
 		},
 		{
 			title: 'Doctor\'s Cyclop',
@@ -322,6 +330,7 @@ export default {
 			techs: ['MeteorJS', 'MongoDB', 'AWS Cloud'],
 			source: 'https://github.com/DAN3002/Doctors-Cyclop-Webapp',
 			thumbnail: '/images/projects/doctors-cyclop.png',
+			images: ['/images/projects/doctors-cyclop.png'],
 		},
 		{
 			title: 'FUNiX Passport',

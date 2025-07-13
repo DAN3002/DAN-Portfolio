@@ -1,0 +1,64 @@
+.image-carousel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.carousel-image-wrapper {
+	/* Fixed viewport for every slide */
+	width: 766px; /* adjust to whatever size you need */
+	height: 382px; /* keeps a 16 : 9 rectangle */
+	max-width: 100%; /* still shrink on very narrow screens */
+	text-align: center;
+	position: relative;
+}
+
+.carousel-image-wrapper .lazy-load-image-wrapper,
+.carousel-image-wrapper img {
+	width: 100%;
+	height: 100%;
+}
+
+.carousel-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: contain; /* keep aspect ratio inside wrapper */
+}
+
+.carousel-nav {
+	background-color: transparent;
+	border: none;
+	color: #FFD15C;
+	font-size: 22px;
+	cursor: pointer;
+	padding: 8px;
+	transition: color 0.3s ease;
+}
+
+.carousel-nav:hover {
+	color: #FF4C60;
+} 
+
+/* Fade animation for TransitionGroup */
+.fade-enter {
+	opacity: 0;
+}
+
+.fade-enter-active {
+	opacity: 1;
+	transition: opacity 300ms ease;
+}
+
+.fade-exit {
+	opacity: 1;
+}
+
+.fade-exit-active {
+	opacity: 0;
+	transition: opacity 300ms ease;
+} 

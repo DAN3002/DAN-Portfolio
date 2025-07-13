@@ -7,7 +7,7 @@ function CertificationSection() {
 
 	const items = certifications.map((cert, i) => (
 		<div key={i} className="custem-carousel-item rounded bg-dark wow fadeIn">
-			<a href={`#small-dialog-cert-${i}`} className="work-content">
+			<a href={`#small-dialog-cert-${i}`} className="work-content" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`open-cert-${cert.name}`); } }}>
 				<div className="thumb">
 					<span className="category">{cert.category}</span>
 					<LazyImage
@@ -49,6 +49,7 @@ function CertificationSection() {
 						className="btn btn-default"
 						target="_blank"
 						rel="noreferrer"
+						onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`view-cert-${cert.name}`); } }}
 					>
 						Show Credential
 					</a>

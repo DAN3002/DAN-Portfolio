@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import ReactGA from 'react-ga4';
 
 import PreLoader from './components/utils/PreLoader';
 import MobileHeader from './components/header/MobileHeader';
@@ -10,9 +9,6 @@ import Main from './components/Main';
 
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './styles/components/lazy-image.css';
-
-// const TRACKING_ID = 'G-44EFKEN67K';
-// ReactGA.initialize(TRACKING_ID);
 
 function App() {
 	const { PUBLIC_URL } = process.env;
@@ -46,6 +42,19 @@ function App() {
 		window.addEventListener('load', handleSectionScroll);
 		return () => window.removeEventListener('load', handleSectionScroll);
 	}, [PUBLIC_URL]);
+
+	useEffect(() => {
+		const websiteId = process.env.REACT_APP_UMAMI_WEBSITE_ID;
+		if (websiteId) {
+			const umamiScript = document.createElement('script');
+			umamiScript.src = 'https://cloud.umami.is/script.js';
+			umamiScript.async = true;
+			umamiScript.defer = true;
+			// Set the data-website-id attribute expected by Umami
+			umamiScript.dataset.websiteId = websiteId;
+			document.body.appendChild(umamiScript);
+		}
+	}, []);
 
 	return (
 		<>

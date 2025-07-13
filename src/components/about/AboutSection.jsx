@@ -118,12 +118,10 @@ function AboutSection() {
 										target="_blank"
 										rel="noreferrer"
 										onClick={() => {
-											gtag('event', 'rum-page-scroll', {
-												event_label:
-													'Click Download Resume',
-												event_category: 'About Section',
-												non_interaction: true,
-											});
+											// Send custom event to Umami (if script is loaded)
+											if (typeof window.umami !== 'undefined') {
+												window.umami.track('download-resume');
+											}
 										}}
 									>
 										Download Resume

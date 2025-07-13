@@ -24,49 +24,49 @@ function DesktopHeader() {
 			<nav>
 				<ul className="vertical-menu scrollspy">
 					<li className="active">
-						<a href="#home">
+						<a href="#home" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-home'); } }}>
 							<i className="icon-home" />
 							Home
 						</a>
 					</li>
 					<li>
-						<a href="#about">
+						<a href="#about" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-about'); } }}>
 							<i className="icon-user-following" />
 							About
 						</a>
 					</li>
 					<li>
-						<a href="#experience">
+						<a href="#experience" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-experience'); } }}>
 							<i className="icon-graduation" />
 							Resume
 						</a>
 					</li>
 					<li>
-						<a href="#projects">
+						<a href="#projects" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-projects'); } }}>
 							<i className="icon-folder" />
 							Projects
 						</a>
 					</li>
 					<li>
-						<a href="#blog">
+						<a href="#blog" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-blog'); } }}>
 							<i className="icon-globe" />
 							Blog
 						</a>
 					</li>
 					<li>
-						<a href="#certifications">
+						<a href="#certifications" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-certifications'); } }}>
 							<i className="icon-check" />
 							Certifications
 						</a>
 					</li>
 					<li>
-						<a href="#achieves">
+						<a href="#achieves" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-achieves'); } }}>
 							<i className="icon-note" />
 							Achieves
 						</a>
 					</li>
 					<li>
-						<a href="#contact">
+						<a href="#contact" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-contact'); } }}>
 							<i className="icon-bubbles" />
 							Contact
 						</a>

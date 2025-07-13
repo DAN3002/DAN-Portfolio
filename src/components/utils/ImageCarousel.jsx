@@ -5,6 +5,7 @@ import {
 	useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import LazyImage from './LazyImage';
 import '../../styles/image-carousel.css';
 
@@ -63,12 +64,15 @@ function ImageCarousel({ images }) {
 			</button>
 
 			<div className="carousel-image-wrapper">
-				<LazyImage
-					key={currentIndex}
-					src={images[currentIndex]}
-					alt={`Project screenshot ${currentIndex + 1}`}
-					className="carousel-image"
-				/>
+				<SwitchTransition mode="out-in">
+					<CSSTransition key={currentIndex} timeout={300} classNames="fade">
+						<LazyImage
+							src={images[currentIndex]}
+							alt={`Project screenshot ${currentIndex + 1}`}
+							className="carousel-image"
+						/>
+					</CSSTransition>
+				</SwitchTransition>
 			</div>
 
 			<button

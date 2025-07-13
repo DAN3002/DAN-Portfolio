@@ -122,15 +122,6 @@ function AboutSection() {
 											if (typeof window.umami !== 'undefined') {
 												window.umami.track('download-resume');
 											}
-
-											// Fallback to Google Analytics gtag if it exists
-											if (typeof gtag !== 'undefined') {
-												gtag('event', 'rum-page-scroll', {
-													event_label: 'Click Download Resume',
-													event_category: 'About Section',
-													non_interaction: true,
-												});
-											}
 										}}
 									>
 										Download Resume

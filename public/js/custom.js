@@ -98,7 +98,14 @@ $(window).on('load', function() {
         preloader: false,
         midClick: true,
         removalDelay: 300,
-        mainClass: 'my-mfp-zoom-in'
+        mainClass: 'my-mfp-zoom-in',
+        callbacks: {
+          elementParse: function (item) {
+            /*  item.src  = '#small-dialog-project-x'
+                => lấy đúng node thật (đã có handler React) chứ không clone  */
+            item.inlineElement = $(item.src);
+         }
+        }
       });
 
       $('.work-video').magnificPopup({

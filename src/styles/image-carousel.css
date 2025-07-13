@@ -1,0 +1,33 @@
+.image-carousel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.carousel-image-wrapper {
+	flex: 1;
+	text-align: center;
+}
+
+.carousel-image {
+	max-width: 100%;
+	height: auto;
+	border-radius: 6px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-nav {
+	background-color: transparent;
+	border: none;
+	color: #FFD15C;
+	font-size: 22px;
+	cursor: pointer;
+	padding: 8px;
+	transition: color 0.3s ease;
+}
+
+.carousel-nav:hover {
+	color: #FF4C60;
+} 

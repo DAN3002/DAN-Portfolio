@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
 import LazyImage from '../utils/LazyImage';
+import ImageCarousel from '../utils/ImageCarousel';
 import '../../styles/project-list.css';
 
 function ProjectList({ projects }) {
@@ -121,11 +122,15 @@ function ProjectList({ projects }) {
 					id={`small-dialog-project-${index}`}
 					className="white-popup zoom-anim-dialog mfp-hide"
 				>
-					{project.thumbnail && (
-						<LazyImage
-							src={project.thumbnail}
-							alt={project.title}
-						/>
+					{project.images && project.images.length > 0 ? (
+						<ImageCarousel images={project.images} />
+					) : (
+						project.thumbnail && (
+							<LazyImage
+								src={project.thumbnail}
+								alt={project.title}
+							/>
+						)
 					)}
 					<h2>
 						<i className={`${getProjectIcon(project.tags)} mr-2`} aria-hidden="true" />
@@ -240,6 +245,7 @@ ProjectList.propTypes = {
 		contents: PropTypes.arrayOf(PropTypes.string).isRequired,
 		techs: PropTypes.arrayOf(PropTypes.string), // Added tech stack
 		source: PropTypes.string, // Optional source code URL
+		images: PropTypes.arrayOf(PropTypes.string), // Optional list of images
 	})).isRequired,
 };
 

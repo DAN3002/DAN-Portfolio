@@ -26,6 +26,8 @@ function ImageCarousel({ images }) {
 
 	const [currentIndex, setCurrentIndex] = useState(0);
 
+	const hasMultiple = images.length > 1;
+
 	// Track when the first image is fully loaded so we can preload others
 	const [firstImageLoaded, setFirstImageLoaded] = useState(false);
 
@@ -48,8 +50,9 @@ function ImageCarousel({ images }) {
 	| to the carousel element.                                                 |
 	-------------------------------------------------------------------------- */
 	useEffect(() => {
+		if (!hasMultiple) return undefined; // no buttons, no listener
 		const root = carouselRef.current;
-		if (!root) return;
+		if (!root) return undefined;
 
 		const handleClick = (e) => {
 			const { target } = e;
@@ -61,9 +64,10 @@ function ImageCarousel({ images }) {
 		};
 
 		root.addEventListener('click', handleClick);
-		// eslint-disable-next-line consistent-return
-		return () => root.removeEventListener('click', handleClick);
-	}, [prevImage, nextImage]);
+		return () => {
+			root.removeEventListener('click', handleClick);
+		};
+	}, [prevImage, nextImage, hasMultiple]);
 
 	// Preload remaining images once the first one has loaded
 	useEffect(() => {
@@ -78,14 +82,16 @@ function ImageCarousel({ images }) {
 
 	return (
 		<div className="image-carousel" ref={carouselRef}>
-			<button
-				type="button"
-				className="carousel-nav prev"
-				onClick={prevImage}
-				aria-label="Previous image"
-			>
-				<i className="fas fa-chevron-left" />
-			</button>
+			{hasMultiple && (
+				<button
+					type="button"
+					className="carousel-nav prev"
+					onClick={prevImage}
+					aria-label="Previous image"
+				>
+					<i className="fas fa-chevron-left" />
+				</button>
+			)}
 
 			<div className="carousel-image-wrapper">
 				<SwitchTransition mode="out-in">
@@ -108,14 +114,16 @@ function ImageCarousel({ images }) {
 				</SwitchTransition>
 			</div>
 
-			<button
-				type="button"
-				className="carousel-nav next"
-				onClick={nextImage}
-				aria-label="Next image"
-			>
-				<i className="fas fa-chevron-right" />
-			</button>
+			{hasMultiple && (
+				<button
+					type="button"
+					className="carousel-nav next"
+					onClick={nextImage}
+					aria-label="Next image"
+				>
+					<i className="fas fa-chevron-right" />
+				</button>
+			)}
 		</div>
 	);
 }

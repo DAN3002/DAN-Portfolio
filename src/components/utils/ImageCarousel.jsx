@@ -9,12 +9,25 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import LazyImage from './LazyImage';
 import '../../styles/image-carousel.css';
 
+// Helper to preload an image and return a promise
+function preload(src) {
+	return new Promise((resolve) => {
+		const img = new Image();
+		img.onload = resolve;
+		img.onerror = resolve;
+		img.src = src;
+	});
+}
+
 function ImageCarousel({ images }) {
 	// Keep reference to carousel root to attach native event listeners.
 	// This still works after MagnificPopup moves the node out of React's tree.
 	const carouselRef = useRef(null);
 
 	const [currentIndex, setCurrentIndex] = useState(0);
+
+	// Track when the first image is fully loaded so we can preload others
+	const [firstImageLoaded, setFirstImageLoaded] = useState(false);
 
 	if (!images || images.length === 0) return null;
 
@@ -52,6 +65,17 @@ function ImageCarousel({ images }) {
 		return () => root.removeEventListener('click', handleClick);
 	}, [prevImage, nextImage]);
 
+	// Preload remaining images once the first one has loaded
+	useEffect(() => {
+		if (!firstImageLoaded) return;
+		const rest = images.slice(1).map((src) => (
+			src.startsWith('http') ? src : `${process.env.PUBLIC_URL}${src}`
+		));
+		rest.forEach((src) => {
+			preload(src);
+		});
+	}, [firstImageLoaded, images]);
+
 	return (
 		<div className="image-carousel" ref={carouselRef}>
 			<button
@@ -65,12 +89,21 @@ function ImageCarousel({ images }) {
 
 			<div className="carousel-image-wrapper">
 				<SwitchTransition mode="out-in">
-					<CSSTransition key={currentIndex} timeout={300} classNames="fade">
-						<LazyImage
-							src={images[currentIndex]}
-							alt={`Project screenshot ${currentIndex + 1}`}
-							className="carousel-image"
-						/>
+					<CSSTransition key={currentIndex} timeout={300} classNames="fade" unmountOnExit>
+						{currentIndex === 0 && !firstImageLoaded ? (
+							<LazyImage
+								src={images[0]}
+								alt="Project screenshot 1"
+								className="carousel-image"
+								afterLoad={() => setFirstImageLoaded(true)}
+							/>
+						) : (
+							<img
+								src={images[currentIndex].startsWith('http') ? images[currentIndex] : `${process.env.PUBLIC_URL}${images[currentIndex]}`}
+								alt={`Project screenshot ${currentIndex + 1}`}
+								className="carousel-image"
+							/>
+						)}
 					</CSSTransition>
 				</SwitchTransition>
 			</div>

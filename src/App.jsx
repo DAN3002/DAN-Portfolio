@@ -47,6 +47,19 @@ function App() {
 		return () => window.removeEventListener('load', handleSectionScroll);
 	}, [PUBLIC_URL]);
 
+	useEffect(() => {
+		const websiteId = process.env.REACT_APP_UMAMI_WEBSITE_ID;
+		if (websiteId) {
+			const umamiScript = document.createElement('script');
+			umamiScript.src = 'https://cloud.umami.is/script.js';
+			umamiScript.async = true;
+			umamiScript.defer = true;
+			// Set the data-website-id attribute expected by Umami
+			umamiScript.dataset.websiteId = websiteId;
+			document.body.appendChild(umamiScript);
+		}
+	}, []);
+
 	return (
 		<>
 			<PreLoader />

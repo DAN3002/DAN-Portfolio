@@ -104,4 +104,9 @@ export default [
 		cert_id: 'UC-9cdc31ec-ad4d-4c9d-9525-daf2ea62eb8a',
 		skills: ['React.js'],
 	},
+	{
+		name: 'Event Driven Microservices with CQRS, Saga, Event Sourcing',
+		cert_id: 'UC-4ebccbee-9b42-4dd6-b492-3082460cb0b2',
+		skills: ['Microservices', 'Event-Driven Architecture', 'Design Patterns'],
+	},
 ];

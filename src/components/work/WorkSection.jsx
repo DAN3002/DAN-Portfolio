@@ -1,8 +1,9 @@
 import DesktopPortfolioFilter from './DesktopPortfolioFilter';
 import MobilePortfolioFilter from './MobilePortfolioFilter';
+import Image from '../utils/Image';
 
 function WorkSection() {
-	const { PUBLIC_URL } = process.env;
+	// Using Image component to resolve image paths based on environment
 
 	return (
 		<div>
@@ -27,8 +28,8 @@ function WorkSection() {
 								</span>
 							</div>
 							<div className="thumb">
-								<img
-									src={`${PUBLIC_URL}/images/works/doctor-cylop-webapp.png`}
+								<Image
+									src="/images/works/doctor-cylop-webapp.png"
 									alt="Doctor Cylop Webapp"
 								/>
 								<div className="mask" />
@@ -48,7 +49,7 @@ function WorkSection() {
 								</span>
 							</div>
 							<div className="thumb">
-								<img src={`${PUBLIC_URL}/images/works/hf40.png`} alt="HF40" />
+								<Image src="/images/works/hf40.png" alt="HF40" />
 								<div className="mask" />
 							</div>
 						</div>
@@ -57,7 +58,7 @@ function WorkSection() {
 						id="small-dialog"
 						className="white-popup zoom-anim-dialog mfp-hide"
 					>
-						<img src={`${PUBLIC_URL}/images/works/hf40-full.png`} alt="HF40" />
+						<Image src="/images/works/hf40-full.png" alt="HF40" />
 						<h2>HF40 Webapp</h2>
 						<p>
 							HF40 is a web app to connect FUNiX's students with mentors
@@ -97,8 +98,8 @@ function WorkSection() {
 								</span>
 							</div>
 							<div className="thumb">
-								<img
-									src={`${PUBLIC_URL}/images/works/doctor-cylop.png`}
+								<Image
+									src="/images/works/doctor-cylop.png"
 									alt="Doctor Cylop  Model"
 								/>
 								<div className="mask" />
@@ -118,8 +119,8 @@ function WorkSection() {
 								</span>
 							</div>
 							<div className="thumb">
-								<img
-									src={`${PUBLIC_URL}/images/works/passport.png`}
+								<Image
+									src="/images/works/passport.png"
 									alt="FUNiX Passport"
 								/>
 								<div className="mask" />
@@ -130,7 +131,7 @@ function WorkSection() {
 						id="small-dialog-passport"
 						className="white-popup zoom-anim-dialog mfp-hide"
 					>
-						<img src={`${PUBLIC_URL}/images/works/passport-full.png`} alt="FUNiX Passport" />
+						<Image src="/images/works/passport-full.png" alt="FUNiX Passport" />
 						<h2>FUNiX Passport</h2>
 						<p>
 							This utility helps FUNiX students for learning online, ex:

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 import data from '../../data/data';
 import { getGithubData } from '../../data/github';
+import Image from '../utils/Image';
 // import useAnalyticsEventTracker from '../../hooks/useAnalyticsEventTracker';
 
 function AboutSection() {
@@ -44,8 +45,8 @@ function AboutSection() {
 			<div className="row">
 				<div className="col-md-3">
 					<div className="text-center text-md-left">
-						<img
-							src={`${PUBLIC_URL}/images/dan3002/profile.png`}
+						<Image
+							src="/images/dan3002/profile.png"
 							alt="Nguyễn Đình Anh Profile"
 						/>
 					</div>

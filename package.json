@@ -4,6 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"axios": "^1.8.2",
+		"cloudflare-sync": "^1.2.0",
 		"dotenv": "^16.3.1",
 		"html-react-parser": "^3.0.8",
 		"prop-types": "^15.8.1",

@@ -1,17 +1,18 @@
 import ScollDown from './ScollDown';
 import Parallax from './Parallax';
+import Image from '../utils/Image';
 import data from '../../data/data';
 
 function HomeSection() {
-	const { PUBLIC_URL } = process.env;
+	// const { PUBLIC_URL } = process.env;
 
 	const { home = {}, contactEmail } = data;
 	return (
 		<section id="home" className="home d-flex align-items-center">
 			<div className="container">
 				<div className="intro">
-					<img
-						src={`${PUBLIC_URL}/images/dan3002/avatar.png`}
+					<Image
+						src="/images/dan3002/avatar.png"
 						alt="Nguyễn Đình Anh Avatar"
 						className="mb-4"
 					/>

@@ -1,5 +1,6 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import resolveImageSrc from './resolveImageSrc';
 
 function LazyImage({
 	src,
@@ -10,8 +11,6 @@ function LazyImage({
 	style,
 	afterLoad,
 }) {
-	const { PUBLIC_URL } = process.env;
-
 	const combinedStyle = {
 		width: width ? `${width}px` : '100%',
 		height: height ? `${height}px` : 'auto',
@@ -20,12 +19,12 @@ function LazyImage({
 
 	return (
 		<LazyLoadImage
-			src={src.startsWith('http') ? src : `${PUBLIC_URL}${src}`}
+			src={resolveImageSrc(src)}
 			alt={alt}
 			effect="blur"
 			style={combinedStyle}
 			className={className}
-			placeholderSrc={`${PUBLIC_URL}/images/placeholder.jpg`}
+			placeholderSrc={resolveImageSrc('/images/placeholder.jpg')}
 			wrapperClassName="lazy-load-image-wrapper"
 			afterLoad={afterLoad}
 		/>

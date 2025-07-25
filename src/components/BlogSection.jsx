@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Image from './utils/Image';
 import data from '../data/data';
 import '../styles/components/blog-section.css';
 
@@ -64,7 +65,7 @@ function BlogSection() {
 						</div>
 						{post.thumbnail && (
 							<div className="blog-thumbnail">
-								<img src={post.thumbnail} alt={post.title} />
+								<Image src={post.thumbnail} alt={post.title} />
 							</div>
 						)}
 					</div>

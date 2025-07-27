@@ -87,8 +87,8 @@ function ProjectList({ projects }) {
 			)}
 			<div className={`project-list ${animationClass}`}>
 				{currentProjects.map((project, index) => {
-					// Calculate the actual index in the filtered projects array
-					const projectIndex = filteredProjects.indexOf(project);
+					// Calculate the actual index in the original projects array
+					const projectIndex = projects.findIndex((p) => p === project);
 
 					return (
 						<div key={index} className="project-item">
@@ -126,8 +126,8 @@ function ProjectList({ projects }) {
 				})}
 			</div>
 
-			{/* Project Popup Modals - Including all projects, not just current page */}
-			{filteredProjects.map((project, index) => {
+			{/* Project Popup Modals - Always render ALL projects to maintain consistent hook count */}
+			{projects.map((project, index) => {
 				let imagesToShow = [];
 				if (project.images && project.images.length > 0) {
 					imagesToShow = project.images;

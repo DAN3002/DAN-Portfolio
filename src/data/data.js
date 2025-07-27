@@ -145,7 +145,6 @@ export default {
 				'Boost engagement and conversion rates',
 			],
 			techs: ['ReactJS', 'Go', 'AWS', 'PostgreSQL', 'Langchain'],
-			thumbnail: '/images/projects/tcb-hackathon/tcb-hackathon-project-2.png',
 			images: [
 				'/images/projects/tcb-hackathon/tcb-hackathon-project-2.png',
 				'/images/projects/tcb-hackathon/tcb-hackathon-project-3.png',
@@ -168,7 +167,6 @@ export default {
 				'Champion of <b>VPBank Hackathon 2024</b>.',
 			],
 			techs: ['ReactJS', 'Langchain', 'Go', 'AWS'],
-			thumbnail: '/images/projects/architecture-design-generator.png',
 			images: ['/images/projects/architecture-design-generator.png'],
 		},
 		{
@@ -204,7 +202,6 @@ export default {
 				// 'Scalable, reproducible, and easy to integrate',
 			],
 			techs: ['ReactJS', 'Langchain', 'Go', 'PostgreSQL', 'MongoDB', 'LLM'],
-			thumbnail: '/images/projects/nrc-hackathon.png',
 			images: ['/images/projects/nrc-hackathon.png'],
 		},
 		{
@@ -218,7 +215,6 @@ export default {
 				'End to end recruitment process management',
 			],
 			techs: ['ReactJS', 'Supabase', 'Cloudflare'],
-			thumbnail: '/images/projects/js-recruitment.png',
 			images: ['/images/projects/js-recruitment.png'],
 		},
 		{
@@ -279,7 +275,6 @@ export default {
 				'Provided technical direction, code reviews, and mentorship to ensure high-quality development practices.',
 			],
 			techs: ['NodeJS', 'SocketIO', 'AWS', 'Docker'],
-			thumbnail: '/images/projects/js-codefest-2024.png',
 			images: ['/images/projects/js-codefest-2024.png'],
 		},
 		{
@@ -293,7 +288,6 @@ export default {
 			],
 			techs: ['ReactJS', 'Flask', 'GPC Cloud', 'Firebase', 'ChatGPT'],
 			source: 'https://github.com/example/finaince-assistant',
-			thumbnail: '/images/projects/finaince-assistant.png',
 			images: ['/images/projects/finaince-assistant.png'],
 		},
 		{
@@ -307,7 +301,6 @@ export default {
 				'Utilized the OpenEdx open-source project to accelerate development.',
 			],
 			techs: ['ReactJS', 'Django', 'MySQL', 'AWS Cloud'],
-			thumbnail: '/images/projects/funix-lms.png',
 			images: ['/images/projects/funix-lms.png'],
 		},
 		{
@@ -321,7 +314,6 @@ export default {
 				'Utilized the Rocket.Chat open-source project to power the chat and communication functionalities.',
 			],
 			techs: ['MeteorJS', 'MongoDB', 'GCP Cloud'],
-			thumbnail: '/images/projects/funix-mentoring.png',
 			images: ['/images/projects/funix-mentoring.png'],
 		},
 		{
@@ -334,7 +326,6 @@ export default {
 			],
 			techs: ['ReactJS', 'Github API', 'Cloudfalre'],
 			source: 'https://github.com/DAN3002/DAN-Portfolio',
-			thumbnail: '/images/projects/dan-portfolio.png',
 			images: ['/images/projects/dan-portfolio.png'],
 		},
 		{
@@ -347,7 +338,6 @@ export default {
 			],
 			techs: ['MeteorJS', 'MongoDB', 'AWS Cloud'],
 			source: 'https://github.com/DAN3002/Doctors-Cyclop-Webapp',
-			thumbnail: '/images/projects/doctors-cyclop.png',
 			images: ['/images/projects/doctors-cyclop.png'],
 		},
 		{

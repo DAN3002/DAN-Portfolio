@@ -57,6 +57,7 @@ function ProjectList({ projects }) {
 		if (projectTags.includes('Crawler')) return 'fas fa-spider text-warning';
 		if (projectTags.includes('Backend')) return 'fas fa-server text-warning';
 		if (projectTags.includes('Frontend')) return 'fas fa-desktop text-warning';
+		if (projectTags.includes('DevOps')) return 'fas fa-server text-warning';
 		return 'fas fa-code text-warning'; // Default icon
 	};
 	return (

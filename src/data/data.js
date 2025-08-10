@@ -218,6 +218,20 @@ export default {
 			images: ['/images/projects/js-recruitment.png'],
 		},
 		{
+			title: 'Notion Calendar Restyle',
+			tags: ['Fullstack'],
+			role: 'Fullstack Engineer',
+			description: 'A lightweight Chrome extension that injects CSS to make Notion Calendar cleaner and more consistent, inspired by Google Calendar’s visual cues.',
+			contents: [
+				'Event color = ribbon color: Sets every event’s background to its ribbon color so it matches how colors appear in Google Calendar.',
+				'Notion tasks styling: Distinct styling per task type; completed tasks get a strikethrough and subdued color, mirroring Google Tasks behavior.',
+				'Past events dimming: Events that have ended are automatically dimmed to reduce visual noise, similar to Google Calendar.',
+			],
+			techs: ['JavaScript', 'Chrome Extension'],
+			source: 'https://github.com/DAN3002/Notion-Calendar-Restyle',
+			images: [],
+		},
+		{
 			title: 'IMDb-Crawler',
 			tags: ['Crawler'],
 			role: 'Data Engineer',

@@ -218,6 +218,19 @@ export default {
 			images: ['/images/projects/js-recruitment.png'],
 		},
 		{
+			title: 'Youtube Colab Proxy',
+			tags: ['Fullstack', 'DevOps'],
+			role: 'Fullstack & DevOps Engineer',
+			description: 'A Python web application that provides a YouTube video streaming proxy with a built-in web player. Designed to work seamlessly in Google Colab environments while also supporting local development and deployment.',
+			contents: [
+				'Streaming & Playback: Direct YouTube streaming (via proxy), MP4 ≤720p support, range requests for seeking',
+				'Search & Playlists: Keyword-based video search, playlist/channel support, paginated results',
+				'Security & Config: SHA256 password, cookies/geo-bypass/proxy, language customization',
+			],
+			techs: ['Python'],
+			source: 'https://github.com/DAN3002/Youtube-Colab-Proxy',
+		},
+		{
 			title: 'Notion Calendar Restyle',
 			tags: ['Fullstack'],
 			role: 'Fullstack Engineer',

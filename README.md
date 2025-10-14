@@ -1,4 +1,4 @@
-# Online Resume using React and Github API
+# Online Resume using React and Github API 
 
 <!-- Add image banner and center align -->
 <p align="center">

@@ -33,7 +33,7 @@ export default {
 		timeline: 'Aug 2018 - Dec 2021',
 		subtitle: 'Major: Software Engineering.',
 		text: [
-			'Started studying at the age of 16.',
+			'Started studying at the <b>age of 16</b>.',
 			'Received a scholarship each semester and actively participated in various university activities.',
 			// 'Had the opportunity to have personal meetings with the university\'s principal (<a href="https://vi.wikipedia.org/wiki/Nguy%E1%BB%85n_Th%C3%A0nh_Nam_(doanh_nh%C3%A2n)">Mr. Nguyen Thanh Nam</a> - Founder of FUNiX, former General Director of FPT).',
 			// 'GPA: 8.4/10',

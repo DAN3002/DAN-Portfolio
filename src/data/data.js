@@ -13,10 +13,10 @@ export default {
 		],
 	},
 	others: [
-		'<b>Languages</b>: English | Vietnamese: native.',
-		'<b>Programming languages</b>: Python, JavaScript, Bash, SQL.',
-		'<b>Frameworks & Libraries</b>: MERN Stack, NextJS, Langchain, Django, ...',
-		'<b>Other</b>: Langchain, Linux, Git, Docker, AWS, k8s, ...',
+		'<b>Languages: </b>English | Vietnamese: native.',
+		'<b>Programming languages: </b>JavaScript, Python, Bash Script, SQL.',
+		'<b>Frameworks & libraries: </b>NextJS, MERN Stack, ReactJS, Django.',
+		'<b>Other tools: </b>Linux, Git, Docker, AWS, k8s, ...',
 	],
 	education: [{
 		title: 'FPT University',

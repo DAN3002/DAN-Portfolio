@@ -3,7 +3,7 @@ import moocCerts from '../../data/moocCerts';
 
 function MoocCertificate() {
 	return (
-		<>
+		<div id="mooc-certs">
 			<h3>MOOC Certs</h3>
 			<div className="timeline star bg-dark rounded shadow-light padding-30 overflow-hidden">
 				<div
@@ -32,7 +32,7 @@ function MoocCertificate() {
 				</div>
 				<span className="line" />
 			</div>
-		</>
+		</div>
 	);
 }
 

@@ -31,10 +31,10 @@ function App() {
 					if (sectionElement) {
 						// Use the same animation as in custom.js
 						$('html, body').animate({
-							scrollTop: $(sectionElement).offset().top,
+							scrollTop: $(sectionElement).offset().top - 100,
 						}, 800, 'easeInOutQuad');
 					}
-				}, 1000); // Give time for preloader to finish
+				}, 1500); // Give more time for preloader to finish and components to render
 			}
 		};
 

@@ -29,7 +29,7 @@ These instructions will get you a copy of the project up and running on your loc
 2. Install the dependencies
 
 ```sh
-npm install
+pnpm install
 ```
 
 3. Start the development server

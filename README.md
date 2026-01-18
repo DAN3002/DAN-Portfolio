@@ -34,7 +34,7 @@ pnpm install
 
 3. Start the development server
 ```sh
-npm start
+pnpm start
 ```
 
 ## Customize

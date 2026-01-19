@@ -52,7 +52,7 @@ The application is deployed using Github Pages and can be accessed at [https://d
 
 To deploy the application, run the following command:
 ```sh
-npm run deploy
+pnpm run deploy
 ```
 
 ## Built With

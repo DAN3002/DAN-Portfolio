@@ -48,7 +48,7 @@ REACT_APP_GITHUB_SECRET=YOUR_API_KEY
 
 ## Deployment
 
-The application is deployed using Github Pages and can be accessed at [https://dan3002.tech/](https://dan3002.tech/).
+The application is deployed using Github Pages and can be accessed at [https://dan3002.id.vn/](https://dan3002.id.vn/).
 
 To deploy the application, run the following command:
 ```sh

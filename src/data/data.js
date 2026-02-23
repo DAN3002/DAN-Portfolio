@@ -521,7 +521,7 @@ export default {
 		}],
 	}],
 	externalLinks: {
-		blog: 'https://blog.dan3002.tech',
-		blogRssFeed: 'https://blog.dan3002.tech/feed.xml',
+		blog: 'https://blog.dan3002.id.vn',
+		blogRssFeed: 'https://blog.dan3002.id.vn/feed.xml',
 	},
 };

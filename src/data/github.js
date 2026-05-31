@@ -8,18 +8,14 @@ const USERNAME = 'DAN3002';
 const CURRENT_REPO = 'DAN3002/DAN-Portfolio';
 const CACHE_TIMEOUT = 1; // days
 
-const headers = {
-	Authorization: `token ${process.env.REACT_APP_GITHUB_SECRET}`,
-};
-
 const countTotalCommits = async () => {
 	const total = 1 + 53 + 32 + 46 + 250;
-	const { data } = await axios.get(`https://api.github.com/search/commits?q=author:${USERNAME}`, { headers });
+	const { data } = await axios.get(`https://api.github.com/search/commits?q=author:${USERNAME}`);
 	return total + data.total_count;
 };
 
 const getAllRepos = async (arr = [], page = 1) => {
-	const { data } = await axios.get(`https://api.github.com/search/repositories?q=user:${USERNAME}&per_page=${MAX_PER_PAGE}&page=${page}`, { headers });
+	const { data } = await axios.get(`https://api.github.com/search/repositories?q=user:${USERNAME}&per_page=${MAX_PER_PAGE}&page=${page}`);
 
 	const { total_count: totalCount, items } = data;
 
@@ -70,7 +66,7 @@ const getLatestCommitDate = async () => {
 		}
 	}
 
-	const { data } = await axios.get(`https://api.github.com/repos/${CURRENT_REPO}/commits`, { headers });
+	const { data } = await axios.get(`https://api.github.com/repos/${CURRENT_REPO}/commits`);
 
 	const date = new Date(data[0].commit.author.date);
 

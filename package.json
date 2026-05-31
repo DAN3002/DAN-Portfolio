@@ -20,7 +20,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"predeploy": "npm run lint && node predeploy.js && npm run build",
+		"predeploy": "npm run lint && npm run build",
 		"lint": "npx eslint ."
 	},
 	"eslintConfig": {

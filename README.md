@@ -40,11 +40,7 @@ pnpm start
 ## Customize
 
 1. To change the data displayed on the page, modify the `src/data/data.js` file.
-2. To use your Github API key, create a `.env` file and add the following line, replacing `YOUR_API_KEY` with your actual key:
-```javascript
-REACT_APP_GITHUB_SECRET=YOUR_API_KEY
-```
-3. To add a custom domain for your Github Page, add a `CNAME` file with your domain name.
+2. To add a custom domain for your Github Page, add a `CNAME` file with your domain name.
 
 ## Deployment
 

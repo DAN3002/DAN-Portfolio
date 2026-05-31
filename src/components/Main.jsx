@@ -11,7 +11,7 @@ import CertificationSection from './certification/CertificationSection';
 import AchieveSection from './achieve/AchieveSection';
 import ContactSection from './contact/ContactSection';
 import ProjectList from './resume/ProjectList';
-import BlogSection from './BlogSection';
+// import BlogSection from './BlogSection';
 
 function Main() {
 	useEffect(() => {
@@ -80,12 +80,12 @@ function Main() {
 			>
 				<ProjectList projects={projects} />
 			</Section>
-			<Section
+			{/* <Section
 				id="blog"
 				title="Latest Blog Posts"
 			>
 				<BlogSection />
-			</Section>
+			</Section> */}
 			<Section
 				id="certifications"
 				title="Certifications"

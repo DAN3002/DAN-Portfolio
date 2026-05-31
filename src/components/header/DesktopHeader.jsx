@@ -47,12 +47,12 @@ function DesktopHeader() {
 							Projects
 						</a>
 					</li>
-					<li>
+					{/* <li>
 						<a href="#blog" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-blog'); } }}>
 							<i className="icon-globe" />
 							Blog
 						</a>
-					</li>
+					</li> */}
 					<li>
 						<a href="#certifications" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-certifications'); } }}>
 							<i className="icon-check" />

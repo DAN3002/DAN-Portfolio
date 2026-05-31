@@ -4,7 +4,7 @@ function MobileHeader() {
 			<div className="container">
 				{/* menu icon */}
 				<div className="menu-icon d-inline-flex mr-4">
-					<button type="button">
+					<button type="button" aria-label="Toggle menu">
 						<span />
 					</button>
 				</div>

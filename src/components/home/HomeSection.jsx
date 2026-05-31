@@ -25,7 +25,7 @@ function HomeSection() {
 					</span>
 					<ul className="social-icons light list-inline mb-0 mt-4">
 						<li className="list-inline-item">
-							<a href="https://github.com/DAN3002" target="_blank" rel="noreferrer">
+							<a href="https://github.com/DAN3002" target="_blank" rel="noreferrer" aria-label="GitHub">
 								<i className="fab fa-github" />
 							</a>
 						</li>
@@ -34,6 +34,7 @@ function HomeSection() {
 								href="https://www.facebook.com/dan3002/"
 								target="_blank"
 								rel="noreferrer"
+								aria-label="Facebook"
 							>
 								<i className="fab fa-facebook" />
 							</a>
@@ -43,12 +44,13 @@ function HomeSection() {
 								href="https://www.linkedin.com/in/dan3002/"
 								target="_blank"
 								rel="noreferrer"
+								aria-label="LinkedIn"
 							>
 								<i className="fab fa-linkedin" />
 							</a>
 						</li>
 						<li className="list-inline-item">
-							<a href={`mailto:${contactEmail}`} target="_blank" rel="noreferrer">
+							<a href={`mailto:${contactEmail}`} target="_blank" rel="noreferrer" aria-label="Email">
 								<i className="fab fa-google" />
 							</a>
 						</li>

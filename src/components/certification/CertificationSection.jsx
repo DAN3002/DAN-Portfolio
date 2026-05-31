@@ -13,8 +13,8 @@ function CertificationSection() {
 					<LazyImage
 						src={cert.thumb}
 						alt={cert.name}
-						width={330}
-						height={173}
+						height={200}
+						style={{ width: '100%', objectFit: 'contain' }}
 					/>
 				</div>
 				<div className="details">

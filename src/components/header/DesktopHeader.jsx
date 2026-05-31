@@ -48,7 +48,14 @@ function DesktopHeader() {
 						</a>
 					</li>
 					{/* <li>
-						<a href="#blog" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-blog'); } }}>
+						<a
+							href="#blog"
+							onClick={() => {
+								if (typeof window.umami !== 'undefined') {
+									window.umami.track('nav-blog');
+								}
+							}}
+						>
 							<i className="icon-globe" />
 							Blog
 						</a>

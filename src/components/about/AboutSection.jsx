@@ -62,7 +62,7 @@ function AboutSection() {
 									<b>Nguyễn Đình Anh,</b>
 								</p>
 								{about.paragraphs.map((item) => (
-									<p>{item}</p>
+									<p key={item}>{item}</p>
 								))}
 								<div
 									className="spacer d-md-none d-lg-none"

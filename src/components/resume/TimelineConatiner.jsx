@@ -9,7 +9,7 @@ function TimelineConatiner({ title, timelineData, icon }) {
 			<div className={`timeline ${icon} bg-dark rounded shadow-light padding-30 overflow-hidden`}>
 				<div className="spacer d-md-none d-lg-none" data-height={30} />
 				{timelineData.map((item) => (
-					<div className="timeline-container wow fadeInUp">
+					<div className="timeline-container wow fadeInUp" key={`${item.title}-${item.timeline}`}>
 						<div className="content">
 							{item.timeline && (<span className="time">{item.timeline}</span>)}
 							<h3 className="title">{item.title}</h3>
@@ -21,7 +21,7 @@ function TimelineConatiner({ title, timelineData, icon }) {
 							)}
 							<ul>
 								{item.text.map((text) => (
-									<li>{parse(text)}</li>
+									<li key={text}>{parse(text)}</li>
 								))}
 							</ul>
 						</div>

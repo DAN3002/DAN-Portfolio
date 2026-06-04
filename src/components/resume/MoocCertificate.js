@@ -14,8 +14,11 @@ function MoocCertificate() {
 					<div className="content">
 						<span className="time" />
 						<ul>
-							{moocCerts.map((item) => (
-								<li key={item.cert_id}>
+							{/* Combine cert_id with index because a couple of source
+							    entries share the same Udemy cert_id, which would
+							    otherwise produce duplicate React keys. */}
+							{moocCerts.map((item, index) => (
+								<li key={`${item.cert_id}-${index}`}>
 									<a
 										className="cert-mooc-item"
 										href={`https://www.udemy.com/certificate/${item.cert_id}/`}

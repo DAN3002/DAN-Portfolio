@@ -12,7 +12,7 @@ import clsx from 'clsx';
  * and a clear `:focus-visible` ring for keyboard users.
  */
 function FilterPill({
-	label, count, active, onClick,
+	label, count = undefined, active = false, onClick,
 }) {
 	return (
 		<button
@@ -45,14 +45,13 @@ function FilterPill({
 
 FilterPill.propTypes = {
 	label: PropTypes.string.isRequired,
+	// Defaults supplied via JS default parameters above (instead of the deprecated
+	// `defaultProps` on function components), so silence airbnb's require-default-props.
+	// eslint-disable-next-line react/require-default-props
 	count: PropTypes.number,
+	// eslint-disable-next-line react/require-default-props
 	active: PropTypes.bool,
 	onClick: PropTypes.func.isRequired,
-};
-
-FilterPill.defaultProps = {
-	count: undefined,
-	active: false,
 };
 
 export default FilterPill;

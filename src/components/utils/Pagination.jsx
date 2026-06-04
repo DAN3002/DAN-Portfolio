@@ -19,7 +19,7 @@ const baseBtn = 'flex items-center justify-center rounded-full text-sm font-medi
  * Active state uses the brand accent (red) for clear contrast against the dark theme.
  */
 function Pagination({
-	currentPage, totalPages, onPageChange, compact,
+	currentPage, totalPages, onPageChange, compact = false,
 }) {
 	if (totalPages <= 1) return null;
 
@@ -110,11 +110,9 @@ Pagination.propTypes = {
 	currentPage: PropTypes.number.isRequired,
 	totalPages: PropTypes.number.isRequired,
 	onPageChange: PropTypes.func.isRequired,
+	// Default supplied via JS default parameter above (not the deprecated defaultProps).
+	// eslint-disable-next-line react/require-default-props
 	compact: PropTypes.bool,
-};
-
-Pagination.defaultProps = {
-	compact: false,
 };
 
 export default Pagination;

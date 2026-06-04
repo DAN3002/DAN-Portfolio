@@ -15,14 +15,14 @@ import LazyImage from './LazyImage';
  */
 function MediaCard({
 	href,
-	category,
+	category = undefined,
 	title,
-	meta,
+	meta = [],
 	thumb,
 	alt,
-	imageHeight,
-	containImage,
-	onClick,
+	imageHeight = 240,
+	containImage = false,
+	onClick = undefined,
 }) {
 	return (
 		<a
@@ -91,22 +91,18 @@ function MediaCard({
 
 MediaCard.propTypes = {
 	href: PropTypes.string.isRequired,
-	category: PropTypes.string,
 	title: PropTypes.string.isRequired,
-	meta: PropTypes.arrayOf(PropTypes.string),
 	thumb: PropTypes.string.isRequired,
 	alt: PropTypes.string.isRequired,
+	// Optional props — defaults supplied via JS default parameters above (not the
+	// deprecated `defaultProps`), so silence airbnb's require-default-props rule.
+	/* eslint-disable react/require-default-props */
+	category: PropTypes.string,
+	meta: PropTypes.arrayOf(PropTypes.string),
 	imageHeight: PropTypes.number,
 	containImage: PropTypes.bool,
 	onClick: PropTypes.func,
-};
-
-MediaCard.defaultProps = {
-	category: undefined,
-	meta: [],
-	imageHeight: 240,
-	containImage: false,
-	onClick: undefined,
+	/* eslint-enable react/require-default-props */
 };
 
 export default MediaCard;

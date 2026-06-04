@@ -1,0 +1,483 @@
+- generic [ref=e2]:
+  - banner [ref=e16]:
+    - generic [ref=e17]:
+      - button "Toggle menu" [ref=e19] [cursor=pointer]
+      - link "D.A.N_3002" [ref=e22] [cursor=pointer]:
+        - /url: index.html
+        - heading "D.A.N_3002" [level=2] [ref=e23]
+  - banner [ref=e24]:
+    - link "D.A.N_3002" [ref=e26] [cursor=pointer]:
+      - /url: index.html
+      - heading "D.A.N_3002" [level=2] [ref=e27]
+    - navigation [ref=e28]:
+      - list [ref=e29]:
+        - listitem [ref=e30]:
+          - link "Home" [ref=e31] [cursor=pointer]:
+            - /url: "#home"
+            - generic [ref=e32]: 
+            - text: Home
+        - listitem [ref=e33]:
+          - link "About" [ref=e34] [cursor=pointer]:
+            - /url: "#about"
+            - generic [ref=e35]: 
+            - text: About
+        - listitem [ref=e36]:
+          - link "Resume" [ref=e37] [cursor=pointer]:
+            - /url: "#experience"
+            - generic [ref=e38]: 
+            - text: Resume
+        - listitem [ref=e39]:
+          - link "Projects" [ref=e40] [cursor=pointer]:
+            - /url: "#projects"
+            - generic [ref=e41]: 
+            - text: Projects
+        - listitem [ref=e42]:
+          - link "Certifications" [ref=e43] [cursor=pointer]:
+            - /url: "#certifications"
+            - generic [ref=e44]: 
+            - text: Certifications
+        - listitem [ref=e45]:
+          - link "Achieves" [ref=e46] [cursor=pointer]:
+            - /url: "#achieves"
+            - generic [ref=e47]: 
+            - text: Achieves
+        - listitem [ref=e48]:
+          - link "Contact" [ref=e49] [cursor=pointer]:
+            - /url: "#contact"
+            - generic [ref=e50]: 
+            - text: Contact
+    - generic [ref=e51]:
+      - generic [ref=e52]: © 2026 Nguyễn Đình Anh.
+      - generic [ref=e53]: "Last Updated:"
+  - main [ref=e54]:
+    - generic [ref=e56]:
+      - generic [ref=e57]:
+        - img "Nguyễn Đình Anh Avatar" [ref=e58]
+        - heading "Nguyễn Đình Anh" [level=1] [ref=e59]
+        - generic [ref=e60]:
+          - text: I'm
+          - generic [ref=e62]: a Software Engineer
+        - list [ref=e63]:
+          - listitem [ref=e64]:
+            - link "GitHub" [ref=e65] [cursor=pointer]:
+              - /url: https://github.com/DAN3002
+              - generic [ref=e66]: 
+          - listitem [ref=e67]:
+            - link "Facebook" [ref=e68] [cursor=pointer]:
+              - /url: https://www.facebook.com/dan3002/
+              - generic [ref=e69]: 
+          - listitem [ref=e70]:
+            - link "LinkedIn" [ref=e71] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/dan3002/
+              - generic [ref=e72]: 
+          - listitem [ref=e73]:
+            - link "Email" [ref=e74] [cursor=pointer]:
+              - /url: mailto:dan3002.work@gmail.com
+              - generic [ref=e75]: 
+        - link "Contact me" [ref=e77] [cursor=pointer]:
+          - /url: "#contact"
+      - link "Scroll Down" [ref=e79] [cursor=pointer]:
+        - /url: "#about"
+        - text: Scroll Down
+      - generic [ref=e82]:
+        - img [ref=e83]
+        - img [ref=e85]
+        - img [ref=e87]
+        - img [ref=e89]
+        - img [ref=e91]
+        - img [ref=e93]
+        - img [ref=e97]
+        - img [ref=e99]
+        - img [ref=e101]
+        - img [ref=e103]
+        - img [ref=e107]
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - img "Nguyễn Đình Anh Profile" [ref=e116]
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - paragraph [ref=e121]: I'm Nguyễn Đình Anh,
+            - paragraph [ref=e122]: I had the opportunity to start college at the age of 16, and started working a year later (17 years old). My interests are in cloud computing as well as software development.
+            - paragraph [ref=e123]: Along with that, I also have experience in teaching, I was recognized as an AWS Authorized Instructor and was the main instructor in 2 Bootcamps in Vietnam.
+            - paragraph [ref=e124]: I am always open to new opportunities and challenges. If you would like to reach me, feel free to drop me a message in the email below.
+          - generic [ref=e125]:
+            - separator [ref=e126]
+            - list [ref=e127]:
+              - listitem [ref=e128]:
+                - generic [ref=e129]: 
+                - text: "Website:"
+                - link "localhost" [ref=e130] [cursor=pointer]:
+                  - /url: https://localhost
+              - listitem [ref=e131]:
+                - generic [ref=e132]: 
+                - text: "Email:"
+                - link "dan3002.work@gmail.com" [ref=e133] [cursor=pointer]:
+                  - /url: mailto:dan3002.work@gmail.com
+              - listitem [ref=e134]:
+                - generic [ref=e135]: 
+                - text: "Phone: (+84) 914085246"
+              - listitem [ref=e136]:
+                - generic [ref=e137]: 
+                - text: "Languages: Vietnamese, English"
+            - link "Download Resume" [ref=e139] [cursor=pointer]:
+              - /url: /Resume_Nguyễn Đình Anh.pdf
+      - generic [ref=e141]:
+        - generic [ref=e143]:
+          - generic [ref=e144]: 
+          - generic [ref=e145]:
+            - heading "0" [level=3] [ref=e146]:
+              - emphasis [ref=e147]: "0"
+            - paragraph [ref=e148]: Years’ Experience
+        - generic [ref=e150]:
+          - generic [ref=e151]: 
+          - generic [ref=e152]:
+            - heading [level=3]:
+              - emphasis
+            - paragraph [ref=e153]: Github Repositories
+        - generic [ref=e155]:
+          - generic [ref=e156]: 
+          - generic [ref=e157]:
+            - heading [level=3]:
+              - emphasis
+            - paragraph [ref=e158]: Github Commits
+        - generic [ref=e160]:
+          - generic [ref=e161]: 
+          - generic [ref=e162]:
+            - heading [level=3]:
+              - emphasis
+            - paragraph [ref=e163]: Github Star
+    - generic [ref=e167]:
+      - generic [ref=e168]:
+        - heading "Education" [level=3] [ref=e169]
+        - heading "Activities" [level=3] [ref=e172]
+        - generic [ref=e173]:
+          - link "AWS Academy" [ref=e174] [cursor=pointer]:
+            - /url: https://aws.amazon.com/training/awsacademy/
+          - link "DIY Camp" [ref=e175] [cursor=pointer]:
+            - /url: https://www.facebook.com/develophvn/photos/pcb.334074128129033/334072064795906/
+        - heading "Others" [level=3] [ref=e178]
+      - generic [ref=e181]:
+        - heading "Experiences" [level=3] [ref=e182]
+        - generic [ref=e185]:
+          - heading "MOOC Certs" [level=3] [ref=e186]
+          - generic [ref=e187]:
+            - link "AWS Certified SysOps Administrator Associate SOA-C02" [ref=e188] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-9b39463d-3789-4ef7-921a-093fc6977a00/
+            - 'link "Jenkins: Jobs, Pipelines, CI/CD and DevOps for Beginners" [ref=e189] [cursor=pointer]':
+              - /url: https://www.udemy.com/certificate/UC-bbe7eaba-dda8-46f1-8db5-1e8d29a9b4ba/
+            - 'link "Apache Airflow: The Hands-On Guide" [ref=e190] [cursor=pointer]':
+              - /url: https://www.udemy.com/certificate/UC-0dff06f7-9613-4158-b106-e2719b821b32/
+            - link "Apache Spark 3 - Real-time Stream Processing using Python" [ref=e191] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-33cc5ad0-b574-41d0-b073-9461a1a144ce/
+            - link "Argo CD Essential Guide for End Users with Practice" [ref=e192] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-e1f3c366-9bd9-4a85-990d-65669a6b0759/
+            - link "Build Responsive Real-World Websites with HTML and CSS" [ref=e193] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-ba1c5b09-f3c6-43ed-b2d8-d488a8c83552/
+            - link "Certified Kubernetes Administrator (CKA)" [ref=e194] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-6f2299bd-dda2-44d5-bfbf-5f732aff4919/
+            - link "Complete Guide to Elasticsearch" [ref=e195] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-a12fea83-86c1-49b4-a404-cc17afe9ea84/
+            - link "Data Processing with Logstash (and Filebeat)" [ref=e196] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-c8af7a8c-cd12-43e3-92fb-f28784ff661b/
+            - link "Data Visualization with Kibana" [ref=e197] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-76e1e2c4-2195-46d2-b8c9-7c8b1a261591/
+            - link "Data Warehouse Fundamentals for Beginners" [ref=e198] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-ef60d63f-7e59-42dd-a77e-d0a8fa8191df/
+            - 'link "Docker Mastery: with Kubernetes + Swarm" [ref=e199] [cursor=pointer]':
+              - /url: https://www.udemy.com/certificate/UC-ab424da9-229a-402f-9865-a6097f80899a/
+            - link "Kubernetes Certified Application Developer (CKAD)" [ref=e200] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-a376ac99-191e-464d-96b1-98c075cac509/
+            - link "Kubernetes for the Absolute Beginners" [ref=e201] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-4f80e09c-e905-4b0b-aba3-5af00fe72105/
+            - 'link "LangChain in Action: Develop LLM-Powered Applications" [ref=e202] [cursor=pointer]':
+              - /url: https://www.udemy.com/certificate/UC-f4550731-8673-4d08-9601-7b6c7e896fe6/
+            - link "Modern Web Scraping with Python using Scrapy Splash Selenium" [ref=e203] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-d3f18462-fc15-41f4-9aaa-4cf6be427de4/
+            - link "MongoDB - The Complete Developer's Guide" [ref=e204] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-9900f262-8440-486a-a4d6-d08d29d293fc/
+            - link "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)" [ref=e205] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-33cc5ad0-b574-41d0-b073-9461a1a144ce/
+            - link "Observability with Grafana, Prometheus, Loki, Alloy and Tempo" [ref=e206] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-d678c266-6365-45f6-9e89-6f5742980a02/
+            - link "OpenShift for the Absolute Beginners - Hands-on" [ref=e207] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-19618edd-aea1-4c7f-af09-d3fefa1924bf/
+            - 'link "The Ultimate React Course 2024: React, Next.js, Redux & More" [ref=e208] [cursor=pointer]':
+              - /url: https://www.udemy.com/certificate/UC-9cdc31ec-ad4d-4c9d-9525-daf2ea62eb8a/
+            - link "Event Driven Microservices with CQRS, Saga, Event Sourcing" [ref=e209] [cursor=pointer]:
+              - /url: https://www.udemy.com/certificate/UC-4ebccbee-9b42-4dd6-b492-3082460cb0b2/
+    - generic [ref=e212]:
+      - 'link "Real-Time Likelihood Engine for Personalized Financial Product Recommendations Fullstack AI Tech Lead A real-time AI-driven likelihood engine designed to personalize product recommendations based on customer behavior and multi-channel data. It automates data collection, feature selection, model training, and deployment to maximize conversion rates, reduce compliance risks, and optimize customer engagement across all banking segments. Tech Stack: ReactJS Go AWS PostgreSQL Langchain" [ref=e214] [cursor=pointer]':
+        - /url: "#small-dialog-project-0"
+        - heading "Real-Time Likelihood Engine for Personalized Financial Product Recommendations" [level=4] [ref=e215]:
+          - generic [ref=e216]: 
+          - generic [ref=e217]: Real-Time Likelihood Engine for Personalized Financial Product Recommendations
+        - generic [ref=e218]:
+          - generic [ref=e219]: Fullstack
+          - generic [ref=e220]: AI
+          - generic [ref=e221]: Tech Lead
+        - paragraph [ref=e222]: A real-time AI-driven likelihood engine designed to personalize product recommendations based on customer behavior and multi-channel data. It automates data collection, feature selection, model training, and deployment to maximize conversion rates, reduce compliance risks, and optimize customer engagement across all banking segments.
+        - generic [ref=e223]:
+          - generic [ref=e224]: "Tech Stack:"
+          - generic [ref=e225]:
+            - generic [ref=e226]: ReactJS
+            - generic [ref=e227]: Go
+            - generic [ref=e228]: AWS
+            - generic [ref=e229]: PostgreSQL
+            - generic [ref=e230]: Langchain
+        - generic [ref=e231]:
+          - text: View details
+          - generic [ref=e232]: 
+      - 'link "Architecture Design Generator Fullstack AI Tech Lead An application designed to provide various functionalities to help users create and manage architecture design diagrams more effectively. Tech Stack: ReactJS Langchain Go AWS" [ref=e233] [cursor=pointer]':
+        - /url: "#small-dialog-project-1"
+        - heading "Architecture Design Generator" [level=4] [ref=e234]:
+          - generic [ref=e235]: 
+          - generic [ref=e236]: Architecture Design Generator
+        - generic [ref=e237]:
+          - generic [ref=e238]: Fullstack
+          - generic [ref=e239]: AI
+          - generic [ref=e240]: Tech Lead
+        - paragraph [ref=e241]: An application designed to provide various functionalities to help users create and manage architecture design diagrams more effectively.
+        - generic [ref=e242]:
+          - generic [ref=e243]: "Tech Stack:"
+          - generic [ref=e244]:
+            - generic [ref=e245]: ReactJS
+            - generic [ref=e246]: Langchain
+            - generic [ref=e247]: Go
+            - generic [ref=e248]: AWS
+        - generic [ref=e249]:
+          - text: View details
+          - generic [ref=e250]: 
+      - 'link "Cloudflare CORS Proxy DevOps A simple and efficient CORS (Cross-Origin Resource Sharing) proxy service built for Cloudflare Workers. This proxy allows web applications to bypass CORS restrictions by forwarding requests through the proxy server. Tech Stack: JavaScript Cloudflare" [ref=e251] [cursor=pointer]':
+        - /url: "#small-dialog-project-2"
+        - heading "Cloudflare CORS Proxy" [level=4] [ref=e252]:
+          - generic [ref=e253]: 
+          - generic [ref=e254]: Cloudflare CORS Proxy
+        - generic [ref=e256]: DevOps
+        - paragraph [ref=e257]: A simple and efficient CORS (Cross-Origin Resource Sharing) proxy service built for Cloudflare Workers. This proxy allows web applications to bypass CORS restrictions by forwarding requests through the proxy server.
+        - generic [ref=e258]:
+          - generic [ref=e259]: "Tech Stack:"
+          - generic [ref=e260]:
+            - generic [ref=e261]: JavaScript
+            - generic [ref=e262]: Cloudflare
+        - generic [ref=e263]:
+          - text: View details
+          - generic [ref=e264]: 
+      - 'link "Autonomous Insight & Action Pipeline for Hospital Data Fullstack AI An AI-powered system that analyzes hospital data to detect issues, extract insights, and suggest actions — just like a virtual data analyst. Tech Stack: ReactJS Langchain Go PostgreSQL MongoDB LLM" [ref=e265] [cursor=pointer]':
+        - /url: "#small-dialog-project-3"
+        - heading "Autonomous Insight & Action Pipeline for Hospital Data" [level=4] [ref=e266]:
+          - generic [ref=e267]: 
+          - generic [ref=e268]: Autonomous Insight & Action Pipeline for Hospital Data
+        - generic [ref=e269]:
+          - generic [ref=e270]: Fullstack
+          - generic [ref=e271]: AI
+        - paragraph [ref=e272]: An AI-powered system that analyzes hospital data to detect issues, extract insights, and suggest actions — just like a virtual data analyst.
+        - generic [ref=e273]:
+          - generic [ref=e274]: "Tech Stack:"
+          - generic [ref=e275]:
+            - generic [ref=e276]: ReactJS
+            - generic [ref=e277]: Langchain
+            - generic [ref=e278]: Go
+            - generic [ref=e279]: PostgreSQL
+            - generic [ref=e280]: MongoDB
+            - generic [ref=e281]: LLM
+        - generic [ref=e282]:
+          - text: View details
+          - generic [ref=e283]: 
+      - button "Previous page" [disabled] [ref=e284]:
+        - generic [ref=e285]: 
+      - button "Next page" [ref=e286]:
+        - generic [ref=e287]: 
+    - toolbar [ref=e292]:
+      - button "Previous" [ref=e293] [cursor=pointer]
+      - listbox [ref=e295]:
+        - link [ref=e297] [cursor=pointer]:
+          - /url: "#small-dialog-cert-1"
+          - generic [ref=e299]: AWS Certificate
+          - generic [ref=e300]:
+            - heading [level=4] [ref=e301]: AWS Certified Cloud Practitioner
+            - list [ref=e302]:
+              - listitem [ref=e303]: October 05, 2021
+              - listitem [ref=e304]: November 19, 2024
+        - link [ref=e306] [cursor=pointer]:
+          - /url: "#small-dialog-cert-2"
+          - generic [ref=e308]: AWS Certificate
+          - generic [ref=e309]:
+            - heading [level=4] [ref=e310]: AWS Academy Certified Educator
+            - list [ref=e311]:
+              - listitem [ref=e312]: October 05, 2021
+              - listitem [ref=e313]: April 14, 2024
+        - option "AWS Certificate AWS Certified Solutions Architect - Associate November 19, 2021 November 19, 2024" [ref=e314]:
+          - link "AWS Certificate AWS Certified Solutions Architect - Associate November 19, 2021 November 19, 2024" [ref=e315] [cursor=pointer]:
+            - /url: "#small-dialog-cert-0"
+            - generic [ref=e317]: AWS Certificate
+            - generic [ref=e318]:
+              - heading "AWS Certified Solutions Architect - Associate" [level=4] [ref=e319]
+              - list [ref=e320]:
+                - listitem [ref=e321]: November 19, 2021
+                - listitem [ref=e322]: November 19, 2024
+        - option "AWS Certificate AWS Certified Cloud Practitioner October 05, 2021 November 19, 2024" [ref=e323]:
+          - link "AWS Certificate AWS Certified Cloud Practitioner October 05, 2021 November 19, 2024" [ref=e324] [cursor=pointer]:
+            - /url: "#small-dialog-cert-1"
+            - generic [ref=e326]: AWS Certificate
+            - generic [ref=e327]:
+              - heading "AWS Certified Cloud Practitioner" [level=4] [ref=e328]
+              - list [ref=e329]:
+                - listitem [ref=e330]: October 05, 2021
+                - listitem [ref=e331]: November 19, 2024
+        - option [ref=e332]:
+          - link [ref=e333] [cursor=pointer]:
+            - /url: "#small-dialog-cert-2"
+            - generic [ref=e335]: AWS Certificate
+            - generic [ref=e336]:
+              - heading [level=4] [ref=e337]: AWS Academy Certified Educator
+              - list [ref=e338]:
+                - listitem [ref=e339]: October 05, 2021
+                - listitem [ref=e340]: April 14, 2024
+        - link [ref=e342] [cursor=pointer]:
+          - /url: "#small-dialog-cert-0"
+          - generic [ref=e344]: AWS Certificate
+          - generic [ref=e345]:
+            - heading [level=4] [ref=e346]: AWS Certified Solutions Architect - Associate
+            - list [ref=e347]:
+              - listitem [ref=e348]: November 19, 2021
+              - listitem [ref=e349]: November 19, 2024
+        - link [ref=e351] [cursor=pointer]:
+          - /url: "#small-dialog-cert-1"
+          - generic [ref=e353]: AWS Certificate
+          - generic [ref=e354]:
+            - heading [level=4] [ref=e355]: AWS Certified Cloud Practitioner
+            - list [ref=e356]:
+              - listitem [ref=e357]: October 05, 2021
+              - listitem [ref=e358]: November 19, 2024
+      - button "Next" [ref=e359] [cursor=pointer]
+      - tablist [ref=e360]:
+        - listitem [ref=e361] [cursor=pointer]:
+          - button "1" [ref=e362]
+        - listitem [ref=e363] [cursor=pointer]:
+          - button [ref=e364]: "2"
+        - listitem [ref=e365] [cursor=pointer]:
+          - button [ref=e366]: "3"
+    - toolbar [ref=e371]:
+      - button "Previous" [ref=e372] [cursor=pointer]
+      - listbox [ref=e374]:
+        - link [ref=e376] [cursor=pointer]:
+          - /url: "#small-dialog-achieve-5"
+          - generic [ref=e378]: Hackathon
+          - generic [ref=e381]:
+            - heading [level=4] [ref=e382]: FPT Edu Hackathon 2021
+            - list [ref=e383]:
+              - listitem [ref=e384]: April 2021
+              - listitem [ref=e385]: Third Prize
+        - link [ref=e387] [cursor=pointer]:
+          - /url: "#small-dialog-achieve-6"
+          - generic [ref=e389]: Hackathon
+          - generic [ref=e392]:
+            - heading [level=4] [ref=e393]: FPT Edu Hackathon 2019
+            - list [ref=e394]:
+              - listitem [ref=e395]: January 2020
+              - listitem [ref=e396]: Third Prize
+        - option "Hackathon VPBank Hackathon 2024 June 2024 Champion" [ref=e397]:
+          - link "Hackathon VPBank Hackathon 2024 June 2024 Champion" [ref=e398] [cursor=pointer]:
+            - /url: "#small-dialog-achieve-0"
+            - generic [ref=e400]: Hackathon
+            - generic [ref=e403]:
+              - heading "VPBank Hackathon 2024" [level=4] [ref=e404]
+              - list [ref=e405]:
+                - listitem [ref=e406]: June 2024
+                - listitem [ref=e407]: Champion
+        - option "Hackathon FUNiX ChatGPT Hackathon May 2023 Champion" [ref=e408]:
+          - link "Hackathon FUNiX ChatGPT Hackathon May 2023 Champion" [ref=e409] [cursor=pointer]:
+            - /url: "#small-dialog-achieve-1"
+            - generic [ref=e411]: Hackathon
+            - generic [ref=e414]:
+              - heading "FUNiX ChatGPT Hackathon" [level=4] [ref=e415]
+              - list [ref=e416]:
+                - listitem [ref=e417]: May 2023
+                - listitem [ref=e418]: Champion
+        - option [ref=e419]:
+          - link [ref=e420] [cursor=pointer]:
+            - /url: "#small-dialog-achieve-2"
+            - generic [ref=e422]: Hackathon
+            - generic [ref=e425]:
+              - heading [level=4] [ref=e426]: Hack CX Together 2025
+              - list [ref=e427]:
+                - listitem [ref=e428]: June 2025
+                - listitem [ref=e429]: Runner Up
+        - option [ref=e430]:
+          - link [ref=e431] [cursor=pointer]:
+            - /url: "#small-dialog-achieve-3"
+            - generic [ref=e433]: Hackathon
+            - generic [ref=e436]:
+              - heading [level=4] [ref=e437]: NRC x FPT Hackathon 2024
+              - list [ref=e438]:
+                - listitem [ref=e439]: Nov 2024
+                - listitem [ref=e440]: Runner Up
+        - option [ref=e441]:
+          - link [ref=e442] [cursor=pointer]:
+            - /url: "#small-dialog-achieve-4"
+            - generic [ref=e444]: Research Festival
+            - generic [ref=e447]:
+              - heading [level=4] [ref=e448]: FPT Edu ResFes 2023
+              - list [ref=e449]:
+                - listitem [ref=e450]: August 2023
+                - listitem [ref=e451]: Third Prize
+        - option [ref=e452]:
+          - link [ref=e453] [cursor=pointer]:
+            - /url: "#small-dialog-achieve-5"
+            - generic [ref=e455]: Hackathon
+            - generic [ref=e458]:
+              - heading [level=4] [ref=e459]: FPT Edu Hackathon 2021
+              - list [ref=e460]:
+                - listitem [ref=e461]: April 2021
+                - listitem [ref=e462]: Third Prize
+        - option [ref=e463]:
+          - link [ref=e464] [cursor=pointer]:
+            - /url: "#small-dialog-achieve-6"
+            - generic [ref=e466]: Hackathon
+            - generic [ref=e469]:
+              - heading [level=4] [ref=e470]: FPT Edu Hackathon 2019
+              - list [ref=e471]:
+                - listitem [ref=e472]: January 2020
+                - listitem [ref=e473]: Third Prize
+        - link [ref=e475] [cursor=pointer]:
+          - /url: "#small-dialog-achieve-0"
+          - generic [ref=e477]: Hackathon
+          - generic [ref=e480]:
+            - heading [level=4] [ref=e481]: VPBank Hackathon 2024
+            - list [ref=e482]:
+              - listitem [ref=e483]: June 2024
+              - listitem [ref=e484]: Champion
+        - link [ref=e486] [cursor=pointer]:
+          - /url: "#small-dialog-achieve-1"
+          - generic [ref=e488]: Hackathon
+          - generic [ref=e491]:
+            - heading [level=4] [ref=e492]: FUNiX ChatGPT Hackathon
+            - list [ref=e493]:
+              - listitem [ref=e494]: May 2023
+              - listitem [ref=e495]: Champion
+      - button "Next" [ref=e496] [cursor=pointer]
+      - tablist [ref=e497]:
+        - listitem [ref=e498] [cursor=pointer]:
+          - button "1" [ref=e499]
+        - listitem [ref=e500] [cursor=pointer]:
+          - button [ref=e501]: "2"
+        - listitem [ref=e502] [cursor=pointer]:
+          - button [ref=e503]: "3"
+        - listitem [ref=e504] [cursor=pointer]:
+          - button [ref=e505]: "4"
+        - listitem [ref=e506] [cursor=pointer]:
+          - button [ref=e507]: "5"
+        - listitem [ref=e508] [cursor=pointer]:
+          - button [ref=e509]: "6"
+        - listitem [ref=e510] [cursor=pointer]:
+          - button [ref=e511]: "7"
+    - generic [ref=e515]:
+      - link "email" [ref=e518] [cursor=pointer]:
+        - /url: mailto:dan3002.work@gmail.com
+      - generic [ref=e520]:
+        - generic [ref=e521]:
+          - textbox "Your name" [ref=e524]
+          - textbox "Email address" [ref=e527]
+          - textbox "Message" [ref=e530]
+        - button "Send Message" [disabled] [ref=e532]
+  - text: 

@@ -1,0 +1,27 @@
+[     146ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:3000/static/js/bundle.js:40314
+[     177ms] [ERROR] Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?%s%s 
+
+Check the render method of `ContactSection`. 
+    at Turnstile (http://localhost:3000/static/js/bundle.js:44545:5)
+    at div
+    at div
+    at div
+    at form
+    at div
+    at div
+    at ContactSection (http://localhost:3000/static/js/bundle.js:1501:61)
+    at div
+    at section
+    at Section (http://localhost:3000/static/js/bundle.js:381:5)
+    at main
+    at Main (http://localhost:3000/static/js/bundle.js:191:51)
+    at App (http://localhost:3000/static/js/bundle.js:45:51) @ http://localhost:3000/static/js/bundle.js:14674
+[     177ms] [ERROR] Warning: A future version of React will block javascript: URLs as a security precaution. Use event handlers instead if you can. If you need to generate unsafe HTML try using dangerouslySetInnerHTML instead. React was passed %s.%s "javascript:" 
+    at a
+    at GoToTop
+    at App (http://localhost:3000/static/js/bundle.js:45:51) @ http://localhost:3000/static/js/bundle.js:14674
+[     238ms] Uncaught (in promise) TurnstileError: [Cloudflare Turnstile] Invalid or missing type for parameter "sitekey", expected "string", got "undefined".
+    at h (https://challenges.cloudflare.com/turnstile/v0/api.js?onload=cf__reactTurnstileOnLoad&render=explicit:0:10939)
+    at N (https://challenges.cloudflare.com/turnstile/v0/api.js?onload=cf__reactTurnstileOnLoad&render=explicit:0:45011)
+    at S (https://challenges.cloudflare.com/turnstile/v0/api.js?onload=cf__reactTurnstileOnLoad&render=explicit:0:48876)
+    at <anonymous> (http://localhost:3000/static/js/bundle.js:44653:34)

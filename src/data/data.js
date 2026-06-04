@@ -40,8 +40,16 @@ export default {
 		],
 	}],
 	experience: [{
+		title: 'Drylab',
+		timeline: 'Oct 2025 - Present',
+		subtitle: 'Member of Technical Staff',
+		text: [
+			'Building an <a href="https://thedrylab.com/">AI-automated bioinformatics platform</a> that handles end-to-end research workflows, from data search and analysis to model training.',
+			'Contributing to the development of an enterprise-grade platform empowering leading life science teams to accelerate their discovery phase.',
+		],
+	}, {
 		title: 'VPBank',
-		timeline: 'Aug 2024 - Present',
+		timeline: 'Aug 2024 - Sep 2025',
 		subtitle: 'DevOps Engineer',
 		text: [
 			'Youngest Senior Specialist at @VPBank. (21 years old)',

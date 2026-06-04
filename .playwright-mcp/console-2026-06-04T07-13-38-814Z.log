@@ -1,0 +1,77 @@
+[     381ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:3000/static/js/bundle.js:34835
+[     409ms] [ERROR] Warning: %s: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.%s Image 
+    at Image (http://localhost:3000/static/js/bundle.js:4125:3)
+    at div
+    at div
+    at section
+    at HomeSection
+    at main
+    at Main (http://localhost:3000/static/js/bundle.js:190:51)
+    at App (http://localhost:3000/static/js/bundle.js:44:51) @ http://localhost:3000/static/js/bundle.js:9148
+[     411ms] [ERROR] Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `AboutSection`.  
+    at p
+    at AboutSection (http://localhost:3000/static/js/bundle.js:487:86)
+    at div
+    at section
+    at Section (http://localhost:3000/static/js/bundle.js:379:3)
+    at main
+    at Main (http://localhost:3000/static/js/bundle.js:190:51)
+    at App (http://localhost:3000/static/js/bundle.js:44:51) @ http://localhost:3000/static/js/bundle.js:39499
+[     413ms] [ERROR] Warning: Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.%s 
+
+Check the render method of `TimelineConatiner`.  
+    at li
+    at TimelineConatiner (http://localhost:3000/static/js/bundle.js:3823:3)
+    at div
+    at div
+    at ResumeSection (http://localhost:3000/static/js/bundle.js:3630:82)
+    at div
+    at section
+    at Section (http://localhost:3000/static/js/bundle.js:379:3)
+    at main
+    at Main (http://localhost:3000/static/js/bundle.js:190:51)
+    at App (http://localhost:3000/static/js/bundle.js:44:51) @ http://localhost:3000/static/js/bundle.js:39499
+[     415ms] [ERROR] Warning: Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.%s UC-33cc5ad0-b574-41d0-b073-9461a1a144ce 
+    at ul
+    at div
+    at div
+    at div
+    at div
+    at MoocCertificate
+    at div
+    at div
+    at ResumeSection (http://localhost:3000/static/js/bundle.js:3630:82)
+    at div
+    at section
+    at Section (http://localhost:3000/static/js/bundle.js:379:3)
+    at main
+    at Main (http://localhost:3000/static/js/bundle.js:190:51)
+    at App (http://localhost:3000/static/js/bundle.js:44:51) @ http://localhost:3000/static/js/bundle.js:9148
+[     427ms] [ERROR] Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?%s%s 
+
+Check the render method of `ContactSection`. 
+    at Turnstile (http://localhost:3000/static/js/bundle.js:39256:3)
+    at div
+    at div
+    at div
+    at form
+    at div
+    at div
+    at ContactSection (http://localhost:3000/static/js/bundle.js:1499:61)
+    at div
+    at section
+    at Section (http://localhost:3000/static/js/bundle.js:379:3)
+    at main
+    at Main (http://localhost:3000/static/js/bundle.js:190:51)
+    at App (http://localhost:3000/static/js/bundle.js:44:51) @ http://localhost:3000/static/js/bundle.js:9148
+[     428ms] [ERROR] Warning: A future version of React will block javascript: URLs as a security precaution. Use event handlers instead if you can. If you need to generate unsafe HTML try using dangerouslySetInnerHTML instead. React was passed %s.%s "javascript:" 
+    at a
+    at GoToTop
+    at App (http://localhost:3000/static/js/bundle.js:44:51) @ http://localhost:3000/static/js/bundle.js:9148
+[     600ms] Uncaught (in promise) TurnstileError: [Cloudflare Turnstile] Invalid or missing type for parameter "sitekey", expected "string", got "undefined".
+    at h (https://challenges.cloudflare.com/turnstile/v0/api.js?onload=cf__reactTurnstileOnLoad&render=explicit:0:10939)
+    at N (https://challenges.cloudflare.com/turnstile/v0/api.js?onload=cf__reactTurnstileOnLoad&render=explicit:0:45011)
+    at S (https://challenges.cloudflare.com/turnstile/v0/api.js?onload=cf__reactTurnstileOnLoad&render=explicit:0:48876)
+    at <anonymous> (http://localhost:3000/static/js/bundle.js:39364:34)

@@ -1,0 +1,278 @@
+- generic [ref=e1]:
+  - generic [active] [ref=e509]:
+    - generic [ref=e512]:
+      - generic [ref=e513]:
+        - button "Previous image" [ref=e514] [cursor=pointer]:
+          - generic [ref=e515]: 
+        - img "Project screenshot 1" [ref=e517]
+        - button "Next image" [ref=e518] [cursor=pointer]:
+          - generic [ref=e519]: 
+      - heading "Real-Time Likelihood Engine for Personalized Financial Product Recommendations Fullstack & DevOps Engineer" [level=2] [ref=e520]:
+        - generic [ref=e521]: 
+        - text: Real-Time Likelihood Engine for Personalized Financial Product Recommendations
+        - generic [ref=e522]: Fullstack & DevOps Engineer
+      - generic [ref=e524]:
+        - paragraph [ref=e525]: A real-time AI-driven likelihood engine designed to personalize product recommendations based on customer behavior and multi-channel data. It automates data collection, feature selection, model training, and deployment to maximize conversion rates, reduce compliance risks, and optimize customer engagement across all banking segments.
+        - list [ref=e526]:
+          - listitem [ref=e527]: Runner up of Hack CX Together 2025.
+          - listitem [ref=e528]: Real-time customer propensity prediction
+          - listitem [ref=e529]: Personalized product recommendations
+          - listitem [ref=e530]: Automated model training & feature selection
+          - listitem [ref=e531]: Scalable data processing pipeline
+          - listitem [ref=e532]: Continuous optimization with MLOps integration
+          - listitem [ref=e533]: Boost engagement and conversion rates
+      - generic [ref=e535]:
+        - generic [ref=e536]: " Technologies Used:"
+        - generic [ref=e537]:
+          - generic [ref=e538]: ReactJS
+          - generic [ref=e539]: Go
+          - generic [ref=e540]: AWS
+          - generic [ref=e541]: PostgreSQL
+          - generic [ref=e542]: Langchain
+    - button "×" [ref=e543] [cursor=pointer]
+  - generic [ref=e2]:
+    - banner [ref=e16]:
+      - link "D.A.N_3002" [ref=e18] [cursor=pointer]:
+        - /url: index.html
+        - heading "D.A.N_3002" [level=2] [ref=e19]
+      - navigation [ref=e20]:
+        - list [ref=e21]:
+          - listitem [ref=e22]:
+            - link "Home" [ref=e23] [cursor=pointer]:
+              - /url: "#home"
+              - generic [ref=e24]: 
+              - text: Home
+          - listitem [ref=e25]:
+            - link "About" [ref=e26] [cursor=pointer]:
+              - /url: "#about"
+              - generic [ref=e27]: 
+              - text: About
+          - listitem [ref=e28]:
+            - link "Resume" [ref=e29] [cursor=pointer]:
+              - /url: "#experience"
+              - generic [ref=e30]: 
+              - text: Resume
+          - listitem [ref=e31]:
+            - link "Projects" [ref=e32] [cursor=pointer]:
+              - /url: "#projects"
+              - generic [ref=e33]: 
+              - text: Projects
+          - listitem [ref=e34]:
+            - link "Certifications" [ref=e35] [cursor=pointer]:
+              - /url: "#certifications"
+              - generic [ref=e36]: 
+              - text: Certifications
+          - listitem [ref=e37]:
+            - link "Achieves" [ref=e38] [cursor=pointer]:
+              - /url: "#achieves"
+              - generic [ref=e39]: 
+              - text: Achieves
+          - listitem [ref=e40]:
+            - link "Contact" [ref=e41] [cursor=pointer]:
+              - /url: "#contact"
+              - generic [ref=e42]: 
+              - text: Contact
+      - generic [ref=e43]:
+        - generic [ref=e44]: © 2026 Nguyễn Đình Anh.
+        - generic [ref=e45]: "Last Updated: June 2026"
+    - main [ref=e46]:
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - img "Nguyễn Đình Anh Avatar" [ref=e50]
+          - heading "Nguyễn Đình Anh" [level=1] [ref=e51]
+          - generic [ref=e52]:
+            - text: I'm
+            - generic [ref=e544]: an AWS Authorized Instructor
+          - list [ref=e55]:
+            - listitem [ref=e56]:
+              - link "GitHub" [ref=e57] [cursor=pointer]:
+                - /url: https://github.com/DAN3002
+                - generic [ref=e58]: 
+            - listitem [ref=e59]:
+              - link "Facebook" [ref=e60] [cursor=pointer]:
+                - /url: https://www.facebook.com/dan3002/
+                - generic [ref=e61]: 
+            - listitem [ref=e62]:
+              - link "LinkedIn" [ref=e63] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/dan3002/
+                - generic [ref=e64]: 
+            - listitem [ref=e65]:
+              - link "Email" [ref=e66] [cursor=pointer]:
+                - /url: mailto:dan3002.work@gmail.com
+                - generic [ref=e67]: 
+          - link "Contact me" [ref=e69] [cursor=pointer]:
+            - /url: "#contact"
+        - link "Scroll Down" [ref=e71] [cursor=pointer]:
+          - /url: "#about"
+          - text: Scroll Down
+        - generic [ref=e74]:
+          - img [ref=e75]
+          - img [ref=e77]
+          - img [ref=e79]
+          - img [ref=e81]
+          - img [ref=e83]
+          - img [ref=e85]
+          - img [ref=e89]
+          - img [ref=e91]
+          - img [ref=e93]
+          - img [ref=e95]
+          - img [ref=e99]
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - img "Nguyễn Đình Anh Profile" [ref=e108]
+          - generic [ref=e111]:
+            - generic [ref=e112]:
+              - paragraph [ref=e113]: I'm Nguyễn Đình Anh,
+              - paragraph [ref=e114]: I had the opportunity to start college at the age of 16, and started working a year later (17 years old). My interests are in cloud computing as well as software development.
+              - paragraph [ref=e115]: Along with that, I also have experience in teaching, I was recognized as an AWS Authorized Instructor and was the main instructor in 2 Bootcamps in Vietnam.
+              - paragraph [ref=e116]: I am always open to new opportunities and challenges. If you would like to reach me, feel free to drop me a message in the email below.
+            - generic [ref=e117]:
+              - separator [ref=e118]
+              - list [ref=e119]:
+                - listitem [ref=e120]:
+                  - generic [ref=e121]: 
+                  - text: "Website:"
+                  - link "dan3002.id.vn" [ref=e122] [cursor=pointer]:
+                    - /url: https://dan3002.id.vn
+                - listitem [ref=e123]:
+                  - generic [ref=e124]: 
+                  - text: "Email:"
+                  - link "dan3002.work@gmail.com" [ref=e125] [cursor=pointer]:
+                    - /url: mailto:dan3002.work@gmail.com
+                - listitem [ref=e126]:
+                  - generic [ref=e127]: 
+                  - text: "Phone: (+84) 914085246"
+                - listitem [ref=e128]:
+                  - generic [ref=e129]: 
+                  - text: "Languages: Vietnamese, English"
+              - link "Download Resume" [ref=e131] [cursor=pointer]:
+                - /url: /Resume_Nguyễn Đình Anh.pdf
+        - generic [ref=e133]:
+          - generic [ref=e135]:
+            - generic [ref=e136]: 
+            - generic [ref=e137]:
+              - heading "6.5" [level=3] [ref=e545]:
+                - emphasis [ref=e139]: "6.5"
+              - paragraph [ref=e140]: Years’ Experience
+          - generic [ref=e142]:
+            - generic [ref=e143]: 
+            - generic [ref=e144]:
+              - heading "30" [level=3] [ref=e546]:
+                - emphasis [ref=e146]: "30"
+              - paragraph [ref=e147]: Github Repositories
+          - generic [ref=e149]:
+            - generic [ref=e150]: 
+            - generic [ref=e151]:
+              - heading "2354" [level=3] [ref=e547]:
+                - emphasis [ref=e153]: "2354"
+              - paragraph [ref=e154]: Github Commits
+          - generic [ref=e156]:
+            - generic [ref=e157]: 
+            - generic [ref=e158]:
+              - heading "89" [level=3] [ref=e548]:
+                - emphasis [ref=e160]: "89"
+              - paragraph [ref=e161]: Github Star
+      - generic [ref=e165]:
+        - generic [ref=e166]:
+          - heading "Education" [level=3] [ref=e167]
+          - heading "Activities" [level=3] [ref=e170]
+          - heading "Others" [level=3] [ref=e176]
+        - generic [ref=e179]:
+          - heading "Experiences" [level=3] [ref=e180]
+          - heading "MOOC Certs" [level=3] [ref=e184]
+      - generic [ref=e210]:
+        - heading "Projects" [level=2] [ref=e491]
+        - generic [ref=e492]:
+          - generic [ref=e493]:
+            - button "All" [ref=e494] [cursor=pointer]
+            - button "Fullstack" [ref=e495] [cursor=pointer]
+            - button "AI" [ref=e496] [cursor=pointer]
+            - button "Tech Lead" [ref=e497] [cursor=pointer]
+            - button "DevOps" [ref=e498] [cursor=pointer]
+            - button "Crawler" [ref=e499] [cursor=pointer]
+          - generic [ref=e500]:
+            - 'link "Real-Time Likelihood Engine for Personalized Financial Product Recommendations A real-time AI-driven likelihood engine designed to personalize product recommendations based on customer behavior and multi-channel data. It automates data collection, feature selection, model training, and deployment to maximize conversion rates, reduce compliance risks, and optimize customer engagement across all banking segments. Tech Stack: ReactJS Go AWS PostgreSQL Langchain" [ref=e212] [cursor=pointer]':
+              - /url: "#small-dialog-project-0"
+              - heading "Real-Time Likelihood Engine for Personalized Financial Product Recommendations" [level=4] [ref=e213]:
+                - generic [ref=e214]: 
+                - text: Real-Time Likelihood Engine for Personalized Financial Product Recommendations
+              - paragraph [ref=e215]: A real-time AI-driven likelihood engine designed to personalize product recommendations based on customer behavior and multi-channel data. It automates data collection, feature selection, model training, and deployment to maximize conversion rates, reduce compliance risks, and optimize customer engagement across all banking segments.
+              - generic [ref=e216]:
+                - generic [ref=e217]: "Tech Stack:"
+                - generic [ref=e218]:
+                  - generic [ref=e219]: ReactJS
+                  - generic [ref=e220]: Go
+                  - generic [ref=e221]: AWS
+                  - generic [ref=e222]: PostgreSQL
+                  - generic [ref=e223]: Langchain
+            - 'link "Architecture Design Generator An application designed to provide various functionalities to help users create and manage architecture design diagrams more effectively. Tech Stack: ReactJS Langchain Go AWS" [ref=e224] [cursor=pointer]':
+              - /url: "#small-dialog-project-1"
+              - heading "Architecture Design Generator" [level=4] [ref=e225]:
+                - generic [ref=e226]: 
+                - text: Architecture Design Generator
+              - paragraph [ref=e227]: An application designed to provide various functionalities to help users create and manage architecture design diagrams more effectively.
+              - generic [ref=e228]:
+                - generic [ref=e229]: "Tech Stack:"
+                - generic [ref=e230]:
+                  - generic [ref=e231]: ReactJS
+                  - generic [ref=e232]: Langchain
+                  - generic [ref=e233]: Go
+                  - generic [ref=e234]: AWS
+            - 'link "Cloudflare CORS Proxy A simple and efficient CORS (Cross-Origin Resource Sharing) proxy service built for Cloudflare Workers. This proxy allows web applications to bypass CORS restrictions by forwarding requests through the proxy server. Tech Stack: JavaScript Cloudflare" [ref=e235] [cursor=pointer]':
+              - /url: "#small-dialog-project-2"
+              - heading "Cloudflare CORS Proxy" [level=4] [ref=e236]:
+                - generic [ref=e237]: 
+                - text: Cloudflare CORS Proxy
+              - paragraph [ref=e238]: A simple and efficient CORS (Cross-Origin Resource Sharing) proxy service built for Cloudflare Workers. This proxy allows web applications to bypass CORS restrictions by forwarding requests through the proxy server.
+              - generic [ref=e239]:
+                - generic [ref=e240]: "Tech Stack:"
+                - generic [ref=e241]:
+                  - generic [ref=e242]: JavaScript
+                  - generic [ref=e243]: Cloudflare
+            - 'link "Autonomous Insight & Action Pipeline for Hospital Data An AI-powered system that analyzes hospital data to detect issues, extract insights, and suggest actions — just like a virtual data analyst. Tech Stack: ReactJS Langchain Go PostgreSQL MongoDB LLM" [ref=e244] [cursor=pointer]':
+              - /url: "#small-dialog-project-3"
+              - heading "Autonomous Insight & Action Pipeline for Hospital Data" [level=4] [ref=e245]:
+                - generic [ref=e246]: 
+                - text: Autonomous Insight & Action Pipeline for Hospital Data
+              - paragraph [ref=e247]: An AI-powered system that analyzes hospital data to detect issues, extract insights, and suggest actions — just like a virtual data analyst.
+              - generic [ref=e248]:
+                - generic [ref=e249]: "Tech Stack:"
+                - generic [ref=e250]:
+                  - generic [ref=e251]: ReactJS
+                  - generic [ref=e252]: Langchain
+                  - generic [ref=e253]: Go
+                  - generic [ref=e254]: PostgreSQL
+                  - generic [ref=e255]: MongoDB
+                  - generic [ref=e256]: LLM
+          - text:                                            
+          - generic [ref=e505]:
+            - button "Previous page" [disabled] [ref=e257] [cursor=pointer]:
+              - generic [ref=e258]: 
+            - button "1" [ref=e259] [cursor=pointer]
+            - button "2" [ref=e260] [cursor=pointer]
+            - button "3" [ref=e261] [cursor=pointer]
+            - button "4" [ref=e262] [cursor=pointer]
+            - button "5" [ref=e263] [cursor=pointer]
+            - button "Next page" [ref=e264] [cursor=pointer]:
+              - generic [ref=e265]: 
+      - listbox [ref=e272]
+      - toolbar [ref=e304]:
+        - button "Previous" [ref=e305] [cursor=pointer]
+        - listbox [ref=e307]
+        - button "Next" [ref=e451] [cursor=pointer]
+        - tablist [ref=e452]:
+          - listitem [ref=e453] [cursor=pointer]:
+            - button "1" [ref=e454]
+          - listitem [ref=e455] [cursor=pointer]:
+            - button [ref=e456]: "2"
+          - listitem [ref=e457] [cursor=pointer]:
+            - button [ref=e458]: "3"
+      - generic [ref=e467]:
+        - generic [ref=e468]:
+          - textbox "Your name" [ref=e471]
+          - textbox "Email address" [ref=e474]
+          - textbox "Message" [ref=e477]
+        - button "Send Message" [ref=e482] [cursor=pointer]
+    - link "" [ref=e506] [cursor=pointer]:
+      - /url: "javascript:"
+      - generic [ref=e507]: 

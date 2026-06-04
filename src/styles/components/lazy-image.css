@@ -1,3 +1,9 @@
+/*
+ * Styles for react-lazy-load-image-component's wrapper + blur effect.
+ * These class names are emitted by the library (wrapperClassName) and toggled at
+ * runtime, so they stay as plain CSS rather than Tailwind utilities.
+ * (The previous .cert-thumb rules were migrated to Tailwind in CertificationSection.)
+ */
 .lazy-load-image-wrapper {
     opacity: 1;
     transition: opacity 0.3s;
@@ -20,28 +26,4 @@
 
 .lazy-load-image-wrapper img.blur.lazy-load-image-loaded {
     filter: blur(0);
-}
-
-/* Certification thumbnail: fixed height to match Achievements, badge centered & uncropped */
-.cert-thumb {
-    height: 268px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.cert-thumb .lazy-load-image-wrapper {
-    width: auto;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cert-thumb .lazy-load-image-wrapper img {
-    height: 100%;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
 }

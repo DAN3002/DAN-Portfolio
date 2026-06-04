@@ -8,7 +8,9 @@ function CertificationSection() {
 	const items = certifications.map((cert, i) => (
 		<div key={i} className="custem-carousel-item rounded bg-dark wow fadeIn">
 			<a href={`#small-dialog-cert-${i}`} className="work-content" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`open-cert-${cert.name}`); } }}>
-				<div className="thumb cert-thumb">
+				{/* Fixed-height (268px) thumbnail, badge centered & uncropped.
+				    Migrated from the old .cert-thumb rule in lazy-image.css. */}
+				<div className="thumb flex h-[268px] items-center justify-center p-5 [&_.lazy-load-image-wrapper]:flex [&_.lazy-load-image-wrapper]:h-full [&_.lazy-load-image-wrapper]:w-auto [&_.lazy-load-image-wrapper]:items-center [&_.lazy-load-image-wrapper]:justify-center [&_img]:h-full [&_img]:w-auto [&_img]:max-w-full [&_img]:object-contain">
 					<span className="category">{cert.category}</span>
 					<LazyImage
 						src={cert.thumb}

@@ -35,3 +35,28 @@
 		@apply border-gold bg-gold/20;
 	}
 }
+
+/*
+ * react-transition-group fade classes used by <ImageCarousel>. These must stay
+ * as global class names because the transition library toggles them on elements
+ * (they can't be expressed as static Tailwind utilities). Kept here after the
+ * image-carousel.css migration so the cross-fade between project screenshots
+ * still works.
+ */
+.fade-enter {
+	opacity: 0;
+}
+
+.fade-enter-active {
+	opacity: 1;
+	transition: opacity 300ms ease;
+}
+
+.fade-exit {
+	opacity: 1;
+}
+
+.fade-exit-active {
+	opacity: 0;
+	transition: opacity 300ms ease;
+}

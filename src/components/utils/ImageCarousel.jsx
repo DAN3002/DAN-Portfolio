@@ -9,7 +9,10 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import LazyImage from './LazyImage';
 import EnvImage from './Image';
 import resolveImageSrc from './resolveImageSrc';
-import '../../styles/image-carousel.css';
+
+// Tailwind class groups (migrated from the old image-carousel.css).
+const NAV_BTN = 'cursor-pointer border-none bg-transparent p-2 text-[22px] text-gold transition-colors duration-300 hover:text-accent';
+const IMG_CLASS = 'absolute left-0 top-0 h-full w-full object-contain';
 
 // Helper to preload an image and return a promise
 function preload(src) {
@@ -81,11 +84,11 @@ function ImageCarousel({ images }) {
 	}, [firstImageLoaded, images]);
 
 	return (
-		<div className="image-carousel" ref={carouselRef}>
+		<div className="relative mb-4 flex items-center justify-center" ref={carouselRef}>
 			{hasMultiple && (
 				<button
 					type="button"
-					className="carousel-nav prev"
+					className={`prev ${NAV_BTN}`}
 					onClick={prevImage}
 					aria-label="Previous image"
 				>
@@ -93,21 +96,22 @@ function ImageCarousel({ images }) {
 				</button>
 			)}
 
-			<div className="carousel-image-wrapper">
+			{/* Fixed 16:9-ish viewport (766x382) that shrinks on narrow screens. */}
+			<div className="relative h-[382px] w-[766px] max-w-full text-center [&_.lazy-load-image-wrapper]:h-full [&_.lazy-load-image-wrapper]:w-full [&_img]:h-full [&_img]:w-full">
 				<SwitchTransition mode="out-in">
 					<CSSTransition key={currentIndex} timeout={300} classNames="fade" unmountOnExit>
 						{currentIndex === 0 && !firstImageLoaded ? (
 							<LazyImage
 								src={images[0]}
 								alt="Project screenshot 1"
-								className="carousel-image"
+								className={IMG_CLASS}
 								afterLoad={() => setFirstImageLoaded(true)}
 							/>
 						) : (
 							<EnvImage
 								src={images[currentIndex]}
 								alt={`Project screenshot ${currentIndex + 1}`}
-								className="carousel-image"
+								className={IMG_CLASS}
 							/>
 						)}
 					</CSSTransition>
@@ -117,7 +121,7 @@ function ImageCarousel({ images }) {
 			{hasMultiple && (
 				<button
 					type="button"
-					className="carousel-nav next"
+					className={`next ${NAV_BTN}`}
 					onClick={nextImage}
 					aria-label="Next image"
 				>

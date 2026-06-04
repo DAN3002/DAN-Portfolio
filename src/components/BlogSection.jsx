@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from './utils/Image';
 import data from '../data/data';
-import '../styles/components/blog-section.css';
 
 function BlogSection() {
 	const [posts, setPosts] = useState([]);
@@ -44,35 +43,57 @@ function BlogSection() {
 	}
 
 	return (
-		<div className="blog-section">
-			<div className="blog-posts-grid">
+		<div>
+			<div className="mt-2 grid grid-cols-1 gap-8">
 				{posts.map((post, index) => (
-					<div key={index} className="blog-post-card">
-						<div className="blog-post-content">
-							<h3 className="blog-title">{post.title}</h3>
-							<div className="blog-meta">
-								<span className="blog-time">{post.pubDate.toLocaleDateString()}</span>
+					<div
+						key={index}
+						className="flex min-h-[200px] flex-row overflow-hidden rounded-2xl bg-surface text-white shadow-[0_2px_16px_rgba(0,0,0,0.08)] transition-shadow duration-200 hover:bg-surface-alt hover:shadow-[0_4px_32px_rgba(0,0,0,0.16)]"
+					>
+						<div className="flex h-full flex-1 flex-col p-6">
+							<h3 className="mb-2 text-xl font-semibold text-gold">{post.title}</h3>
+							<div className="mb-2 flex flex-wrap items-center gap-4">
+								<span className="text-[0.95rem] text-gold">{post.pubDate.toLocaleDateString()}</span>
 								{post.tags && post.tags.length > 0 && (
-									<div className="blog-tags">
+									<div className="flex flex-wrap gap-2">
 										{post.tags.map((tag, i) => (
-											<span key={i} className="blog-tag">{tag}</span>
+											<span
+												key={i}
+												className="rounded-xl border border-gold bg-gold/10 px-3 py-0.5 text-sm font-medium text-gold"
+											>
+												{tag}
+											</span>
 										))}
 									</div>
 								)}
 							</div>
-							<p className="blog-description">{post.description}</p>
-							<a href={post.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary blog-readmore">Read More</a>
+							<p className="my-2 flex-auto text-white">{post.description}</p>
+							<a
+								href={post.link}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="mt-auto self-start rounded-3xl bg-accent px-6 py-2 font-semibold text-white no-underline shadow-accent transition-colors hover:bg-accent-hover"
+							>
+								Read More
+							</a>
 						</div>
 						{post.thumbnail && (
-							<div className="blog-thumbnail">
+							<div className="relative ml-6 flex min-h-[200px] w-80 items-stretch justify-center overflow-hidden rounded-r-2xl border-l border-surface-button bg-page-deep [&_img]:h-full [&_img]:w-full [&_img]:object-cover [&_img]:transition-transform [&_img]:duration-300 hover:[&_img]:scale-105">
 								<Image src={post.thumbnail} alt={post.title} />
 							</div>
 						)}
 					</div>
 				))}
 			</div>
-			<div className="blog-viewmore-wrapper">
-				<a href={data.externalLinks.blog} target="_blank" rel="noopener noreferrer" className="btn btn-secondary blog-viewmore">View more blog</a>
+			<div className="mt-10 text-center">
+				<a
+					href={data.externalLinks.blog}
+					target="_blank"
+					rel="noopener noreferrer"
+					className="inline-flex items-center gap-2 rounded-3xl bg-surface-button px-9 py-3 text-lg font-semibold text-white no-underline transition-colors hover:bg-accent-hover before:content-['📝']"
+				>
+					View more blog
+				</a>
 			</div>
 		</div>
 	);

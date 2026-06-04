@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import data from '../data/data';
 
 import Section from './Section';
@@ -14,42 +12,6 @@ import ProjectList from './resume/ProjectList';
 // import BlogSection from './BlogSection';
 
 function Main() {
-	useEffect(() => {
-		$('.carousel-wrapper').slick({
-			dots: true,
-			arrows: true,
-			speed: 200,
-			slidesToShow: 3,
-			slidesToScroll: 3,
-			// infinite: true,
-			// autoplay: true,
-			// autoplaySpeed: 3000,
-			swipeToSlide: false,
-			swipe: false,
-			responsive: [
-				{
-					breakpoint: 1024,
-					settings: {
-						slidesToShow: 2,
-						slidesToScroll: 2,
-						swipeToSlide: true,
-						swipe: true,
-					},
-				},
-				{
-					breakpoint: 480,
-					settings: {
-						slidesToShow: 1,
-						slidesToScroll: 1,
-						arrows: false,
-						swipeToSlide: true,
-						swipe: true,
-					},
-				},
-			],
-		});
-	}, []);
-
 	const { projects } = data;
 
 	return (

@@ -1,73 +1,68 @@
 import parse from 'html-react-parser';
 import data from '../../data/data';
-import Carousel from '../utils/Carousel';
 import LazyImage from '../utils/LazyImage';
+import MediaCard from '../utils/MediaCard';
+
+const track = (event) => {
+	if (typeof window.umami !== 'undefined') window.umami.track(event);
+};
 
 function AchieveSection() {
 	const { achievements } = data;
 
-	const items = achievements.map((item, index) => (
-		<div key={index} className="custem-carousel-item rounded bg-dark wow fadeIn">
-			<a
-				href={`#small-dialog-achieve-${index}`}
-				className="work-content"
-				onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`open-achieve-${item.name}`); } }}
-			>
-				<div className="thumb">
-					<span className="category">{item.category}</span>
-					<LazyImage
-						src={item.thumb}
-						alt={item.name}
-						width={330}
-						height={268}
-					/>
-				</div>
-				<div className="details">
-					<h4 className="my-0 title">{item.name}</h4>
-					<ul className="list-inline meta mb-0 mt-2">
-						<li className="list-inline-item">
-							{item.date}
-						</li>
-						<li className="list-inline-item">{item.prize}</li>
-					</ul>
-				</div>
-			</a>
-		</div>
-	));
-
 	return (
-		<div className="row blog-wrapper">
+		<>
+			{/* Full-width responsive grid (replaces the old slick carousel). Spans the
+			    full container width, 3 across on desktop, with equal-height cards. */}
+			<div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+				{achievements.map((item, index) => (
+					<MediaCard
+						key={item.name}
+						href={`#small-dialog-achieve-${index}`}
+						category={item.category}
+						title={item.name}
+						meta={[item.date, item.prize]}
+						thumb={item.thumb}
+						alt={item.name}
+						imageHeight={200}
+						onClick={() => track(`open-achieve-${item.name}`)}
+					/>
+				))}
+			</div>
+
+			{/* Magnific-popup dialogs (one per achievement) */}
 			{achievements.map((item, index) => (
 				<div
-					key={index}
+					key={item.name}
 					id={`small-dialog-achieve-${index}`}
 					className="white-popup zoom-anim-dialog mfp-hide"
 				>
-					<LazyImage
-						src={item.image}
-						alt={item.name}
-					/>
+					<LazyImage src={item.image} alt={item.name} />
 					<div className="spacer" data-height={5} />
-					{item.text.map((text, i) => (
-						<p key={i}>{parse(text)}</p>
+					{item.text.map((text) => (
+						<p key={text}>{parse(text)}</p>
 					))}
 
 					<div className="spacer" data-height={10} />
-					<div style={{ marginLeft: 10 }}>
-						<ul>
-							{item.link.map((el, i) => (
-								<li key={i}>
-									<a href={el.url} onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`view-achieve-link-${item.name}`); } }}>
-										{el.text}
-									</a>
-								</li>
-							))}
-						</ul>
-					</div>
+					{item.link.length > 0 && (
+						<div style={{ marginLeft: 10 }}>
+							<ul>
+								{item.link.map((el) => (
+									<li key={el.url}>
+										<a
+											href={el.url}
+											onClick={() => track(`view-achieve-link-${item.name}`)}
+										>
+											{el.text}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					)}
 				</div>
 			))}
-			<Carousel items={items} />
-		</div>
+		</>
 	);
 }
 

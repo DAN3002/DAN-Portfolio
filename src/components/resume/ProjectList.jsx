@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
 import clsx from 'clsx';
 import ImageCarousel from '../utils/ImageCarousel';
+import FilterPill from '../utils/FilterPill';
+import Pagination from '../utils/Pagination';
 
 // Map a project's tags to a representative Font Awesome icon.
 const getProjectIcon = (projectTags) => {
@@ -75,36 +77,20 @@ function ProjectList({ projects }) {
 			{/* ---------------------------------------------------------------- */}
 			{/* Filter pills — accessible toggle group with per-tag counts.      */}
 			{/* ---------------------------------------------------------------- */}
-			<div className="mb-7 flex flex-wrap gap-2.5" role="group" aria-label="Filter projects by category">
-				{tags.map((tag) => {
-					const active = selectedTag === tag;
-					return (
-						<button
-							key={tag}
-							type="button"
-							aria-pressed={active}
-							onClick={() => handleSelectTag(tag)}
-							className={clsx(
-								'inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium',
-								'transition-colors duration-300 focus:outline-none focus-visible:ring-2',
-								'focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-page',
-								active
-									? 'bg-accent text-white shadow-accent'
-									: 'bg-surface-button text-white/90 hover:bg-surface-button-hover hover:text-gold',
-							)}
-						>
-							{tag}
-							<span
-								className={clsx(
-									'rounded-full px-1.5 text-xs tabular-nums',
-									active ? 'bg-white/25 text-white' : 'bg-black/20 text-white/70',
-								)}
-							>
-								{countForTag(tag)}
-							</span>
-						</button>
-					);
-				})}
+			<div
+				className="mb-8 flex flex-wrap gap-2.5"
+				role="group"
+				aria-label="Filter projects by category"
+			>
+				{tags.map((tag) => (
+					<FilterPill
+						key={tag}
+						label={tag}
+						count={countForTag(tag)}
+						active={selectedTag === tag}
+						onClick={() => handleSelectTag(tag)}
+					/>
+				))}
 			</div>
 
 			{/* ---------------------------------------------------------------- */}
@@ -156,31 +142,35 @@ function ProjectList({ projects }) {
 								))}
 							</div>
 
-							{/* Description (clamped to 3 lines) */}
-							<p className="mb-4 line-clamp-3 text-sm leading-relaxed text-white/80">
+							{/* Description — clamped to 3 lines with a reserved min-height so the
+							    Tech Stack block lines up across cards in the same row. */}
+							<p className="mb-4 line-clamp-3 min-h-[3.9rem] text-sm leading-relaxed text-white/80">
 								{project.description}
 							</p>
 
-							{/* Tech stack pinned to the bottom */}
-							{project.techs && project.techs.length > 0 && (
-								<div className="mt-auto">
-									<div className="mb-1.5 text-sm font-medium text-gold">Tech Stack:</div>
-									<div className="flex flex-wrap gap-1.5">
-										{project.techs.map((tech) => (
-											<span key={tech} className="tech-pill">{tech}</span>
-										))}
-									</div>
-								</div>
-							)}
+							{/* Footer (tech stack + affordance) pinned to the bottom for equal-height
+							    cards so every card's "View details" hint aligns on the same baseline. */}
+							<div className="mt-auto">
+								{project.techs && project.techs.length > 0 && (
+									<>
+										<div className="mb-1.5 text-sm font-medium text-gold">Tech Stack:</div>
+										<div className="flex flex-wrap gap-1.5">
+											{project.techs.map((tech) => (
+												<span key={tech} className="tech-pill">{tech}</span>
+											))}
+										</div>
+									</>
+								)}
 
-							{/* Affordance hint that appears on hover/focus */}
-							<span
-								className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
-								aria-hidden="true"
-							>
-								View details
-								<i className="fas fa-arrow-right text-xs" />
-							</span>
+								{/* Affordance hint that appears on hover/focus */}
+								<span
+									className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+									aria-hidden="true"
+								>
+									View details
+									<i className="fas fa-arrow-right text-xs" />
+								</span>
+							</div>
 						</a>
 					);
 				})}
@@ -264,60 +254,12 @@ function ProjectList({ projects }) {
 			{/* ---------------------------------------------------------------- */}
 			{/* Pagination — numbered on desktop, compact indicator on mobile.   */}
 			{/* ---------------------------------------------------------------- */}
-			{totalPages > 1 && (
-				<div className="mt-8 flex items-center justify-center gap-2">
-					<button
-						type="button"
-						onClick={() => handlePageChange(currentPage - 1)}
-						disabled={currentPage === 1}
-						aria-label="Previous page"
-						className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-button text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-surface-button-hover hover:text-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
-					>
-						<i className="fas fa-chevron-left text-xs" />
-					</button>
-
-					{!isMobile ? (
-						Array.from({ length: totalPages }, (_, index) => {
-							const page = index + 1;
-							const active = currentPage === page;
-							return (
-								<button
-									key={page}
-									type="button"
-									onClick={() => handlePageChange(page)}
-									aria-label={`Go to page ${page}`}
-									aria-current={active ? 'page' : undefined}
-									className={clsx(
-										'flex h-8 min-w-8 items-center justify-center rounded-full px-2 text-[13px] font-medium tabular-nums',
-										'transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold',
-										active
-											? 'bg-accent text-white shadow-accent'
-											: 'bg-surface-button text-white hover:-translate-y-0.5 hover:bg-surface-button-hover hover:text-gold',
-									)}
-								>
-									{page}
-								</button>
-							);
-						})
-					) : (
-						<span className="mx-4 font-medium tabular-nums text-gold">
-							{currentPage}
-							{' / '}
-							{totalPages}
-						</span>
-					)}
-
-					<button
-						type="button"
-						onClick={() => handlePageChange(currentPage + 1)}
-						disabled={currentPage === totalPages}
-						aria-label="Next page"
-						className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-button text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-surface-button-hover hover:text-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
-					>
-						<i className="fas fa-chevron-right text-xs" />
-					</button>
-				</div>
-			)}
+			<Pagination
+				currentPage={currentPage}
+				totalPages={totalPages}
+				onPageChange={handlePageChange}
+				compact={isMobile}
+			/>
 		</div>
 	);
 }

@@ -1,53 +1,44 @@
 import data from '../../data/data';
-import Carousel from '../utils/Carousel';
 import LazyImage from '../utils/LazyImage';
+import MediaCard from '../utils/MediaCard';
+
+const track = (event) => {
+	if (typeof window.umami !== 'undefined') window.umami.track(event);
+};
 
 function CertificationSection() {
 	const { certifications } = data;
 
-	const items = certifications.map((cert, i) => (
-		<div key={i} className="custem-carousel-item rounded bg-dark wow fadeIn">
-			<a href={`#small-dialog-cert-${i}`} className="work-content" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`open-cert-${cert.name}`); } }}>
-				{/* Fixed-height (268px) thumbnail, badge centered & uncropped.
-				    Migrated from the old .cert-thumb rule in lazy-image.css. */}
-				<div className="thumb flex h-[268px] items-center justify-center p-5 [&_.lazy-load-image-wrapper]:flex [&_.lazy-load-image-wrapper]:h-full [&_.lazy-load-image-wrapper]:w-auto [&_.lazy-load-image-wrapper]:items-center [&_.lazy-load-image-wrapper]:justify-center [&_img]:h-full [&_img]:w-auto [&_img]:max-w-full [&_img]:object-contain">
-					<span className="category">{cert.category}</span>
-					<LazyImage
-						src={cert.thumb}
-						alt={cert.name}
-						style={{
-							width: 'auto',
-							height: '100%',
-							maxWidth: '100%',
-							objectFit: 'contain',
-						}}
-					/>
-				</div>
-				<div className="details">
-					<h4 className="my-0 title">
-						{cert.name}
-					</h4>
-					<ul className="list-inline meta mb-0 mt-2">
-						<li className="list-inline-item">{cert.start}</li>
-						<li className="list-inline-item">{cert.end}</li>
-					</ul>
-				</div>
-			</a>
-		</div>
-	));
-
 	return (
-		<div className="row blog-wrapper">
+		<>
+			{/* Full-width responsive grid (replaces the old slick carousel that was
+			    constrained to max-width:1010px and rendered as a narrow centred column).
+			    1 col (mobile) / 2 (sm) / 3 (xl) — matches the Projects/About width. */}
+			<div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+				{certifications.map((cert, i) => (
+					<MediaCard
+						key={cert.name}
+						href={`#small-dialog-cert-${i}`}
+						category={cert.category}
+						title={cert.name}
+						meta={[cert.start, cert.end]}
+						thumb={cert.thumb}
+						alt={cert.name}
+						imageHeight={240}
+						containImage
+						onClick={() => track(`open-cert-${cert.name}`)}
+					/>
+				))}
+			</div>
+
+			{/* Magnific-popup dialogs (one per certificate) */}
 			{certifications.map((cert, i) => (
 				<div
-					key={i}
+					key={cert.name}
 					id={`small-dialog-cert-${i}`}
 					className="white-popup zoom-anim-dialog mfp-hide"
 				>
-					<LazyImage
-						src={cert.image}
-						alt={cert.name}
-					/>
+					<LazyImage src={cert.image} alt={cert.name} />
 					<br />
 					<br />
 					<a
@@ -55,15 +46,13 @@ function CertificationSection() {
 						className="btn btn-default"
 						target="_blank"
 						rel="noreferrer"
-						onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`view-cert-${cert.name}`); } }}
+						onClick={() => track(`view-cert-${cert.name}`)}
 					>
 						Show Credential
 					</a>
 				</div>
 			))}
-
-			<Carousel items={items} />
-		</div>
+		</>
 	);
 }
 

@@ -37,6 +37,65 @@
 }
 
 /*
+ * Project popup (magnific-popup) styles. MagnificPopup detaches these nodes from
+ * React's root and moves them in the DOM, so they're defined as global classes
+ * (migrated from the old project-list.css) rather than inline Tailwind utilities.
+ */
+.white-popup {
+	@apply relative mx-auto max-w-[800px] rounded-[10px] bg-surface p-6 text-white;
+}
+
+.white-popup h2 {
+	@apply mb-0 flex flex-wrap items-center gap-2.5;
+}
+
+.white-popup.no-thumbnail h2 {
+	@apply mt-0;
+}
+
+.project-role-badge {
+	@apply ml-1.5 inline-block rounded-full border border-gold/30 bg-gold/10 px-2.5 py-0.5
+		align-middle text-[13px] font-medium tracking-wide text-gold;
+}
+
+.project-description {
+	@apply mb-2.5 leading-relaxed;
+}
+
+.project-features {
+	@apply ml-2.5 pl-4;
+}
+
+.project-features li {
+	@apply relative mb-2 leading-relaxed text-[#e3e3e3];
+}
+
+.popup-tech-stack {
+	@apply mt-4 rounded-lg border border-gold/20 bg-surface-button/40 p-4 shadow-card;
+}
+
+.popup-tech-stack-label {
+	@apply mb-3 flex items-center text-base font-medium text-gold;
+}
+
+.popup-tech-badges {
+	@apply flex flex-wrap gap-2;
+}
+
+.popup-tech-badge {
+	@apply inline-block rounded-full border border-white/20 bg-white/10 px-3 py-[5px]
+		text-[13px] text-white transition-all duration-300;
+}
+
+.popup-tech-badge:hover {
+	@apply -translate-y-0.5 border-gold bg-gold/20;
+}
+
+.project-links {
+	@apply mt-4 flex justify-start;
+}
+
+/*
  * react-transition-group fade classes used by <ImageCarousel>. These must stay
  * as global class names because the transition library toggles them on elements
  * (they can't be expressed as static Tailwind utilities). Kept here after the

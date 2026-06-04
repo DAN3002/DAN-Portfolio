@@ -1,0 +1,37 @@
+/*
+ * Tailwind CSS entrypoint.
+ *
+ * Tailwind v3 directives. Preflight is disabled in tailwind.config.js so these
+ * utilities layer ON TOP of the existing template styles (public/css/style.css,
+ * bootstrap, etc.) without resetting them — this lets us migrate component-local
+ * styling to Tailwind incrementally while preserving full visual parity.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Shared component classes extracted from repeated Tailwind patterns.
+ * Defined with @layer components so they can be overridden by utilities and are
+ * tree-shaken when unused.
+ */
+@layer components {
+	/* Filterable project gallery — modern card grid (Projects section redesign) */
+	.project-card {
+		@apply relative flex h-full flex-col overflow-hidden rounded-xl border border-white/10
+			bg-surface text-white shadow-card transition-all duration-300 ease-out;
+	}
+
+	.project-card:hover {
+		@apply -translate-y-1.5 border-gold/40 bg-surface-light shadow-card-hover;
+	}
+
+	.tech-pill {
+		@apply inline-flex items-center rounded-full border border-white/20 bg-white/10
+			px-2.5 py-0.5 text-xs text-white transition-colors duration-300;
+	}
+
+	.tech-pill:hover {
+		@apply border-gold bg-gold/20;
+	}
+}

@@ -24,3 +24,8 @@ yarn-error.log*
 
 # Env
 .env
+
+# Playwright MCP / visual-regression artifacts
+.playwright-mcp/
+*-fullpage.png
+localhost-*.png

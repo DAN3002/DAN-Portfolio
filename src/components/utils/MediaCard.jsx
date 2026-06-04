@@ -7,8 +7,8 @@ import LazyImage from './LazyImage';
  *
  * Layout contract (so cards line up across a row):
  *  - Fixed-height image area (`imageHeight`) with the thumbnail centred/contained.
- *  - Flex-column body where the title sits on top and the meta row is pinned to the
- *    bottom via `mt-auto`, regardless of how long the title wraps.
+ *  - Flex-column body where the title + meta sit directly under the image. The grid
+ *    stretches every card to the tallest in the row, keeping heights uniform.
  *
  * Keeps the `work-content` class + anchor `href` so custom.js's magnific-popup
  * binding still attaches to the card (opening the credential / achievement modal).

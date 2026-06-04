@@ -11,6 +11,7 @@ import CertificationSection from './certification/CertificationSection';
 import AchieveSection from './achieve/AchieveSection';
 import ContactSection from './contact/ContactSection';
 import ProjectList from './resume/ProjectList';
+import CurrentWorkSection from './currentwork/CurrentWorkSection';
 // import BlogSection from './BlogSection';
 
 function Main() {
@@ -60,6 +61,12 @@ function Main() {
 				title="About Me"
 			>
 				<AboutSection />
+			</Section>
+			<Section
+				id="current-work"
+				title="What I'm Working On"
+			>
+				<CurrentWorkSection />
 			</Section>
 			<Section
 				id="experience"

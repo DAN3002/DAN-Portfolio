@@ -1,0 +1,251 @@
+/* ===== Current Work (Drylab) spotlight section ===== */
+
+.current-work {
+    width: 100%;
+}
+
+.cw-card {
+    position: relative;
+    background: #302f4e;
+    border-radius: 12px;
+    padding: 35px;
+    color: #fff;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Accent glow bar on top edge */
+.cw-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #FF4C60 0%, #FFD15C 100%);
+}
+
+/* Soft ambient glow in the corner */
+.cw-card::after {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(255, 209, 92, 0.12) 0%, rgba(255, 76, 96, 0) 70%);
+    pointer-events: none;
+}
+
+/* ---- Header ---- */
+.cw-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.cw-header-main {
+    flex: 1 1 300px;
+    min-width: 0;
+}
+
+.cw-company {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    line-height: 1.1;
+}
+
+.cw-role {
+    font-size: 15px;
+    color: #FFD15C;
+    font-weight: 500;
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.cw-sep {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.cw-timeline {
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 400;
+}
+
+.cw-tagline {
+    font-size: 17px;
+    font-style: italic;
+    color: #fff;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.cw-links {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cw-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 17px;
+    transition: all 0.3s ease;
+}
+
+.cw-icon-btn:hover {
+    transform: translateY(-3px);
+    background-color: #FF4C60;
+    border-color: #FF4C60;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(255, 76, 96, 0.35);
+}
+
+.cw-icon-btn-linkedin:hover {
+    background-color: #0a66c2;
+    border-color: #0a66c2;
+    box-shadow: 0 6px 18px rgba(10, 102, 194, 0.4);
+}
+
+/* ---- Description ---- */
+.cw-description {
+    margin: 22px 0 0;
+    line-height: 1.7;
+    color: #d9d9e3;
+    font-size: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Video embed (full-width, responsive 16:9) ---- */
+.cw-video {
+    width: 100%;
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.cw-video-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    /* 16:9 aspect ratio */
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.cw-video-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ---- Highlights grid (below video) ---- */
+.cw-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.cw-highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 16px 18px;
+    transition: all 0.3s ease;
+}
+
+.cw-highlight:hover {
+    background-color: rgba(255, 209, 92, 0.07);
+    border-color: rgba(255, 209, 92, 0.3);
+    transform: translateY(-3px);
+}
+
+.cw-highlight-icon {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255, 76, 96, 0.18), rgba(255, 209, 92, 0.18));
+    color: #FFD15C;
+    font-size: 18px;
+}
+
+.cw-highlight-body {
+    min-width: 0;
+}
+
+.cw-highlight-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: #fff;
+}
+
+.cw-highlight-text {
+    font-size: 13px;
+    line-height: 1.55;
+    margin: 0;
+    color: #b8b8c4;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .cw-card {
+        padding: 24px 20px;
+    }
+
+    .cw-company {
+        font-size: 24px;
+    }
+
+    .cw-tagline {
+        font-size: 15px;
+    }
+
+    .cw-links {
+        margin-top: 4px;
+    }
+
+    .cw-video {
+        margin-top: 22px;
+    }
+
+    .cw-highlights {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 22px;
+    }
+}

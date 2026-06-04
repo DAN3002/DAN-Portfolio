@@ -18,6 +18,39 @@ export default {
 		'<b>Frameworks & libraries: </b>NextJS, MERN Stack, ReactJS, Django.',
 		'<b>Other tools: </b>Linux, Git, Docker, AWS, k8s, ...',
 	],
+	currentWork: {
+		company: 'Drylab',
+		role: 'Member of Technical Staff',
+		timeline: 'Oct 2025 - Present',
+		url: 'https://thedrylab.com/',
+		linkedin: 'https://www.linkedin.com/company/drylab-ai/',
+		tagline: 'The AI operating system for biomedical discovery.',
+		description: 'Drylab is an AI-automated bioinformatics platform that lets life science teams handle their entire research workflow in one place — from searching and preparing datasets, to co-creating analysis plans, generating code, and running pipelines with a single click. It is purpose-built for biology: trained on biological datasets, experimental data, and scientific workflows, so it understands the science, not just the syntax.',
+		videoId: 'I8_fgv6qW6Y',
+		videoTitle: 'Drylab product overview',
+		highlights: [
+			{
+				icon: 'fas fa-flask',
+				title: 'Data Analysis',
+				text: 'Co-create analysis plans with AI that generate and run code, outputting results alongside you.',
+			},
+			{
+				icon: 'fas fa-search',
+				title: 'Data Search',
+				text: 'Custom search across GEO and beyond, with datasets automatically prepared for analysis.',
+			},
+			{
+				icon: 'fas fa-toolbox',
+				title: '800+ Tools',
+				text: 'Brings together 800+ bioinformatics tools into one AI-automated platform.',
+			},
+			{
+				icon: 'fas fa-shield-alt',
+				title: 'Secure by Design',
+				text: 'Encrypted "Vault" storage and a local-first Desktop App so sensitive data never leaves your machine.',
+			},
+		],
+	},
 	education: [{
 		title: 'FPT University',
 		timeline: 'Jan 2022 - Aug 2023',
@@ -40,8 +73,16 @@ export default {
 		],
 	}],
 	experience: [{
+		title: 'Drylab',
+		timeline: 'Oct 2025 - Present',
+		subtitle: 'Member of Technical Staff',
+		text: [
+			'Building an <a href="https://thedrylab.com/">AI-automated bioinformatics platform</a> that handles end-to-end research workflows, from data search and analysis to model training.',
+			'Contributing to the development of an enterprise-grade platform empowering leading life science teams to accelerate their discovery phase.',
+		],
+	}, {
 		title: 'VPBank',
-		timeline: 'Aug 2024 - Present',
+		timeline: 'Aug 2024 - Sep 2025',
 		subtitle: 'DevOps Engineer',
 		text: [
 			'Youngest Senior Specialist at @VPBank. (21 years old)',

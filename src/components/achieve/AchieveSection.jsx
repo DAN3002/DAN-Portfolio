@@ -2,6 +2,7 @@ import parse from 'html-react-parser';
 import data from '../../data/data';
 import Carousel from '../utils/Carousel';
 import LazyImage from '../utils/LazyImage';
+import { track, Events } from '../../lib/analytics';
 
 function AchieveSection() {
 	const { achievements } = data;
@@ -11,7 +12,7 @@ function AchieveSection() {
 			<a
 				href={`#small-dialog-achieve-${index}`}
 				className="work-content"
-				onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`open-achieve-${item.name}`); } }}
+				onClick={() => track(Events.OPEN_ACHIEVE, { name: item.name })}
 			>
 				<div className="thumb">
 					<span className="category">{item.category}</span>
@@ -57,7 +58,10 @@ function AchieveSection() {
 						<ul>
 							{item.link.map((el, i) => (
 								<li key={i}>
-									<a href={el.url} onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`view-achieve-link-${item.name}`); } }}>
+									<a
+										href={el.url}
+										onClick={() => track(Events.VIEW_ACHIEVE_LINK, { name: item.name })}
+									>
 										{el.text}
 									</a>
 								</li>

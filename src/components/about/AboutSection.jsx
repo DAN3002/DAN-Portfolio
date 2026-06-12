@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import data from '../../data/data';
 import { getGithubData } from '../../data/github';
 import Image from '../utils/Image';
+import { track, Events } from '../../lib/analytics';
 // import useAnalyticsEventTracker from '../../hooks/useAnalyticsEventTracker';
 
 function AboutSection() {
@@ -118,12 +119,7 @@ function AboutSection() {
 										className="btn btn-default"
 										target="_blank"
 										rel="noreferrer"
-										onClick={() => {
-											// Send custom event to Umami (if script is loaded)
-											if (typeof window.umami !== 'undefined') {
-												window.umami.track('download-resume');
-											}
-										}}
+										onClick={() => track(Events.DOWNLOAD_RESUME)}
 									>
 										Download Resume
 									</a>

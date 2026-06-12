@@ -1,6 +1,7 @@
 import parse from 'html-react-parser';
 
 import data from '../../data/data';
+import { track, Events } from '../../lib/analytics';
 import '../../styles/current-work.css';
 
 function CurrentWorkSection() {
@@ -20,12 +21,6 @@ function CurrentWorkSection() {
 		videoTitle,
 		highlights = [],
 	} = currentWork;
-
-	const track = (event) => {
-		if (typeof window.umami !== 'undefined') {
-			window.umami.track(event);
-		}
-	};
 
 	return (
 		<div className="current-work fadeIn wow animated">
@@ -51,7 +46,7 @@ function CurrentWorkSection() {
 								className="cw-icon-btn"
 								aria-label={`Visit ${company} website`}
 								title="Website"
-								onClick={() => track('visit-current-work-website')}
+								onClick={() => track(Events.CURRENT_WORK_LINK, { type: 'website' })}
 							>
 								<i className="fas fa-globe" aria-hidden="true" />
 							</a>
@@ -64,7 +59,7 @@ function CurrentWorkSection() {
 								className="cw-icon-btn cw-icon-btn-linkedin"
 								aria-label={`${company} on LinkedIn`}
 								title="LinkedIn"
-								onClick={() => track('visit-current-work-linkedin')}
+								onClick={() => track(Events.CURRENT_WORK_LINK, { type: 'linkedin' })}
 							>
 								<i className="fab fa-linkedin-in" aria-hidden="true" />
 							</a>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
 import ImageCarousel from '../utils/ImageCarousel';
+import { track, Events } from '../../lib/analytics';
 import '../../styles/project-list.css';
 
 function ProjectList({ projects }) {
@@ -72,9 +73,7 @@ function ProjectList({ projects }) {
 							key={tag}
 							className={`btn ${selectedTag === tag ? 'active' : ''}`}
 							onClick={() => {
-								if (typeof window.umami !== 'undefined') {
-									window.umami.track(`filter-tag-${tag}`);
-								}
+								track(Events.FILTER_TAG, { tag });
 								setSelectedTag(tag);
 								setCurrentPage(1); // Reset to first page on tag change
 							}}
@@ -95,11 +94,10 @@ function ProjectList({ projects }) {
 							<a
 								href={`#small-dialog-project-${projectIndex}`}
 								className="project-content"
-								onClick={() => {
-									if (typeof window.umami !== 'undefined') {
-										window.umami.track(`open-project-${project.title}`);
-									}
-								}}
+								onClick={() => track(Events.OPEN_PROJECT, {
+									title: project.title,
+									tags: project.tags.join(','),
+								})}
 							>
 								<h4>
 									<i className={`${getProjectIcon(project.tags)} mr-2`} aria-hidden="true" />
@@ -189,11 +187,7 @@ function ProjectList({ projects }) {
 										target="_blank"
 										rel="noopener noreferrer"
 										className="btn btn-default"
-										onClick={() => {
-											if (typeof window.umami !== 'undefined') {
-												window.umami.track(`view-source-${project.title}`);
-											}
-										}}
+										onClick={() => track(Events.VIEW_PROJECT_SOURCE, { title: project.title })}
 									>
 										View Source
 									</a>

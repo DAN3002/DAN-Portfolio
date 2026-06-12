@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { getLatestCommitDate } from '../../data/github';
+import { track, Events } from '../../lib/analytics';
 
 function DesktopHeader() {
 	const [lastUpdated, setLastUpdated] = useState('');
@@ -24,25 +25,25 @@ function DesktopHeader() {
 			<nav>
 				<ul className="vertical-menu scrollspy">
 					<li className="active">
-						<a href="#home" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-home'); } }}>
+						<a href="#home" onClick={() => track(Events.NAV, { section: 'home' })}>
 							<i className="icon-home" />
 							Home
 						</a>
 					</li>
 					<li>
-						<a href="#about" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-about'); } }}>
+						<a href="#about" onClick={() => track(Events.NAV, { section: 'about' })}>
 							<i className="icon-user-following" />
 							About
 						</a>
 					</li>
 					<li>
-						<a href="#experience" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-experience'); } }}>
+						<a href="#experience" onClick={() => track(Events.NAV, { section: 'experience' })}>
 							<i className="icon-graduation" />
 							Resume
 						</a>
 					</li>
 					<li>
-						<a href="#projects" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-projects'); } }}>
+						<a href="#projects" onClick={() => track(Events.NAV, { section: 'projects' })}>
 							<i className="icon-folder" />
 							Projects
 						</a>
@@ -50,30 +51,26 @@ function DesktopHeader() {
 					{/* <li>
 						<a
 							href="#blog"
-							onClick={() => {
-								if (typeof window.umami !== 'undefined') {
-									window.umami.track('nav-blog');
-								}
-							}}
+							onClick={() => track(Events.NAV, { section: 'blog' })}
 						>
 							<i className="icon-globe" />
 							Blog
 						</a>
 					</li> */}
 					<li>
-						<a href="#certifications" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-certifications'); } }}>
+						<a href="#certifications" onClick={() => track(Events.NAV, { section: 'certifications' })}>
 							<i className="icon-check" />
 							Certifications
 						</a>
 					</li>
 					<li>
-						<a href="#achieves" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-achieves'); } }}>
+						<a href="#achieves" onClick={() => track(Events.NAV, { section: 'achieves' })}>
 							<i className="icon-note" />
 							Achieves
 						</a>
 					</li>
 					<li>
-						<a href="#contact" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track('nav-contact'); } }}>
+						<a href="#contact" onClick={() => track(Events.NAV, { section: 'contact' })}>
 							<i className="icon-bubbles" />
 							Contact
 						</a>

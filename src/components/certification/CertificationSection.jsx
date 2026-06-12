@@ -1,13 +1,14 @@
 import data from '../../data/data';
 import Carousel from '../utils/Carousel';
 import LazyImage from '../utils/LazyImage';
+import { track, Events } from '../../lib/analytics';
 
 function CertificationSection() {
 	const { certifications } = data;
 
 	const items = certifications.map((cert, i) => (
 		<div key={i} className="custem-carousel-item rounded bg-dark wow fadeIn">
-			<a href={`#small-dialog-cert-${i}`} className="work-content" onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`open-cert-${cert.name}`); } }}>
+			<a href={`#small-dialog-cert-${i}`} className="work-content" onClick={() => track(Events.OPEN_CERT, { name: cert.name })}>
 				<div className="thumb cert-thumb">
 					<span className="category">{cert.category}</span>
 					<LazyImage
@@ -53,7 +54,7 @@ function CertificationSection() {
 						className="btn btn-default"
 						target="_blank"
 						rel="noreferrer"
-						onClick={() => { if (typeof window.umami !== 'undefined') { window.umami.track(`view-cert-${cert.name}`); } }}
+						onClick={() => track(Events.VIEW_CERT, { name: cert.name })}
 					>
 						Show Credential
 					</a>

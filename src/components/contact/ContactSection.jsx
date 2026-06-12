@@ -2,6 +2,7 @@
 import React, { useRef, useState } from 'react';
 import Turnstile, { useTurnstile } from 'react-turnstile';
 import data from '../../data/data';
+import { track, Events } from '../../lib/analytics';
 
 const TURNSTILE_SITE_KEY = process.env.REACT_APP_TURNSTILE_SITE_KEY;
 const EMAIL_API_ENDPOINT = process.env.REACT_APP_EMAIL_API_ENDPOINT;
@@ -13,9 +14,19 @@ function ContactSection() {
 	const { contactEmail } = data;
 	const [turnstileToken, setTurnstileToken] = useState(null);
 	const [isSubmitting, setIsSubmitting] = useState(false);
+	const hasStarted = useRef(false);
+
+	// Fire a single `contact-start` event the first time the user interacts.
+	const handleFormStart = () => {
+		if (!hasStarted.current) {
+			hasStarted.current = true;
+			track(Events.CONTACT_START);
+		}
+	};
 
 	const sendEmail = async (e) => {
 		e.preventDefault();
+		track(Events.CONTACT_SUBMIT);
 
 		// Ensure the Turnstile verification is complete before submitting
 		if (!turnstileToken) {
@@ -77,6 +88,8 @@ function ContactSection() {
 
 			// Reset form on success
 			form.current.reset();
+			hasStarted.current = false;
+			track(Events.CONTACT_SUCCESS);
 
 			Swal.close();
 			Swal.fire({
@@ -85,6 +98,7 @@ function ContactSection() {
 				text: 'I will contact you as soon as possible.',
 			});
 		} catch (error) {
+			track(Events.CONTACT_ERROR, { message: error.message || 'unknown' });
 			Swal.close();
 			Swal.fire({
 				icon: 'error',
@@ -122,6 +136,8 @@ function ContactSection() {
 					id="contact-form"
 					className="contact-form mt-6"
 					onSubmit={sendEmail}
+					onFocus={handleFormStart}
+					onChange={handleFormStart}
 					ref={form}
 				>
 					<div className="messages" />

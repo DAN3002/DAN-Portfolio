@@ -7,11 +7,22 @@ import GoToTop from './components/utils/GoToTop';
 
 import Main from './components/Main';
 
+import { onUmamiReady, identify } from './lib/analytics';
+import getVisitorId from './lib/visitor';
+import useSectionView from './hooks/useSectionView';
+import useScrollDepth from './hooks/useScrollDepth';
+import useOutboundLinks from './hooks/useOutboundLinks';
+
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './styles/components/lazy-image.css';
 
 function App() {
 	const { PUBLIC_URL } = process.env;
+
+	// Automatic Umami tracking: section views, scroll depth, outbound links.
+	useSectionView();
+	useScrollDepth();
+	useOutboundLinks();
 
 	useEffect(() => {
 		const script = document.createElement('script');
@@ -52,6 +63,15 @@ function App() {
 			umamiScript.defer = true;
 			// Set the data-website-id attribute expected by Umami
 			umamiScript.dataset.websiteId = websiteId;
+			// Best-practice tracker configuration.
+			umamiScript.dataset.tag = 'portfolio';
+			umamiScript.dataset.doNotTrack = 'true';
+			umamiScript.dataset.excludeHash = 'true';
+			// Drain queued events and assign an anonymous Distinct ID once ready.
+			umamiScript.onload = () => {
+				onUmamiReady();
+				identify(getVisitorId());
+			};
 			document.body.appendChild(umamiScript);
 		}
 	}, []);

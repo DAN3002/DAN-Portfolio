@@ -3,10 +3,16 @@ import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
 import { site } from '~/data/site';
 
-const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
-const endpoint = import.meta.env.PUBLIC_EMAIL_API_ENDPOINT;
-// Without the worker endpoint the form cannot send, so offer email only.
-const formEnabled = Boolean(siteKey && endpoint);
+// Both values are public (they ship in the page anyway); the defaults are the
+// production Turnstile site key and email Worker, so the form works without a .env.
+// Turnstile only accepts this key on the domains configured in Cloudflare; on
+// localhost the widget shows an error unless 127.0.0.1/localhost is allowed there.
+// In `pnpm dev` use Cloudflare's always-pass test key so the form is usable
+// locally; the Worker will still reject that token, so real sends need the live site.
+const siteKey = import.meta.env.DEV
+	? '1x00000000000000000000AA'
+	: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAAAkR24sugf9Db7lI';
+const endpoint = import.meta.env.PUBLIC_EMAIL_API_ENDPOINT || 'https://email.dan3002.id.vn/send-email';
 ---
 
 <Section id="contact" eyebrow="Contact" title="Let's build something" intro="Hiring, a project, or a question about DevOps or AWS: I reply within a couple of days.">
@@ -42,48 +48,36 @@ const formEnabled = Boolean(siteKey && endpoint);
 			</p>
 		</div>
 
-		{formEnabled ? (
-			<form class="card space-y-5 p-6 sm:p-8" data-contact-form data-endpoint={endpoint} novalidate data-reveal>
-				<div class="grid gap-5 sm:grid-cols-2">
-					<div>
-						<label for="cf-name" class="mb-1.5 block text-sm font-medium">Name</label>
-						<input id="cf-name" name="from_name" autocomplete="name" required maxlength="100" class="field" aria-describedby="cf-name-err" />
-						<p id="cf-name-err" class="field-error" hidden>Enter your name.</p>
-					</div>
-					<div>
-						<label for="cf-email" class="mb-1.5 block text-sm font-medium">Email</label>
-						<input id="cf-email" name="to_email" type="email" autocomplete="email" required maxlength="200" class="field" aria-describedby="cf-email-err" />
-						<p id="cf-email-err" class="field-error" hidden>Enter an email address like name@example.com.</p>
-					</div>
+		<form class="card space-y-5 p-6 sm:p-8" data-contact-form data-endpoint={endpoint} novalidate data-reveal>
+			<div class="grid gap-5 sm:grid-cols-2">
+				<div>
+					<label for="cf-name" class="mb-1.5 block text-sm font-medium">Name</label>
+					<input id="cf-name" name="from_name" autocomplete="name" required maxlength="100" class="field" aria-describedby="cf-name-err" />
+					<p id="cf-name-err" class="field-error" hidden>Enter your name.</p>
 				</div>
 				<div>
-					<label for="cf-message" class="mb-1.5 block text-sm font-medium">Message</label>
-					<textarea id="cf-message" name="message" rows="6" required maxlength="5000" class="field resize-y" aria-describedby="cf-message-err"></textarea>
-					<p id="cf-message-err" class="field-error" hidden>Write a short message.</p>
-				</div>
-
-				<div data-turnstile data-sitekey={siteKey} class="min-h-[65px]"></div>
-
-				<div class="flex flex-wrap items-center gap-4">
-					<button type="submit" class="btn-primary" data-submit>
-						<Icon name="lucide:send" class="size-4" aria-hidden="true" data-submit-icon />
-						<Icon name="lucide:loader-circle" class="hidden size-4 animate-spin" aria-hidden="true" data-submit-spinner />
-						<span data-submit-label>Send message</span>
-					</button>
-					<p class="text-sm" role="status" aria-live="polite" data-form-status></p>
-				</div>
-			</form>
-		) : (
-			<div class="card grid place-items-center p-8 text-center" data-reveal>
-				<div>
-					<p class="text-lg">The quickest way to reach me is email.</p>
-					<a href={`mailto:${site.email}`} class="btn-primary mt-5">
-						<Icon name="lucide:mail" class="size-4" aria-hidden="true" />
-						Write an email
-					</a>
+					<label for="cf-email" class="mb-1.5 block text-sm font-medium">Email</label>
+					<input id="cf-email" name="to_email" type="email" autocomplete="email" required maxlength="200" class="field" aria-describedby="cf-email-err" />
+					<p id="cf-email-err" class="field-error" hidden>Enter an email address like name@example.com.</p>
 				</div>
 			</div>
-		)}
+			<div>
+				<label for="cf-message" class="mb-1.5 block text-sm font-medium">Message</label>
+				<textarea id="cf-message" name="message" rows="6" required maxlength="5000" class="field resize-y" aria-describedby="cf-message-err"></textarea>
+				<p id="cf-message-err" class="field-error" hidden>Write a short message.</p>
+			</div>
+
+			<div data-turnstile data-sitekey={siteKey} class="min-h-[65px]"></div>
+
+			<div class="flex flex-wrap items-center gap-4">
+				<button type="submit" class="btn-primary" data-submit>
+					<Icon name="lucide:send" class="size-4" aria-hidden="true" data-submit-icon />
+					<Icon name="lucide:loader-circle" class="hidden size-4 animate-spin" aria-hidden="true" data-submit-spinner />
+					<span data-submit-label>Send message</span>
+				</button>
+				<p class="text-sm" role="status" aria-live="polite" data-form-status></p>
+			</div>
+		</form>
 	</div>
 </Section>
 

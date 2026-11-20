@@ -138,6 +138,14 @@
 }
 
 @layer components {
+	/* Pager buttons are created by lib/paginate.ts, so they need a real class. */
+	.pager-btn {
+		@apply grid size-11 place-items-center rounded-full border border-line-strong bg-surface font-mono text-sm transition-colors hover:border-ink disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-line-strong;
+	}
+	.pager-btn[aria-current='page'] {
+		@apply border-ink bg-ink text-paper;
+	}
+
 	/* Rich text from data files: only <b> and <a>. */
 	.prose-lite a {
 		@apply text-accent underline decoration-1 underline-offset-2 hover:decoration-2;

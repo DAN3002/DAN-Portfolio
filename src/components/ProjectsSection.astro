@@ -3,6 +3,7 @@ import { Picture } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
 import ProjectDialog from './ProjectDialog.astro';
+import Pagination from './Pagination.astro';
 import { projects, projectTags } from '~/data/projects';
 import { pictureFormats, fallbackFormat, slots } from '~/lib/images';
 
@@ -77,7 +78,7 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 			</div>
 		</div>
 
-		<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-project-grid>
+		<ul class="grid scroll-mt-24 gap-4 sm:grid-cols-2 lg:grid-cols-3" data-project-grid data-paginate="projects" data-page-size="6">
 			{rest.map((p) => (
 				<li class="group card relative flex flex-col p-5 transition-colors hover:border-ink has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent" data-tags={p.tags.join(' ')}>
 					<div class="mb-3 flex items-center justify-between gap-2">
@@ -111,6 +112,7 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 				</li>
 			))}
 		</ul>
+		<Pagination for="projects" noun="projects" label="Projects pages" />
 		<p class="mt-6 text-center text-muted" hidden data-filter-empty>No projects with that tag yet.</p>
 		<p class="sr-only" role="status" aria-live="polite" data-filter-status></p>
 	</div>
@@ -139,6 +141,10 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 </style>
 
 <script>
+	import { initPagination, getPager } from '~/lib/paginate';
+
+	initPagination();
+
 	// Filter.
 	const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
 	const cards = document.querySelectorAll<HTMLElement>('[data-project-grid] > li');
@@ -151,9 +157,11 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 			let shown = 0;
 			cards.forEach((c) => {
 				const match = tag === 'all' || c.dataset.tags!.split(' ').includes(tag);
-				c.hidden = !match;
+				// The pager owns `hidden`; the filter only marks what is in the pool.
+				c.toggleAttribute('data-filtered-out', !match);
 				if (match) shown += 1;
 			});
+			getPager('projects')?.refresh();
 			if (empty) empty.hidden = shown > 0;
 			if (status) status.textContent = `Showing ${shown} ${shown === 1 ? 'project' : 'projects'}${tag === 'all' ? '' : ` tagged ${tag}`}`;
 		}),

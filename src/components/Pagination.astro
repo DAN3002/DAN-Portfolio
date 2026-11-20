@@ -1,0 +1,26 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	/** Matches the list's data-paginate value. */
+	for: string;
+	/** Plural noun for the status line, e.g. "projects". */
+	noun: string;
+	label: string;
+}
+const { for: id, noun, label } = Astro.props;
+---
+
+{/* Hidden until JS runs; without JS the whole list is shown, so no pager is needed. */}
+<nav class="mt-8 flex flex-col items-center gap-3" aria-label={label} data-pager={id} data-noun={noun} hidden>
+	<div class="flex items-center gap-1">
+		<button type="button" class="pager-btn" aria-label="Previous page" data-pager-prev>
+			<Icon name="lucide:chevron-left" class="size-4" aria-hidden="true" />
+		</button>
+		<div class="flex items-center gap-1" data-pager-pages></div>
+		<button type="button" class="pager-btn" aria-label="Next page" data-pager-next>
+			<Icon name="lucide:chevron-right" class="size-4" aria-hidden="true" />
+		</button>
+	</div>
+	<p class="text-sm text-muted" role="status" aria-live="polite" data-pager-status></p>
+</nav>

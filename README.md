@@ -50,11 +50,15 @@ A missing image path fails the build, so a typo never ships.
 | `PUBLIC_UMAMI_WEBSITE_ID` | Umami analytics (off when empty) |
 | `PUBLIC_TURNSTILE_SITE_KEY`, `PUBLIC_EMAIL_API_ENDPOINT` | Contact form overrides; defaults are the production key and Worker |
 
-GitHub stats need no key. The build bakes in a snapshot so the numbers appear on first paint. The browser then refreshes them from public endpoints (the contributions API by jogruber plus GitHub's REST and search APIs) and caches them in `localStorage` for 6 hours. `src/lib/github.ts` fetches; `src/lib/github-live.ts` handles the cache and refresh.
+GitHub stats need no key. They're kept fresh in three layers:
+
+1. **Build:** `src/lib/github-build.ts` fetches from public endpoints (the contributions API by jogruber, plus GitHub's REST and search APIs). Any field that fails, such as a rate-limited CI runner, falls back to the committed `src/data/github-snapshot.json`. A fully successful fetch rewrites that file.
+2. **Daily rebuild:** `.github/workflows/deploy.yml` redeploys every day, so the HTML is never more than ~24 hours old.
+3. **Browser:** `src/lib/github-live.ts` refreshes when the browser is idle. It caches in `localStorage` for about 6 hours, waits 30 minutes before retrying after a failure, and validates everything it reads.
 
 ## Deployment
 
-GitHub Pages serves the `gh-pages` branch behind Cloudflare. `public/CNAME` and `public/.nojekyll` are copied into the build. Use `pnpm run publish:gh`; plain `pnpm deploy` is pnpm's own command, not this script.
+GitHub Pages serves the `gh-pages` branch behind Cloudflare. The `Deploy` workflow publishes on every push to `main` and once a day; set the `PUBLIC_*` values as repository variables. To publish by hand, run `pnpm run publish:gh`. Plain `pnpm deploy` is pnpm's own command, not this script.
 
 ## License
 

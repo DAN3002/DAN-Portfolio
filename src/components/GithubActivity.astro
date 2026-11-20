@@ -1,28 +1,29 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { getGithubStats, compact, toCells, GITHUB_USER } from '~/lib/github';
+import { compact, toCells, monthLabels, describeCalendar, cellTitle, GITHUB_USER } from '~/lib/github';
+import { getGithubStats } from '~/lib/github-build';
 
 const gh = await getGithubStats();
 const profile = `https://github.com/${GITHUB_USER}`;
 
 // Fixed slots, so a live refresh only swaps text and never reflows the card.
 const stats = [
-	{ key: 'contributions', label: 'Contributions', value: gh.contributions, hint: gh.since ? `since ${gh.since}` : undefined },
-	{ key: 'commits', label: 'Public commits', value: gh.commits },
-	{ key: 'repos', label: 'Repositories', value: gh.repos },
-	{ key: 'stars', label: 'Stars earned', value: gh.stars },
-] as const;
+	{ key: 'contributions', label: 'Contributions', value: gh?.contributions ?? null, since: true },
+	{ key: 'commits', label: 'Public commits', value: gh?.commits ?? null },
+	{ key: 'repos', label: 'Repositories', value: gh?.repos ?? null },
+	{ key: 'stars', label: 'Stars earned', value: gh?.stars ?? null },
+];
 
-const cells = toCells(gh.lastYear?.days ?? []);
-const weeks = Math.ceil(cells.length / 7);
-const total = gh.lastYear?.total.toLocaleString('en');
-const fmt = (d: string) =>
-	new Date(`${d}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-// Seed the browser refresh with exactly what was rendered.
-const snapshot = JSON.stringify(gh);
+const cal = gh?.lastYear ?? null;
+const cells = toCells(cal);
+const weeks = Math.max(1, Math.ceil(cells.length / 7));
+const months = monthLabels(cells);
+const cols = `grid-template-columns: repeat(${weeks}, minmax(0, 1fr));`;
+// Seed the browser refresh with exactly what was rendered (compact form, ~3 KB).
+const snapshot = gh ? JSON.stringify(gh) : 'null';
 ---
 
-<section class="card p-4 sm:p-6" aria-labelledby="gh-title" data-gh-card data-gh-snapshot={snapshot}>
+<section class="card p-4 sm:p-5" aria-labelledby="gh-title" data-gh-card data-gh-snapshot={snapshot}>
 	<div class="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
 		<h2 id="gh-title" class="eyebrow">GitHub activity</h2>
 		<a href={profile} target="_blank" rel="noopener" class="-my-2 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium hover:text-accent">
@@ -33,80 +34,78 @@ const snapshot = JSON.stringify(gh);
 	</div>
 
 	<div class="grid gap-5 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:items-center lg:gap-8">
-	<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line sm:grid-cols-4 lg:grid-cols-2">
-		{stats.map((s) => (
-			<div class="bg-surface px-3.5 py-3">
-				<dt class="text-xs text-muted">{s.label}</dt>
-				<dd class="font-display text-2xl font-semibold tabular-nums" data-gh-stat={s.key} title={s.value?.toLocaleString('en')}>
-					{s.value === null ? '—' : compact(s.value)}
-				</dd>
-				{'hint' in s && s.hint && <dd class="text-xs text-muted">{s.hint}</dd>}
-			</div>
-		))}
-	</dl>
+		<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line sm:grid-cols-4 lg:grid-cols-2">
+			{stats.map((s) => (
+				<div class="bg-surface px-3.5 py-3">
+					<dt class="text-xs text-muted">{s.label}</dt>
+					<dd class="font-display text-2xl font-semibold tabular-nums" data-gh-stat={s.key} title={s.value?.toLocaleString('en')}>
+						{s.value === null ? '—' : compact(s.value)}
+					</dd>
+					{s.since && <dd class="text-xs text-muted" data-gh-since>{gh?.since ? `since ${gh.since}` : ''}</dd>}
+				</div>
+			))}
+		</dl>
 
-	{cells.length > 0 && (
 		<figure class="min-w-0">
-			<div class="gh-graph-clip">
-			{/* Fluid grid: 7 rows, one column per week; cells scale with the card, never scroll. */}
-			{/* Cells cap at 13px on wide screens; on phones the oldest weeks are clipped
-			    from the left (see .gh-graph), keeping the recent half-year readable. */}
-			<div
-				class="gh-graph grid grid-flow-col grid-rows-7 gap-[3px]"
-				style={`--weeks: ${weeks}; grid-template-columns: repeat(${weeks}, minmax(0, 1fr));`}
-				role="img"
-				aria-label={`Contribution graph: ${total} contributions in the last year`}
-				data-gh-graph
-			>
-				{cells.map((d) =>
-					d ? (
-						<span class="gh-cell aspect-square rounded-[2px]" data-level={d.level} title={`${d.count} contribution${d.count === 1 ? '' : 's'} on ${fmt(d.date)}`}></span>
-					) : (
-						<span></span>
-					),
-				)}
+			{/* Always rendered, so a live refresh can fill it even if the build fetch failed. */}
+			<div class="gh-wrap overflow-hidden" style={`--weeks: ${weeks};`} hidden={!cal} data-gh-wrap>
+				<div class="gh-scale">
+					<div class="mb-1 grid text-[10px] leading-none text-muted" style={cols} aria-hidden="true" data-gh-months>
+						{months.map((m) => <span class="whitespace-nowrap">{m}</span>)}
+					</div>
+					<div class="grid grid-flow-col grid-rows-7 gap-[3px]" style={cols} role="img" aria-label={describeCalendar(cal)} data-gh-graph>
+						{cells.map((d) => (d ? <span class="gh-cell" data-level={d.level} title={cellTitle(d)}></span> : <span></span>))}
+					</div>
+				</div>
 			</div>
-			</div>
+			<p class="grid h-[7.5rem] place-items-center rounded-lg border border-dashed border-line text-sm text-muted" hidden={!!cal} data-gh-empty>
+				The contribution graph couldn't load. See it on GitHub.
+			</p>
 			<figcaption class="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-xs text-muted">
 				<span>
-					<span class="font-medium text-ink tabular-nums" data-gh-year-total>{total}</span> contributions in the last year<span class="sm:hidden"> (last 6 months shown)</span>
+					<span class="font-medium text-ink tabular-nums" data-gh-year-total>{cal?.total.toLocaleString('en') ?? '—'}</span> contributions in the last year<span class="sm:hidden"> (latest 6 months shown)</span>
 					<span aria-hidden="true">·</span>
-					updated <time datetime={gh.fetchedAt} data-gh-fetched>at build</time>
+					updated <time datetime={gh?.fetchedAt} data-gh-fetched>at build</time>
 				</span>
 				<span class="flex items-center gap-1" aria-hidden="true">
 					Less
-					{[0, 1, 2, 3, 4].map((l) => <span class="gh-cell size-2.5 rounded-[2px]" data-level={l}></span>)}
+					{[0, 1, 2, 3, 4].map((l) => <span class="gh-cell size-2.5" data-level={l}></span>)}
 					More
 				</span>
 			</figcaption>
 		</figure>
-	)}
 	</div>
 </section>
 
 <style is:global>
-	.gh-graph {
+	/* Global: cells and labels are also created by the live refresh script. */
+	.gh-scale {
 		/* At most 13px cells + 3px gaps, so the year never stretches past ~850px. */
 		max-width: calc(var(--weeks) * 16px);
 		margin-inline-start: auto;
 	}
 	@media (max-width: 39.99rem) {
-		/* Phones: show the newest 26 weeks at a readable size instead of 53 tiny ones. */
-		.gh-graph {
+		/* Phones: newest 26 weeks at a readable size instead of 53 tiny ones. */
+		.gh-scale {
 			width: calc(var(--weeks) / 26 * 100%);
 			max-width: none;
-			margin-left: calc((26 - var(--weeks)) / 26 * 100%);
-		}
-		.gh-graph-clip {
-			overflow: hidden;
+			margin-inline-start: calc((26 - var(--weeks)) / 26 * 100%);
 		}
 	}
-
-	/* Global: cells are also created by the live refresh script. */
+	.gh-cell {
+		aspect-ratio: 1;
+		border-radius: 2px;
+		/* Hairline edge so empty and low days stay distinguishable (WCAG 1.4.11). */
+		box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.06);
+	}
+	.dark .gh-cell {
+		box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.05);
+	}
+	/* Heat scale from the accent colour, spaced further apart than GitHub's. */
 	.gh-cell[data-level='0'] { background: var(--line); }
-	.gh-cell[data-level='1'] { background: color-mix(in oklab, var(--accent) 30%, var(--surface)); }
-	.gh-cell[data-level='2'] { background: color-mix(in oklab, var(--accent) 55%, var(--surface)); }
-	.gh-cell[data-level='3'] { background: color-mix(in oklab, var(--accent) 78%, var(--surface)); }
+	.gh-cell[data-level='1'] { background: color-mix(in oklab, var(--accent) 42%, var(--surface)); }
+	.gh-cell[data-level='2'] { background: color-mix(in oklab, var(--accent) 64%, var(--surface)); }
+	.gh-cell[data-level='3'] { background: color-mix(in oklab, var(--accent) 84%, var(--surface)); }
 	.gh-cell[data-level='4'] { background: var(--accent); }
 </style>
 

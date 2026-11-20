@@ -1,0 +1,57 @@
+# Builds the site and publishes it to the gh-pages branch (GitHub Pages behind
+# Cloudflare at dan3002.id.vn).
+#
+# Runs on every push to main and once a day, so the GitHub stats baked into the
+# HTML stay at most ~24 h old even for visitors whose browser never refreshes
+# them. The stats themselves need no key; the workflow's built-in GITHUB_TOKEN
+# is used only to push the gh-pages branch and never reaches the page.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 1 * * *' # daily, 08:17 Hà Nội time
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.PUBLIC_UMAMI_WEBSITE_ID }}
+      PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.PUBLIC_TURNSTILE_SITE_KEY }}
+      PUBLIC_EMAIL_API_ENDPOINT: ${{ vars.PUBLIC_EMAIL_API_ENDPOINT }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm lint
+
+      # Refreshes src/data/github-snapshot.json when every stat came back.
+      - run: pnpm build
+
+      - name: Publish dist/ to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          cname: dan3002.id.vn
+          force_orphan: true

@@ -14,8 +14,7 @@
 		"preview": "astro preview",
 		"check": "astro check",
 		"lint": "eslint .",
-		"predeploy": "pnpm lint && pnpm build",
-		"deploy": "gh-pages -d dist --dotfiles",
+		"publish:gh": "pnpm lint && pnpm build && gh-pages -d dist --dotfiles",
 		"prepare": "husky"
 	},
 	"dependencies": {

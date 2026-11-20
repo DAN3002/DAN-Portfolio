@@ -5,11 +5,13 @@ import { site } from '~/data/site';
 interface Props {
 	title?: string;
 	description?: string;
+	/** Error pages: keep them out of search results and skip canonical/og:url. */
+	noindex?: boolean;
 }
 
-const { title = site.title, description = site.description } = Astro.props;
+const { title = site.title, description = site.description, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL('/images/Preview_Image.png', Astro.site);
+const ogImage = new URL('/images/preview.jpg', Astro.site);
 const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
 
 const personLd = {
@@ -33,7 +35,7 @@ const personLd = {
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="author" content={site.name} />
-		<link rel="canonical" href={canonical} />
+		{noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
 		<link rel="icon" href="/images/favicon.ico" sizes="any" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<meta name="theme-color" content="#f4f6f9" media="(prefers-color-scheme: light)" />
@@ -42,7 +44,7 @@ const personLd = {
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:url" content={canonical} />
+		{!noindex && <meta property="og:url" content={canonical} />}
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="627" />
@@ -65,13 +67,14 @@ const personLd = {
 			})();
 		</script>
 
+		{/* async, not defer: a deferred script would hold back the page's own module scripts until Umami downloads. */}
 		{umamiId && (
 			<script
 				is:inline
-				defer
+				async
 				src="https://cloud.umami.is/script.js"
 				data-website-id={umamiId}
-				data-tag="portfolio-v2"
+				data-tag="portfolio"
 				data-do-not-track="true"
 				data-exclude-hash="true"
 				onload="window.dispatchEvent(new Event('umami:ready'))"
@@ -88,10 +91,12 @@ const personLd = {
 		<slot />
 
 		<script>
-			import { initAnalytics, flush } from '~/lib/analytics';
+			import { initAnalytics, onUmamiReady } from '~/lib/analytics';
 
 			initAnalytics();
-			addEventListener('umami:ready', flush);
+			// The tracker may already have loaded before this module ran.
+			if (window.umami) onUmamiReady();
+			else addEventListener('umami:ready', onUmamiReady, { once: true });
 
 			// Scroll reveal, skipped entirely when the visitor prefers less motion.
 			if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {

@@ -14,8 +14,12 @@ export default defineConfig({
 		icon({
 			// Only bundle the icons we reference, not the full sets.
 			include: {
-				lucide: ['*'],
-				'simple-icons': ['github', 'linkedin', 'facebook', 'udemy', 'credly'],
+				lucide: [
+					'arrow-right', 'arrow-up-right', 'check', 'chevron-down', 'chevron-left', 'chevron-right',
+					'copy', 'download', 'external-link', 'flask-conical', 'loader-circle', 'mail', 'map-pin',
+					'medal', 'menu', 'moon', 'play', 'search', 'send', 'shield-check', 'sun', 'trophy', 'wrench', 'x',
+				],
+				'simple-icons': ['github', 'linkedin'],
 			},
 		}),
 	],

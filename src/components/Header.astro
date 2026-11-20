@@ -38,7 +38,8 @@ import { nav, site } from '~/data/site';
 				type="button"
 				class="grid size-11 place-items-center rounded-full text-muted transition-colors hover:bg-surface hover:text-ink"
 				data-theme-toggle
-				aria-label="Change colour theme"
+				aria-label="Dark theme"
+				aria-pressed="false"
 			>
 				<Icon name="lucide:sun" class="size-5 dark:hidden" aria-hidden="true" />
 				<Icon name="lucide:moon" class="hidden size-5 dark:block" aria-hidden="true" />
@@ -116,9 +117,14 @@ import { nav, site } from '~/data/site';
 	onScroll();
 
 	// Theme: light <-> dark, remembered. First visit follows the OS setting.
-	document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
+	// A toggle button named "Dark theme": aria-pressed says whether it is on.
+	const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+	const syncToggle = () => toggle?.setAttribute('aria-pressed', String(document.documentElement.classList.contains('dark')));
+	syncToggle();
+	toggle?.addEventListener('click', () => {
 		const dark = !document.documentElement.classList.contains('dark');
 		document.documentElement.classList.toggle('dark', dark);
+		syncToggle();
 		const theme = dark ? 'dark' : 'light';
 		try {
 			localStorage.setItem('theme', theme);

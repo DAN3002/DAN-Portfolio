@@ -20,6 +20,7 @@
 	--color-ink: var(--ink);
 	--color-muted: var(--muted);
 	--color-line: var(--line);
+	--color-line-strong: var(--line-strong);
 	--color-accent: var(--accent);
 	--color-accent-ink: var(--accent-ink);
 	--color-accent-soft: var(--accent-soft);
@@ -38,10 +39,12 @@
 		--ink: #0f1728;
 		--muted: #556073;
 		--line: #dde2ea;
+		/* Control borders (inputs, filter buttons) need >= 3:1 against surfaces. */
+		--line-strong: #8792a5;
 		--accent: #2747d6;
 		--accent-ink: #ffffff;
 		--accent-soft: #e6ebfc;
-		--gold: #9a6500;
+		--gold: #8a5a00;
 		--gold-soft: #fdf1d8;
 		--danger: #b42318;
 		--ok: #11734b;
@@ -54,6 +57,7 @@
 		--ink: #e7ecf4;
 		--muted: #9aa5b8;
 		--line: #243049;
+		--line-strong: #6a7891;
 		--accent: #8aa2ff;
 		--accent-ink: #0b1120;
 		--accent-soft: #1b2650;
@@ -112,7 +116,7 @@
 /* Custom utilities (v4 `@utility`), so they compose with variants and can be
    overridden by plain utilities on the same element. */
 @utility container-page {
-	@apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+	@apply mx-auto w-full max-w-6xl px-5 sm:px-8 2xl:max-w-7xl;
 }
 @utility btn {
 	@apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-medium transition-colors duration-200 select-none disabled:cursor-not-allowed disabled:opacity-50;
@@ -153,6 +157,11 @@
 .reveal-ready [data-reveal].is-visible {
 	opacity: 1;
 	transform: none;
+}
+
+/* Keep the page still behind an open modal or drawer. */
+html:has(dialog[open]) {
+	overflow: hidden;
 }
 
 dialog::backdrop {

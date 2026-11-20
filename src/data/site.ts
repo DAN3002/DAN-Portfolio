@@ -16,6 +16,7 @@ export const site = {
 	socials: [
 		{ label: 'GitHub', href: 'https://github.com/DAN3002', icon: 'simple-icons:github' },
 		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/dan3002/', icon: 'simple-icons:linkedin' },
+		// Facebook dropped on purpose: personal profile, not useful for hiring.
 	],
 } as const;
 

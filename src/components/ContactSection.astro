@@ -90,7 +90,7 @@ const formEnabled = Boolean(siteKey && endpoint);
 <style>
 	@reference '../styles/global.css';
 	.field {
-		@apply block min-h-11 w-full rounded-xl border border-line bg-paper px-3.5 py-2.5 text-base transition-colors placeholder:text-muted hover:border-muted focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-0 aria-[invalid=true]:border-danger;
+		@apply block min-h-11 w-full rounded-xl border border-line-strong bg-paper px-3.5 py-2.5 text-base transition-colors placeholder:text-muted hover:border-muted focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-0 aria-[invalid=true]:border-danger;
 	}
 	.field-error {
 		@apply mt-1.5 text-sm text-danger;
@@ -122,6 +122,10 @@ const formEnabled = Boolean(siteKey && endpoint);
 		let token: string | null = null;
 		let widgetId: string | undefined;
 		let started = false;
+		const say = (msg: string, kind: 'ok' | 'error' | '') => {
+			status.textContent = msg;
+			status.className = `text-sm ${kind === 'ok' ? 'text-ok' : kind === 'error' ? 'text-danger' : 'text-muted'}`;
+		};
 
 		// Load Turnstile only when the visitor reaches the form, not on page load.
 		const loadTurnstile = () => {
@@ -132,12 +136,23 @@ const formEnabled = Boolean(siteKey && endpoint);
 					theme: 'auto',
 					callback: (t: string) => (token = t),
 					'expired-callback': () => (token = null),
+					'error-callback': () => {
+						token = null;
+						say('The security check failed. Reload the page, or email me directly.', 'error');
+					},
 				});
 			};
 			const s = document.createElement('script');
 			s.id = 'cf-turnstile';
 			s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit';
 			s.async = true;
+			// Blocked by an extension or network: the form can't verify, so say so
+			// and point to email instead of failing silently on submit.
+			s.onerror = () => {
+				submit.disabled = true;
+				say('The security check could not load (often an ad blocker). Email me directly using the address on the left.', 'error');
+				track(Events.CONTACT_ERROR, { message: 'turnstile-load-failed' });
+			};
 			document.head.append(s);
 		};
 		new IntersectionObserver((entries, io) => {
@@ -173,10 +188,6 @@ const formEnabled = Boolean(siteKey && endpoint);
 			submit.querySelector('[data-submit-icon]')?.classList.toggle('hidden', busy);
 			submit.querySelector('[data-submit-spinner]')?.classList.toggle('hidden', !busy);
 			submit.querySelector('[data-submit-label]')!.textContent = busy ? 'Sending…' : 'Send message';
-		};
-		const say = (msg: string, kind: 'ok' | 'error' | '') => {
-			status.textContent = msg;
-			status.className = `text-sm ${kind === 'ok' ? 'text-ok' : kind === 'error' ? 'text-danger' : 'text-muted'}`;
 		};
 
 		form.addEventListener('submit', async (e) => {

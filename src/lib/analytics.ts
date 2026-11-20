@@ -73,7 +73,8 @@ export function initAnalytics() {
 		true,
 	);
 
-	// Section views, once per section.
+	// Section views, once per section. Fires when a section crosses the middle
+	// of the viewport, so sections taller than the screen still count on phones.
 	const seen = new Set<string>();
 	const io = new IntersectionObserver(
 		(entries) => {
@@ -85,7 +86,7 @@ export function initAnalytics() {
 				}
 			}
 		},
-		{ threshold: 0.3 },
+		{ threshold: 0, rootMargin: '-50% 0px -50% 0px' },
 	);
 	document.querySelectorAll('section[id]').forEach((s) => io.observe(s));
 
@@ -113,4 +114,32 @@ export function initAnalytics() {
 		},
 		{ passive: true },
 	);
+	// Count milestones already reached on load (reload, back button, deep link).
+	evaluate();
+}
+
+const VISITOR_KEY = 'dan_visitor_id';
+
+/** Anonymous random id (no PII), kept in localStorage, same key as the old site. */
+function visitorId(): string {
+	try {
+		let id = localStorage.getItem(VISITOR_KEY);
+		if (!id) {
+			id = crypto.randomUUID();
+			localStorage.setItem(VISITOR_KEY, id);
+		}
+		return id;
+	} catch {
+		return crypto.randomUUID();
+	}
+}
+
+/** Called when the Umami script loads: tag the visitor, then send queued events. */
+export function onUmamiReady() {
+	try {
+		window.umami?.identify?.({ id: visitorId() });
+	} catch {
+		/* ignore */
+	}
+	flush();
 }

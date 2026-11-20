@@ -9,7 +9,10 @@ interface ImportMeta {
 }
 
 interface Window {
-	umami?: { track: (name: string, data?: Record<string, unknown>) => void };
+	umami?: {
+		track: (name: string, data?: Record<string, unknown>) => void;
+		identify?: (data: Record<string, unknown>) => void;
+	};
 	turnstile?: {
 		render: (el: HTMLElement, opts: Record<string, unknown>) => string;
 		reset: (id?: string) => void;

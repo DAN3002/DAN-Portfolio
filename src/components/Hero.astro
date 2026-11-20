@@ -27,14 +27,14 @@ const facts = [
 	>
 	</div>
 
-	<div class="container-page grid items-center gap-12 pt-14 pb-20 md:grid-cols-[1.4fr_1fr] md:pt-20 md:pb-28 lg:gap-16">
+	<div class="container-page grid items-center gap-12 pt-14 pb-20 md:pt-20 md:pb-28 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
 		<div>
 			<p class="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface py-1 pr-3 pl-1.5 text-sm">
 				<span class="relative flex size-2.5 items-center justify-center pl-4" aria-hidden="true">
 					<span class="absolute size-2.5 animate-ping rounded-full bg-ok opacity-60 motion-reduce:animate-none"></span>
 					<span class="relative size-2 rounded-full bg-ok"></span>
 				</span>
-				Now at <a href="#now" class="font-medium underline decoration-line underline-offset-4 hover:decoration-ink">Drylab</a>
+				Now at <a href="#now" aria-label="Now at Drylab: see current work" class="font-medium underline decoration-line underline-offset-4 hover:decoration-ink">Drylab</a>
 			</p>
 
 			<h1 id="hero-title" class="text-4xl leading-[1.05] font-semibold sm:text-5xl lg:text-6xl">
@@ -69,7 +69,7 @@ const facts = [
 			</ul>
 		</div>
 
-		<div class="relative mx-auto w-full max-w-sm md:max-w-none">
+		<div class="relative mx-auto w-full max-w-sm lg:max-w-none">
 			<div class="card overflow-hidden p-2 shadow-[0_24px_60px_-24px_rgb(15_23_40/0.35)]">
 				<Picture
 					src={site.profile}

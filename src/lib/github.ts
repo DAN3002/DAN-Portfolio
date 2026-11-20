@@ -19,7 +19,6 @@ async function gh<T>(path: string): Promise<T | null> {
 
 export interface GithubStats {
 	repos: number | null;
-	stars: number | null;
 	lastUpdated: Date;
 }
 
@@ -27,16 +26,13 @@ let cached: Promise<GithubStats> | undefined;
 
 export function getGithubStats(): Promise<GithubStats> {
 	cached ??= (async () => {
-		const [user, repos, commits] = await Promise.all([
+		const [user, commits] = await Promise.all([
 			gh<{ public_repos: number }>(`/users/${USER}`),
-			gh<{ stargazers_count: number; fork: boolean }[]>(`/users/${USER}/repos?per_page=100&type=owner`),
 			gh<{ commit: { author: { date: string } } }[]>(`/repos/${REPO}/commits?per_page=1`),
 		]);
-		const stars = repos ? repos.filter((r) => !r.fork).reduce((n, r) => n + r.stargazers_count, 0) : null;
 		const last = commits?.[0]?.commit.author.date;
 		return {
 			repos: user?.public_repos ?? null,
-			stars,
 			lastUpdated: last ? new Date(last) : new Date(),
 		};
 	})();

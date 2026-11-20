@@ -48,8 +48,9 @@ A missing image path fails the build, so a typo never ships.
 | Variable | Used for |
 |---|---|
 | `PUBLIC_UMAMI_WEBSITE_ID` | Umami analytics (off when empty) |
-| `PUBLIC_TURNSTILE_SITE_KEY`, `PUBLIC_EMAIL_API_ENDPOINT` | Contact form; without both, the page offers email only |
-| `GITHUB_TOKEN` (or `GH_TOKEN`) | Build-time GitHub stats. With a token: all-time contributions, commits, PRs and the contribution graph via GraphQL. Without one: public REST numbers only. Locally: `GITHUB_TOKEN=$(gh auth token) pnpm dev` |
+| `PUBLIC_TURNSTILE_SITE_KEY`, `PUBLIC_EMAIL_API_ENDPOINT` | Contact form overrides; defaults are the production key and Worker |
+
+GitHub stats need no key. The build bakes in a snapshot so the numbers appear on first paint. The browser then refreshes them from public endpoints (the contributions API by jogruber plus GitHub's REST and search APIs) and caches them in `localStorage` for 6 hours. `src/lib/github.ts` fetches; `src/lib/github-live.ts` handles the cache and refresh.
 
 ## Deployment
 

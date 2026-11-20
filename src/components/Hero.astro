@@ -15,7 +15,7 @@ import GithubActivity from './GithubActivity.astro';
 	>
 	</div>
 
-	<div class="container-page grid items-center gap-12 pt-14 pb-20 md:pt-20 md:pb-28 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+	<div class="container-page grid items-center gap-x-16 gap-y-10 pt-14 pb-20 md:pt-20 md:pb-24 lg:grid-cols-[1.5fr_1fr]">
 		<div>
 			<p class="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface py-1 pr-3 pl-1.5 text-sm">
 				<span class="relative flex size-2.5 items-center justify-center pl-4" aria-hidden="true">
@@ -57,8 +57,7 @@ import GithubActivity from './GithubActivity.astro';
 			</ul>
 		</div>
 
-		{/* Portrait with live-from-build GitHub numbers right beside it: proof, not claims. */}
-		<div class="mx-auto grid w-full max-w-md gap-4 lg:max-w-none">
+		<div class="mx-auto w-full max-w-sm lg:max-w-none">
 			<div class="card overflow-hidden p-2 shadow-[0_24px_60px_-24px_rgb(15_23_40/0.35)]">
 				<Picture
 					src={site.profile}
@@ -69,9 +68,13 @@ import GithubActivity from './GithubActivity.astro';
 					sizes={slots.hero.sizes}
 					loading="eager"
 					fetchpriority="high"
-					class="aspect-square w-full rounded-xl object-cover lg:aspect-[16/11] lg:object-[50%_25%]"
+					class="aspect-square w-full rounded-xl object-cover"
 				/>
 			</div>
+		</div>
+
+		{/* Full width right under the intro + portrait, so the year graph has room to read. */}
+		<div class="lg:col-span-2">
 			<GithubActivity />
 		</div>
 	</div>

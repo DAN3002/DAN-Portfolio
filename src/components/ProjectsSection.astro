@@ -154,14 +154,21 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 		}),
 	);
 
-	// Dialogs: native <dialog> gives focus trap, Escape and focus return.
+	// Dialogs: native <dialog> gives the focus trap and Escape. Focus return is
+	// done by hand because browsers differ on where focus goes after close().
+	let opener: HTMLElement | null = null;
 	document.querySelectorAll<HTMLButtonElement>('[data-open-project]').forEach((btn) =>
 		btn.addEventListener('click', () => {
 			const dlg = document.getElementById(`project-${btn.dataset.openProject}`) as HTMLDialogElement | null;
+			opener = btn;
 			dlg?.showModal();
 		}),
 	);
 	document.querySelectorAll<HTMLDialogElement>('[data-project-dialog]').forEach((dlg) => {
+		dlg.addEventListener('close', () => {
+			opener?.focus({ preventScroll: true });
+			opener = null;
+		});
 		dlg.querySelector('[data-dialog-close]')?.addEventListener('click', () => dlg.close());
 		dlg.addEventListener('click', (e) => {
 			if (e.target === dlg) dlg.close();

@@ -8,14 +8,14 @@ import { nav, site } from '~/data/site';
 	data-header
 >
 	<div class="container-page flex h-16 items-center justify-between gap-4">
-		<a href="#top" class="group flex items-center gap-2.5 font-display text-lg font-semibold" aria-label={`${site.name}, back to top`}>
+		<a href="#top" class="group flex min-h-11 items-center gap-2.5 font-display text-lg font-semibold" aria-label={`${site.name}, back to top`}>
 			<span class="grid size-8 place-items-center rounded-lg bg-ink font-mono text-xs font-medium text-paper transition-transform group-hover:-rotate-6" aria-hidden="true">
 				DA
 			</span>
 			<span class="hidden sm:inline">Đình Anh</span>
 		</a>
 
-		<nav aria-label="Main" class="hidden md:block">
+		<nav aria-label="Main" class="hidden lg:block">
 			<ul class="flex items-center gap-1 text-sm">
 				{nav.map((item) => (
 					<li>
@@ -49,7 +49,7 @@ import { nav, site } from '~/data/site';
 			</a>
 			<button
 				type="button"
-				class="grid size-11 place-items-center rounded-full text-ink hover:bg-surface md:hidden"
+				class="grid size-11 place-items-center rounded-full text-ink hover:bg-surface lg:hidden"
 				aria-controls="mobile-nav"
 				aria-expanded="false"
 				aria-label="Open menu"
@@ -142,7 +142,7 @@ import { nav, site } from '~/data/site';
 	});
 	menu?.querySelectorAll('[data-menu-link]').forEach((a) => a.addEventListener('click', () => menu.close()));
 	// Close the drawer if the window grows past the mobile breakpoint.
-	matchMedia('(min-width: 48rem)').addEventListener('change', (e) => e.matches && menu?.close());
+	matchMedia('(min-width: 64rem)').addEventListener('change', (e) => e.matches && menu?.close());
 
 	// Scrollspy: mark the nav link of the section currently in view.
 	const links = new Map<string, HTMLElement>();

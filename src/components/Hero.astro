@@ -2,6 +2,7 @@
 import { Picture } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { site } from '~/data/site';
+import { awards } from '~/data/credentials';
 import { getGithubStats } from '~/lib/github';
 import { pictureFormats, fallbackFormat, slots } from '~/lib/images';
 
@@ -11,7 +12,7 @@ const years = Math.floor((Date.now() - site.careerStart.getTime()) / (365.25 * 2
 // Proof points, all checkable elsewhere on the page.
 const facts = [
 	{ value: `${years}+`, label: 'years shipping software' },
-	{ value: '2', label: 'hackathon wins' },
+	{ value: String(awards.filter((a) => a.prize === 'Champion').length), label: 'hackathon wins' },
 	{ value: '~800', label: 'AWS students taught' },
 	...(gh.repos ? [{ value: String(gh.repos), label: 'public repos' }] : []),
 ];

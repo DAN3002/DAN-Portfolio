@@ -49,7 +49,7 @@ A missing image path fails the build, so a typo never ships.
 |---|---|
 | `PUBLIC_UMAMI_WEBSITE_ID` | Umami analytics (off when empty) |
 | `PUBLIC_TURNSTILE_SITE_KEY`, `PUBLIC_EMAIL_API_ENDPOINT` | Contact form; without both, the page offers email only |
-| `GITHUB_TOKEN` | Optional; raises the rate limit for the build-time GitHub stats |
+| `GITHUB_TOKEN` (or `GH_TOKEN`) | Build-time GitHub stats. With a token: all-time contributions, commits, PRs and the contribution graph via GraphQL. Without one: public REST numbers only. Locally: `GITHUB_TOKEN=$(gh auth token) pnpm dev` |
 
 ## Deployment
 

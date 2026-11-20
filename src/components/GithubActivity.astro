@@ -1,0 +1,94 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getGithubStats, compact } from '~/lib/github';
+import { site } from '~/data/site';
+
+const gh = await getGithubStats();
+const profile = site.socials.find((s) => s.label === 'GitHub')!.href;
+
+const stats = [
+	{ label: 'Contributions', value: gh.contributions, hint: gh.since ? `since ${gh.since}` : undefined },
+	{ label: 'Commits', value: gh.commits, hint: gh.source === 'rest' ? 'public only' : 'incl. private' },
+	{ label: 'Pull requests', value: gh.pullRequests },
+	{ label: 'Public repos', value: gh.repos },
+	{ label: 'Stars', value: gh.stars },
+	{ label: 'Followers', value: gh.followers },
+].filter((s): s is typeof s & { value: number } => s.value !== null);
+
+const weeks = gh.lastYear?.weeks ?? [];
+const monthLabels = weeks.map((w, i) => {
+	const first = w[0];
+	if (!first) return '';
+	const d = new Date(first.date);
+	const prev = weeks[i - 1]?.[0];
+	return !prev || new Date(prev.date).getMonth() !== d.getMonth() ? d.toLocaleString('en', { month: 'short' }) : '';
+});
+const fmt = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+
+{stats.length > 0 && (
+	<div class="card p-6" data-reveal>
+		<div class="mb-5 flex items-center justify-between gap-3">
+			<h3 class="eyebrow">GitHub activity</h3>
+			<a href={profile} target="_blank" rel="noopener" class="inline-flex min-h-11 items-center gap-1.5 text-sm text-muted hover:text-ink">
+				<Icon name="simple-icons:github" class="size-4" aria-hidden="true" />
+				@{site.handle}
+			</a>
+		</div>
+
+		<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line sm:grid-cols-3">
+			{stats.map((s) => (
+				<div class="bg-surface px-4 py-3">
+					<dt class="text-xs text-muted">{s.label}</dt>
+					<dd class="font-display text-2xl font-semibold tabular-nums" title={s.value.toLocaleString('en')}>
+						{compact(s.value)}
+					</dd>
+					{s.hint && <dd class="text-xs text-muted">{s.hint}</dd>}
+				</div>
+			))}
+		</dl>
+
+		{weeks.length > 0 && gh.lastYear && (
+			<figure class="mt-5">
+				<figcaption class="mb-2 text-sm text-muted">
+					<span class="font-medium text-ink tabular-nums">{gh.lastYear.total.toLocaleString('en')}</span> contributions in the last year
+				</figcaption>
+				{/* Scrolls sideways on narrow screens instead of shrinking cells to nothing. */}
+				<div class="-mx-1 overflow-x-auto px-1 pb-1 [scrollbar-width:thin]">
+					<div class="inline-grid min-w-max gap-y-1" role="img" aria-label={`Contribution graph: ${gh.lastYear.total} contributions in the last year`}>
+						<div class="flex gap-[3px] text-[10px] text-muted" aria-hidden="true">
+							{monthLabels.map((m) => <span class="w-[10px] overflow-visible whitespace-nowrap">{m}</span>)}
+						</div>
+						<div class="flex gap-[3px]" aria-hidden="true">
+							{weeks.map((w) => (
+								<div class="flex flex-col gap-[3px]">
+									{w.map((d) => (
+										<span
+											class="gh-cell size-[10px] rounded-[2px]"
+											data-level={d.level}
+											title={`${d.count} contribution${d.count === 1 ? '' : 's'} on ${fmt(d.date)}`}
+										></span>
+									))}
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+				<div class="mt-2 flex items-center justify-end gap-1 text-[10px] text-muted" aria-hidden="true">
+					Less
+					{[0, 1, 2, 3, 4].map((l) => <span class="gh-cell size-[10px] rounded-[2px]" data-level={l}></span>)}
+					More
+				</div>
+			</figure>
+		)}
+	</div>
+)}
+
+<style>
+	/* Heat scale from the accent colour, so it follows light/dark mode. */
+	.gh-cell[data-level='0'] { background: var(--line); }
+	.gh-cell[data-level='1'] { background: color-mix(in oklab, var(--accent) 30%, var(--surface)); }
+	.gh-cell[data-level='2'] { background: color-mix(in oklab, var(--accent) 55%, var(--surface)); }
+	.gh-cell[data-level='3'] { background: color-mix(in oklab, var(--accent) 78%, var(--surface)); }
+	.gh-cell[data-level='4'] { background: var(--accent); }
+</style>

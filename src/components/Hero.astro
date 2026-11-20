@@ -3,7 +3,7 @@ import { Picture } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { site } from '~/data/site';
 import { awards } from '~/data/credentials';
-import { getGithubStats } from '~/lib/github';
+import { getGithubStats, compact } from '~/lib/github';
 import { pictureFormats, fallbackFormat, slots } from '~/lib/images';
 
 const gh = await getGithubStats();
@@ -14,7 +14,12 @@ const facts = [
 	{ value: `${years}+`, label: 'years shipping software' },
 	{ value: String(awards.filter((a) => a.prize === 'Champion').length), label: 'hackathon wins' },
 	{ value: '~800', label: 'AWS students taught' },
-	...(gh.repos ? [{ value: String(gh.repos), label: 'public repos' }] : []),
+	// Best GitHub number available: all-time commits, else public repos.
+	...(gh.commits
+		? [{ value: `${compact(gh.commits)}+`, label: 'GitHub commits' }]
+		: gh.repos
+			? [{ value: String(gh.repos), label: 'public repos' }]
+			: []),
 ];
 ---
 

@@ -4,6 +4,7 @@ import { site } from '~/data/site';
 import { getGithubStats } from '~/lib/github';
 
 const { lastUpdated } = await getGithubStats();
+// "Updated" = last commit to this repo, i.e. when the content last changed.
 const updated = lastUpdated.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
 ---
 

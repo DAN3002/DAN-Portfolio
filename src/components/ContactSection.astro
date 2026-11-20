@@ -1,0 +1,221 @@
+---
+import { Icon } from 'astro-icon/components';
+import Section from './Section.astro';
+import { site } from '~/data/site';
+
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const endpoint = import.meta.env.PUBLIC_EMAIL_API_ENDPOINT;
+// Without the worker endpoint the form cannot send, so offer email only.
+const formEnabled = Boolean(siteKey && endpoint);
+---
+
+<Section id="contact" eyebrow="Contact" title="Let's build something" intro="Hiring, a project, or a question about DevOps or AWS: I reply within a couple of days.">
+	<div class="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+		<div class="space-y-4" data-reveal>
+			<div class="card p-5">
+				<p class="eyebrow mb-2">Email</p>
+				<div class="flex flex-wrap items-center gap-2">
+					<a href={`mailto:${site.email}`} class="font-display text-lg font-semibold break-all hover:text-accent">{site.email}</a>
+					<button type="button" class="btn-ghost min-h-9 px-3 text-xs" data-copy={site.email}>
+						<Icon name="lucide:copy" class="size-3.5" aria-hidden="true" />
+						<span data-copy-label>Copy</span>
+					</button>
+				</div>
+			</div>
+			<div class="card p-5">
+				<p class="eyebrow mb-3">Elsewhere</p>
+				<ul class="space-y-1">
+					{site.socials.map((s) => (
+						<li>
+							<a href={s.href} target="_blank" rel="noopener" class="flex min-h-11 items-center gap-3 hover:text-accent">
+								<Icon name={s.icon} class="size-5" aria-hidden="true" />
+								{s.label}
+								<Icon name="lucide:arrow-up-right" class="size-4 text-muted" aria-hidden="true" />
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+			<p class="flex items-center gap-2 text-sm text-muted">
+				<Icon name="lucide:map-pin" class="size-4" aria-hidden="true" />
+				{site.location} · UTC+7
+			</p>
+		</div>
+
+		{formEnabled ? (
+			<form class="card space-y-5 p-6 sm:p-8" data-contact-form data-endpoint={endpoint} novalidate data-reveal>
+				<div class="grid gap-5 sm:grid-cols-2">
+					<div>
+						<label for="cf-name" class="mb-1.5 block text-sm font-medium">Name</label>
+						<input id="cf-name" name="from_name" autocomplete="name" required maxlength="100" class="field" aria-describedby="cf-name-err" />
+						<p id="cf-name-err" class="field-error" hidden>Enter your name.</p>
+					</div>
+					<div>
+						<label for="cf-email" class="mb-1.5 block text-sm font-medium">Email</label>
+						<input id="cf-email" name="to_email" type="email" autocomplete="email" required maxlength="200" class="field" aria-describedby="cf-email-err" />
+						<p id="cf-email-err" class="field-error" hidden>Enter an email address like name@example.com.</p>
+					</div>
+				</div>
+				<div>
+					<label for="cf-message" class="mb-1.5 block text-sm font-medium">Message</label>
+					<textarea id="cf-message" name="message" rows="6" required maxlength="5000" class="field resize-y" aria-describedby="cf-message-err"></textarea>
+					<p id="cf-message-err" class="field-error" hidden>Write a short message.</p>
+				</div>
+
+				<div data-turnstile data-sitekey={siteKey} class="min-h-[65px]"></div>
+
+				<div class="flex flex-wrap items-center gap-4">
+					<button type="submit" class="btn-primary" data-submit>
+						<Icon name="lucide:send" class="size-4" aria-hidden="true" data-submit-icon />
+						<Icon name="lucide:loader-circle" class="hidden size-4 animate-spin" aria-hidden="true" data-submit-spinner />
+						<span data-submit-label>Send message</span>
+					</button>
+					<p class="text-sm" role="status" aria-live="polite" data-form-status></p>
+				</div>
+			</form>
+		) : (
+			<div class="card grid place-items-center p-8 text-center" data-reveal>
+				<div>
+					<p class="text-lg">The quickest way to reach me is email.</p>
+					<a href={`mailto:${site.email}`} class="btn-primary mt-5">
+						<Icon name="lucide:mail" class="size-4" aria-hidden="true" />
+						Write an email
+					</a>
+				</div>
+			</div>
+		)}
+	</div>
+</Section>
+
+<style>
+	@reference '../styles/global.css';
+	.field {
+		@apply block min-h-11 w-full rounded-xl border border-line bg-paper px-3.5 py-2.5 text-base transition-colors placeholder:text-muted hover:border-muted focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-0 aria-[invalid=true]:border-danger;
+	}
+	.field-error {
+		@apply mt-1.5 text-sm text-danger;
+	}
+</style>
+
+<script>
+	import { track, Events } from '~/lib/analytics';
+
+	// Copy email.
+	document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) =>
+		btn.addEventListener('click', async () => {
+			const label = btn.querySelector('[data-copy-label]');
+			try {
+				await navigator.clipboard.writeText(btn.dataset.copy!);
+				if (label) label.textContent = 'Copied';
+			} catch {
+				if (label) label.textContent = 'Press Ctrl+C';
+			}
+			setTimeout(() => label && (label.textContent = 'Copy'), 2000);
+		}),
+	);
+
+	const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+	if (form) {
+		const status = form.querySelector<HTMLElement>('[data-form-status]')!;
+		const submit = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+		const box = form.querySelector<HTMLElement>('[data-turnstile]')!;
+		let token: string | null = null;
+		let widgetId: string | undefined;
+		let started = false;
+
+		// Load Turnstile only when the visitor reaches the form, not on page load.
+		const loadTurnstile = () => {
+			if (document.getElementById('cf-turnstile')) return;
+			window.onTurnstileLoad = () => {
+				widgetId = window.turnstile?.render(box, {
+					sitekey: box.dataset.sitekey,
+					theme: 'auto',
+					callback: (t: string) => (token = t),
+					'expired-callback': () => (token = null),
+				});
+			};
+			const s = document.createElement('script');
+			s.id = 'cf-turnstile';
+			s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit';
+			s.async = true;
+			document.head.append(s);
+		};
+		new IntersectionObserver((entries, io) => {
+			if (entries.some((e) => e.isIntersecting)) {
+				loadTurnstile();
+				io.disconnect();
+			}
+		}, { rootMargin: '400px' }).observe(form);
+
+		form.addEventListener('input', () => {
+			if (!started) {
+				started = true;
+				track(Events.CONTACT_START);
+			}
+		});
+
+		// Validate on blur, then live once a field has been flagged.
+		const fields = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input, textarea');
+		const check = (f: HTMLInputElement | HTMLTextAreaElement) => {
+			const ok = f.value.trim() !== '' && f.checkValidity();
+			f.setAttribute('aria-invalid', String(!ok));
+			const err = document.getElementById(`${f.id}-err`);
+			if (err) err.hidden = ok;
+			return ok;
+		};
+		fields.forEach((f) => {
+			f.addEventListener('blur', () => f.value && check(f));
+			f.addEventListener('input', () => f.getAttribute('aria-invalid') === 'true' && check(f));
+		});
+
+		const setBusy = (busy: boolean) => {
+			submit.disabled = busy;
+			submit.querySelector('[data-submit-icon]')?.classList.toggle('hidden', busy);
+			submit.querySelector('[data-submit-spinner]')?.classList.toggle('hidden', !busy);
+			submit.querySelector('[data-submit-label]')!.textContent = busy ? 'Sending…' : 'Send message';
+		};
+		const say = (msg: string, kind: 'ok' | 'error' | '') => {
+			status.textContent = msg;
+			status.className = `text-sm ${kind === 'ok' ? 'text-ok' : kind === 'error' ? 'text-danger' : 'text-muted'}`;
+		};
+
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			const invalid = [...fields].filter((f) => !check(f));
+			if (invalid.length) {
+				invalid[0]!.focus();
+				return;
+			}
+			if (!token) {
+				say('Complete the security check above, then send again.', 'error');
+				return;
+			}
+
+			track(Events.CONTACT_SUBMIT);
+			setBusy(true);
+			say('', '');
+			const data = new FormData(form);
+			data.append('cf-turnstile-response', token);
+			try {
+				const res = await fetch(form.dataset.endpoint!, { method: 'POST', body: data });
+				if (res.status === 403) throw new Error('The security check expired. Complete it again, then send.');
+				if (!res.ok) throw new Error(`Your message wasn't sent (error ${res.status}). Try again, or email me directly.`);
+				form.reset();
+				fields.forEach((f) => f.removeAttribute('aria-invalid'));
+				started = false;
+				track(Events.CONTACT_SUCCESS);
+				say('Message sent. I\'ll reply to your email soon.', 'ok');
+			} catch (err) {
+				const msg = err instanceof Error && err.message !== 'Failed to fetch'
+					? err.message
+					: 'Your message wasn\'t sent: no connection. Try again, or email me directly.';
+				track(Events.CONTACT_ERROR, { message: msg.slice(0, 80) });
+				say(msg, 'error');
+			} finally {
+				token = null;
+				window.turnstile?.reset(widgetId);
+				setBusy(false);
+			}
+		});
+	}
+</script>

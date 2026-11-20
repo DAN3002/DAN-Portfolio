@@ -1,0 +1,60 @@
+---
+import type { TimelineEntry } from '~/data/career';
+
+interface Props {
+	items: TimelineEntry[];
+	/** Show only the first N; the rest go behind a "Show more" disclosure. */
+	visible?: number;
+}
+const { items, visible = items.length } = Astro.props;
+const shown = items.slice(0, visible);
+const hidden = items.slice(visible);
+---
+
+{/* Real sequence, so an ordered list is the honest structure. */}
+<ol class="relative border-l border-line">
+	{shown.map((item, i) => (
+		<li class="relative pb-10 pl-8 last:pb-0" data-reveal>
+			<span
+				class:list={[
+					'absolute top-1.5 -left-[7px] size-3.5 rounded-full border-2 border-paper',
+					i === 0 && item.end === 'Present' ? 'bg-accent' : 'bg-line',
+				]}
+				aria-hidden="true"
+			></span>
+			<p class="font-mono text-xs text-muted">
+				<time>{item.start}</time> – <time>{item.end}</time>
+			</p>
+			<h3 class="mt-1 font-display text-xl font-semibold">
+				{item.url ? <a href={item.url} target="_blank" rel="noopener" class="hover:text-accent">{item.org}</a> : item.org}
+			</h3>
+			<p class="text-sm font-medium text-muted">{item.role}</p>
+			<ul class="prose-lite mt-3 list-disc space-y-1.5 pl-4 text-[0.95rem] leading-relaxed marker:text-line">
+				{item.points.map((p) => <li set:html={p} />)}
+			</ul>
+		</li>
+	))}
+	{hidden.length > 0 && (
+		<li class="relative pl-8">
+			<details class="group">
+				<summary class="inline-flex min-h-11 cursor-pointer list-none items-center gap-1 font-medium text-accent [&::-webkit-details-marker]:hidden">
+					<span class="group-open:hidden">Show {hidden.length} earlier roles</span>
+					<span class="hidden group-open:inline">Show fewer</span>
+				</summary>
+				<ol class="mt-6 space-y-10">
+					{hidden.map((item) => (
+						<li class="relative">
+							<span class="absolute top-1.5 -left-[39px] size-3.5 rounded-full border-2 border-paper bg-line" aria-hidden="true"></span>
+							<p class="font-mono text-xs text-muted"><time>{item.start}</time> – <time>{item.end}</time></p>
+							<h3 class="mt-1 font-display text-xl font-semibold">{item.org}</h3>
+							<p class="text-sm font-medium text-muted">{item.role}</p>
+							<ul class="prose-lite mt-3 list-disc space-y-1.5 pl-4 text-[0.95rem] leading-relaxed marker:text-line">
+								{item.points.map((p) => <li set:html={p} />)}
+							</ul>
+						</li>
+					))}
+				</ol>
+			</details>
+		</li>
+	)}
+</ol>

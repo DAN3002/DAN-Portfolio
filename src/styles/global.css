@@ -1,0 +1,161 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/bricolage-grotesque/wght.css';
+@import '@fontsource-variable/ibm-plex-sans/wght.css';
+@import '@fontsource/ibm-plex-mono/latin-400.css';
+@import '@fontsource/ibm-plex-mono/latin-500.css';
+@import '@fontsource/ibm-plex-mono/vietnamese-400.css';
+
+/* Dark mode follows a `.dark` class on <html>, set before paint by the
+   inline script in BaseLayout (system preference unless the user chose). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Design tokens. Every colour in the components comes from here. */
+@theme {
+	--font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-sans: 'IBM Plex Sans Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+	--color-paper: var(--paper);
+	--color-surface: var(--surface);
+	--color-ink: var(--ink);
+	--color-muted: var(--muted);
+	--color-line: var(--line);
+	--color-accent: var(--accent);
+	--color-accent-ink: var(--accent-ink);
+	--color-accent-soft: var(--accent-soft);
+	--color-gold: var(--gold);
+	--color-gold-soft: var(--gold-soft);
+	--color-danger: var(--danger);
+	--color-ok: var(--ok);
+
+	--ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+	:root {
+		--paper: #f4f6f9;
+		--surface: #ffffff;
+		--ink: #0f1728;
+		--muted: #556073;
+		--line: #dde2ea;
+		--accent: #2747d6;
+		--accent-ink: #ffffff;
+		--accent-soft: #e6ebfc;
+		--gold: #9a6500;
+		--gold-soft: #fdf1d8;
+		--danger: #b42318;
+		--ok: #11734b;
+		color-scheme: light;
+	}
+
+	.dark {
+		--paper: #0b1120;
+		--surface: #121a2c;
+		--ink: #e7ecf4;
+		--muted: #9aa5b8;
+		--line: #243049;
+		--accent: #8aa2ff;
+		--accent-ink: #0b1120;
+		--accent-soft: #1b2650;
+		--gold: #f3b950;
+		--gold-soft: #2c2412;
+		--danger: #ff8a80;
+		--ok: #5fd3a0;
+		color-scheme: dark;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		/* Leave room for the sticky header when jumping to #anchors. */
+		scroll-padding-top: 5rem;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		@apply bg-paper font-sans text-ink antialiased;
+		font-feature-settings: 'ss01', 'cv01';
+		text-rendering: optimizeLegibility;
+	}
+
+	h1, h2, h3, h4 {
+		@apply font-display text-balance;
+		letter-spacing: -0.02em;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	::selection {
+		@apply bg-accent text-accent-ink;
+	}
+
+	/* One consistent, high-contrast focus ring for every interactive element. */
+	:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
+		border-radius: 4px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+		*, *::before, *::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+}
+
+/* Custom utilities (v4 `@utility`), so they compose with variants and can be
+   overridden by plain utilities on the same element. */
+@utility container-page {
+	@apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+}
+@utility btn {
+	@apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-medium transition-colors duration-200 select-none disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-primary {
+	@apply btn bg-accent text-accent-ink hover:bg-ink hover:text-paper;
+}
+@utility btn-ghost {
+	@apply btn border border-line bg-surface text-ink hover:border-ink;
+}
+@utility eyebrow {
+	@apply font-mono text-xs tracking-wider text-muted uppercase;
+}
+@utility card {
+	@apply rounded-2xl border border-line bg-surface;
+}
+@utility chip {
+	@apply inline-flex items-center rounded-full border border-line px-2.5 py-0.5 font-mono text-xs text-muted;
+}
+
+@layer components {
+	/* Rich text from data files: only <b> and <a>. */
+	.prose-lite a {
+		@apply text-accent underline decoration-1 underline-offset-2 hover:decoration-2;
+	}
+	.prose-lite b {
+		@apply font-semibold text-ink;
+	}
+}
+
+/* Scroll reveal: content is visible by default; JS opts in by adding
+   .reveal-ready, so no-JS and reduced-motion visitors never see blank space. */
+.reveal-ready [data-reveal] {
+	opacity: 0;
+	transform: translateY(12px);
+	transition: opacity 0.6s var(--ease-out-soft), transform 0.6s var(--ease-out-soft);
+}
+.reveal-ready [data-reveal].is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+dialog::backdrop {
+	background: rgb(8 12 24 / 0.6);
+	backdrop-filter: blur(4px);
+}

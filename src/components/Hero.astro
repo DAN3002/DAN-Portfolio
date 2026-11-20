@@ -2,25 +2,8 @@
 import { Picture } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { site } from '~/data/site';
-import { awards } from '~/data/credentials';
-import { getGithubStats, compact } from '~/lib/github';
 import { pictureFormats, fallbackFormat, slots } from '~/lib/images';
-
-const gh = await getGithubStats();
-const years = Math.floor((Date.now() - site.careerStart.getTime()) / (365.25 * 24 * 3600 * 1000));
-
-// Proof points, all checkable elsewhere on the page.
-const facts = [
-	{ value: `${years}+`, label: 'years shipping software' },
-	{ value: String(awards.filter((a) => a.prize === 'Champion').length), label: 'hackathon wins' },
-	{ value: '~800', label: 'AWS students taught' },
-	// Best GitHub number available: all-time commits, else public repos.
-	...(gh.commits
-		? [{ value: `${compact(gh.commits)}+`, label: 'GitHub commits' }]
-		: gh.repos
-			? [{ value: String(gh.repos), label: 'public repos' }]
-			: []),
-];
+import GithubActivity from './GithubActivity.astro';
 ---
 
 <section id="top" class="relative overflow-hidden" aria-labelledby="hero-title">
@@ -74,7 +57,8 @@ const facts = [
 			</ul>
 		</div>
 
-		<div class="relative mx-auto w-full max-w-sm lg:max-w-none">
+		{/* Portrait with live-from-build GitHub numbers right beside it: proof, not claims. */}
+		<div class="mx-auto grid w-full max-w-md gap-4 lg:max-w-none">
 			<div class="card overflow-hidden p-2 shadow-[0_24px_60px_-24px_rgb(15_23_40/0.35)]">
 				<Picture
 					src={site.profile}
@@ -85,17 +69,10 @@ const facts = [
 					sizes={slots.hero.sizes}
 					loading="eager"
 					fetchpriority="high"
-					class="aspect-square w-full rounded-xl object-cover"
+					class="aspect-square w-full rounded-xl object-cover lg:aspect-[16/11] lg:object-[50%_25%]"
 				/>
-				<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line mt-2">
-					{facts.slice(0, 4).map((f) => (
-						<div class="bg-surface px-4 py-3">
-							<dt class="text-xs text-muted">{f.label}</dt>
-							<dd class="font-display text-2xl font-semibold tabular-nums">{f.value}</dd>
-						</div>
-					))}
-				</dl>
 			</div>
+			<GithubActivity />
 		</div>
 	</div>
 </section>

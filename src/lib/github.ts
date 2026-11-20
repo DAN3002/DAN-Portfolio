@@ -8,6 +8,12 @@
 // back to the public REST API, which can only count public commits. Any field
 // that can't be fetched is null and the UI hides it instead of showing 0.
 
+// Server/build only. The token must never reach the browser bundle; if this
+// module is ever imported from a client <script>, fail loudly instead.
+if (typeof window !== 'undefined') {
+	throw new Error('lib/github.ts is build-time only; do not import it in client scripts');
+}
+
 const USER = 'DAN3002';
 const REPO = 'DAN3002/DAN-Portfolio';
 const TIMEOUT_MS = 10_000;

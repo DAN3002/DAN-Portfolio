@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { getGithubStats, compact } from '~/lib/github';
+import { getGithubStats, compact, type ContributionDay } from '~/lib/github';
 import { site } from '~/data/site';
 
 const gh = await getGithubStats();
@@ -12,33 +12,32 @@ const stats = [
 	{ label: 'Pull requests', value: gh.pullRequests },
 	{ label: 'Public repos', value: gh.repos },
 	{ label: 'Stars', value: gh.stars },
-	{ label: 'Followers', value: gh.followers },
-].filter((s): s is typeof s & { value: number } => s.value !== null);
+]
+	.filter((s): s is typeof s & { value: number } => s.value !== null)
+	.slice(0, 4);
 
+// GitHub's calendar starts on a Sunday, so the first week can be short; pad it
+// so every column is a full Sun–Sat week and the grid stays aligned.
 const weeks = gh.lastYear?.weeks ?? [];
-const monthLabels = weeks.map((w, i) => {
-	const first = w[0];
-	if (!first) return '';
-	const d = new Date(first.date);
-	const prev = weeks[i - 1]?.[0];
-	return !prev || new Date(prev.date).getMonth() !== d.getMonth() ? d.toLocaleString('en', { month: 'short' }) : '';
-});
+const cells: (ContributionDay | null)[] = weeks.flatMap((w, i) =>
+	i === 0 && w.length < 7 ? [...Array<null>(7 - w.length).fill(null), ...w] : w,
+);
 const fmt = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 ---
 
 {stats.length > 0 && (
-	<div class="card p-6" data-reveal>
-		<div class="mb-5 flex items-center justify-between gap-3">
-			<h3 class="eyebrow">GitHub activity</h3>
-			<a href={profile} target="_blank" rel="noopener" class="inline-flex min-h-11 items-center gap-1.5 text-sm text-muted hover:text-ink">
+	<div class="card p-4 sm:p-5">
+		<div class="mb-3 flex items-center justify-between gap-3">
+			<h2 class="eyebrow">GitHub activity</h2>
+			<a href={profile} target="_blank" rel="noopener" class="-my-2 inline-flex min-h-11 items-center gap-1.5 text-sm text-muted hover:text-ink">
 				<Icon name="simple-icons:github" class="size-4" aria-hidden="true" />
 				@{site.handle}
 			</a>
 		</div>
 
-		<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line sm:grid-cols-3">
+		<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line">
 			{stats.map((s) => (
-				<div class="bg-surface px-4 py-3">
+				<div class="bg-surface px-3.5 py-2.5">
 					<dt class="text-xs text-muted">{s.label}</dt>
 					<dd class="font-display text-2xl font-semibold tabular-nums" title={s.value.toLocaleString('en')}>
 						{compact(s.value)}
@@ -48,37 +47,31 @@ const fmt = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numer
 			))}
 		</dl>
 
-		{weeks.length > 0 && gh.lastYear && (
-			<figure class="mt-5">
-				<figcaption class="mb-2 text-sm text-muted">
-					<span class="font-medium text-ink tabular-nums">{gh.lastYear.total.toLocaleString('en')}</span> contributions in the last year
+		{cells.length > 0 && gh.lastYear && (
+			<figure class="mt-4">
+				{/* Fluid grid: 7 rows, one column per week, cells scale with the card so it never scrolls. */}
+				<div
+					class="grid grid-flow-col grid-rows-7 gap-[2px]"
+					style={`grid-template-columns: repeat(${weeks.length}, minmax(0, 1fr));`}
+					role="img"
+					aria-label={`Contribution graph: ${gh.lastYear.total.toLocaleString('en')} contributions in the last year`}
+				>
+					{cells.map((d) =>
+						d ? (
+							<span class="gh-cell aspect-square rounded-[2px]" data-level={d.level} title={`${d.count} contribution${d.count === 1 ? '' : 's'} on ${fmt(d.date)}`}></span>
+						) : (
+							<span aria-hidden="true"></span>
+						),
+					)}
+				</div>
+				<figcaption class="mt-2 flex items-center justify-between gap-3 text-xs text-muted">
+					<span><span class="font-medium text-ink tabular-nums">{gh.lastYear.total.toLocaleString('en')}</span> contributions in the last year</span>
+					<span class="flex items-center gap-1" aria-hidden="true">
+						Less
+						{[0, 1, 2, 3, 4].map((l) => <span class="gh-cell size-2.5 rounded-[2px]" data-level={l}></span>)}
+						More
+					</span>
 				</figcaption>
-				{/* Scrolls sideways on narrow screens instead of shrinking cells to nothing. */}
-				<div class="-mx-1 overflow-x-auto px-1 pb-1 [scrollbar-width:thin]">
-					<div class="inline-grid min-w-max gap-y-1" role="img" aria-label={`Contribution graph: ${gh.lastYear.total} contributions in the last year`}>
-						<div class="flex gap-[3px] text-[10px] text-muted" aria-hidden="true">
-							{monthLabels.map((m) => <span class="w-[10px] overflow-visible whitespace-nowrap">{m}</span>)}
-						</div>
-						<div class="flex gap-[3px]" aria-hidden="true">
-							{weeks.map((w) => (
-								<div class="flex flex-col gap-[3px]">
-									{w.map((d) => (
-										<span
-											class="gh-cell size-[10px] rounded-[2px]"
-											data-level={d.level}
-											title={`${d.count} contribution${d.count === 1 ? '' : 's'} on ${fmt(d.date)}`}
-										></span>
-									))}
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-				<div class="mt-2 flex items-center justify-end gap-1 text-[10px] text-muted" aria-hidden="true">
-					Less
-					{[0, 1, 2, 3, 4].map((l) => <span class="gh-cell size-[10px] rounded-[2px]" data-level={l}></span>)}
-					More
-				</div>
 			</figure>
 		)}
 	</div>

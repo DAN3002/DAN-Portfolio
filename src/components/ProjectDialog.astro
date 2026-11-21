@@ -1,8 +1,8 @@
 ---
-import { Picture } from 'astro:assets';
+import SmartImage from './SmartImage.astro';
 import { Icon } from 'astro-icon/components';
 import type { Project } from '~/data/projects';
-import { pictureFormats, fallbackFormat, slots } from '~/lib/images';
+import { slots } from '~/lib/images';
 
 interface Props {
 	project: Project;
@@ -31,14 +31,11 @@ const titleId = `dlg-${p.slug}-title`;
 					<ul class="flex snap-x snap-mandatory overflow-x-auto [scrollbar-width:none]" data-gallery-track>
 						{p.images.map((img, i) => (
 							<li class="w-full shrink-0 snap-center">
-								<Picture
+								<SmartImage
 									src={img}
 									alt={`${p.title}, screenshot ${i + 1} of ${p.images.length}`}
-									formats={[...pictureFormats]}
-									fallbackFormat={fallbackFormat}
 									widths={[...slots.dialog.widths]}
 									sizes={slots.dialog.sizes}
-									loading="lazy"
 									class="aspect-[16/9] w-full object-contain"
 								/>
 							</li>

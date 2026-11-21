@@ -1,11 +1,11 @@
 ---
-import { Picture } from 'astro:assets';
+import SmartImage from './SmartImage.astro';
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
 import ProjectDialog from './ProjectDialog.astro';
 import Pagination from './Pagination.astro';
 import { projects, projectTags } from '~/data/projects';
-import { pictureFormats, fallbackFormat, slots } from '~/lib/images';
+import { slots } from '~/lib/images';
 
 const featured = projects.filter((p) => p.featured);
 const rest = projects.filter((p) => !p.featured);
@@ -18,14 +18,11 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 		{featured.map((p) => (
 			<li class="group card relative flex flex-col overflow-hidden transition-shadow hover:shadow-xl has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent" data-reveal>
 				<div class="overflow-hidden border-b border-line bg-paper">
-					<Picture
+					<SmartImage
 						src={p.images[0]!}
 						alt=""
-						formats={[...pictureFormats]}
-						fallbackFormat={fallbackFormat}
 						widths={[...slots.featured.widths]}
 						sizes={slots.featured.sizes}
-						loading="lazy"
 						class="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
 					/>
 				</div>

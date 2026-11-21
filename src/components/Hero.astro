@@ -1,9 +1,9 @@
 ---
-import { Picture } from 'astro:assets';
+import SmartImage from './SmartImage.astro';
 import { Icon } from 'astro-icon/components';
 import { site, yearsInTech, careerStartISO } from '~/data/site';
 import { pluralYears } from '~/lib/years';
-import { pictureFormats, fallbackFormat, slots } from '~/lib/images';
+import { slots } from '~/lib/images';
 import GithubActivity from './GithubActivity.astro';
 ---
 
@@ -60,11 +60,9 @@ import GithubActivity from './GithubActivity.astro';
 
 		{/* The photo is a transparent circle, so no card frame: it sits straight on the page. */}
 		<div class="mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-none">
-			<Picture
+			<SmartImage
 				src={site.profile}
 				alt={`Portrait of ${site.name}`}
-				formats={[...pictureFormats]}
-				fallbackFormat={fallbackFormat}
 				widths={[...slots.hero.widths]}
 				sizes={slots.hero.sizes}
 				loading="eager"

@@ -28,7 +28,7 @@ const personLd = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -58,6 +58,7 @@ const personLd = {
 
 		<!-- Apply the theme before first paint so there is no light flash in dark mode. -->
 		<script is:inline>
+			document.documentElement.classList.remove('no-js');
 			(() => {
 				let pref = 'system';
 				try { pref = localStorage.getItem('theme') || 'system'; } catch { /* storage blocked */ }
@@ -96,6 +97,26 @@ const personLd = {
 
 			// "N years" counts are rendered at build time; correct them for today.
 			hydrateYears();
+
+			// Blur-up images: fade the real image in once it has loaded. Images that are
+			// already complete (cached) show at once; errors keep the blurred preview.
+			document.querySelectorAll<HTMLElement>('[data-smart-img]').forEach((box) => {
+				const img = box.querySelector('img');
+				if (!img) return;
+				const done = () => box.classList.add('is-loaded');
+				// A failed image keeps the blurred preview (and stops the shimmer) instead of
+				// showing a broken-image icon.
+				const failed = () => box.classList.add('is-error');
+				if (img.complete) {
+					if (img.naturalWidth > 0) {
+						img.style.transition = 'none';
+						done();
+					} else failed();
+				} else {
+					img.addEventListener('load', done, { once: true });
+					img.addEventListener('error', failed, { once: true });
+				}
+			});
 			initAnalytics();
 			// The tracker may already have loaded before this module ran.
 			if (window.umami) onUmamiReady();

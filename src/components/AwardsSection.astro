@@ -1,24 +1,21 @@
 ---
-import { Picture } from 'astro:assets';
+import SmartImage from './SmartImage.astro';
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
 import Pagination from './Pagination.astro';
 import { awards } from '~/data/credentials';
-import { pictureFormats, fallbackFormat, slots } from '~/lib/images';
+import { slots } from '~/lib/images';
 ---
 
 <Section id="awards" title="Awards">
 	<ul class="grid scroll-mt-24 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-paginate="awards" data-page-size="3">
 		{awards.map((a) => (
 			<li class="card flex flex-col overflow-hidden" data-reveal>
-				<Picture
+				<SmartImage
 					src={a.image}
 					alt={`${a.name}, team photo`}
-					formats={[...pictureFormats]}
-					fallbackFormat={fallbackFormat}
 					widths={[...slots.card.widths]}
 					sizes={slots.card.sizes}
-					loading="lazy"
 					class="aspect-[16/10] w-full object-cover"
 				/>
 				<div class="flex flex-1 flex-col p-5">

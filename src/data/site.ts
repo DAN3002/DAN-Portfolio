@@ -9,8 +9,8 @@ export const site = {
 	resume: '/Resume_Nguyễn Đình Anh.pdf',
 	title: 'Nguyễn Đình Anh — DevOps & Software Engineer',
 	description:
-		'DevOps and software engineer building the platform behind Drylab, an AI system for biomedical research. Previously the youngest Senior Specialist at VPBank and an AWS Authorized Instructor.',
-	// Year the first job started; used for the "years building software" stat.
+		'DevOps and software engineer in Hà Nội. I work on the platform at Drylab, and before that on DevOps at VPBank.',
+	// First engineering job (FUNiX IT, Aug 2019); drives every "N years" on the page.
 	careerStart: new Date('2019-08-01'),
 	profile: asset('profile.png'),
 	socials: [
@@ -19,6 +19,14 @@ export const site = {
 		// Facebook dropped on purpose: personal profile, not useful for hiring.
 	],
 } as const;
+
+/** Whole years since careerStart, computed at build time (the daily rebuild keeps it current). */
+export function yearsInTech(now = new Date()): number {
+	const start = site.careerStart;
+	let years = now.getFullYear() - start.getFullYear();
+	if (now.getMonth() < start.getMonth() || (now.getMonth() === start.getMonth() && now.getDate() < start.getDate())) years -= 1;
+	return years;
+}
 
 export const nav = [
 	{ id: 'now', label: 'Now' },

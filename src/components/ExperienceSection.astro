@@ -2,9 +2,9 @@
 import Section from './Section.astro';
 import Timeline from './Timeline.astro';
 import { experience, education, activities } from '~/data/career';
-import { skills, site } from '~/data/site';
+import { skills, yearsInTech } from '~/data/site';
 
-const years = Math.floor((Date.now() - site.careerStart.getTime()) / (365.25 * 24 * 3600 * 1000));
+const years = yearsInTech();
 ---
 
 <Section

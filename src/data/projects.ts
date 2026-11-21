@@ -16,6 +16,10 @@ export interface Project {
 	/** Detail bullets; may contain <b>. */
 	details: string[];
 	source?: string;
+	/** Live product or site, shown as "Visit" in the dialog. */
+	url?: string;
+	/** Non-award badge, e.g. "Current work" (shown in accent, not gold). */
+	badge?: string;
 	images: ImageMetadata[];
 	featured?: boolean;
 }
@@ -23,6 +27,23 @@ export interface Project {
 const tcb = [2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => asset(`projects/tcb-hackathon/tcb-hackathon-project-${n}.png`));
 
 export const projects: Project[] = [
+	{
+		slug: 'drylab',
+		title: 'Drylab: AI platform for biomedical research',
+		summary: 'An AI-automated bioinformatics platform that takes life-science teams from data search to analysis and model training in one place.',
+		role: 'Member of Technical Staff',
+		tags: ['AI', 'Fullstack', 'DevOps'],
+		techs: ['Kubernetes', 'Python', 'TypeScript', 'React'],
+		badge: 'Current work · since Oct 2025',
+		details: [
+			'Search and prepare datasets from GEO and beyond, ready for analysis.',
+			'Co-create an analysis plan with AI that writes and runs the code.',
+			'Over 800 bioinformatics tools in one platform, with encrypted Vault storage and a local-first desktop app.',
+		],
+		url: 'https://thedrylab.com/',
+		images: [asset('projects/drylab.jpg')],
+		featured: true,
+	},
 	{
 		slug: 'likelihood-engine',
 		title: 'Real-time likelihood engine for financial products',

@@ -37,7 +37,8 @@ const titleId = `dlg-${p.slug}-title`;
 									alt={`${p.title}, screenshot ${i + 1} of ${p.images.length}`}
 									widths={[...slots.dialog.widths]}
 									sizes={slots.dialog.sizes}
-									class="aspect-[16/9] w-full object-contain"
+									fit="contain"
+									class="aspect-[16/9] w-full"
 								/>
 							</li>
 						))}

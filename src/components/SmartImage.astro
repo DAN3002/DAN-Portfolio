@@ -15,13 +15,18 @@ interface Props {
 	alt: string;
 	widths: number[];
 	sizes: string;
-	/** Classes for the visible box (size, aspect ratio, rounding, object-fit). */
+	/** Classes for the visible box (size, aspect ratio, rounding, shadow). */
 	class?: string;
+	/** How the image fills the box. Applied to the <img> itself: object-fit does not
+	    inherit through the <picture> element, so it can't live on the wrapper. */
+	fit?: 'cover' | 'contain';
+	/** object-position, e.g. 'top' for UI screenshots. */
+	position?: string;
 	loading?: 'lazy' | 'eager';
 	fetchpriority?: 'high' | 'low' | 'auto';
 }
 
-const { src, alt, widths, sizes, class: className = '', loading = 'lazy', fetchpriority } = Astro.props;
+const { src, alt, widths, sizes, class: className = '', fit = 'cover', position = 'center', loading = 'lazy', fetchpriority } = Astro.props;
 const ph = await placeholder(src);
 ---
 
@@ -40,8 +45,8 @@ const ph = await placeholder(src);
 		loading={loading}
 		fetchpriority={fetchpriority}
 		decoding="async"
-		class="smart-img__img size-full object-[inherit]"
-		style="object-fit:inherit;object-position:inherit"
+		class="smart-img__img size-full"
+		style={`object-fit:${fit};object-position:${position}`}
 	/>
 </span>
 

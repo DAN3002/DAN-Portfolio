@@ -41,7 +41,7 @@ export const projects: Project[] = [
 			'Over 800 bioinformatics tools in one platform, with encrypted Vault storage and a local-first desktop app.',
 		],
 		url: 'https://thedrylab.com/',
-		images: [asset('projects/drylab.jpg')],
+		images: [asset('projects/drylab-product.jpg'), asset('projects/drylab-banner.jpg')],
 		featured: true,
 	},
 	{
@@ -58,7 +58,6 @@ export const projects: Project[] = [
 			'Scalable data pipeline with MLOps for continuous optimisation.',
 		],
 		images: tcb,
-		featured: true,
 	},
 	{
 		slug: 'architecture-design-generator',
@@ -88,8 +87,7 @@ export const projects: Project[] = [
 			'Staff ask questions in natural language; the system generates the query, the answer and the chart.',
 		],
 		images: [asset('projects/nrc-hackathon.png')],
-		featured: true,
-	},
+			},
 	{
 		slug: 'finaince-assistant',
 		title: 'FinAInce Assistant',

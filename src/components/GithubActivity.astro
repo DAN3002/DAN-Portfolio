@@ -50,7 +50,7 @@ const snapshot = gh ? JSON.stringify(gh) : 'null';
 			{/* Always rendered, so a live refresh can fill it even if the build fetch failed. */}
 			<div class="gh-wrap overflow-hidden" style={`--weeks: ${weeks};`} hidden={!cal} data-gh-wrap>
 				<div class="gh-scale">
-					<div class="mb-1 grid text-[10px] leading-none text-muted" style={cols} aria-hidden="true" data-gh-months>
+					<div class="mb-1 grid text-[11px] leading-none text-muted" style={cols} aria-hidden="true" data-gh-months>
 						{months.map((m) => <span class="whitespace-nowrap">{m}</span>)}
 					</div>
 					<div class="grid grid-flow-col grid-rows-7 gap-[3px]" style={cols} role="img" aria-label={describeCalendar(cal)} data-gh-graph>

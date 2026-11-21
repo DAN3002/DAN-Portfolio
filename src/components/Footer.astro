@@ -14,7 +14,7 @@ const updated = lastUpdated?.toLocaleDateString('en-GB', { month: 'long', year: 
 			© {new Date().getFullYear()} {site.name} <span lang="vi-Latn">(Nguyen Dinh Anh · {site.handle})</span>.
 			{lastUpdated && <>Updated <time datetime={lastUpdated.toISOString()}>{updated}</time>.</>}
 		</p>
-		<div class="flex items-center gap-4">
+		<div class="flex shrink-0 items-center gap-4 whitespace-nowrap">
 			<a href="https://github.com/DAN3002/DAN-Portfolio" target="_blank" rel="noopener" class="inline-flex min-h-11 items-center gap-1.5 hover:text-ink">
 				<Icon name="simple-icons:github" class="size-4" aria-hidden="true" />
 				Source

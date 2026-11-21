@@ -9,7 +9,7 @@ import { slots } from '~/lib/images';
 ---
 
 <Section id="awards" title="Awards">
-	<ul class="grid scroll-mt-24 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-paginate="awards" data-page-size="3">
+	<ul class="scroll-mt-24 cards-row [--gap:1.5rem] md:[--cols:3]" data-paginate="awards" data-page-size="3">
 		{awards.map((a) => (
 			<li class="group card relative flex flex-col overflow-hidden transition-shadow hover:shadow-xl has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent" data-reveal>
 				<SmartImage

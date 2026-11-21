@@ -147,6 +147,23 @@
 @utility card {
 	@apply rounded-2xl border border-line bg-surface;
 }
+/* Card rows: N equal columns (--cols), and a short last row is centred rather than
+   leaving one card stranded on the left with a big gap (pagination and filters
+   often leave 1-2 cards). Children must not set their own width. */
+@utility cards-row {
+	--cols: 1;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--gap, 1rem);
+	& > * {
+		flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap, 1rem)) / var(--cols));
+		min-width: 0;
+	}
+	& > [hidden] {
+		display: none;
+	}
+}
 @utility chip {
 	@apply inline-flex items-center rounded-full border border-line px-2.5 py-0.5 font-mono text-xs text-muted;
 }

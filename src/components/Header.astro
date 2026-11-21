@@ -65,7 +65,7 @@ import { nav, site } from '~/data/site';
 <!-- Native <dialog>: focus trap, Escape to close and inert background come for free. -->
 <dialog
 	id="mobile-nav"
-	class="m-0 ml-auto h-dvh max-h-none w-[min(20rem,85vw)] max-w-none bg-surface p-0 text-ink shadow-2xl open:animate-[slide-in_0.25s_var(--ease-out-soft)]"
+	class="m-0 ml-auto h-dvh max-h-none w-[min(20rem,85vw)] max-w-none flex-col bg-surface p-0 text-ink shadow-2xl open:flex open:animate-[slide-in_0.25s_var(--ease-out-soft)]"
 	aria-label="Menu"
 	data-menu
 >
@@ -75,7 +75,7 @@ import { nav, site } from '~/data/site';
 			<Icon name="lucide:x" class="size-5" aria-hidden="true" />
 		</button>
 	</div>
-	<nav aria-label="Mobile">
+	<nav aria-label="Mobile" class="mt-auto">
 		<ul class="flex flex-col p-3">
 			{nav.map((item) => (
 				<li>

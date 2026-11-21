@@ -17,18 +17,18 @@ const endpoint = import.meta.env.PUBLIC_EMAIL_API_ENDPOINT || 'https://email.dan
 
 <Section id="contact" title="Contact">
 	<div class="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-		<div class="space-y-4" data-reveal>
+		<div class="flex flex-col gap-4" data-reveal>
 			<div class="card p-5">
 				<p class="eyebrow mb-2">Email</p>
 				<div class="flex flex-wrap items-center gap-2">
 					<a href={`mailto:${site.email}`} class="font-display text-lg font-semibold break-all hover:text-accent">{site.email}</a>
-					<button type="button" class="btn-ghost min-h-9 px-3 text-xs" data-copy={site.email}>
+					<button type="button" class="btn-ghost min-h-11 px-3.5 text-xs" data-copy={site.email}>
 						<Icon name="lucide:copy" class="size-3.5" aria-hidden="true" />
 						<span data-copy-label>Copy</span>
 					</button>
 				</div>
 			</div>
-			<div class="card p-5">
+			<div class="card flex-1 p-5">
 				<p class="eyebrow mb-3">Elsewhere</p>
 				<ul class="space-y-1">
 					{site.socials.map((s) => (

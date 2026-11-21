@@ -79,7 +79,7 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 			</div>
 		</div>
 
-		<ul class="grid scroll-mt-24 gap-4 sm:grid-cols-2 lg:grid-cols-3" data-project-grid data-paginate="projects" data-page-size="6">
+		<ul class="scroll-mt-24 cards-row [--gap:1rem] sm:[--cols:2] lg:[--cols:3]" data-project-grid data-paginate="projects" data-page-size="6">
 			{rest.map((p) => (
 				<li class="group card relative flex flex-col p-5 transition-colors hover:border-ink has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent" data-tags={p.tags.join(' ')}>
 					<div class="mb-3 flex items-center justify-between gap-2">

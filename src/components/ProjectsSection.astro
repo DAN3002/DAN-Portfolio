@@ -43,8 +43,9 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 						{/* The whole card is clickable through this button's ::after overlay. */}
 						<button
 							type="button"
-							class="text-left after:absolute after:inset-0 after:content-[''] focus-visible:outline-none group-has-[:focus-visible]:underline"
+							class="text-left after:absolute after:inset-0 after:z-[2] after:content-[''] focus-visible:outline-none group-has-[:focus-visible]:underline"
 							data-open-project={p.slug}
+							data-open-dialog={`project-${p.slug}`}
 							data-track="open-project"
 							data-track-title={p.title}
 							data-track-tags={p.tags.join(',')}
@@ -86,8 +87,9 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 					<h4 class="font-display text-lg font-semibold">
 						<button
 							type="button"
-							class="text-left after:absolute after:inset-0 after:content-[''] focus-visible:outline-none group-has-[:focus-visible]:underline"
+							class="text-left after:absolute after:inset-0 after:z-[2] after:content-[''] focus-visible:outline-none group-has-[:focus-visible]:underline"
 							data-open-project={p.slug}
+							data-open-dialog={`project-${p.slug}`}
 							data-track="open-project"
 							data-track-title={p.title}
 							data-track-tags={p.tags.join(',')}
@@ -140,6 +142,7 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 
 <script>
 	import { initPagination, getPager } from '~/lib/paginate';
+	import { initDialogs } from '~/lib/dialogs';
 
 	initPagination();
 
@@ -165,26 +168,9 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 		}),
 	);
 
-	// Dialogs: native <dialog> gives the focus trap and Escape. Focus return is
-	// done by hand because browsers differ on where focus goes after close().
-	let opener: HTMLElement | null = null;
-	document.querySelectorAll<HTMLButtonElement>('[data-open-project]').forEach((btn) =>
-		btn.addEventListener('click', () => {
-			const dlg = document.getElementById(`project-${btn.dataset.openProject}`) as HTMLDialogElement | null;
-			opener = btn;
-			dlg?.showModal();
-		}),
-	);
+	// Open/close/focus-return is shared with the award popups (lib/dialogs.ts).
+	initDialogs();
 	document.querySelectorAll<HTMLDialogElement>('[data-project-dialog]').forEach((dlg) => {
-		dlg.addEventListener('close', () => {
-			opener?.focus({ preventScroll: true });
-			opener = null;
-		});
-		dlg.querySelector('[data-dialog-close]')?.addEventListener('click', () => dlg.close());
-		dlg.addEventListener('click', (e) => {
-			if (e.target === dlg) dlg.close();
-		});
-
 		// Gallery: scroll-snap track, buttons and arrow keys move one slide.
 		const track = dlg.querySelector<HTMLElement>('[data-gallery-track]');
 		const count = dlg.querySelector<HTMLElement>('[data-gallery-count]');

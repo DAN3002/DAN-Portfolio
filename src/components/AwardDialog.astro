@@ -1,0 +1,93 @@
+---
+import SmartImage from './SmartImage.astro';
+import { Icon } from 'astro-icon/components';
+import type { Award } from '~/data/credentials';
+import { projects } from '~/data/projects';
+import { slots } from '~/lib/images';
+
+interface Props {
+	award: Award;
+}
+const { award: a } = Astro.props;
+const titleId = `dlg-award-${a.slug}-title`;
+const project = a.project ? projects.find((p) => p.slug === a.project) : undefined;
+const champion = a.prize === 'Champion';
+---
+
+<dialog
+	id={`award-${a.slug}`}
+	aria-labelledby={titleId}
+	class="m-auto max-h-[92dvh] w-[min(48rem,calc(100vw-2rem))] max-w-none overflow-hidden rounded-2xl border border-line bg-surface p-0 text-ink shadow-2xl open:animate-[pop-in_0.2s_var(--ease-out-soft)]"
+	data-dialog
+>
+	<div class="flex max-h-[92dvh] flex-col">
+		<div class="flex items-center justify-between gap-4 border-b border-line px-5 py-3">
+			<p class="eyebrow"><time>{a.date}</time></p>
+			<button type="button" class="grid size-11 shrink-0 place-items-center rounded-full hover:bg-paper" aria-label="Close" data-dialog-close>
+				<Icon name="lucide:x" class="size-5" aria-hidden="true" />
+			</button>
+		</div>
+
+		<div class="overflow-y-auto overscroll-contain">
+			<SmartImage
+				src={a.image}
+				alt={`${a.name}, team photo`}
+				widths={[...slots.dialog.widths]}
+				sizes={slots.dialog.sizes}
+				class="aspect-[16/9] w-full object-cover"
+			/>
+
+			<div class="p-6 sm:p-8">
+				<p
+					class:list={[
+						'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium',
+						champion ? 'bg-gold-soft text-gold' : 'bg-accent-soft text-accent',
+					]}
+				>
+					<Icon name={champion ? 'lucide:trophy' : 'lucide:medal'} class="size-4" aria-hidden="true" />
+					{a.prize}
+				</p>
+				<h2 id={titleId} class="mt-3 text-2xl font-semibold sm:text-3xl">{a.name}</h2>
+
+				<ul class="mt-5 space-y-2.5">
+					{a.details.map((d) => (
+						<li class="flex gap-2.5 text-base leading-relaxed">
+							<Icon name="lucide:check" class="mt-1 size-4 shrink-0 text-accent" aria-hidden="true" />
+							<span>{d}</span>
+						</li>
+					))}
+				</ul>
+
+				{a.press.length > 0 && (
+					<div class="mt-6">
+						<h3 class="eyebrow mb-2">In the press</h3>
+						<ul class="space-y-1.5">
+							{a.press.map((l) => (
+								<li>
+									<a href={l.url} target="_blank" rel="noopener" lang="vi" class="inline-flex items-start gap-1.5 text-accent hover:underline" data-track="view-achieve-link" data-track-name={a.name}>
+										<Icon name="lucide:external-link" class="mt-1 size-4 shrink-0" aria-hidden="true" />
+										{l.text}
+									</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
+
+				{project && (
+					<button
+						type="button"
+						class="btn-primary mt-8"
+						data-open-dialog={`project-${project.slug}`}
+						data-track="open-project"
+						data-track-title={project.title}
+						data-track-tags={project.tags.join(',')}
+					>
+						See the project: {project.title}
+						<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+					</button>
+				)}
+			</div>
+		</div>
+	</div>
+</dialog>

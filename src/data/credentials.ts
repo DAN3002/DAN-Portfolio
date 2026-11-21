@@ -2,72 +2,123 @@ import type { ImageMetadata } from 'astro';
 import { asset } from '~/lib/assets';
 
 export interface Award {
+	slug: string;
 	name: string;
 	prize: string;
 	date: string;
 	image: ImageMetadata;
+	/** One-line summary shown on the card. */
 	text: string;
+	/** Longer write-up shown in the popup, one paragraph or bullet per item. */
+	details: string[];
+	/** Project on this site built for the award, opened from the popup. */
+	project?: string;
 	press: { text: string; url: string }[];
 }
 
 export const awards: Award[] = [
 	{
+		slug: 'hack-cx-2025',
 		name: 'Hack CX Together 2025',
 		prize: 'Runner-up',
 		date: 'Jun 2025',
 		image: asset('awards/hack-cx-together-2025-banner.jpg'),
 		text: 'Real-time AI likelihood engine that personalises banking product recommendations across every channel.',
+		details: [
+			'Built a real-time AI likelihood engine that predicts which banking product each customer is most likely to want, from their behaviour across every channel.',
+			'It automates data collection, feature selection, model training and deployment, to raise conversion, reduce compliance risk and keep engagement up across all banking segments.',
+		],
+		project: 'likelihood-engine',
 		press: [],
 	},
 	{
+		slug: 'nrc-fpt-2024',
 		name: 'NRC x FPT Hackathon 2024',
 		prize: 'Runner-up',
 		date: 'Nov 2024',
 		image: asset('awards/nrc-hackathon.jpg'),
 		text: 'AI pipeline that acts as a virtual data analyst for hospital patient and staff data.',
+		details: [
+			'An AI system that works like a virtual data analyst for hospitals: it finds issues, pulls out insights and suggests actions.',
+			'It analyses patient data and staff feedback, detects unusual trends, charts patterns and summarises open-text answers.',
+			'Staff ask questions in plain language and get back answers, charts or the query that produced them.',
+		],
+		project: 'hospital-insight-pipeline',
 		press: [],
 	},
 	{
+		slug: 'vpbank-2024',
 		name: 'VPBank Hackathon 2024',
 		prize: 'Champion',
 		date: 'Jun 2024',
 		image: asset('awards/vpbank-hackathon-2024-banner.jpg'),
 		text: 'GPT-4 architecture design generator. Beat over 150 teams from companies and universities.',
+		details: [
+			'Built an architecture design generator: describe a system in plain words and GPT-4 drafts an editable cloud architecture diagram, which you refine through chat.',
+			'Beat over 150 teams from companies and universities.',
+		],
+		project: 'architecture-design-generator',
 		press: [],
 	},
 	{
+		slug: 'resfes-2023',
 		name: 'FPT Edu ResFes 2023',
 		prize: 'Third prize',
 		date: 'Aug 2023',
 		image: asset('awards/resfes-2023-banner.jpg'),
 		text: 'Image retrieval for fashion e-commerce with the Relahash model, fed by a declarative crawler over 7.5M+ images on Kubernetes.',
+		details: [
+			'Built an ecosystem around the Relahash model for fast, accurate image retrieval in fashion e-commerce.',
+			'Designed a declarative crawler: users describe what they need and the system does the heavy lifting.',
+			'Collected a dataset of 7.5M+ images from 8K+ shops across 30 websites.',
+			'Ran the crawler and the AI pipeline together on Kubernetes.',
+		],
+		project: 'ecommerce-template-crawler',
 		press: [],
 	},
 	{
+		slug: 'funix-chatgpt-2023',
 		name: 'FUNiX ChatGPT Hackathon',
 		prize: 'Champion',
 		date: 'May 2023',
 		image: asset('awards/funix-chatgpt-hackathon-banner.jpg'),
 		text: 'FinAInce Assistant, a fintech chatbot that takes actions for the user, built in under a month.',
+		details: [
+			"Won first place with FinAInce Assistant, 'ChatGPT that can take actions': a fintech chatbot built in under a month.",
+			'Beyond answering questions, it carries out finance tasks for the user, showing how far ChatGPT can go past plain Q&A.',
+		],
+		project: 'finaince-assistant',
 		press: [
 			{ text: 'VnExpress: banking assistant wins ChatGPT Hackathon', url: 'https://vnexpress.net/du-an-tro-ly-ao-ngan-hang-gianh-quan-quan-chatgpt-hackathon-4603011.html' },
 			{ text: 'VnExpress: FUNiX students on the winning project', url: 'https://vnexpress.net/sinh-vien-funix-chia-se-ve-du-an-vo-dich-chatgpt-hackathon-4604055.html' },
 		],
 	},
 	{
+		slug: 'fpt-edu-2021',
 		name: 'FPT Edu Hackathon 2021',
 		prize: 'Third prize',
 		date: 'Apr 2021',
 		image: asset('awards/hackathon-2021-banner.jpg'),
 		text: 'Youngest team in the event. AI web app that helps doctors diagnose COVID-19; 104 university teams competed.',
+		details: [
+			'The youngest team in the competition, still in high school.',
+			'Won third prize among 104 university teams with a web app that uses AI to help doctors diagnose COVID-19.',
+		],
+		project: 'doctors-cyclop',
 		press: [{ text: 'VnExpress: 4 high-schoolers build AI for COVID-19 care', url: 'https://vnexpress.net/4-hoc-sinh-lop-12-lam-san-pham-ai-ho-tro-dieu-tri-covid-19-4269038.html' }],
 	},
 	{
+		slug: 'fpt-edu-2019',
 		name: 'FPT Edu Hackathon 2019',
 		prize: 'Third prize',
 		date: 'Jan 2020',
 		image: asset('awards/hackathon-2019-banner.jpg'),
 		text: 'Youngest team in the event. Portable device that checks whether water is safe; 35 teams competed.',
+		details: [
+			'The youngest team in the competition, still in high school.',
+			'Won third prize among 35 university teams with a portable device that checks whether water is safe to use.',
+		],
+		project: 'water-testing',
 		press: [{ text: 'VnExpress: high-schoolers win at FPT Edu Hackathon 2019', url: 'https://vnexpress.net/hoc-sinh-thpt-gianh-giai-fpt-edu-hackathon-2019-4042313.html' }],
 	},
 ];

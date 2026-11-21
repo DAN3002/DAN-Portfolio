@@ -101,6 +101,7 @@ const endpoint = import.meta.env.PUBLIC_EMAIL_API_ENDPOINT || 'https://email.dan
 			try {
 				await navigator.clipboard.writeText(btn.dataset.copy!);
 				if (label) label.textContent = 'Copied';
+				track(Events.CONTACT_EMAIL, { via: 'copy' });
 			} catch {
 				if (label) label.textContent = 'Press Ctrl+C';
 			}
@@ -145,7 +146,7 @@ const endpoint = import.meta.env.PUBLIC_EMAIL_API_ENDPOINT || 'https://email.dan
 			s.onerror = () => {
 				submit.disabled = true;
 				say('The security check could not load (often an ad blocker). Email me directly using the address on the left.', 'error');
-				track(Events.CONTACT_ERROR, { message: 'turnstile-load-failed' });
+				track(Events.CONTACT_ERROR, { reason: 'turnstile-load' });
 			};
 			document.head.append(s);
 		};
@@ -203,8 +204,8 @@ const endpoint = import.meta.env.PUBLIC_EMAIL_API_ENDPOINT || 'https://email.dan
 			data.append('cf-turnstile-response', token);
 			try {
 				const res = await fetch(form.dataset.endpoint!, { method: 'POST', body: data });
-				if (res.status === 403) throw new Error('The security check expired. Complete it again, then send.');
-				if (!res.ok) throw new Error(`Your message wasn't sent (error ${res.status}). Try again, or email me directly.`);
+				if (res.status === 403) throw Object.assign(new Error('The security check expired. Complete it again, then send.'), { reason: 'expired-403' });
+				if (!res.ok) throw Object.assign(new Error(`Your message wasn't sent (error ${res.status}). Try again, or email me directly.`), { reason: `http-${res.status}` });
 				form.reset();
 				fields.forEach((f) => f.removeAttribute('aria-invalid'));
 				started = false;
@@ -214,7 +215,9 @@ const endpoint = import.meta.env.PUBLIC_EMAIL_API_ENDPOINT || 'https://email.dan
 				const msg = err instanceof Error && err.message !== 'Failed to fetch'
 					? err.message
 					: 'Your message wasn\'t sent: no connection. Try again, or email me directly.';
-				track(Events.CONTACT_ERROR, { message: msg.slice(0, 80) });
+				// Closed set of reasons, so errors group cleanly in Umami.
+				const reason = (err as { reason?: string } | null)?.reason ?? 'network';
+				track(Events.CONTACT_ERROR, { reason });
 				say(msg, 'error');
 			} finally {
 				token = null;

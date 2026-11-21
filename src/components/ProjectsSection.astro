@@ -49,6 +49,7 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 							data-track="open-project"
 							data-track-title={p.title}
 							data-track-tags={p.tags.join(',')}
+							data-track-source="featured"
 							aria-haspopup="dialog"
 						>
 							{p.title}
@@ -68,7 +69,7 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 		<div class="mb-6 flex flex-wrap items-center justify-between gap-4">
 			<h3 class="font-display text-xl font-semibold">More projects</h3>
 			<div class="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0" role="group" aria-label="Filter projects">
-				<button type="button" class="filter-btn" aria-pressed="true" data-filter="all">All <span class="text-muted">{rest.length}</span></button>
+				<button type="button" class="filter-btn" aria-pressed="true" data-filter="all" data-track="filter-tag" data-track-tag="all">All <span class="text-muted">{rest.length}</span></button>
 				{projectTags.filter((t) => tagCounts[t]).map((t) => (
 					<button type="button" class="filter-btn" aria-pressed="false" data-filter={t} data-track="filter-tag" data-track-tag={t}>
 						{t} <span class="text-muted">{tagCounts[t]}</span>
@@ -93,6 +94,7 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 							data-track="open-project"
 							data-track-title={p.title}
 							data-track-tags={p.tags.join(',')}
+							data-track-source="list"
 							aria-haspopup="dialog"
 						>
 							{p.title}
@@ -143,6 +145,7 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 <script>
 	import { initPagination, getPager } from '~/lib/paginate';
 	import { initDialogs } from '~/lib/dialogs';
+	import { track as trackEvent, Events } from '~/lib/analytics';
 
 	initPagination();
 
@@ -178,8 +181,15 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 		const total = track.children.length;
 		const index = () => Math.round(track.scrollLeft / track.clientWidth);
 		const go = (i: number) => track.scrollTo({ left: ((i + total) % total) * track.clientWidth, behavior: 'smooth' });
-		dlg.querySelector('[data-gallery-prev]')?.addEventListener('click', () => go(index() - 1));
-		dlg.querySelector('[data-gallery-next]')?.addEventListener('click', () => go(index() + 1));
+		const project = dlg.id.replace(/^project-/, '');
+		dlg.querySelector('[data-gallery-prev]')?.addEventListener('click', () => {
+			go(index() - 1);
+			trackEvent(Events.GALLERY_NAV, { project, dir: 'prev' });
+		});
+		dlg.querySelector('[data-gallery-next]')?.addEventListener('click', () => {
+			go(index() + 1);
+			trackEvent(Events.GALLERY_NAV, { project, dir: 'next' });
+		});
 		track.addEventListener('scroll', () => {
 			if (count) count.textContent = `${index() + 1} / ${total}`;
 		}, { passive: true });

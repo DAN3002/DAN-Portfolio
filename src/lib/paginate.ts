@@ -1,4 +1,5 @@
 // Client-side pagination for a server-rendered list.
+import { track, Events } from './analytics';
 //
 // Markup: <ul data-paginate="<id>" data-page-size="6"> with <li> children,
 // plus a <nav data-pager="<id>"> rendered by Pagination.astro. Without JS
@@ -71,6 +72,7 @@ export function initPagination() {
 		const go = (p: number) => {
 			page = p;
 			render(true);
+			track(Events.PAGINATE, { list: id, page });
 		};
 
 		prev.addEventListener('click', () => go(page - 1));

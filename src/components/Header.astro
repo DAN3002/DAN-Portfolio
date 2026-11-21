@@ -140,6 +140,7 @@ import { nav, site } from '~/data/site';
 	opener?.addEventListener('click', () => {
 		menu?.showModal();
 		opener.setAttribute('aria-expanded', 'true');
+		track(Events.OPEN_MENU);
 	});
 	menu?.addEventListener('close', () => opener?.setAttribute('aria-expanded', 'false'));
 	menu?.querySelector('[data-menu-close]')?.addEventListener('click', () => menu.close());

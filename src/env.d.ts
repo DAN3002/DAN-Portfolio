@@ -11,8 +11,11 @@ interface ImportMeta {
 interface Window {
 	umami?: {
 		track: (name: string, data?: Record<string, unknown>) => void;
-		identify?: (data: Record<string, unknown>) => void;
+		identify?: (idOrData: string | Record<string, unknown>, data?: Record<string, unknown>) => void;
 	};
+	/** Read by the Umami tracker before it starts (umami.is/docs/tracker-configuration). */
+	umamiConfig?: { distinctId?: string };
+	doNotTrack?: string;
 	turnstile?: {
 		render: (el: HTMLElement, opts: Record<string, unknown>) => string;
 		reset: (id?: string) => void;

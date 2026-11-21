@@ -14,12 +14,17 @@ export const Events = {
 	VIEW_ACHIEVE_LINK: 'view-achieve-link',
 	VIEW_CERT: 'view-cert',
 	CURRENT_WORK_LINK: 'current-work-link',
+	VIEW_PROJECT_SITE: 'view-project-site',
 	OUTBOUND_LINK: 'outbound-link',
 	CONTACT_START: 'contact-start',
 	CONTACT_SUBMIT: 'contact-submit',
 	CONTACT_SUCCESS: 'contact-success',
 	CONTACT_ERROR: 'contact-error',
 	THEME_TOGGLE: 'theme-toggle',
+	CONTACT_EMAIL: 'contact-email',
+	PAGINATE: 'paginate',
+	GALLERY_NAV: 'gallery-nav',
+	OPEN_MENU: 'open-menu',
 } as const;
 
 type EventName = (typeof Events)[keyof typeof Events];
@@ -30,7 +35,7 @@ const queue: Array<() => void> = [];
 export function track(name: EventName, data?: Payload) {
 	const send = () => window.umami?.track(name, data);
 	if (window.umami) send();
-	else queue.push(send);
+	else if (queue.length < 50) queue.push(send);
 }
 
 export function flush() {
@@ -43,6 +48,13 @@ export function flush() {
 	}
 }
 
+/** The link's URL when it points to another site over http(s), else null. */
+function externalUrl(el: Element): URL | null {
+	if (!(el instanceof HTMLAnchorElement) || !el.href) return null;
+	const url = new URL(el.href, location.href);
+	return /^https?:$/.test(url.protocol) && url.hostname !== location.hostname ? url : null;
+}
+
 /** Sets up all automatic tracking. Call once per page. */
 export function initAnalytics() {
 	// Declarative tracking: <a data-track="open-project" data-track-title="…">
@@ -52,6 +64,7 @@ export function initAnalytics() {
 			const el = (e.target as Element | null)?.closest<HTMLElement>('[data-track], a[href]');
 			if (!el) return;
 
+			const external = externalUrl(el);
 			const name = el.dataset.track as EventName | undefined;
 			if (name) {
 				const payload: Payload = {};
@@ -60,14 +73,17 @@ export function initAnalytics() {
 						payload[k.slice(5).toLowerCase()] = v;
 					}
 				}
+				if (external) payload.host = external.hostname;
 				track(name, Object.keys(payload).length ? payload : undefined);
+				// One click = one event: a named link is not also counted as outbound-link.
+				return;
 			}
 
-			if (el instanceof HTMLAnchorElement && el.href) {
-				const url = new URL(el.href, location.href);
-				if (/^https?:$/.test(url.protocol) && url.hostname !== location.hostname) {
-					track(Events.OUTBOUND_LINK, { href: url.href, host: url.hostname });
-				}
+			if (external) {
+				// Origin + path only: query strings would explode the number of distinct values.
+				track(Events.OUTBOUND_LINK, { href: external.origin + external.pathname, host: external.hostname });
+			} else if (el instanceof HTMLAnchorElement && el.protocol === 'mailto:') {
+				track(Events.CONTACT_EMAIL, { via: 'mailto' });
 			}
 		},
 		true,
@@ -114,32 +130,12 @@ export function initAnalytics() {
 		},
 		{ passive: true },
 	);
-	// Count milestones already reached on load (reload, back button, deep link).
-	evaluate();
+	// Count milestones already reached on load only when the page opened scrolled
+	// (reload, back button, deep link), not just because the screen is tall.
+	if (scrollY > 0) evaluate();
 }
 
-const VISITOR_KEY = 'dan_visitor_id';
-
-/** Anonymous random id (no PII), kept in localStorage, same key as the old site. */
-function visitorId(): string {
-	try {
-		let id = localStorage.getItem(VISITOR_KEY);
-		if (!id) {
-			id = crypto.randomUUID();
-			localStorage.setItem(VISITOR_KEY, id);
-		}
-		return id;
-	} catch {
-		return crypto.randomUUID();
-	}
-}
-
-/** Called when the Umami script loads: tag the visitor, then send queued events. */
+/** Called when the Umami script loads: send the events queued before it. */
 export function onUmamiReady() {
-	try {
-		window.umami?.identify?.({ id: visitorId() });
-	} catch {
-		/* ignore */
-	}
 	flush();
 }

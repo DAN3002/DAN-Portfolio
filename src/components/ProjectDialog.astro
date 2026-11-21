@@ -87,7 +87,7 @@ const titleId = `dlg-${p.slug}-title`;
 				{(p.url || p.source) && (
 					<div class="mt-8 flex flex-wrap gap-3">
 						{p.url && (
-							<a href={p.url} target="_blank" rel="noopener" class="btn-primary" data-track="current-work-link" data-track-type="website">
+							<a href={p.url} target="_blank" rel="noopener" class="btn-primary" data-track="view-project-site" data-track-title={p.title}>
 								Visit {new URL(p.url).hostname.replace('www.', '')}
 								<Icon name="lucide:arrow-up-right" class="size-4" aria-hidden="true" />
 							</a>

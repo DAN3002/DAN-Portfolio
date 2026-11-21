@@ -68,13 +68,35 @@ const personLd = {
 			})();
 		</script>
 
-		{/* async, not defer: a deferred script would hold back the page's own module scripts until Umami downloads. */}
+		{/* Anonymous, random visitor id for Umami's distinct-ID reports (same localStorage key as the
+		    old site, so returning visitors keep their id). Set before the tracker loads, so the first
+		    pageview carries it too (umami.is/docs/distinct-ids). Skipped entirely under Do Not Track. */}
+		{umamiId && (
+			<script is:inline>
+				(() => {
+					if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+					try {
+						let id = localStorage.getItem('dan_visitor_id');
+						if (!id) {
+							id = crypto.randomUUID();
+							localStorage.setItem('dan_visitor_id', id);
+						}
+						window.umamiConfig = { distinctId: id };
+					} catch {
+						/* storage blocked: track without a distinct id */
+					}
+				})();
+			</script>
+		)}
+		{/* async, not defer: a deferred script would hold back the page's own module scripts until Umami downloads.
+		    data-domains: only the real site reports, never localhost or preview builds. */}
 		{umamiId && (
 			<script
 				is:inline
 				async
 				src="https://cloud.umami.is/script.js"
 				data-website-id={umamiId}
+				data-domains="dan3002.id.vn"
 				data-tag="portfolio"
 				data-do-not-track="true"
 				data-exclude-hash="true"

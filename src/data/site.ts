@@ -7,9 +7,11 @@ export const site = {
 	url: 'https://dan3002.id.vn',
 	email: 'dan3002.work@gmail.com',
 	location: 'Hà Nội, Việt Nam',
-	resume: '/Resume_Nguyễn Đình Anh.pdf',
-	title: 'Nguyễn Đình Anh — DevOps & Software Engineer',
-	description: 'DevOps and software engineer. I work on the platform at Drylab, and before that on DevOps at VPBank.',
+	// ASCII URL is the one we link; the old Vietnamese-named file stays for links already shared.
+	resume: '/nguyen-dinh-anh-resume.pdf',
+	title: 'Nguyễn Đình Anh (DAN3002) — DevOps & Software Engineer',
+	description:
+		'Nguyễn Đình Anh (Nguyen Dinh Anh, DAN3002): DevOps and software engineer building the platform at Drylab. Ex-VPBank DevOps, AWS certified.',
 	// First engineering job (FUNiX IT, Aug 2019); drives every "N years" on the page.
 	careerStart: new Date('2019-08-01'),
 	profile: asset('profile.png'),

@@ -1,6 +1,8 @@
 ---
 import '~/styles/global.css';
-import { site } from '~/data/site';
+import { site, skills } from '~/data/site';
+import { education } from '~/data/career';
+import { awards } from '~/data/credentials';
 
 interface Props {
 	title?: string;
@@ -14,16 +16,36 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL('/images/preview.jpg', Astro.site);
 const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
 
-const personLd = {
+const home = new URL('/', Astro.site).href;
+const ogAlt = `${site.name}, DevOps & Software Engineer`;
+
+// ProfilePage + Person (Google-supported: developers.google.com/search/docs/appearance/structured-data/profile-page).
+// Built from the same data the page shows, so the markup always matches the visible content.
+const profileLd = {
 	'@context': 'https://schema.org',
-	'@type': 'Person',
-	name: site.name,
-	alternateName: ['Nguyen Dinh Anh', site.handle],
-	url: site.url,
-	email: `mailto:${site.email}`,
-	jobTitle: 'DevOps & Software Engineer',
-	worksFor: { '@type': 'Organization', name: 'Drylab', url: 'https://thedrylab.com/' },
-	sameAs: site.socials.map((s) => s.href),
+	'@type': 'ProfilePage',
+	'@id': `${home}#profile`,
+	url: home,
+	name: site.title,
+	inLanguage: 'en',
+	dateModified: new Date().toISOString(),
+	mainEntity: {
+		'@type': 'Person',
+		'@id': `${home}#person`,
+		name: site.name,
+		alternateName: ['Nguyen Dinh Anh', site.handle],
+		url: home,
+		image: new URL('/images/nguyen-dinh-anh.jpg', Astro.site).href,
+		email: `mailto:${site.email}`,
+		jobTitle: 'DevOps & Software Engineer',
+		description: site.description,
+		worksFor: { '@type': 'Organization', name: 'Drylab', url: 'https://thedrylab.com/' },
+		address: { '@type': 'PostalAddress', addressLocality: 'Hà Nội', addressCountry: 'VN' },
+		alumniOf: education.map((e) => ({ '@type': 'CollegeOrUniversity', name: e.org })),
+		knowsAbout: ['DevOps', ...skills.flatMap((g) => g.items)],
+		award: awards.map((a) => `${a.name}: ${a.prize}`),
+		sameAs: site.socials.map((s) => s.href),
+	},
 };
 ---
 
@@ -41,20 +63,27 @@ const personLd = {
 		<meta name="theme-color" content="#f4f6f9" media="(prefers-color-scheme: light)" />
 		<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)" />
 
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={noindex ? 'website' : 'profile'} />
+		<meta property="og:site_name" content={site.name} />
+		<meta property="profile:first_name" content="Đình Anh" />
+		<meta property="profile:last_name" content="Nguyễn" />
+		<meta property="profile:username" content={site.handle} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		{!noindex && <meta property="og:url" content={canonical} />}
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="627" />
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:alt" content={ogAlt} />
 		<meta property="og:locale" content="en_US" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content={ogAlt} />
 
-		<script type="application/ld+json" set:html={JSON.stringify(personLd)} />
+		{!noindex && <script type="application/ld+json" set:html={JSON.stringify(profileLd)} />}
 
 		<!-- Apply the theme before first paint so there is no light flash in dark mode. -->
 		<script is:inline>

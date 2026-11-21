@@ -10,7 +10,8 @@ export default defineConfig({
 	site: 'https://dan3002.id.vn',
 	trailingSlash: 'ignore',
 	integrations: [
-		sitemap(),
+		// lastmod = build time; the daily rebuild keeps it current.
+		sitemap({ lastmod: new Date() }),
 		icon({
 			// Only bundle the icons we reference, not the full sets.
 			include: {

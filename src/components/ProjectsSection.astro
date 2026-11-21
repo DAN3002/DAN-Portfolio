@@ -12,12 +12,7 @@ const rest = projects.filter((p) => !p.featured);
 const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) => p.tags.includes(t)).length]));
 ---
 
-<Section
-	id="projects"
-	eyebrow="Selected work"
-	title="Projects"
-	intro="Hackathon winners, production systems and open-source tools. Open any card for the details."
->
+<Section id="projects" title="Projects">
 	<!-- Featured: the three award-winning AI builds, with screenshots. -->
 	<ul class="grid gap-6 lg:grid-cols-3">
 		{featured.map((p, i) => (

@@ -27,7 +27,6 @@ export const yearsInTech = (now = new Date()) => yearsSince(site.careerStart, no
 export const careerStartISO = site.careerStart.toISOString().slice(0, 10);
 
 export const nav = [
-	{ id: 'now', label: 'Now' },
 	{ id: 'experience', label: 'Experience' },
 	{ id: 'projects', label: 'Projects' },
 	{ id: 'awards', label: 'Awards' },

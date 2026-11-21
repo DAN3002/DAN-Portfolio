@@ -2,7 +2,6 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Header from '~/components/Header.astro';
 import Hero from '~/components/Hero.astro';
-import NowSection from '~/components/NowSection.astro';
 import ExperienceSection from '~/components/ExperienceSection.astro';
 import ProjectsSection from '~/components/ProjectsSection.astro';
 import AwardsSection from '~/components/AwardsSection.astro';
@@ -15,7 +14,6 @@ import Footer from '~/components/Footer.astro';
 	<Header />
 	<main id="main">
 		<Hero />
-		<NowSection />
 		<ExperienceSection />
 		<ProjectsSection />
 		<AwardsSection />
@@ -30,7 +28,8 @@ import Footer from '~/components/Footer.astro';
 	const legacy: Record<string, string> = {
 		about: 'top',
 		home: 'top',
-		'current-work': 'now',
+		'current-work': 'experience',
+		now: 'experience',
 		achieves: 'awards',
 		certifications: 'credentials',
 	};

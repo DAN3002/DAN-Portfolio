@@ -10,25 +10,6 @@ export interface TimelineEntry {
 	points: string[];
 }
 
-export const currentWork = {
-	company: 'Drylab',
-	role: 'Member of Technical Staff',
-	since: 'Oct 2025',
-	url: 'https://thedrylab.com/',
-	linkedin: 'https://www.linkedin.com/company/drylab-ai/',
-	tagline: 'The AI operating system for biomedical discovery.',
-	description:
-		'Drylab lets life-science teams run their whole research workflow in one place: search and prepare datasets, co-create an analysis plan with AI, generate the code and run the pipeline in one click. It is built for biology, trained on biological datasets and scientific workflows, so it understands the science, not just the syntax.',
-	videoId: 'I8_fgv6qW6Y',
-	videoTitle: 'Drylab product overview',
-	highlights: [
-		{ icon: 'lucide:flask-conical', title: 'Data analysis', text: 'Analysis plans co-created with AI that write and run the code, with results alongside you.' },
-		{ icon: 'lucide:search', title: 'Data search', text: 'Custom search across GEO and beyond, with datasets prepared for analysis automatically.' },
-		{ icon: 'lucide:wrench', title: '800+ tools', text: 'Over 800 bioinformatics tools brought into one AI-automated platform.' },
-		{ icon: 'lucide:shield-check', title: 'Secure by design', text: 'Encrypted Vault storage and a local-first desktop app, so sensitive data stays on your machine.' },
-	],
-} as const;
-
 export const experience: TimelineEntry[] = [
 	{
 		org: 'Drylab',

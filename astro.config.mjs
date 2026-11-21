@@ -16,8 +16,8 @@ export default defineConfig({
 			include: {
 				lucide: [
 					'arrow-right', 'arrow-up-right', 'check', 'chevron-down', 'chevron-left', 'chevron-right',
-					'copy', 'download', 'external-link', 'flask-conical', 'loader-circle', 'mail', 'map-pin',
-					'medal', 'menu', 'moon', 'play', 'search', 'send', 'shield-check', 'sun', 'trophy', 'wrench', 'x',
+					'copy', 'download', 'external-link', 'loader-circle', 'mail', 'map-pin',
+					'medal', 'menu', 'moon', 'send', 'sun', 'trophy', 'x',
 				],
 				'simple-icons': ['github', 'linkedin'],
 			},

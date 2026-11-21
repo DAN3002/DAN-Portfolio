@@ -1,7 +1,8 @@
 ---
 import { Picture } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
-import { site, yearsInTech } from '~/data/site';
+import { site, yearsInTech, careerStartISO } from '~/data/site';
+import { pluralYears } from '~/lib/years';
 import { pictureFormats, fallbackFormat, slots } from '~/lib/images';
 import GithubActivity from './GithubActivity.astro';
 ---
@@ -30,8 +31,9 @@ import GithubActivity from './GithubActivity.astro';
 			</h1>
 
 			<p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-				I'm <strong class="font-semibold text-ink">{site.name}</strong>, a DevOps and software engineer in Hà Nội.
-				I've worked in tech for {yearsInTech()} years, and I'm now at Drylab, building the platform for its AI research tools.
+				I'm <strong class="font-semibold text-ink">{site.name}</strong>, a DevOps and software engineer.
+				I've worked in tech for <span data-years-since={careerStartISO}>{pluralYears(yearsInTech())}</span>, and I'm now at Drylab,
+				building the platform for its AI research tools.
 			</p>
 
 			<div class="mt-8 flex flex-wrap items-center gap-3">

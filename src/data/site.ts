@@ -1,4 +1,5 @@
 import { asset } from '~/lib/assets';
+import { yearsSince } from '~/lib/years';
 
 export const site = {
 	name: 'Nguyễn Đình Anh',
@@ -8,8 +9,7 @@ export const site = {
 	location: 'Hà Nội, Việt Nam',
 	resume: '/Resume_Nguyễn Đình Anh.pdf',
 	title: 'Nguyễn Đình Anh — DevOps & Software Engineer',
-	description:
-		'DevOps and software engineer in Hà Nội. I work on the platform at Drylab, and before that on DevOps at VPBank.',
+	description: 'DevOps and software engineer. I work on the platform at Drylab, and before that on DevOps at VPBank.',
 	// First engineering job (FUNiX IT, Aug 2019); drives every "N years" on the page.
 	careerStart: new Date('2019-08-01'),
 	profile: asset('profile.png'),
@@ -20,13 +20,11 @@ export const site = {
 	],
 } as const;
 
-/** Whole years since careerStart, computed at build time (the daily rebuild keeps it current). */
-export function yearsInTech(now = new Date()): number {
-	const start = site.careerStart;
-	let years = now.getFullYear() - start.getFullYear();
-	if (now.getMonth() < start.getMonth() || (now.getMonth() === start.getMonth() && now.getDate() < start.getDate())) years -= 1;
-	return years;
-}
+/** Whole years since careerStart at build time; pages re-compute it in the browser (lib/years.ts). */
+export const yearsInTech = (now = new Date()) => yearsSince(site.careerStart, now);
+
+/** careerStart as YYYY-MM-DD, for data-years-since attributes. */
+export const careerStartISO = site.careerStart.toISOString().slice(0, 10);
 
 export const nav = [
 	{ id: 'now', label: 'Now' },

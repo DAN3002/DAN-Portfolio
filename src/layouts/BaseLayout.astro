@@ -92,7 +92,10 @@ const personLd = {
 
 		<script>
 			import { initAnalytics, onUmamiReady } from '~/lib/analytics';
+			import { hydrateYears } from '~/lib/years';
 
+			// "N years" counts are rendered at build time; correct them for today.
+			hydrateYears();
 			initAnalytics();
 			// The tracker may already have loaded before this module ran.
 			if (window.umami) onUmamiReady();

@@ -2,15 +2,16 @@
 import Section from './Section.astro';
 import Timeline from './Timeline.astro';
 import { experience, education, activities } from '~/data/career';
-import { skills, yearsInTech } from '~/data/site';
-
-const years = yearsInTech();
+import { skills, yearsInTech, careerStartISO } from '~/data/site';
+import { pluralYears } from '~/lib/years';
 ---
 
 <Section
 	id="experience"
 	eyebrow="Experience"
-	title={`${years} years, from a part-time backend job to bank-scale DevOps`}
+	title="from a part-time backend job to bank-scale DevOps"
+	titlePrefix={pluralYears(yearsInTech())}
+	titlePrefixSince={careerStartISO}
 	intro="I took my first engineering job at 17 while still in school, and have worked across back-end, full-stack, DevOps and teaching since."
 >
 	<div class="grid gap-14 lg:grid-cols-[1.5fr_1fr] lg:gap-16">

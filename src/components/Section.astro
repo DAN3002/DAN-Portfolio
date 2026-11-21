@@ -3,17 +3,23 @@ interface Props {
 	id: string;
 	eyebrow: string;
 	title: string;
+	/** Optional lead-in before the title, e.g. "7 years". */
+	titlePrefix?: string;
+	/** When set (YYYY-MM-DD), the prefix is a live "N years" count from this date. */
+	titlePrefixSince?: string;
 	intro?: string;
 	class?: string;
 }
-const { id, eyebrow, title, intro, class: className = '' } = Astro.props;
+const { id, eyebrow, title, titlePrefix, titlePrefixSince, intro, class: className = '' } = Astro.props;
 ---
 
 <section id={id} class:list={['py-20 md:py-28', className]} aria-labelledby={`${id}-title`}>
 	<div class="container-page">
 		<header class="mb-10 max-w-2xl md:mb-14" data-reveal>
 			<p class="eyebrow mb-3">{eyebrow}</p>
-			<h2 id={`${id}-title`} class="text-3xl font-semibold sm:text-4xl">{title}</h2>
+			<h2 id={`${id}-title`} class="text-3xl font-semibold sm:text-4xl">
+				{titlePrefix && <><span data-years-since={titlePrefixSince}>{titlePrefix}</span>, </>}{title}
+			</h2>
 			{intro && <p class="mt-4 text-lg text-muted">{intro}</p>}
 		</header>
 		<slot />

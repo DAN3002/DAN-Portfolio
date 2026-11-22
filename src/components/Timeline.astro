@@ -29,7 +29,7 @@ const hidden = items.slice(visible);
 				{item.url ? <a href={item.url} target="_blank" rel="noopener" class="hover:text-accent">{item.org}</a> : item.org}
 			</h3>
 			<p class="text-base font-medium text-muted">{item.role}</p>
-			<ul class="prose-lite mt-3 list-disc space-y-1.5 pl-4 text-base leading-relaxed marker:text-line">
+			<ul class="prose-lite mt-3 list-disc space-y-1.5 pl-4 text-base leading-relaxed marker:text-accent">
 				{item.points.map((p) => <li set:html={p} />)}
 			</ul>
 		</li>
@@ -48,7 +48,7 @@ const hidden = items.slice(visible);
 							<p class="font-mono text-xs text-muted"><time>{item.start}</time> – <time>{item.end}</time></p>
 							<h3 class="mt-1 font-display text-xl font-semibold">{item.org}</h3>
 							<p class="text-base font-medium text-muted">{item.role}</p>
-							<ul class="prose-lite mt-3 list-disc space-y-1.5 pl-4 text-base leading-relaxed marker:text-line">
+							<ul class="prose-lite mt-3 list-disc space-y-1.5 pl-4 text-base leading-relaxed marker:text-accent">
 								{item.points.map((p) => <li set:html={p} />)}
 							</ul>
 						</li>

@@ -16,7 +16,7 @@ export interface Award {
 	press: { text: string; url: string }[];
 }
 
-export const awards: Award[] = [
+const awardList: Award[] = [
 	{
 		slug: 'hack-cx-2025',
 		name: 'Hack CX Together 2025',
@@ -122,6 +122,22 @@ export const awards: Award[] = [
 		press: [{ text: 'VnExpress: high-schoolers win at FPT Edu Hackathon 2019', url: 'https://vnexpress.net/hoc-sinh-thpt-gianh-giai-fpt-edu-hackathon-2019-4042313.html' }],
 	},
 ];
+
+// Display order: best prize first (Champion, Runner-up, Third prize), then newest
+// first within the same prize. Sorted here so the section, search data and
+// llms.txt all use the same order.
+const PRIZE_RANK: Record<string, number> = { Champion: 0, 'Runner-up': 1, 'Third prize': 2 };
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+/** 'Jun 2025' -> 202505 (sortable); unknown formats sort last. */
+const monthKey = (d: string) => {
+	const [m, y] = d.split(' ');
+	const i = MONTHS.indexOf(m ?? '');
+	return i < 0 || !y ? 0 : Number(y) * 100 + i;
+};
+
+export const awards: Award[] = [...awardList].sort(
+	(a, b) => (PRIZE_RANK[a.prize] ?? 9) - (PRIZE_RANK[b.prize] ?? 9) || monthKey(b.date) - monthKey(a.date),
+);
 
 export const certifications = [
 	{

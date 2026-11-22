@@ -28,12 +28,6 @@ const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) 
 					/>
 				</div>
 				<div class="flex flex-1 flex-col p-5 sm:p-6">
-					{p.badge && (
-						<p class="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-medium text-accent">
-							<span class="size-1.5 rounded-full bg-accent" aria-hidden="true"></span>
-							{p.badge}
-						</p>
-					)}
 					{p.award && (
 						<p class="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-gold-soft px-2.5 py-0.5 text-xs font-medium text-gold">
 							<Icon name="lucide:trophy" class="size-3.5" aria-hidden="true" />

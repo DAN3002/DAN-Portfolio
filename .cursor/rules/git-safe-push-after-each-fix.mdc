@@ -1,0 +1,15 @@
+---
+description: Commit and push after every fix or change in this repo, using /git-safe-push
+alwaysApply: true
+---
+
+# Ship every fix with /git-safe-push
+
+After each fix or change in this repo is done and verified, commit and push it right away by following `~/.cursor/skills/git-safe-push/SKILL.md`. Don't wait to be asked, and don't batch several fixes into one commit.
+
+- Before pushing, run `pnpm lint` and `pnpm exec astro check`, plus `pnpm build` when config, data or images changed. Push only when they pass.
+- One fix, one commit: `<type>(<scope>): <summary>`, scope from the branch (for `feat/modern-rebuild` that is `modern-rebuild`). No agent or co-author trailers.
+- On a feature branch, push to that same branch. Never create a new branch without asking.
+- Don't merge into `main` (or any other branch) unless the user names it; the skill's merge step runs only when a target is given.
+- Never commit `.env` or tokens. `src/data/github-snapshot.json` is expected to change after builds; commit it with the fix it came with.
+- In the reply, give the commit SHA and the branch it was pushed to.

@@ -1,0 +1,40 @@
+---
+import Section from './Section.astro';
+import Timeline from './Timeline.astro';
+import { experience, education, activities } from '~/data/career';
+import { skills } from '~/data/site';
+---
+
+<Section id="experience" title="Experience">
+	<div class="grid gap-14 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+		<div>
+			<h3 class="eyebrow mb-6">Work</h3>
+			<Timeline items={experience} visible={4} />
+		</div>
+
+		<div class="space-y-12">
+			<div>
+				<h3 class="eyebrow mb-6">Education</h3>
+				<Timeline items={education} />
+			</div>
+			<div>
+				<h3 class="eyebrow mb-6">Teaching & community</h3>
+				<Timeline items={activities} visible={2} />
+			</div>
+			<div class="card p-6" data-reveal>
+				<h3 class="eyebrow mb-4">Toolbox</h3>
+				<dl class="space-y-4">
+					{skills.map((s) => (
+						<div>
+							<dt class="mb-2 text-sm font-medium">{s.group}</dt>
+							<dd class="flex flex-wrap gap-1.5">
+								{s.items.map((i) => <span class="chip">{i}</span>)}
+							</dd>
+						</div>
+					))}
+				</dl>
+			</div>
+		</div>
+	</div>
+
+</Section>

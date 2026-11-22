@@ -1,0 +1,194 @@
+---
+import '~/styles/global.css';
+import { site, skills } from '~/data/site';
+import { education } from '~/data/career';
+import { awards } from '~/data/credentials';
+
+interface Props {
+	title?: string;
+	description?: string;
+	/** Error pages: keep them out of search results and skip canonical/og:url. */
+	noindex?: boolean;
+}
+
+const { title = site.title, description = site.description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/images/preview.jpg', Astro.site);
+const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+
+const home = new URL('/', Astro.site).href;
+const ogAlt = `${site.name}, DevOps & Software Engineer`;
+
+// ProfilePage + Person (Google-supported: developers.google.com/search/docs/appearance/structured-data/profile-page).
+// Built from the same data the page shows, so the markup always matches the visible content.
+const profileLd = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfilePage',
+	'@id': `${home}#profile`,
+	url: home,
+	name: site.title,
+	inLanguage: 'en',
+	dateModified: new Date().toISOString(),
+	mainEntity: {
+		'@type': 'Person',
+		'@id': `${home}#person`,
+		name: site.name,
+		alternateName: ['Nguyen Dinh Anh', site.handle],
+		url: home,
+		image: new URL('/images/nguyen-dinh-anh.jpg', Astro.site).href,
+		email: `mailto:${site.email}`,
+		jobTitle: 'DevOps & Software Engineer',
+		description: site.description,
+		worksFor: { '@type': 'Organization', name: 'Drylab', url: 'https://thedrylab.com/' },
+		address: { '@type': 'PostalAddress', addressLocality: 'Hà Nội', addressCountry: 'VN' },
+		alumniOf: education.map((e) => ({ '@type': 'CollegeOrUniversity', name: e.org })),
+		knowsAbout: ['DevOps', ...skills.flatMap((g) => g.items)],
+		award: awards.map((a) => `${a.name}: ${a.prize}`),
+		sameAs: site.socials.map((s) => s.href),
+	},
+};
+---
+
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content={site.name} />
+		{noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+		<link rel="icon" href="/images/favicon.ico" sizes="any" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<meta name="theme-color" content="#f4f6f9" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)" />
+
+		<meta property="og:type" content={noindex ? 'website' : 'profile'} />
+		<meta property="og:site_name" content={site.name} />
+		<meta property="profile:first_name" content="Đình Anh" />
+		<meta property="profile:last_name" content="Nguyễn" />
+		<meta property="profile:username" content={site.handle} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		{!noindex && <meta property="og:url" content={canonical} />}
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="627" />
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:alt" content={ogAlt} />
+		<meta property="og:locale" content="en_US" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content={ogAlt} />
+
+		{!noindex && <script type="application/ld+json" set:html={JSON.stringify(profileLd)} />}
+
+		<!-- Apply the theme before first paint so there is no light flash in dark mode. -->
+		<script is:inline>
+			document.documentElement.classList.remove('no-js');
+			(() => {
+				let pref = 'system';
+				try { pref = localStorage.getItem('theme') || 'system'; } catch { /* storage blocked */ }
+				const dark = pref === 'dark' || (pref === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+				document.documentElement.classList.toggle('dark', dark);
+				document.documentElement.dataset.theme = pref;
+			})();
+		</script>
+
+		{/* Anonymous, random visitor id for Umami's distinct-ID reports (same localStorage key as the
+		    old site, so returning visitors keep their id). Set before the tracker loads, so the first
+		    pageview carries it too (umami.is/docs/distinct-ids). Skipped entirely under Do Not Track. */}
+		{umamiId && (
+			<script is:inline>
+				(() => {
+					if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+					try {
+						let id = localStorage.getItem('dan_visitor_id');
+						if (!id) {
+							id = crypto.randomUUID();
+							localStorage.setItem('dan_visitor_id', id);
+						}
+						window.umamiConfig = { distinctId: id };
+					} catch {
+						/* storage blocked: track without a distinct id */
+					}
+				})();
+			</script>
+		)}
+		{/* async, not defer: a deferred script would hold back the page's own module scripts until Umami downloads.
+		    data-domains: only the real site reports, never localhost or preview builds. */}
+		{umamiId && (
+			<script
+				is:inline
+				async
+				src="https://cloud.umami.is/script.js"
+				data-website-id={umamiId}
+				data-domains="dan3002.id.vn"
+				data-tag="portfolio"
+				data-do-not-track="true"
+				data-exclude-hash="true"
+				onload="window.dispatchEvent(new Event('umami:ready'))"
+			/>
+		)}
+	</head>
+	<body class="min-h-dvh">
+		<a
+			href="#main"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-ink"
+		>
+			Skip to content
+		</a>
+		<slot />
+
+		<script>
+			import { initAnalytics, onUmamiReady } from '~/lib/analytics';
+			import { hydrateYears } from '~/lib/years';
+
+			// "N years" counts are rendered at build time; correct them for today.
+			hydrateYears();
+
+			// Blur-up images: fade the real image in once it has loaded. Images that are
+			// already complete (cached) show at once; errors keep the blurred preview.
+			document.querySelectorAll<HTMLElement>('[data-smart-img]').forEach((box) => {
+				const img = box.querySelector('img');
+				if (!img) return;
+				const done = () => box.classList.add('is-loaded');
+				// A failed image keeps the blurred preview (and stops the shimmer) instead of
+				// showing a broken-image icon.
+				const failed = () => box.classList.add('is-error');
+				if (img.complete) {
+					if (img.naturalWidth > 0) {
+						img.style.transition = 'none';
+						done();
+					} else failed();
+				} else {
+					img.addEventListener('load', done, { once: true });
+					img.addEventListener('error', failed, { once: true });
+				}
+			});
+			initAnalytics();
+			// The tracker may already have loaded before this module ran.
+			if (window.umami) onUmamiReady();
+			else addEventListener('umami:ready', onUmamiReady, { once: true });
+
+			// Scroll reveal, skipped entirely when the visitor prefers less motion.
+			if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+				document.documentElement.classList.add('reveal-ready');
+				const io = new IntersectionObserver(
+					(entries) => {
+						for (const e of entries) {
+							if (e.isIntersecting) {
+								e.target.classList.add('is-visible');
+								io.unobserve(e.target);
+							}
+						}
+					},
+					{ rootMargin: '0px 0px -8% 0px' },
+				);
+				document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+			}
+		</script>
+	</body>
+</html>

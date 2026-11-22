@@ -1,0 +1,107 @@
+---
+import SmartImage from './SmartImage.astro';
+import { Icon } from 'astro-icon/components';
+import type { Project } from '~/data/projects';
+import { slots } from '~/lib/images';
+
+interface Props {
+	project: Project;
+}
+const { project: p } = Astro.props;
+const titleId = `dlg-${p.slug}-title`;
+---
+
+<dialog
+	id={`project-${p.slug}`}
+	aria-labelledby={titleId}
+	class="m-auto max-h-[92dvh] w-[min(56rem,calc(100vw-2rem))] max-w-none overflow-hidden rounded-2xl border border-line bg-surface p-0 text-ink shadow-2xl open:animate-[pop-in_0.2s_var(--ease-out-soft)]"
+	data-project-dialog
+	data-dialog
+>
+	<div class="flex max-h-[92dvh] flex-col">
+		<div class="flex items-center justify-between gap-4 border-b border-line px-5 py-3">
+			<p class="eyebrow">{p.role}</p>
+			<button type="button" class="grid size-11 shrink-0 place-items-center rounded-full hover:bg-paper" aria-label="Close" data-dialog-close>
+				<Icon name="lucide:x" class="size-5" aria-hidden="true" />
+			</button>
+		</div>
+
+		<div class="overflow-y-auto overscroll-contain">
+			{p.images.length > 0 && (
+				<div class="relative bg-paper" data-gallery>
+					<ul class="flex snap-x snap-mandatory overflow-x-auto [scrollbar-width:none]" data-gallery-track>
+						{p.images.map((img, i) => (
+							<li class="w-full shrink-0 snap-center">
+								<SmartImage
+									src={img}
+									alt={`${p.title}, screenshot ${i + 1} of ${p.images.length}`}
+									widths={[...slots.dialog.widths]}
+									sizes={slots.dialog.sizes}
+									fit="contain"
+									class="aspect-[16/9] w-full"
+								/>
+							</li>
+						))}
+					</ul>
+					{p.images.length > 1 && (
+						<div class="flex items-center justify-center gap-3 py-2">
+							<button type="button" class="grid size-11 place-items-center rounded-full hover:bg-surface" aria-label="Previous screenshot" data-gallery-prev>
+								<Icon name="lucide:chevron-left" class="size-5" aria-hidden="true" />
+							</button>
+							<p class="min-w-14 text-center font-mono text-xs text-muted" aria-live="polite" data-gallery-count>1 / {p.images.length}</p>
+							<button type="button" class="grid size-11 place-items-center rounded-full hover:bg-surface" aria-label="Next screenshot" data-gallery-next>
+								<Icon name="lucide:chevron-right" class="size-5" aria-hidden="true" />
+							</button>
+						</div>
+					)}
+				</div>
+			)}
+
+			<div class="p-6 sm:p-8">
+				<h2 id={titleId} class="text-2xl font-semibold sm:text-3xl">{p.title}</h2>
+				{p.badge && (
+					<p class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-sm font-medium text-accent">
+						<span class="size-2 rounded-full bg-accent" aria-hidden="true"></span>
+						{p.badge}
+					</p>
+				)}
+				{p.award && (
+					<p class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-gold-soft px-3 py-1 text-sm font-medium text-gold">
+						<Icon name="lucide:trophy" class="size-4" aria-hidden="true" />
+						{p.award}
+					</p>
+				)}
+				<p class="mt-4 text-lg leading-relaxed text-muted">{p.summary}</p>
+				{p.details.length > 0 && (
+					<ul class="prose-lite mt-5 space-y-2">
+						{p.details.map((d) => (
+							<li class="flex gap-2.5">
+								<Icon name="lucide:check" class="mt-1 size-4 shrink-0 text-accent" aria-hidden="true" />
+								<span set:html={d} />
+							</li>
+						))}
+					</ul>
+				)}
+				<div class="mt-6 flex flex-wrap gap-1.5">
+					{p.techs.map((t) => <span class="chip">{t}</span>)}
+				</div>
+				{(p.url || p.source) && (
+					<div class="mt-8 flex flex-wrap gap-3">
+						{p.url && (
+							<a href={p.url} target="_blank" rel="noopener" class="btn-primary" data-track="view-project-site" data-track-title={p.title}>
+								Visit {new URL(p.url).hostname.replace('www.', '')}
+								<Icon name="lucide:arrow-up-right" class="size-4" aria-hidden="true" />
+							</a>
+						)}
+						{p.source && (
+							<a href={p.source} target="_blank" rel="noopener" class={p.url ? 'btn-ghost' : 'btn-primary'} data-track="view-project-source" data-track-title={p.title}>
+								<Icon name="simple-icons:github" class="size-4" aria-hidden="true" />
+								View source
+							</a>
+						)}
+					</div>
+				)}
+			</div>
+		</div>
+	</div>
+</dialog>

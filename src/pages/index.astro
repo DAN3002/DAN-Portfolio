@@ -1,0 +1,46 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/Header.astro';
+import Hero from '~/components/Hero.astro';
+import ExperienceSection from '~/components/ExperienceSection.astro';
+import ProjectsSection from '~/components/ProjectsSection.astro';
+import AwardsSection from '~/components/AwardsSection.astro';
+import CredentialsSection from '~/components/CredentialsSection.astro';
+import ContactSection from '~/components/ContactSection.astro';
+import Footer from '~/components/Footer.astro';
+import BackToTop from '~/components/BackToTop.astro';
+---
+
+<BaseLayout>
+	<Header />
+	<main id="main">
+		<Hero />
+		<ExperienceSection />
+		<ProjectsSection />
+		<AwardsSection />
+		<CredentialsSection />
+		<ContactSection />
+	</main>
+	<Footer />
+	<BackToTop />
+</BaseLayout>
+
+<script>
+	// Old links used ?section=<id> or #<old-id>; map both onto the new anchors.
+	const legacy: Record<string, string> = {
+		about: 'top',
+		home: 'top',
+		'current-work': 'experience',
+		now: 'experience',
+		achieves: 'awards',
+		certifications: 'credentials',
+	};
+	const fromQuery = new URLSearchParams(location.search).get('section');
+	const fromHash = decodeURIComponent(location.hash.slice(1));
+	const wanted = fromQuery || (fromHash in legacy ? fromHash : '');
+	if (wanted) {
+		const id = legacy[wanted] ?? wanted;
+		if (fromHash in legacy) history.replaceState(null, '', `#${id}`);
+		document.getElementById(id)?.scrollIntoView();
+	}
+</script>

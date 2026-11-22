@@ -1,0 +1,71 @@
+---
+import SmartImage from './SmartImage.astro';
+import { Icon } from 'astro-icon/components';
+import { site, yearsInTech, careerStartISO } from '~/data/site';
+import { pluralYears } from '~/lib/years';
+import { slots } from '~/lib/images';
+import GithubActivity from './GithubActivity.astro';
+---
+
+<section id="top" class="relative overflow-hidden" aria-labelledby="hero-title">
+	<!-- Faint grid, a nod to infrastructure diagrams. Decorative only. -->
+	<div
+		class="pointer-events-none absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)] opacity-60 dark:opacity-40"
+		style="background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 48px 48px;"
+		aria-hidden="true"
+	>
+	</div>
+
+	<div class="container-page grid items-center gap-x-16 gap-y-8 pt-12 pb-16 md:pt-16 md:pb-20 lg:grid-cols-[1.5fr_1fr] lg:gap-y-6 lg:pt-8 lg:pb-16">
+		<div>
+			<h1 id="hero-title" class="text-4xl leading-[1.05] font-semibold sm:text-5xl lg:text-6xl">
+				I build the platforms <span class="text-accent">other engineers ship on.</span>
+			</h1>
+
+			<p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+				I'm <strong class="font-semibold text-ink">{site.name}</strong>, a DevOps and software engineer.
+				I've worked in tech for <span data-years-since={careerStartISO}>{pluralYears(yearsInTech())}</span>, and I'm now at Drylab,
+				building the platform for its AI research tools.
+			</p>
+
+			<div class="mt-8 flex flex-wrap items-center gap-3">
+				<a href="#projects" class="btn-primary">
+					See my work
+					<Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+				</a>
+				<a href={`mailto:${site.email}`} class="btn-ghost">
+					<Icon name="lucide:mail" class="size-4" aria-hidden="true" />
+					{site.email}
+				</a>
+			</div>
+
+			<ul class="mt-8 flex items-center gap-1" aria-label="Elsewhere">
+				{site.socials.map((s) => (
+					<li>
+						<a href={s.href} target="_blank" rel="noopener" class="grid size-11 place-items-center rounded-full text-muted transition-colors hover:bg-surface hover:text-ink" aria-label={s.label}>
+							<Icon name={s.icon} class="size-5" aria-hidden="true" />
+						</a>
+					</li>
+				))}
+			</ul>
+		</div>
+
+		{/* The photo is a transparent circle, so no card frame: it sits straight on the page. */}
+		<div class="mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-none">
+			<SmartImage
+				src={site.profile}
+				alt={`Portrait of ${site.name}`}
+				widths={[...slots.hero.widths]}
+				sizes={slots.hero.sizes}
+				loading="eager"
+				fetchpriority="high"
+				class="aspect-square w-full rounded-full drop-shadow-[0_24px_40px_rgb(15_23_40/0.25)]"
+			/>
+		</div>
+
+		{/* Full width right under the intro + portrait, so the year graph has room to read. */}
+		<div class="lg:col-span-2">
+			<GithubActivity />
+		</div>
+	</div>
+</section>

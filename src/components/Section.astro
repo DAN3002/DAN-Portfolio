@@ -1,0 +1,16 @@
+---
+interface Props {
+	id: string;
+	/** The section's plain name, e.g. "Experience". */
+	title: string;
+	class?: string;
+}
+const { id, title, class: className = '' } = Astro.props;
+---
+
+<section id={id} class:list={['py-10 md:py-14', className]} aria-labelledby={`${id}-title`}>
+	<div class="container-page">
+		<h2 id={`${id}-title`} class="mb-8 text-3xl font-semibold sm:text-4xl md:mb-10" data-reveal>{title}</h2>
+		<slot />
+	</div>
+</section>

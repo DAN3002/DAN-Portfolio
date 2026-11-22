@@ -1,0 +1,170 @@
+---
+import { Icon } from 'astro-icon/components';
+import { nav, site } from '~/data/site';
+---
+
+<header
+	class="sticky top-0 z-40 border-b border-transparent bg-paper/80 backdrop-blur-md transition-colors data-[scrolled]:border-line"
+	data-header
+>
+	<div class="container-page flex h-16 items-center justify-between gap-4">
+		<a href="#top" class="group flex min-h-11 items-center gap-2.5 font-display text-lg font-semibold" aria-label={`${site.name}, back to top`}>
+			<span class="grid size-8 place-items-center rounded-lg bg-ink font-mono text-xs font-medium text-paper transition-transform group-hover:-rotate-6" aria-hidden="true">
+				DA
+			</span>
+			<span class="hidden sm:inline">Đình Anh</span>
+		</a>
+
+		<nav aria-label="Main" class="hidden lg:block">
+			<ul class="flex items-center gap-1 text-sm">
+				{nav.map((item) => (
+					<li>
+						<a
+							href={`#${item.id}`}
+							class="rounded-full px-3 py-2 text-muted transition-colors hover:text-ink aria-[current=true]:bg-surface aria-[current=true]:text-ink aria-[current=true]:shadow-sm"
+							data-nav-link={item.id}
+							data-track="nav"
+							data-track-section={item.id}
+						>
+							{item.label}
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+
+		<div class="flex items-center gap-2">
+			<button
+				type="button"
+				class="grid size-11 place-items-center rounded-full text-muted transition-colors hover:bg-surface hover:text-ink"
+				data-theme-toggle
+				aria-label="Dark theme"
+				aria-pressed="false"
+			>
+				<Icon name="lucide:sun" class="size-5 dark:hidden" aria-hidden="true" />
+				<Icon name="lucide:moon" class="hidden size-5 dark:block" aria-hidden="true" />
+			</button>
+			<a href={site.resume} class="btn-primary hidden sm:inline-flex" data-track="download-resume" target="_blank" rel="noopener">
+				<Icon name="lucide:download" class="size-4" aria-hidden="true" />
+				Resume
+			</a>
+			<button
+				type="button"
+				class="grid size-11 place-items-center rounded-full text-ink hover:bg-surface lg:hidden"
+				aria-controls="mobile-nav"
+				aria-expanded="false"
+				aria-label="Open menu"
+				data-menu-open
+			>
+				<Icon name="lucide:menu" class="size-5" aria-hidden="true" />
+			</button>
+		</div>
+	</div>
+</header>
+
+<!-- Native <dialog>: focus trap, Escape to close and inert background come for free. -->
+<dialog
+	id="mobile-nav"
+	class="m-0 ml-auto h-dvh max-h-none w-[min(20rem,85vw)] max-w-none flex-col bg-surface p-0 text-ink shadow-2xl open:flex open:animate-[slide-in_0.25s_var(--ease-out-soft)]"
+	aria-label="Menu"
+	data-menu
+>
+	<div class="flex h-16 items-center justify-between border-b border-line px-5">
+		<span class="eyebrow">Menu</span>
+		<button type="button" class="grid size-11 place-items-center rounded-full hover:bg-paper" aria-label="Close menu" data-menu-close>
+			<Icon name="lucide:x" class="size-5" aria-hidden="true" />
+		</button>
+	</div>
+	<nav aria-label="Mobile" class="mt-auto">
+		<ul class="flex flex-col p-3">
+			{nav.map((item) => (
+				<li>
+					<a
+						href={`#${item.id}`}
+						class="flex min-h-12 items-center rounded-xl px-3 font-display text-xl hover:bg-paper"
+						data-track="nav"
+						data-track-section={item.id}
+						data-menu-link
+					>
+						{item.label}
+					</a>
+				</li>
+			))}
+		</ul>
+	</nav>
+	<div class="border-t border-line p-5">
+		<a href={site.resume} class="btn-primary w-full" data-track="download-resume" target="_blank" rel="noopener">
+			<Icon name="lucide:download" class="size-4" aria-hidden="true" />
+			Download resume
+		</a>
+	</div>
+</dialog>
+
+<style is:global>
+	@keyframes slide-in {
+		from { transform: translateX(100%); }
+		to { transform: none; }
+	}
+</style>
+
+<script>
+	import { track, Events } from '~/lib/analytics';
+
+	// Border appears once the page scrolls, so the header doesn't look boxed-in at the top.
+	const header = document.querySelector<HTMLElement>('[data-header]');
+	const onScroll = () => header?.toggleAttribute('data-scrolled', scrollY > 8);
+	addEventListener('scroll', onScroll, { passive: true });
+	onScroll();
+
+	// Theme: light <-> dark, remembered. First visit follows the OS setting.
+	// A toggle button named "Dark theme": aria-pressed says whether it is on.
+	const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+	const syncToggle = () => toggle?.setAttribute('aria-pressed', String(document.documentElement.classList.contains('dark')));
+	syncToggle();
+	toggle?.addEventListener('click', () => {
+		const dark = !document.documentElement.classList.contains('dark');
+		document.documentElement.classList.toggle('dark', dark);
+		syncToggle();
+		const theme = dark ? 'dark' : 'light';
+		try {
+			localStorage.setItem('theme', theme);
+		} catch {
+			/* storage blocked: the choice lasts for this page only */
+		}
+		track(Events.THEME_TOGGLE, { theme });
+	});
+
+	// Mobile menu.
+	const menu = document.querySelector<HTMLDialogElement>('[data-menu]');
+	const opener = document.querySelector<HTMLButtonElement>('[data-menu-open]');
+	opener?.addEventListener('click', () => {
+		menu?.showModal();
+		opener.setAttribute('aria-expanded', 'true');
+		track(Events.OPEN_MENU);
+	});
+	menu?.addEventListener('close', () => opener?.setAttribute('aria-expanded', 'false'));
+	menu?.querySelector('[data-menu-close]')?.addEventListener('click', () => menu.close());
+	menu?.addEventListener('click', (e) => {
+		if (e.target === menu) menu.close(); // click on backdrop
+	});
+	menu?.querySelectorAll('[data-menu-link]').forEach((a) => a.addEventListener('click', () => menu.close()));
+	// Close the drawer if the window grows past the mobile breakpoint.
+	matchMedia('(min-width: 64rem)').addEventListener('change', (e) => e.matches && menu?.close());
+
+	// Scrollspy: mark the nav link of the section currently in view.
+	const links = new Map<string, HTMLElement>();
+	document.querySelectorAll<HTMLElement>('[data-nav-link]').forEach((a) => links.set(a.dataset.navLink!, a));
+	const spy = new IntersectionObserver(
+		(entries) => {
+			for (const e of entries) {
+				if (!e.isIntersecting) continue;
+				links.forEach((a, id) => a.setAttribute('aria-current', String(id === e.target.id)));
+			}
+		},
+		{ rootMargin: '-45% 0px -50% 0px' },
+	);
+	links.forEach((_, id) => {
+		const s = document.getElementById(id);
+		if (s) spy.observe(s);
+	});
+</script>

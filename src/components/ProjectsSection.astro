@@ -1,0 +1,204 @@
+---
+import SmartImage from './SmartImage.astro';
+import { Icon } from 'astro-icon/components';
+import Section from './Section.astro';
+import ProjectDialog from './ProjectDialog.astro';
+import Pagination from './Pagination.astro';
+import { projects, projectTags } from '~/data/projects';
+import { slots } from '~/lib/images';
+
+const featured = projects.filter((p) => p.featured);
+const rest = projects.filter((p) => !p.featured);
+const tagCounts = Object.fromEntries(projectTags.map((t) => [t, rest.filter((p) => p.tags.includes(t)).length]));
+---
+
+<Section id="projects" title="Projects">
+	<!-- Featured: current work (Drylab) + the VPBank Hackathon champion, two equal cards. -->
+	<ul class="grid gap-6 sm:grid-cols-2">
+		{featured.map((p) => (
+			<li class="group card relative flex flex-col overflow-hidden transition-shadow hover:shadow-xl has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent" data-reveal>
+				<div class="overflow-hidden border-b border-line bg-paper">
+					<SmartImage
+						src={p.images[0]!}
+						alt=""
+						widths={[...slots.featured.widths]}
+						sizes={slots.featured.sizes}
+						position="top"
+						class="aspect-[16/9] w-full transition-transform duration-500 group-hover:scale-[1.02]"
+					/>
+				</div>
+				<div class="flex flex-1 flex-col p-5 sm:p-6">
+					{p.badge && (
+						<p class="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-medium text-accent">
+							<span class="size-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+							{p.badge}
+						</p>
+					)}
+					{p.award && (
+						<p class="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-gold-soft px-2.5 py-0.5 text-xs font-medium text-gold">
+							<Icon name="lucide:trophy" class="size-3.5" aria-hidden="true" />
+							{p.award}
+						</p>
+					)}
+					<h3 class="font-display text-xl font-semibold">
+						{/* The whole card is clickable through this button's ::after overlay. */}
+						<button
+							type="button"
+							class="text-left after:absolute after:inset-0 after:z-[2] after:content-[''] focus-visible:outline-none group-has-[:focus-visible]:underline"
+							data-open-project={p.slug}
+							data-open-dialog={`project-${p.slug}`}
+							data-track="open-project"
+							data-track-title={p.title}
+							data-track-tags={p.tags.join(',')}
+							data-track-source="featured"
+							aria-haspopup="dialog"
+						>
+							{p.title}
+						</button>
+					</h3>
+					<p class="mt-2 text-base leading-relaxed text-muted">{p.summary}</p>
+					<div class="mt-auto flex flex-wrap gap-1.5 pt-4">
+						{p.techs.slice(0, 4).map((t) => <span class="chip">{t}</span>)}
+					</div>
+				</div>
+			</li>
+		))}
+	</ul>
+
+	<!-- Everything else, filterable. Works without JS (all shown). -->
+	<div class="mt-16">
+		<div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+			<h3 class="font-display text-xl font-semibold">More projects</h3>
+			<div class="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0" role="group" aria-label="Filter projects">
+				<button type="button" class="filter-btn" aria-pressed="true" data-filter="all" data-track="filter-tag" data-track-tag="all">All <span class="text-muted">{rest.length}</span></button>
+				{projectTags.filter((t) => tagCounts[t]).map((t) => (
+					<button type="button" class="filter-btn" aria-pressed="false" data-filter={t} data-track="filter-tag" data-track-tag={t}>
+						{t} <span class="text-muted">{tagCounts[t]}</span>
+					</button>
+				))}
+			</div>
+		</div>
+
+		<ul class="scroll-mt-24 cards-row [--gap:1rem] sm:[--cols:2] lg:[--cols:3]" data-project-grid data-paginate="projects" data-page-size="6">
+			{rest.map((p) => (
+				<li class="group card relative flex flex-col p-5 transition-colors hover:border-ink has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent" data-tags={p.tags.join(' ')}>
+					<div class="mb-3 flex items-center justify-between gap-2">
+						<span class="eyebrow">{p.tags.join(' · ')}</span>
+						{p.source && <Icon name="simple-icons:github" class="size-4 text-muted" role="img" aria-label="Has source code" />}
+					</div>
+					<h4 class="font-display text-lg font-semibold">
+						<button
+							type="button"
+							class="text-left after:absolute after:inset-0 after:z-[2] after:content-[''] focus-visible:outline-none group-has-[:focus-visible]:underline"
+							data-open-project={p.slug}
+							data-open-dialog={`project-${p.slug}`}
+							data-track="open-project"
+							data-track-title={p.title}
+							data-track-tags={p.tags.join(',')}
+							data-track-source="list"
+							aria-haspopup="dialog"
+						>
+							{p.title}
+						</button>
+					</h4>
+					<p class="mt-2 line-clamp-3 text-base leading-relaxed text-muted">{p.summary}</p>
+					{p.award && (
+						<p class="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-gold">
+							<Icon name="lucide:trophy" class="size-3.5" aria-hidden="true" />
+							{p.award}
+						</p>
+					)}
+					<div class="mt-auto flex items-center gap-1 pt-4 text-sm font-medium text-accent">
+						Details
+						<Icon name="lucide:arrow-right" class="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+					</div>
+				</li>
+			))}
+		</ul>
+		<Pagination for="projects" noun="projects" label="Projects pages" />
+		<p class="mt-6 text-center text-muted" hidden data-filter-empty>No projects with that tag yet.</p>
+		<p class="sr-only" role="status" aria-live="polite" data-filter-status></p>
+	</div>
+
+	{projects.map((p) => <ProjectDialog project={p} />)}
+</Section>
+
+<style>
+	@reference '../styles/global.css';
+	.filter-btn {
+		@apply inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border border-line-strong bg-surface px-4 text-sm font-medium transition-colors hover:border-ink;
+	}
+	.filter-btn[aria-pressed='true'] {
+		@apply border-ink bg-ink text-paper;
+	}
+	.filter-btn[aria-pressed='true'] span {
+		@apply text-paper/70;
+	}
+</style>
+
+<style is:global>
+	@keyframes pop-in {
+		from { opacity: 0; transform: translateY(8px) scale(0.98); }
+		to { opacity: 1; transform: none; }
+	}
+</style>
+
+<script>
+	import { initPagination, getPager } from '~/lib/paginate';
+	import { initDialogs } from '~/lib/dialogs';
+	import { track as trackEvent, Events } from '~/lib/analytics';
+
+	initPagination();
+
+	// Filter.
+	const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+	const cards = document.querySelectorAll<HTMLElement>('[data-project-grid] > li');
+	const empty = document.querySelector<HTMLElement>('[data-filter-empty]');
+	const status = document.querySelector<HTMLElement>('[data-filter-status]');
+	buttons.forEach((btn) =>
+		btn.addEventListener('click', () => {
+			const tag = btn.dataset.filter!;
+			buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+			let shown = 0;
+			cards.forEach((c) => {
+				const match = tag === 'all' || c.dataset.tags!.split(' ').includes(tag);
+				// The pager owns `hidden`; the filter only marks what is in the pool.
+				c.toggleAttribute('data-filtered-out', !match);
+				if (match) shown += 1;
+			});
+			getPager('projects')?.refresh();
+			if (empty) empty.hidden = shown > 0;
+			if (status) status.textContent = `Showing ${shown} ${shown === 1 ? 'project' : 'projects'}${tag === 'all' ? '' : ` tagged ${tag}`}`;
+		}),
+	);
+
+	// Open/close/focus-return is shared with the award popups (lib/dialogs.ts).
+	initDialogs();
+	document.querySelectorAll<HTMLDialogElement>('[data-project-dialog]').forEach((dlg) => {
+		// Gallery: scroll-snap track, buttons and arrow keys move one slide.
+		const track = dlg.querySelector<HTMLElement>('[data-gallery-track]');
+		const count = dlg.querySelector<HTMLElement>('[data-gallery-count]');
+		if (!track) return;
+		const total = track.children.length;
+		const index = () => Math.round(track.scrollLeft / track.clientWidth);
+		const go = (i: number) => track.scrollTo({ left: ((i + total) % total) * track.clientWidth, behavior: 'smooth' });
+		const project = dlg.id.replace(/^project-/, '');
+		dlg.querySelector('[data-gallery-prev]')?.addEventListener('click', () => {
+			go(index() - 1);
+			trackEvent(Events.GALLERY_NAV, { project, dir: 'prev' });
+		});
+		dlg.querySelector('[data-gallery-next]')?.addEventListener('click', () => {
+			go(index() + 1);
+			trackEvent(Events.GALLERY_NAV, { project, dir: 'next' });
+		});
+		track.addEventListener('scroll', () => {
+			if (count) count.textContent = `${index() + 1} / ${total}`;
+		}, { passive: true });
+		dlg.addEventListener('keydown', (e) => {
+			if (total < 2) return;
+			if (e.key === 'ArrowRight') go(index() + 1);
+			if (e.key === 'ArrowLeft') go(index() - 1);
+		});
+		dlg.addEventListener('close', () => track.scrollTo({ left: 0 }));
+	});
+</script>

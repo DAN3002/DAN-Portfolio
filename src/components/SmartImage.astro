@@ -1,0 +1,112 @@
+---
+// <Picture> with a blur-up placeholder and a fade-in, used for every content image.
+//
+// While loading: the image area shows a tiny blurred version of the same picture
+// (inlined, so it paints with the page) plus a soft shimmer. When the real image
+// has loaded, it fades in over it. Cached images skip the fade (they are already
+// complete when the script runs), and reduced-motion visitors get no animation.
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { placeholder } from '~/lib/placeholder';
+import { pictureFormats, fallbackFormat } from '~/lib/images';
+
+interface Props {
+	src: ImageMetadata;
+	alt: string;
+	widths: number[];
+	sizes: string;
+	/** Classes for the visible box (size, aspect ratio, rounding, shadow). */
+	class?: string;
+	/** How the image fills the box. Applied to the <img> itself: object-fit does not
+	    inherit through the <picture> element, so it can't live on the wrapper. */
+	fit?: 'cover' | 'contain';
+	/** object-position, e.g. 'top' for UI screenshots. */
+	position?: string;
+	loading?: 'lazy' | 'eager';
+	fetchpriority?: 'high' | 'low' | 'auto';
+}
+
+const { src, alt, widths, sizes, class: className = '', fit = 'cover', position = 'center', loading = 'lazy', fetchpriority } = Astro.props;
+const ph = await placeholder(src);
+---
+
+<span
+	class:list={['smart-img relative block overflow-hidden', className]}
+	style={`background-color:${ph.color};${ph.src ? `background-image:url(${ph.src});` : ''}`}
+	data-smart-img
+>
+	<Picture
+		src={src}
+		alt={alt}
+		formats={[...pictureFormats]}
+		fallbackFormat={fallbackFormat}
+		widths={widths}
+		sizes={sizes}
+		loading={loading}
+		fetchpriority={fetchpriority}
+		decoding="async"
+		class="smart-img__img size-full"
+		style={`object-fit:${fit};object-position:${position}`}
+	/>
+</span>
+
+<style is:global>
+	.smart-img {
+		background-size: cover;
+		background-position: center;
+	}
+	/* Blur the 16px preview without blurring the real image above it. */
+	.smart-img::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: inherit;
+		filter: blur(14px);
+		transform: scale(1.15);
+		border-radius: inherit;
+	}
+	/* Round boxes (the hero portrait): clip the preview to the circle. */
+	.smart-img.rounded-full {
+		isolation: isolate;
+	}
+	/* Soft sweep so a slow load reads as "loading", not "broken". */
+	.smart-img::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(100deg, transparent 30%, rgb(255 255 255 / 0.22) 50%, transparent 70%);
+		background-size: 220% 100%;
+		animation: smart-img-sweep 1.4s ease-in-out infinite;
+	}
+	.smart-img picture {
+		position: relative;
+		z-index: 1;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.smart-img__img {
+		opacity: 0;
+		transition: opacity 0.45s var(--ease-out-soft);
+	}
+	.smart-img.is-loaded .smart-img__img {
+		opacity: 1;
+	}
+	.smart-img.is-loaded::after,
+	.smart-img.is-error::after {
+		animation: none;
+		opacity: 0;
+	}
+	/* No JS: never hide the real image. */
+	.no-js .smart-img__img {
+		opacity: 1;
+	}
+	@keyframes smart-img-sweep {
+		from { background-position: 120% 0; }
+		to { background-position: -120% 0; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.smart-img::after { animation: none; display: none; }
+		.smart-img__img { transition: none; }
+	}
+</style>

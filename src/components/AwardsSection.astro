@@ -1,0 +1,79 @@
+---
+import SmartImage from './SmartImage.astro';
+import { Icon } from 'astro-icon/components';
+import Section from './Section.astro';
+import Pagination from './Pagination.astro';
+import AwardDialog from './AwardDialog.astro';
+import { awards } from '~/data/credentials';
+import { slots } from '~/lib/images';
+---
+
+<Section id="awards" title="Awards">
+	<ul class="scroll-mt-24 cards-row [--gap:1.5rem] md:[--cols:3]" data-paginate="awards" data-page-size="3">
+		{awards.map((a) => (
+			<li class="group card relative flex flex-col overflow-hidden transition-shadow hover:shadow-xl has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent" data-reveal>
+				<SmartImage
+					src={a.image}
+					alt={`${a.name}, team photo`}
+					widths={[...slots.card.widths]}
+					sizes={slots.card.sizes}
+					position="50% 30%"
+					class="aspect-[16/10] w-full transition-transform duration-500 group-hover:scale-[1.02]"
+				/>
+				<div class="flex flex-1 flex-col p-5">
+					<div class="mb-2 flex items-center justify-between gap-3">
+						<span
+							class:list={[
+								'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium',
+								a.prize === 'Champion' ? 'bg-gold-soft text-gold' : 'bg-accent-soft text-accent',
+							]}
+						>
+							<Icon name={a.prize === 'Champion' ? 'lucide:trophy' : 'lucide:medal'} class="size-3.5" aria-hidden="true" />
+							{a.prize}
+						</span>
+						<time class="font-mono text-xs text-muted">{a.date}</time>
+					</div>
+					<h3 class="font-display text-lg font-semibold">
+						{/* The whole card opens the details popup via this button's ::after overlay. */}
+						<button
+							type="button"
+							class="text-left after:absolute after:inset-0 after:z-[2] after:content-[''] focus-visible:outline-none group-has-[:focus-visible]:underline"
+							data-open-dialog={`award-${a.slug}`}
+							data-track="open-achieve"
+							data-track-name={a.name}
+							aria-haspopup="dialog"
+						>
+							{a.name}
+						</button>
+					</h3>
+					<p class="mt-2 text-base leading-relaxed text-muted">{a.text}</p>
+					{a.press.length > 0 && (
+						<ul class="relative z-[3] space-y-1 pt-4">
+							{a.press.map((l) => (
+								<li>
+									<a href={l.url} target="_blank" rel="noopener" lang="vi" class="inline-flex items-start gap-1.5 text-sm text-accent hover:underline" data-track="view-achieve-link" data-track-name={a.name}>
+										<Icon name="lucide:external-link" class="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
+										{l.text}
+									</a>
+								</li>
+							))}
+						</ul>
+					)}
+					<p class="mt-auto flex items-center gap-1 pt-4 text-sm font-medium text-accent" aria-hidden="true">
+						Details
+						<Icon name="lucide:arrow-right" class="size-4 transition-transform group-hover:translate-x-0.5" />
+					</p>
+				</div>
+			</li>
+		))}
+	</ul>
+	<Pagination for="awards" noun="awards" label="Awards pages" />
+
+	{awards.map((a) => <AwardDialog award={a} />)}
+</Section>
+
+<script>
+	import { initDialogs } from '~/lib/dialogs';
+
+	initDialogs();
+</script>

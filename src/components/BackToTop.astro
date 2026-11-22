@@ -1,0 +1,35 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+{/* Appears after one screen of scrolling on small screens, where the page is long
+    and the sticky header has no section links. Desktop has the full nav instead. */}
+<a
+	href="#top"
+	class="fixed right-4 bottom-4 z-30 grid size-12 place-items-center rounded-full border border-line bg-surface text-ink shadow-lg transition-[opacity,transform] duration-200 lg:hidden"
+	aria-label="Back to top"
+	data-back-to-top
+	data-track="nav"
+	data-track-section="top"
+	hidden
+>
+	<Icon name="lucide:arrow-up-right" class="size-5 -rotate-45" aria-hidden="true" />
+</a>
+
+<script>
+	const btn = document.querySelector<HTMLElement>('[data-back-to-top]');
+	if (btn) {
+		let ticking = false;
+		const update = () => {
+			ticking = false;
+			btn.hidden = scrollY < innerHeight;
+		};
+		addEventListener('scroll', () => {
+			if (!ticking) {
+				ticking = true;
+				requestAnimationFrame(update);
+			}
+		}, { passive: true });
+		update();
+	}
+</script>

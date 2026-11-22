@@ -1,0 +1,33 @@
+# Nguyễn Đình Anh (Nguyen Dinh Anh, DAN3002)
+
+> DevOps and software engineer in Hà Nội, Việt Nam. Member of Technical Staff at Drylab (https://thedrylab.com/), building the platform behind its AI system for biomedical research. Previously DevOps Engineer and Senior Specialist at VPBank, and an AWS Authorized Instructor.
+
+- Site: https://dan3002.id.vn/
+- Resume (PDF): https://dan3002.id.vn/nguyen-dinh-anh-resume.pdf
+- GitHub: https://github.com/DAN3002
+- LinkedIn: https://www.linkedin.com/in/dan3002/
+- Email: dan3002.work@gmail.com
+
+## Experience
+
+- Drylab, Member of Technical Staff (Oct 2025 - present): AI-automated bioinformatics platform, from data search and analysis to model training.
+- VPBank, DevOps Engineer / Senior Specialist (Aug 2024 - Sep 2025): microservices and cloud alignment of the ESB, GitOps monitoring, IBM MQ, CI/CD.
+- OpenCommerce Group, Full-Stack Developer (Mar 2024 - Jul 2024): payments in Go and Vue (Stripe, PayPal).
+- FUNiX, Full-Stack Developer and Program Development Officer (Aug 2021 - Feb 2024): Mentoring System, LMS, xSeries courses.
+- FPT Software and FUNiX IT, Backend Developer (2019 - 2021).
+
+## Education
+
+- FPT University, B.Sc. Software Engineering (2022 - 2023), graduated at 20 on a full scholarship.
+- FUNiX University, Software Engineering (2018 - 2021).
+
+## Awards
+
+- VPBank Hackathon 2024: Champion (architecture design generator).
+- FUNiX ChatGPT Hackathon 2023: Champion (FinAInce Assistant).
+- Hack CX Together 2025 and NRC x FPT Hackathon 2024: Runner-up.
+- FPT Edu ResFes 2023, FPT Edu Hackathon 2021 and FPT Edu Hackathon 2019: Third prize.
+
+## Skills
+
+AWS, Kubernetes, Docker, GitOps / Argo CD, Grafana stack, IBM MQ, TypeScript, Python, Go, Bash, SQL, React, Next.js, Node.js, Django.

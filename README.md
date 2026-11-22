@@ -30,7 +30,6 @@ pnpm dev               # http://localhost:4321
 | `pnpm build` | Type-check, then build to `dist/` |
 | `pnpm preview` | Serve the built `dist/` |
 | `pnpm lint` | ESLint |
-| `pnpm run publish:gh` | Lint, build, push `dist/` to the `gh-pages` branch |
 
 ## Editing content
 
@@ -53,12 +52,12 @@ A missing image path fails the build, so a typo never ships.
 GitHub stats need no key. They're kept fresh in three layers:
 
 1. **Build:** `src/lib/github-build.ts` fetches from public endpoints (the contributions API by jogruber, plus GitHub's REST and search APIs). Any field that fails, such as a rate-limited CI runner, falls back to the committed `src/data/github-snapshot.json`. A fully successful fetch rewrites that file.
-2. **Daily rebuild:** `.github/workflows/deploy.yml` redeploys every day, so the HTML is never more than ~24 hours old.
+2. **Rebuild:** every push to `main` redeploys on Cloudflare Pages. A scheduled deploy hook can refresh it daily.
 3. **Browser:** `src/lib/github-live.ts` refreshes when the browser is idle. It caches in `localStorage` for about 6 hours, waits 30 minutes before retrying after a failure, and validates everything it reads.
 
 ## Deployment
 
-GitHub Pages serves the `gh-pages` branch behind Cloudflare. The `Deploy` workflow publishes on every push to `main` and once a day; set the `PUBLIC_*` values as repository variables. To publish by hand, run `pnpm run publish:gh`. Plain `pnpm deploy` is pnpm's own command, not this script.
+Cloudflare Pages (project `dan-portfolio`) builds every push: `main` goes to production at dan3002.id.vn, other branches get a preview URL. Its build settings are: command `pnpm build`, output `dist`, and Node from `.node-version`. The `PUBLIC_*` values are set as Pages environment variables.
 
 ## License
 

@@ -100,7 +100,7 @@ function render(root: HTMLElement, s: GithubStats) {
 		const cells = toCells(s.lastYear);
 		const weeks = Math.ceil(cells.length / 7);
 		const cols = `repeat(${weeks}, minmax(0, 1fr))`;
-		wrap.style.setProperty('--weeks', String(weeks));
+		for (const el of [wrap.closest<HTMLElement>('.gh-col'), wrap.closest<HTMLElement>('.gh-col')?.parentElement]) el?.style.setProperty('--weeks', String(weeks));
 		graph.style.gridTemplateColumns = cols;
 		months.style.gridTemplateColumns = cols;
 		graph.setAttribute('aria-label', describeCalendar(s.lastYear));

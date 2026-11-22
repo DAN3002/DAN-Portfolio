@@ -23,17 +23,17 @@ const cols = `grid-template-columns: repeat(${weeks}, minmax(0, 1fr));`;
 const snapshot = gh ? JSON.stringify(gh) : 'null';
 ---
 
-<section class="card p-4 sm:p-5" aria-labelledby="gh-title" data-gh-card data-gh-snapshot={snapshot}>
-	<div class="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+<section class="card px-4 pt-1 pb-4 sm:px-5 sm:pt-2 sm:pb-5" aria-labelledby="gh-title" data-gh-card data-gh-snapshot={snapshot}>
+	<div class="mb-3 flex min-h-11 flex-wrap items-center justify-between gap-x-4 gap-y-1">
 		<h2 id="gh-title" class="eyebrow">GitHub activity</h2>
-		<a href={profile} target="_blank" rel="noopener" class="-my-2 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium hover:text-accent">
+		<a href={profile} target="_blank" rel="noopener" class="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium hover:text-accent">
 			<Icon name="simple-icons:github" class="size-4" aria-hidden="true" />
 			@{GITHUB_USER}
 			<Icon name="lucide:arrow-up-right" class="size-3.5 text-muted" aria-hidden="true" />
 		</a>
 	</div>
 
-	<div class="grid gap-5 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:items-center lg:gap-8">
+	<div class="grid gap-5 lg:grid-cols-[minmax(0,15rem)_minmax(0,calc(var(--weeks)*16px))] lg:items-stretch lg:justify-center lg:gap-8" style={`--weeks: ${weeks};`}>
 		<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line sm:grid-cols-4 lg:grid-cols-2">
 			{stats.map((s) => (
 				<div class="bg-surface px-3.5 py-3">
@@ -46,9 +46,9 @@ const snapshot = gh ? JSON.stringify(gh) : 'null';
 			))}
 		</dl>
 
-		<figure class="min-w-0">
+		<figure class="gh-col flex min-w-0 flex-col justify-between gap-3" style={`--weeks: ${weeks};`}>
 			{/* Always rendered, so a live refresh can fill it even if the build fetch failed. */}
-			<div class="gh-wrap overflow-hidden" style={`--weeks: ${weeks};`} hidden={!cal} data-gh-wrap>
+			<div class="gh-wrap overflow-hidden" hidden={!cal} data-gh-wrap>
 				<div class="gh-scale">
 					<div class="mb-1 grid text-[11px] leading-none text-muted" style={cols} aria-hidden="true" data-gh-months>
 						{months.map((m) => <span class="whitespace-nowrap">{m}</span>)}
@@ -61,11 +61,10 @@ const snapshot = gh ? JSON.stringify(gh) : 'null';
 			<p class="grid h-[7.5rem] place-items-center rounded-lg border border-dashed border-line text-sm text-muted" hidden={!!cal} data-gh-empty>
 				The contribution graph couldn't load. See it on GitHub.
 			</p>
-			<figcaption class="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-xs text-muted">
+			<figcaption class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-xs text-muted">
 				<span>
 					<span class="font-medium text-ink tabular-nums" data-gh-year-total>{cal?.total.toLocaleString('en') ?? '—'}</span> contributions in the last year<span class="sm:hidden"> (latest 6 months shown)</span>
-					<span aria-hidden="true">·</span>
-					updated <time datetime={gh?.fetchedAt} data-gh-fetched>at build</time>
+					<span aria-hidden="true">&nbsp;·&nbsp;</span>updated <time datetime={gh?.fetchedAt} data-gh-fetched>at build</time>
 				</span>
 				<span class="flex items-center gap-1" aria-hidden="true">
 					Less
@@ -79,16 +78,21 @@ const snapshot = gh ? JSON.stringify(gh) : 'null';
 
 <style is:global>
 	/* Global: cells and labels are also created by the live refresh script. */
-	.gh-scale {
-		/* At most 13px cells + 3px gaps, so the year never stretches past ~850px. */
+	/* The graph column fills the space beside the stats; cells grow to fit, capped at
+	   13px + 3px gap so a very wide card doesn't make giant squares. Months, graph and
+	   caption share this width, so their left and right edges line up. */
+	.gh-col > * {
+		width: 100%;
 		max-width: calc(var(--weeks) * 16px);
-		margin-inline-start: auto;
+		margin-inline: auto;
 	}
 	@media (max-width: 39.99rem) {
 		/* Phones: newest 26 weeks at a readable size instead of 53 tiny ones. */
+		.gh-col > * {
+			max-width: none;
+		}
 		.gh-scale {
 			width: calc(var(--weeks) / 26 * 100%);
-			max-width: none;
 			margin-inline-start: calc((26 - var(--weeks)) / 26 * 100%);
 		}
 	}

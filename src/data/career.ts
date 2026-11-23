@@ -100,7 +100,7 @@ export const activities: TimelineEntry[] = [
 		org: 'AWS Academy',
 		role: 'AWS Authorized Instructor',
 		start: 'Sep 2022',
-		end: 'Present',
+		end: 'Dec 2024',
 		url: 'https://aws.amazon.com/training/awsacademy/',
 		points: [
 			'Lecturer for the AWS Academy Cloud Training Bootcamp in Vietnam, run by FUNiX and AWS Academy.',

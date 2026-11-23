@@ -24,13 +24,16 @@ const isCurrent = (item: TimelineEntry) => item.end === 'Present';
 				]}
 				aria-hidden="true"
 			></span>
-			<p class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-muted">
-				<span><time>{item.start}</time> – <time class:list={[isCurrent(item) && 'font-medium text-accent']}>{item.end}</time></span>
-				{isCurrent(item) && (
+			<p class="flex flex-wrap items-center gap-x-1.5 gap-y-1 font-mono text-xs text-muted">
+				<time>{item.start}</time> –
+				{/* An ongoing role shows "Present" as the badge itself (no separate pill). */}
+				{isCurrent(item) ? (
 					<span class="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 font-sans text-xs font-medium text-accent">
 						<span class="size-1.5 rounded-full bg-accent" aria-hidden="true"></span>
-						Current
+						<time>{item.end}</time>
 					</span>
+				) : (
+					<time>{item.end}</time>
 				)}
 			</p>
 			<h3 class="mt-1 font-display text-xl font-semibold">

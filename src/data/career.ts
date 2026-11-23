@@ -118,7 +118,7 @@ export const activities: TimelineEntry[] = [
 		org: 'JS Club',
 		role: 'Academic department',
 		start: 'May 2022',
-		end: 'Present',
+		end: 'Aug 2022',
 		points: ['University club running coding classes, academic events and tech talks.'],
 	},
 	{

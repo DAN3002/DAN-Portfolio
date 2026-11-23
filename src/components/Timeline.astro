@@ -9,21 +9,29 @@ interface Props {
 const { items, visible = items.length } = Astro.props;
 const shown = items.slice(0, visible);
 const hidden = items.slice(visible);
+/** Ongoing roles get the accent dot (with a soft ring) and a "Current" pill. */
+const isCurrent = (item: TimelineEntry) => item.end === 'Present';
 ---
 
 {/* Real sequence, so an ordered list is the honest structure. */}
 <ol class="relative border-l border-line">
-	{shown.map((item, i) => (
+	{shown.map((item) => (
 		<li class="relative pb-10 pl-8 last:pb-0" data-reveal>
 			<span
 				class:list={[
 					'absolute top-1.5 -left-[7px] size-3.5 rounded-full border-2 border-paper',
-					i === 0 && item.end === 'Present' ? 'bg-accent' : 'bg-line',
+					isCurrent(item) ? 'bg-accent ring-4 ring-accent-soft' : 'bg-line',
 				]}
 				aria-hidden="true"
 			></span>
-			<p class="font-mono text-xs text-muted">
-				<time>{item.start}</time> – <time>{item.end}</time>
+			<p class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-muted">
+				<span><time>{item.start}</time> – <time class:list={[isCurrent(item) && 'font-medium text-accent']}>{item.end}</time></span>
+				{isCurrent(item) && (
+					<span class="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 font-sans text-xs font-medium text-accent">
+						<span class="size-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+						Current
+					</span>
+				)}
 			</p>
 			<h3 class="mt-1 font-display text-xl font-semibold">
 				{item.url ? <a href={item.url} target="_blank" rel="noopener" class="hover:text-accent">{item.org}</a> : item.org}

@@ -111,7 +111,7 @@ export const activities: TimelineEntry[] = [
 		org: 'FUNiX',
 		role: 'Program mentor',
 		start: 'Oct 2021',
-		end: 'Present',
+		end: 'Dec 2025',
 		points: ['Answer students\' technical and soft-skill questions and run competency exams.'],
 	},
 	{

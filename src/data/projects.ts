@@ -18,8 +18,6 @@ export interface Project {
 	source?: string;
 	/** Live product or site, shown as "Visit" in the dialog. */
 	url?: string;
-	/** Non-award badge, e.g. "Current work" (shown in accent, not gold). */
-	badge?: string;
 	images: ImageMetadata[];
 	featured?: boolean;
 }
@@ -34,7 +32,6 @@ export const projects: Project[] = [
 		role: 'Member of Technical Staff',
 		tags: ['AI', 'Fullstack', 'DevOps'],
 		techs: ['Kubernetes', 'Python', 'TypeScript', 'React'],
-		badge: 'Current work · since Oct 2025',
 		details: [
 			'Search and prepare datasets from GEO and beyond, ready for analysis.',
 			'Co-create an analysis plan with AI that writes and runs the code.',
